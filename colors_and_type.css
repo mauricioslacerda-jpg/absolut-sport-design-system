@@ -1,0 +1,320 @@
+/* ============================================================
+   ABSOLUT Sport — Design Tokens
+   colors_and_type.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Brand Display Font — SoulCraft GX */
+@font-face {
+  font-family: 'SoulCraft';
+  src: url('fonts/soulcraftgx.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   COLOR TOKENS — Base Palette
+   ============================================================ */
+:root {
+  /* Brand Core */
+  --color-black:        #0D0D0D;
+  --color-blue:         #155F97;   /* Azul ASB — primary */
+  --color-blue-dark:    #0F4A75;
+  --color-blue-mid:     #1E7ABE;
+  --color-blue-highlight: #2857F7; /* Azul Highlight — accent */
+  --color-gray-asb:     #C0C0C0;  /* Cinza ASB */
+  --color-white:        #FFFFFF;
+  --color-off-white:    #FAFAFA;   /* Branco ASB — bg */
+  --color-gold:         #C9A84C;
+  --color-gold-light:   #E8C96A;
+
+  /* Neutral Scale */
+  --color-neutral-950:  #0D0D0D;
+  --color-neutral-900:  #141414;
+  --color-neutral-800:  #1A1A1A;
+  --color-neutral-700:  #252525;
+  --color-neutral-600:  #333333;
+  --color-neutral-500:  #555555;
+  --color-neutral-400:  #7A7A7A;
+  --color-neutral-300:  #9A9A9A;
+  --color-neutral-200:  #C4C4C4;
+  --color-neutral-100:  #E8E8E8;
+  --color-neutral-50:   #F5F5F5;
+
+  /* ============================================================
+     SEMANTIC TOKENS
+     ============================================================ */
+
+  /* Backgrounds */
+  --bg-base:            #FAFAFA;         /* Branco ASB */
+  --bg-surface:         #FFFFFF;
+  --bg-card:            #F0F0F0;
+  --bg-card-hover:      #E8E8E8;
+  --bg-brand:           var(--color-blue);
+  --bg-dark:            var(--color-black);
+  --bg-overlay:         rgba(13, 13, 13, 0.75);
+  --bg-overlay-light:   rgba(13, 13, 13, 0.4);
+  --bg-overlay-strong:  rgba(13, 13, 13, 0.92);  /* sticky nav, fixed headers */
+
+  /* Foregrounds — Light mode (sobre fundos claros: #FAFAFA, #FFFFFF) */
+  --fg-primary:         var(--color-black);
+  --fg-secondary:       #333333;
+  --fg-tertiary:        #7A7A7A;
+  --fg-muted:           #9A9A9A;
+  --fg-inverse:         var(--color-white);
+
+  /* Foregrounds — Dark surfaces (sobre #0D0D0D, #141414, #1A1A1A)
+     Validados WCAG AA mínimo 4.5:1 em #141414.
+     - on-dark-primary:    branco puro · headlines, números, CTAs
+     - on-dark-secondary:  alto contraste (10:1) · intros, body principal
+     - on-dark-muted:      contraste seguro (6.5:1) · descrições, labels
+     - on-dark-subtle:     contraste limítrofe · APENAS metadata mono pequeno */
+  --fg-on-dark-primary:   #FFFFFF;
+  --fg-on-dark-secondary: #C4C4C4;
+  --fg-on-dark-muted:     #9A9A9A;
+  --fg-on-dark-subtle:    #7A7A7A;
+
+  /* Brand Accents */
+  --accent-primary:         var(--color-blue);
+  --accent-primary-hover:   var(--color-blue-dark);
+  --accent-highlight:       var(--color-blue-highlight);
+  --accent-gray:            var(--color-gray-asb);
+  --accent-gold:            var(--color-gold);
+  --accent-blue-soft:       rgba(21, 95, 151, 0.12);  /* icon BGs, subtle highlights */
+
+  /* Borders */
+  --border-subtle:      rgba(255, 255, 255, 0.08);
+  --border-default:     rgba(255, 255, 255, 0.15);
+  --border-strong:      rgba(255, 255, 255, 0.3);
+  --border-accent:      var(--color-blue);
+  --border-gold:        rgba(201, 168, 76, 0.4);
+
+  /* Status */
+  --color-success:      #22C55E;
+  --color-warning:      #F59E0B;
+  --color-error:        #E3001B;
+  --color-info:         #3B82F6;
+
+  /* ============================================================
+     TYPOGRAPHY TOKENS
+     ============================================================ */
+
+  /* Font Families */
+  --font-display:       'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+  --font-body:          'Barlow', 'DM Sans', sans-serif;
+  --font-mono:          'JetBrains Mono', monospace;
+
+  /* Font Sizes — Display Scale */
+  --text-hero:          clamp(3.5rem, 8vw, 7rem);      /* 56–112px */
+  --text-display:       clamp(2.5rem, 5vw, 4.5rem);    /* 40–72px  */
+  --text-headline:      clamp(1.75rem, 3vw, 2.5rem);   /* 28–40px  */
+  --text-title:         clamp(1.25rem, 2vw, 1.75rem);  /* 20–28px  */
+  --text-subtitle:      1.125rem;                       /* 18px     */
+
+  /* Font Sizes — Body Scale */
+  --text-body-lg:       1.125rem;  /* 18px */
+  --text-body:          1rem;      /* 16px */
+  --text-body-sm:       0.875rem;  /* 14px */
+  --text-caption:       0.75rem;   /* 12px */
+  --text-label:         0.6875rem; /* 11px */
+
+  /* Font Weights */
+  --weight-light:       300;
+  --weight-regular:     400;
+  --weight-medium:      500;
+  --weight-semibold:    600;
+  --weight-bold:        700;
+  --weight-extrabold:   800;
+  --weight-black:       900;
+
+  /* Line Heights */
+  --leading-none:       1;
+  --leading-tight:      1.1;
+  --leading-snug:       1.25;
+  --leading-normal:     1.5;
+  --leading-relaxed:    1.65;
+
+  /* Letter Spacing */
+  --tracking-tight:    -0.02em;
+  --tracking-normal:    0;
+  --tracking-wide:      0.05em;
+  --tracking-wider:     0.1em;
+  --tracking-widest:    0.2em;
+
+  /* ============================================================
+     SPACING TOKENS
+     ============================================================ */
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-32:   128px;
+
+  /* ============================================================
+     BORDER RADIUS
+     ============================================================ */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-pill: 100px;
+
+  /* ============================================================
+     SHADOWS
+     ============================================================ */
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md:   0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg:   0 8px 48px rgba(0, 0, 0, 0.6);
+  --shadow-xl:   0 16px 64px rgba(0, 0, 0, 0.7);
+  --shadow-blue: 0 4px 24px rgba(21, 95, 151, 0.35);
+
+  /* ============================================================
+     TRANSITIONS
+     ============================================================ */
+  --transition-fast:    0.15s ease-out;
+  --transition-default: 0.2s ease-out;
+  --transition-slow:    0.35s ease-out;
+
+  /* ============================================================
+     Z-INDEX SCALE
+     ============================================================ */
+  --z-base:     0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-modal:    500;
+  --z-toast:    900;
+}
+
+/* ============================================================
+   DARK THEME OVERRIDES
+   Apply with <html data-theme="dark"> on marketing surfaces,
+   internal docs, and any full-bleed photography contexts.
+   E-commerce / Shopify defaults to light (no attribute).
+   ============================================================ */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-base:            var(--color-black);
+  --bg-surface:         var(--color-neutral-900);
+  --bg-card:            var(--color-neutral-800);
+  --bg-card-hover:      var(--color-neutral-700);
+
+  /* Foregrounds — flipped against the neutral scale */
+  --fg-primary:         var(--color-white);
+  --fg-secondary:       var(--color-neutral-200);  /* #C4C4C4 — body text on cards (WCAG AA on #1A1A1A) */
+  --fg-tertiary:        var(--color-neutral-400);  /* #7A7A7A — captions only */
+  --fg-muted:           var(--color-neutral-500);
+}
+
+/* ============================================================
+   SEMANTIC TYPOGRAPHY CLASSES
+   ============================================================ */
+
+.as-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  color: var(--fg-primary);
+}
+
+.as-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  color: var(--fg-primary);
+}
+
+.as-headline {
+  font-family: var(--font-display);
+  font-size: var(--text-headline);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+  text-transform: uppercase;
+  color: var(--fg-primary);
+}
+
+.as-title {
+  font-family: var(--font-body);
+  font-size: var(--text-title);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--fg-primary);
+}
+
+.as-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-subtitle);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-normal);
+  color: var(--fg-secondary);
+}
+
+.as-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-secondary);
+}
+
+.as-body-sm {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-secondary);
+}
+
+.as-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--fg-tertiary);
+}
+
+.as-label {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.as-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-body-sm);
+  color: var(--fg-secondary);
+}
+
+/* ============================================================
+   BASE RESETS (optional — include if not using a reset)
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body.as-body-defaults {
+  background-color: var(--bg-base);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}

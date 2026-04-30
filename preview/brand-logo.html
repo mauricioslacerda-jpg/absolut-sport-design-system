@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F0F0F0; font-family: 'Barlow', sans-serif; padding: 24px; }
+  .label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #9A9A9A; margin-bottom: 16px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .swatch {
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    display: flex; flex-direction: column;
+  }
+  .swatch-bg {
+    padding: 28px 32px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 110px;
+  }
+  .swatch-bg img { max-height: 72px; max-width: 100%; object-fit: contain; }
+  .swatch-meta {
+    padding: 10px 14px;
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .swatch-name { font-size: 12px; font-weight: 600; color: #1A1A1A; }
+  .swatch-desc { font-size: 10px; color: #9A9A9A; margin-top: 2px; }
+  .badge-primary { display: inline-block; background: rgba(21,95,151,0.1); color: #155F97; border: 1px solid rgba(21,95,151,0.2); font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 1px 6px; border-radius: 100px; margin-left: 6px; vertical-align: middle; }
+
+  .bg-white   { background: #FFFFFF; }
+  .bg-light   { background: #F0F0F0; }
+  .bg-blue    { background: #155F97; }
+  .bg-dark    { background: #0D0D0D; }
+</style>
+</head>
+<body>
+  <div class="label">Logo Lockups — Versões Oficiais</div>
+  <div class="grid">
+
+    <div class="swatch">
+      <div class="swatch-bg bg-white">
+        <img src="../assets/logo-azul-preto.svg" alt="Logo Azul Preto">
+      </div>
+      <div class="swatch-meta">
+        <div class="swatch-name">Azul + Preto <span class="badge-primary">Primária</span></div>
+        <div class="swatch-desc">Uso principal · fundos claros</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-bg bg-light">
+        <img src="../assets/logo-preto.svg" alt="Logo Preto">
+      </div>
+      <div class="swatch-meta">
+        <div class="swatch-name">Monocromático Preto</div>
+        <div class="swatch-desc">Impressão P&amp;B · fundos claros</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-bg bg-blue">
+        <img src="../assets/logo-branco.svg" alt="Logo Branco">
+      </div>
+      <div class="swatch-meta">
+        <div class="swatch-name">Branco</div>
+        <div class="swatch-desc">Fundos azuis ou escuros</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-bg bg-dark">
+        <img src="../assets/logo-azul-branco.svg" alt="Logo Azul Branco">
+      </div>
+      <div class="swatch-meta">
+        <div class="swatch-name">Azul + Branco</div>
+        <div class="swatch-desc">Fundos escuros</div>
+      </div>
+    </div>
+
+  </div>
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

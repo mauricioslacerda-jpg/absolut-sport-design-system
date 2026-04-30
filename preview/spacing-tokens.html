@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'SoulCraft'; src: url('../fonts/soulcraftgx.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAFA; font-family: 'Barlow', sans-serif; padding: 24px; }
+  .label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #9A9A9A; margin-bottom: 12px; }
+  .divider { border: none; border-top: 1px solid #E8E8E8; margin: 6px 0 18px; }
+
+  /* Spacing rows */
+  .row { display: flex; align-items: center; gap: 12px; margin-bottom: 7px; }
+  .token { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #C0C0C0; width: 76px; flex-shrink: 0; }
+  .bar-wrap { flex: 1; background: #F0F0F0; border-radius: 2px; height: 8px; }
+  .bar { height: 8px; border-radius: 2px; background: #155F97; }
+  .val { font-size: 11px; color: #9A9A9A; width: 34px; text-align: right; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+
+  /* Radius */
+  .radius-row { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+  .radius-item { text-align: center; }
+  .radius-box { background: #FFFFFF; border: 1.5px solid #155F97; margin-bottom: 6px; }
+  .radius-label { font-size: 10px; color: #9A9A9A; font-family: 'JetBrains Mono', monospace; }
+  .radius-val   { font-size: 9px; color: #C0C0C0; margin-top: 2px; font-family: 'JetBrains Mono', monospace; }
+</style>
+</head>
+<body>
+  <div class="label">Spacing Scale</div>
+  <div class="row"><div class="token">--space-1</div><div class="bar-wrap"><div class="bar" style="width:4px"></div></div><div class="val">4px</div></div>
+  <div class="row"><div class="token">--space-2</div><div class="bar-wrap"><div class="bar" style="width:8px"></div></div><div class="val">8px</div></div>
+  <div class="row"><div class="token">--space-3</div><div class="bar-wrap"><div class="bar" style="width:12px"></div></div><div class="val">12px</div></div>
+  <div class="row"><div class="token">--space-4</div><div class="bar-wrap"><div class="bar" style="width:16px"></div></div><div class="val">16px</div></div>
+  <div class="row"><div class="token">--space-6</div><div class="bar-wrap"><div class="bar" style="width:24px"></div></div><div class="val">24px</div></div>
+  <div class="row"><div class="token">--space-8</div><div class="bar-wrap"><div class="bar" style="width:32px"></div></div><div class="val">32px</div></div>
+  <div class="row"><div class="token">--space-12</div><div class="bar-wrap"><div class="bar" style="width:48px"></div></div><div class="val">48px</div></div>
+  <div class="row"><div class="token">--space-16</div><div class="bar-wrap"><div class="bar" style="width:64px"></div></div><div class="val">64px</div></div>
+  <div class="row"><div class="token">--space-20</div><div class="bar-wrap"><div class="bar" style="width:80px"></div></div><div class="val">80px</div></div>
+  <div class="row"><div class="token">--space-24</div><div class="bar-wrap"><div class="bar" style="width:96px"></div></div><div class="val">96px</div></div>
+
+  <hr class="divider">
+  <div class="label">Border Radius</div>
+  <div class="radius-row">
+    <div class="radius-item">
+      <div class="radius-box" style="width:36px;height:36px;border-radius:4px;"></div>
+      <div class="radius-label">sm</div>
+      <div class="radius-val">4px</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="width:36px;height:36px;border-radius:8px;"></div>
+      <div class="radius-label">md</div>
+      <div class="radius-val">8px</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="width:36px;height:36px;border-radius:12px;"></div>
+      <div class="radius-label">lg</div>
+      <div class="radius-val">12px</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="width:36px;height:36px;border-radius:16px;"></div>
+      <div class="radius-label">xl</div>
+      <div class="radius-val">16px</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="width:56px;height:28px;border-radius:100px;"></div>
+      <div class="radius-label">pill</div>
+      <div class="radius-val">100px</div>
+    </div>
+  </div>
+</body>
+</html>
+<script src="../zero-to-o.js"></script>

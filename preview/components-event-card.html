@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'SoulCraft'; src: url('../fonts/soulcraftgx.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAFA; font-family: 'Barlow', sans-serif; padding: 0; }
+
+  .panel { padding: 24px; display: flex; gap: 20px; flex-wrap: wrap; }
+  .panel-dark { background: #141414; }
+  .mode-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 24px 0; }
+  .light-label { color: #9A9A9A; }
+  .dark-label  { color: #555; }
+
+  /* ── CARD BASE ── */
+  .card { width: 240px; border-radius: 8px; overflow: hidden; }
+
+  /* Light card */
+  .card-light { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .card-light:hover { box-shadow: 0 6px 28px rgba(21,95,151,0.18); border-color: rgba(21,95,151,0.3); }
+
+  /* Dark card */
+  .card-dark  { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+
+  .card-img {
+    height: 130px; position: relative;
+    background: linear-gradient(135deg, #0d2240 0%, #155F97 100%);
+  }
+  .card-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+  }
+  .card-badge {
+    position: absolute; top: 10px; right: 10px; z-index: 1;
+    background: rgba(21,95,151,0.9); color: #fff;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 100px;
+    backdrop-filter: blur(4px);
+  }
+  .card-event-name {
+    position: absolute; bottom: 12px; left: 14px; z-index: 1;
+    font-family: 'SoulCraft', 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 800; text-transform: uppercase;
+    color: #fff; line-height: 1.05; letter-spacing: -0.01em;
+  }
+
+  /* Body */
+  .card-body-light { padding: 14px; }
+  .card-body-dark  { padding: 14px; }
+
+  .card-meta-light { font-size: 12px; color: #7A7A7A; margin-bottom: 10px; display: flex; gap: 10px; }
+  .card-meta-dark  { font-size: 12px; color: #555;   margin-bottom: 10px; display: flex; gap: 10px; }
+
+  .card-from-light { font-size: 11px; color: #9A9A9A; margin-bottom: 2px; }
+  .card-from-dark  { font-size: 11px; color: #555;   margin-bottom: 2px; }
+
+  .card-price-light { font-family: 'SoulCraft','Barlow Condensed',sans-serif; font-size: 24px; font-weight: 800; color: #155F97; }
+  .card-price-dark  { font-family: 'SoulCraft','Barlow Condensed',sans-serif; font-size: 24px; font-weight: 800; color: #FFFFFF; }
+
+  .card-per { font-size: 13px; font-family: 'Barlow',sans-serif; font-weight: 400; }
+  .card-per-light { color: #9A9A9A; }
+  .card-per-dark  { color: #555; }
+
+  .btn-cta-light {
+    display: block; width: 100%; margin-top: 12px;
+    background: #155F97; color: #fff; border: none;
+    padding: 10px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+  .btn-cta-dark {
+    display: block; width: 100%; margin-top: 12px;
+    background: #1E7ABE; color: #fff; border: none;
+    padding: 10px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+  <!-- LIGHT MODE -->
+  <div class="mode-label light-label">☀️ Event Card — Light Mode</div>
+  <div class="panel">
+    <!-- Standard -->
+    <div class="card card-light">
+      <div class="card-img">
+        <div class="card-img-overlay"></div>
+        <span class="card-badge">Oficial</span>
+        <div class="card-event-name">CONMEBOL<br>Libertadores™</div>
+      </div>
+      <div class="card-body-light">
+        <div class="card-meta-light"><span>📍 Buenos Aires</span><span>📅 Nov 2025</span></div>
+        <div class="card-from-light">A partir de</div>
+        <div class="card-price-light">R$ 4.800 <span class="card-per card-per-light">/pessoa</span></div>
+        <button class="btn-cta-light">Ver Pacotes</button>
+      </div>
+    </div>
+
+    <!-- VIP light — subtle gold shine only -->
+    <div class="card card-light" style="border-color: rgba(201,168,76,0.25); box-shadow: 0 2px 14px rgba(201,168,76,0.1);">
+      <div class="card-img" style="background: linear-gradient(135deg, #0d2240 0%, #155F97 100%);">
+        <div class="card-img-overlay"></div>
+        <!-- thin gold top border shimmer -->
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#C9A84C,transparent);"></div>
+        <span class="card-badge" style="background:rgba(201,168,76,0.85);color:#0D0D0D;">VIP</span>
+        <div class="card-event-name">CONMEBOL<br>Sudamericana™</div>
+      </div>
+      <div class="card-body-light">
+        <div class="card-meta-light"><span>📍 Montevidéu</span><span>📅 Nov 2025</span></div>
+        <div class="card-from-light">A partir de</div>
+        <div class="card-price-light">R$ 9.600 <span class="card-per card-per-light">/pessoa</span></div>
+        <button class="btn-cta-light">Ver Pacotes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK MODE -->
+  <div class="mode-label dark-label" style="background:#141414;">🌙 Event Card — Dark Mode</div>
+  <div class="panel panel-dark">
+    <div class="card card-dark">
+      <div class="card-img">
+        <div class="card-img-overlay"></div>
+        <span class="card-badge">Oficial</span>
+        <div class="card-event-name">CONMEBOL<br>Libertadores™</div>
+      </div>
+      <div class="card-body-dark">
+        <div class="card-meta-dark"><span>📍 Buenos Aires</span><span>📅 Nov 2025</span></div>
+        <div class="card-from-dark">A partir de</div>
+        <div class="card-price-dark">R$ 4.800 <span class="card-per card-per-dark">/pessoa</span></div>
+        <button class="btn-cta-dark">Ver Pacotes</button>
+      </div>
+    </div>
+
+    <!-- VIP dark — same card, subtle gold top shimmer + border -->
+    <div class="card card-dark" style="border-color: rgba(201,168,76,0.2); box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+      <div class="card-img" style="background: linear-gradient(135deg, #0d2240 0%, #155F97 100%);">
+        <div class="card-img-overlay"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#C9A84C,transparent);"></div>
+        <span class="card-badge" style="background:rgba(201,168,76,0.85);color:#0D0D0D;">VIP</span>
+        <div class="card-event-name">CONMEBOL<br>Sudamericana™</div>
+      </div>
+      <div class="card-body-dark">
+        <div class="card-meta-dark"><span>📍 Montevidéu</span><span>📅 Nov 2025</span></div>
+        <div class="card-from-dark">A partir de</div>
+        <div class="card-price-dark">R$ 9.600 <span class="card-per card-per-dark">/pessoa</span></div>
+        <button class="btn-cta-dark">Ver Pacotes</button>
+      </div>
+    </div>
+  </div>
+
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

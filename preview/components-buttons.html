@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'SoulCraft'; src: url('../fonts/soulcraftgx.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAFA; font-family: 'Barlow', sans-serif; padding: 0; }
+
+  .panel { padding: 24px 28px; }
+  .panel-dark { background: #0D0D0D; }
+  .panel-light { background: #FAFAFA; }
+
+  .mode-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .light-label { color: #9A9A9A; }
+  .dark-label  { color: #555; }
+
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+
+  /* ── LIGHT MODE BUTTONS ── */
+  .btn-l-primary {
+    background: #155F97; color: #fff; border: none;
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+  .btn-l-secondary {
+    background: transparent; color: #155F97;
+    border: 1.5px solid #155F97;
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+  .btn-l-outline {
+    background: transparent; color: #333;
+    border: 1.5px solid rgba(0,0,0,0.2);
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+  .btn-l-gold {
+    background: #C9A84C; color: #0D0D0D; border: none;
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 800; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+  .btn-l-ghost {
+    background: transparent; color: #7A7A7A; border: none;
+    padding: 11px 16px; font-family: 'Barlow',sans-serif;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .btn-l-disabled {
+    background: #E8E8E8; color: #C0C0C0; border: none;
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: not-allowed;
+  }
+  .btn-l-sm {
+    background: #155F97; color: #fff; border: none;
+    padding: 7px 14px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+  .btn-l-hl {
+    background: #2857F7; color: #fff; border: none;
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+
+  /* ── DARK MODE BUTTONS ── */
+  .btn-d-primary {
+    background: #1E7ABE; color: #fff; border: none;
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+  .btn-d-secondary {
+    background: transparent; color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+  .btn-d-gold {
+    background: #C9A84C; color: #0D0D0D; border: none;
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 800; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+  .btn-d-ghost {
+    background: transparent; color: #7A7A7A; border: none;
+    padding: 11px 16px; font-family: 'Barlow',sans-serif;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .btn-d-disabled {
+    background: #1A1A1A; color: #555; border: 1px solid #252525;
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: not-allowed;
+  }
+  .btn-d-hl {
+    background: #2857F7; color: #fff; border: none;
+    padding: 11px 26px; font-family: 'SoulCraft','Barlow Condensed',sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 4px; cursor: pointer;
+  }
+
+  .divider-light { border: none; border-top: 1px solid #E8E8E8; margin: 4px 0 14px; }
+  .divider-dark  { border: none; border-top: 1px solid #1A1A1A; margin: 4px 0 14px; }
+</style>
+</head>
+<body>
+
+  <!-- LIGHT MODE -->
+  <div class="panel panel-light">
+    <div class="mode-label light-label">☀️ Light Mode</div>
+    <div class="row">
+      <button class="btn-l-primary">Comprar Pacote</button>
+      <button class="btn-l-secondary">Ver Detalhes</button>
+      <button class="btn-l-hl">Azul Highlight</button>
+    </div>
+    <div class="row">
+      <button class="btn-l-outline">Outline</button>
+      <button class="btn-l-gold">⭐ VIP Exclusivo</button>
+      <button class="btn-l-sm">Tag / Sm</button>
+      <button class="btn-l-ghost">Saiba mais</button>
+      <button class="btn-l-disabled" disabled>Esgotado</button>
+    </div>
+  </div>
+
+  <!-- DARK MODE -->
+  <div class="panel panel-dark">
+    <div class="mode-label dark-label">🌙 Dark Mode</div>
+    <div class="row">
+      <button class="btn-d-primary">Comprar Pacote</button>
+      <button class="btn-d-secondary">Ver Detalhes</button>
+      <button class="btn-d-hl">Azul Highlight</button>
+    </div>
+    <div class="row">
+      <button class="btn-d-gold">⭐ VIP Exclusivo</button>
+      <button class="btn-d-ghost">Saiba mais</button>
+      <button class="btn-d-disabled" disabled>Esgotado</button>
+    </div>
+  </div>
+
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

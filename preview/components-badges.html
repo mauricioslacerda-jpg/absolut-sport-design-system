@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'SoulCraft'; src: url('../fonts/soulcraftgx.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAFA; font-family: 'Barlow', sans-serif; padding: 0; }
+
+  .panel { padding: 22px 26px; }
+  .panel-dark { background: #0D0D0D; }
+  .label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
+  .light-label { color: #9A9A9A; }
+  .dark-label  { color: #555; }
+  .row  { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .divider-l { border: none; border-top: 1px solid #E8E8E8; margin: 4px 0 14px; }
+  .divider-d { border: none; border-top: 1px solid #1A1A1A; margin: 4px 0 14px; }
+
+  /* ── BADGE BASE ── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 11px; border-radius: 100px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  }
+  .dot::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* Light badges */
+  .bl-blue    { background: rgba(21,95,151,0.1);  color: #155F97; border: 1px solid rgba(21,95,151,0.25); }
+  .bl-hl      { background: rgba(40,87,247,0.1);  color: #2857F7; border: 1px solid rgba(40,87,247,0.22); }
+  .bl-gold    { background: rgba(201,168,76,0.12); color: #9A7020; border: 1px solid rgba(201,168,76,0.3); }
+  .bl-gray    { background: rgba(192,192,192,0.2); color: #555;    border: 1px solid rgba(192,192,192,0.5); }
+  .bl-success { background: rgba(34,197,94,0.1);  color: #16a34a; border: 1px solid rgba(34,197,94,0.25); }
+  .bl-warning { background: rgba(245,158,11,0.1); color: #b45309; border: 1px solid rgba(245,158,11,0.3); }
+  .bl-error   { background: rgba(227,0,27,0.08);  color: #c50017; border: 1px solid rgba(227,0,27,0.2); }
+  .bl-dark    { background: #0D0D0D; color: #fff; border: 1px solid #0D0D0D; }
+
+  /* Dark badges */
+  .bd-blue    { background: rgba(21,95,151,0.2);  color: #5fa8d6; border: 1px solid rgba(21,95,151,0.35); }
+  .bd-hl      { background: rgba(40,87,247,0.18); color: #7b9fff; border: 1px solid rgba(40,87,247,0.3); }
+  .bd-gold    { background: rgba(201,168,76,0.15); color: #C9A84C; border: 1px solid rgba(201,168,76,0.3); }
+  .bd-gray    { background: rgba(192,192,192,0.1); color: #C0C0C0; border: 1px solid rgba(192,192,192,0.2); }
+  .bd-success { background: rgba(34,197,94,0.12); color: #22C55E; border: 1px solid rgba(34,197,94,0.25); }
+  .bd-warning { background: rgba(245,158,11,0.12); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
+  .bd-error   { background: rgba(227,0,27,0.12); color: #E3001B; border: 1px solid rgba(227,0,27,0.25); }
+
+  /* Filter tags light */
+  .tag-l { display: inline-block; padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 500; cursor: pointer; background: #FFFFFF; color: #555; border: 1px solid #E0E0E0; }
+  .tag-l-active { background: #155F97; color: #fff; border-color: #155F97; font-weight: 600; }
+
+  /* Filter tags dark */
+  .tag-d { display: inline-block; padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 500; cursor: pointer; background: #1A1A1A; color: #7A7A7A; border: 1px solid #333; }
+  .tag-d-active { background: #155F97; color: #fff; border-color: #155F97; font-weight: 600; }
+</style>
+</head>
+<body>
+
+  <!-- LIGHT MODE -->
+  <div class="panel">
+    <div class="label light-label">☀️ Badges — Light Mode</div>
+    <div class="row">
+      <span class="badge bl-blue dot">Oficial CONMEBOL</span>
+      <span class="badge bl-hl dot">Azul Highlight</span>
+      <span class="badge bl-gold dot">VIP Premium</span>
+      <span class="badge bl-gray">Cinza ASB</span>
+    </div>
+    <div class="row">
+      <span class="badge bl-success dot">Disponível</span>
+      <span class="badge bl-warning dot">Últimas vagas</span>
+      <span class="badge bl-error dot">Esgotado</span>
+      <span class="badge bl-dark">Novo</span>
+    </div>
+    <hr class="divider-l">
+    <div class="label light-label">Filter Tags</div>
+    <div class="row">
+      <span class="tag-l tag-l-active">Todos</span>
+      <span class="tag-l">Libertadores</span>
+      <span class="tag-l">Sudamericana</span>
+      <span class="tag-l">Formula 1</span>
+      <span class="tag-l">NFL</span>
+    </div>
+  </div>
+
+  <!-- DARK MODE -->
+  <div class="panel panel-dark">
+    <div class="label dark-label">🌙 Badges — Dark Mode</div>
+    <div class="row">
+      <span class="badge bd-blue dot">Oficial CONMEBOL</span>
+      <span class="badge bd-hl dot">Azul Highlight</span>
+      <span class="badge bd-gold dot">VIP Premium</span>
+      <span class="badge bd-gray">Cinza ASB</span>
+    </div>
+    <div class="row">
+      <span class="badge bd-success dot">Disponível</span>
+      <span class="badge bd-warning dot">Últimas vagas</span>
+      <span class="badge bd-error dot">Esgotado</span>
+    </div>
+    <hr class="divider-d">
+    <div class="label dark-label">Filter Tags</div>
+    <div class="row">
+      <span class="tag-d tag-d-active">Todos</span>
+      <span class="tag-d">Libertadores</span>
+      <span class="tag-d">Sudamericana</span>
+      <span class="tag-d">Formula 1</span>
+      <span class="tag-d">NFL</span>
+    </div>
+  </div>
+
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

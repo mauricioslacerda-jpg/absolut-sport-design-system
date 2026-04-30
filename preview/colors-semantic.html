@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAFA; font-family: 'Barlow', sans-serif; padding: 24px; }
+  .section { margin-bottom: 20px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #9A9A9A; margin-bottom: 10px; }
+  .rows { display: flex; flex-direction: column; gap: 6px; }
+  .row { display: flex; align-items: center; gap: 12px; }
+  .dot { width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.06); }
+  .info { flex: 1; }
+  .token-name { font-size: 12px; font-weight: 600; color: #1A1A1A; }
+  .token-desc { font-size: 10px; color: #9A9A9A; margin-top: 1px; }
+  .token-var { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #C0C0C0; text-align: right; }
+  .divider { border: none; border-top: 1px solid #E8E8E8; margin: 4px 0 16px; }
+</style>
+</head>
+<body>
+
+  <div class="section">
+    <div class="section-label">Backgrounds</div>
+    <div class="rows">
+      <div class="row">
+        <div class="dot" style="background:#FAFAFA;"></div>
+        <div class="info"><div class="token-name">bg-base</div><div class="token-desc">Fundo principal da página — Branco ASB</div></div>
+        <div class="token-var">--bg-base</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#FFFFFF;"></div>
+        <div class="info"><div class="token-name">bg-surface</div><div class="token-desc">Seções, painéis elevados</div></div>
+        <div class="token-var">--bg-surface</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#F0F0F0;"></div>
+        <div class="info"><div class="token-name">bg-card</div><div class="token-desc">Cards, inputs, containers</div></div>
+        <div class="token-var">--bg-card</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#155F97;"></div>
+        <div class="info"><div class="token-name">bg-brand</div><div class="token-desc">Seções de destaque, hero, banners</div></div>
+        <div class="token-var">--bg-brand</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#0D0D0D;"></div>
+        <div class="info"><div class="token-name">bg-dark</div><div class="token-desc">Footer, seções escuras</div></div>
+        <div class="token-var">--bg-dark</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-label">Foregrounds / Texto</div>
+    <div class="rows">
+      <div class="row">
+        <div class="dot" style="background:#0D0D0D;"></div>
+        <div class="info"><div class="token-name">fg-primary</div><div class="token-desc">Texto principal em fundo claro</div></div>
+        <div class="token-var">--fg-primary</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#333333;"></div>
+        <div class="info"><div class="token-name">fg-secondary</div><div class="token-desc">Corpo de texto, descrições</div></div>
+        <div class="token-var">--fg-secondary</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#9A9A9A;"></div>
+        <div class="info"><div class="token-name">fg-muted</div><div class="token-desc">Labels, placeholders, metadados</div></div>
+        <div class="token-var">--fg-muted</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#FFFFFF; border:1px solid #ddd;"></div>
+        <div class="info"><div class="token-name">fg-inverse</div><div class="token-desc">Texto em fundos escuros/azul</div></div>
+        <div class="token-var">--fg-inverse</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-label">Accents / Interação</div>
+    <div class="rows">
+      <div class="row">
+        <div class="dot" style="background:#155F97;"></div>
+        <div class="info"><div class="token-name">accent-primary</div><div class="token-desc">CTAs, botões principais — Azul ASB</div></div>
+        <div class="token-var">--accent-primary</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#2857F7;"></div>
+        <div class="info"><div class="token-name">accent-highlight</div><div class="token-desc">Links, hover, badges de destaque</div></div>
+        <div class="token-var">--accent-highlight</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#C9A84C;"></div>
+        <div class="info"><div class="token-name">accent-gold</div><div class="token-desc">VIP, premium, tier especial</div></div>
+        <div class="token-var">--accent-gold</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#C0C0C0;"></div>
+        <div class="info"><div class="token-name">accent-gray</div><div class="token-desc">Bordas ativas, ícones secundários — Cinza ASB</div></div>
+        <div class="token-var">--accent-gray</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-label">Status</div>
+    <div class="rows">
+      <div class="row">
+        <div class="dot" style="background:#22C55E;"></div>
+        <div class="info"><div class="token-name">status-success</div><div class="token-desc">Disponível, confirmado, concluído</div></div>
+        <div class="token-var">--status-success</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#F59E0B;"></div>
+        <div class="info"><div class="token-name">status-warning</div><div class="token-desc">Últimas vagas, atenção</div></div>
+        <div class="token-var">--status-warning</div>
+      </div>
+      <div class="row">
+        <div class="dot" style="background:#E3001B;"></div>
+        <div class="info"><div class="token-name">status-error</div><div class="token-desc">Erro, esgotado, inválido</div></div>
+        <div class="token-var">--status-error</div>
+      </div>
+    </div>
+  </div>
+
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

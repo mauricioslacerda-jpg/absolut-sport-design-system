@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'SoulCraft'; src: url('../fonts/soulcraftgx.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAFA; font-family: 'Barlow', sans-serif; }
+
+  .panel { padding: 22px 24px; }
+  .panel-dark { background: #0D0D0D; }
+  .mode-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 14px; }
+  .light-label { color: #9A9A9A; }
+  .dark-label  { color: #555; }
+  .divider-l { border: none; border-top: 1px solid #E8E8E8; margin: 4px 0 14px; }
+  .divider-d { border: none; border-top: 1px solid #1A1A1A; margin: 4px 0 14px; }
+  .field { margin-bottom: 14px; }
+  .field-label { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 5px; }
+  .fl-light { color: #7A7A7A; }
+  .fl-dark  { color: #555; }
+
+  /* Light inputs */
+  .input-l {
+    width: 100%; background: #FFFFFF; border: 1.5px solid #E0E0E0;
+    border-radius: 4px; padding: 11px 14px;
+    font-family: 'Barlow', sans-serif; font-size: 15px; color: #0D0D0D;
+    outline: none; transition: border 0.15s;
+  }
+  .input-l::placeholder { color: #C0C0C0; }
+  .input-l:focus { border-color: #155F97; box-shadow: 0 0 0 3px rgba(21,95,151,0.1); }
+  .input-l-error { border-color: #E3001B !important; }
+  .input-l-error:focus { box-shadow: 0 0 0 3px rgba(227,0,27,0.1) !important; }
+
+  /* Dark inputs */
+  .input-d {
+    width: 100%; background: #1A1A1A; border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 4px; padding: 11px 14px;
+    font-family: 'Barlow', sans-serif; font-size: 15px; color: #fff;
+    outline: none; transition: border 0.15s;
+  }
+  .input-d::placeholder { color: #555; }
+  .input-d-focus { border-color: #1E7ABE; box-shadow: 0 0 0 3px rgba(30,122,190,0.15); }
+
+  /* Select */
+  .select-l { appearance: none; width: 100%; background: #FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9A9A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center; border: 1.5px solid #E0E0E0; border-radius: 4px; padding: 11px 38px 11px 14px; font-family: 'Barlow', sans-serif; font-size: 15px; color: #0D0D0D; outline: none; }
+  .select-d { appearance: none; width: 100%; background: #1A1A1A; border: 1.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 11px 14px; font-family: 'Barlow', sans-serif; font-size: 15px; color: #9A9A9A; outline: none; }
+
+  .error-msg-l { font-size: 12px; color: #E3001B; margin-top: 4px; }
+  .error-msg-d { font-size: 12px; color: #ff4d5e; margin-top: 4px; }
+
+  /* Checkbox */
+  .check-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+  .check-box-l { width: 18px; height: 18px; border-radius: 3px; background: #FFFFFF; border: 1.5px solid #C0C0C0; flex-shrink: 0; }
+  .check-box-d { width: 18px; height: 18px; border-radius: 3px; background: #1A1A1A; border: 1.5px solid rgba(255,255,255,0.2); flex-shrink: 0; }
+  .checked-l { background: #155F97 !important; border-color: #155F97 !important; display: flex; align-items: center; justify-content: center; }
+  .checked-d { background: #1E7ABE !important; border-color: #1E7ABE !important; display: flex; align-items: center; justify-content: center; }
+  .check-label-l { font-size: 14px; color: #333; }
+  .check-label-d { font-size: 14px; color: #9A9A9A; }
+</style>
+</head>
+<body>
+
+  <!-- LIGHT -->
+  <div class="panel">
+    <div class="mode-label light-label">☀️ Form Inputs — Light Mode</div>
+    <div class="field">
+      <div class="field-label fl-light">Nome Completo</div>
+      <input class="input-l" type="text" placeholder="Ex: João Silva">
+    </div>
+    <div class="field">
+      <div class="field-label fl-light">Evento</div>
+      <select class="select-l">
+        <option>Selecionar evento...</option>
+        <option>CONMEBOL Libertadores 2025</option>
+      </select>
+    </div>
+    <div class="field">
+      <div class="field-label fl-light">Email — erro</div>
+      <input class="input-l input-l-error" type="email" value="emailinvalido">
+      <div class="error-msg-l">Por favor insira um email válido.</div>
+    </div>
+    <hr class="divider-l">
+    <div class="mode-label light-label">Checkboxes</div>
+    <div class="check-row">
+      <div class="check-box-l checked-l"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L4 7L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="check-label-l">Ingresso oficial incluso</span>
+    </div>
+    <div class="check-row">
+      <div class="check-box-l"></div>
+      <span class="check-label-l">Transfer aeroporto → hotel</span>
+    </div>
+    <div class="check-row">
+      <div class="check-box-l checked-l"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L4 7L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="check-label-l">Acesso a lounge VIP</span>
+    </div>
+  </div>
+
+  <!-- DARK -->
+  <div class="panel panel-dark">
+    <div class="mode-label dark-label">🌙 Form Inputs — Dark Mode</div>
+    <div class="field">
+      <div class="field-label fl-dark">Nome Completo</div>
+      <input class="input-d" type="text" placeholder="Ex: João Silva">
+    </div>
+    <div class="field">
+      <div class="field-label fl-dark">Evento</div>
+      <select class="select-d"><option>Selecionar evento...</option></select>
+    </div>
+    <div class="field">
+      <div class="field-label fl-dark">Focus state</div>
+      <input class="input-d input-d-focus" type="text" value="CONMEBOL Libertadores 2025">
+    </div>
+    <hr class="divider-d">
+    <div class="mode-label dark-label">Checkboxes</div>
+    <div class="check-row">
+      <div class="check-box-d checked-d"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L4 7L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="check-label-d">Ingresso oficial incluso</span>
+    </div>
+    <div class="check-row">
+      <div class="check-box-d"></div>
+      <span class="check-label-d">Transfer aeroporto → hotel</span>
+    </div>
+  </div>
+
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Playbook — ABSOLUT Sport · Marketing Global</title>
+<meta name="description" content="Como o time de marketing global da ABSOLUT Sport usa AI no dia a dia. Use cases, regras, workflow e ferramentas.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  @font-face {
+    font-family: 'SoulCraft';
+    src: url('../fonts/soulcraftgx.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+
+<link rel="stylesheet" href="../colors_and_type.css">
+
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV ─────────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: var(--z-sticky);
+  height: 68px; padding: 0 var(--space-12);
+  background: rgba(13, 13, 13, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 4px 32px rgba(0,0,0,0.3);
+}
+.nav-logo img { height: 32px; }
+.nav-breadcrumb {
+  display: flex; align-items: center; gap: var(--space-3);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-neutral-300);
+  font-weight: var(--weight-medium);
+}
+.nav-breadcrumb a { color: var(--color-neutral-300); transition: color var(--transition-fast); }
+.nav-breadcrumb a:hover { color: var(--color-blue-mid); }
+.nav-breadcrumb .sep { color: var(--color-neutral-600); }
+.nav-breadcrumb .current { color: var(--color-white); }
+
+.nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+.nav-credit {
+  display: inline-flex; align-items: center;
+  padding: 5px 10px;
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: var(--radius-pill);
+  background: rgba(201,168,76,0.08);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+.nav-credit:hover {
+  background: rgba(201,168,76,0.18);
+  border-color: var(--color-gold);
+}
+.nav-credit-mark {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  background: var(--color-neutral-900);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+}
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  padding: 5px 10px;
+  border-radius: 100px;
+  background: transparent;
+  color: var(--color-neutral-300);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.lang-btn:hover { color: var(--color-white); }
+.lang-btn.active { background: var(--color-blue); color: var(--color-white); }
+
+.nav-back {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-white);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 18px;
+  font-size: 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+.nav-back:hover { background: var(--color-blue); border-color: var(--color-blue); }
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 78vh;
+  background: linear-gradient(135deg, #0D0D0D 0%, #0a1520 50%, #0D0D0D 100%);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px var(--space-20) 64px;
+  overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-bar {
+  position: absolute; left: 0; top: 18%; bottom: 18%;
+  width: 4px;
+  background: linear-gradient(to bottom, transparent, var(--color-blue) 30%, var(--color-blue) 70%, transparent);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 1100px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(21,95,151,0.12);
+  border: 1px solid rgba(21,95,151,0.3);
+  color: var(--color-blue-mid);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+}
+.hero-eyebrow::before { content: '●'; color: var(--color-blue); font-size: 10px; }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: var(--weight-black);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: var(--space-6);
+}
+.hero h1 .accent { color: var(--color-blue-mid); display: block; }
+
+.hero-sub {
+  font-size: var(--text-subtitle);
+  color: var(--color-neutral-200);
+  line-height: var(--leading-relaxed);
+  max-width: 580px;
+}
+
+
+/* ─── SECTION COMMONS ─────────────────────────────────────── */
+section {
+  padding: var(--space-20) var(--space-20);
+  max-width: 1280px; margin: 0 auto;
+}
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-blue-mid);
+  margin-bottom: var(--space-3);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: var(--weight-extrabold);
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--color-white);
+  margin-bottom: var(--space-10);
+}
+.section-title .accent { color: var(--color-blue-mid); display: block; }
+
+.section-intro {
+  font-size: var(--text-body-lg);
+  color: var(--color-neutral-200);
+  max-width: 720px;
+  margin-top: -24px; margin-bottom: var(--space-10);
+  line-height: var(--leading-relaxed);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ─── USE CASES ───────────────────────────────────────────── */
+.use-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+.use-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-6);
+  position: relative; overflow: hidden;
+  transition: all var(--transition-default);
+}
+.use-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--color-blue);
+  opacity: 0;
+  transition: opacity var(--transition-default);
+}
+.use-card:hover { transform: translateY(-3px); border-color: rgba(21,95,151,0.5); }
+.use-card:hover::after { opacity: 1; }
+.use-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-blue-mid);
+  margin-bottom: var(--space-3);
+  display: block;
+}
+.use-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+.use-card p {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── BRAND CALLOUT ───────────────────────────────────────── */
+.callout {
+  background: var(--color-neutral-900);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-12);
+  position: relative;
+  overflow: hidden;
+}
+.callout::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-blue));
+}
+.callout h3 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: var(--weight-extrabold);
+  text-transform: uppercase;
+  line-height: var(--leading-snug);
+  color: var(--color-gold);
+  margin-bottom: var(--space-5);
+  max-width: 760px;
+}
+.callout p {
+  font-size: var(--text-body);
+  color: var(--color-neutral-200);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-3);
+  max-width: 760px;
+}
+.callout p:last-child { margin-bottom: 0; }
+.callout strong { color: var(--color-white); font-weight: var(--weight-semibold); }
+
+/* ─── RESOURCES ───────────────────────────────────────────── */
+.res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.res-card {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 0;
+  position: relative; overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 20px;
+  padding: var(--space-10) var(--space-8) var(--space-8);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.res-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, rgba(255,255,255,0.07) 0%, transparent 55%);
+  pointer-events: none; border-radius: 20px;
+}
+.res-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(21,95,151,0.42);
+  box-shadow: 0 20px 56px rgba(0,0,0,0.5), 0 0 0 1px rgba(21,95,151,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.res-icon {
+  font-size: 36px;
+  width: 72px; height: 72px;
+  background: rgba(21,95,151,0.12);
+  border: 1px solid rgba(21,95,151,0.25);
+  border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--space-5);
+  position: relative; z-index: 1;
+}
+.res-meta { width: 100%; position: relative; z-index: 1; flex: 1; }
+.res-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+}
+.res-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+.res-arrow {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-display); font-size: 11px;
+  font-weight: var(--weight-bold); letter-spacing: var(--tracking-wider);
+  text-transform: uppercase; color: var(--color-blue-mid);
+  padding: 7px 18px; border-radius: var(--radius-pill);
+  border: 1px solid rgba(21,95,151,0.3);
+  background: rgba(21,95,151,0.1);
+  transition: all 0.2s;
+}
+.res-arrow::after { content: ' ↗'; }
+.res-card:hover .res-arrow {
+  background: rgba(21,95,151,0.22); border-color: var(--color-blue-mid);
+}
+
+/* ─── RULES WITH CHAT ──────────────────────────────────────── */
+.rules-layout {
+  display: grid; grid-template-columns: 1fr 300px;
+  gap: var(--space-5); align-items: start;
+}
+.prompt-demo {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.07);
+  position: sticky; top: 80px;
+}
+.pd-bar {
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 11px 14px;
+  display: flex; align-items: center; gap: 6px;
+}
+.pd-dot { width: 8px; height: 8px; border-radius: 50%; }
+.pd-bar-label {
+  font-family: var(--font-mono); font-size: 10px;
+  color: rgba(255,255,255,0.28); letter-spacing: 0.08em;
+  margin-left: 6px;
+}
+.pd-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.pd-label {
+  font-size: 10px; font-weight: var(--weight-bold);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px;
+}
+.pd-label.bad  { color: var(--color-error); }
+.pd-label.good { color: var(--color-success); }
+.pd-u-bad {
+  padding: 9px 12px; border-radius: 10px 10px 3px 10px;
+  background: rgba(227,0,27,0.1); border: 1px solid rgba(227,0,27,0.2);
+  font-size: 12px; line-height: 1.5; color: rgba(255,255,255,0.75);
+  text-align: right;
+}
+.pd-ai-bad {
+  padding: 9px 12px; border-radius: 10px 10px 10px 3px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  font-size: 12px; line-height: 1.5;
+  color: rgba(255,255,255,0.38); font-style: italic;
+}
+.pd-sep {
+  text-align: center; font-size: 10px; font-weight: var(--weight-bold);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  display: flex; align-items: center; gap: 8px;
+}
+.pd-sep::before, .pd-sep::after {
+  content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07);
+}
+.pd-u-good {
+  padding: 9px 12px; border-radius: 10px 10px 3px 10px;
+  background: rgba(21,95,151,0.18); border: 1px solid rgba(21,95,151,0.3);
+  font-size: 12px; line-height: 1.5; color: rgba(255,255,255,0.82);
+  text-align: right;
+}
+.pd-ai-good {
+  padding: 9px 12px; border-radius: 10px 10px 10px 3px;
+  background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.2);
+  font-size: 12px; line-height: 1.5; color: rgba(255,255,255,0.82);
+}
+.pd-chip {
+  display: inline-block; padding: 2px 7px; border-radius: 3px;
+  background: rgba(34,197,94,0.14); color: var(--color-success);
+  font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px;
+}
+
+/* ─── FLOW TICKER ──────────────────────────────────────────── */
+.flow-ticker {
+  overflow: hidden; margin-bottom: var(--space-12);
+  padding: 11px 0;
+  background: rgba(21,95,151,0.08);
+  border: 1px solid rgba(21,95,151,0.15);
+  border-radius: var(--radius-sm);
+}
+.flow-ticker-track {
+  display: flex; white-space: nowrap; width: max-content;
+  animation: ticker-run 22s linear infinite;
+}
+.flow-ticker-item {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 0 20px;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--color-blue-mid); letter-spacing: 0.1em; text-transform: uppercase;
+}
+.flow-ticker-n {
+  font-family: var(--font-display); font-size: 15px; font-weight: var(--weight-black);
+  color: rgba(21,95,151,0.45); line-height: 1;
+}
+.flow-ticker-arrow { color: rgba(21,95,151,0.35); padding: 0 6px; font-size: 14px; }
+@keyframes ticker-run {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── GAL PROCESS — passo a passo ─────────────────────────── */
+.gal-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+.gal-step {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-default);
+}
+.gal-step::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-gold));
+  opacity: 0.6;
+}
+.gal-step:hover {
+  border-color: rgba(21,95,151,0.5);
+  transform: translateY(-3px);
+}
+.gal-step-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-blue-mid);
+  margin-bottom: var(--space-5);
+}
+.gal-step h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+  line-height: 1.05;
+}
+.gal-step p {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  line-height: 1.55;
+}
+.gal-step-tag {
+  display: inline-block;
+  margin-top: var(--space-3);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+/* ─── DO / DON'T ──────────────────────────────────────────── */
+.dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+.dd-col {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  position: relative;
+}
+.dd-col::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.dd-do::before   { background: var(--color-success); }
+.dd-dont::before { background: var(--color-error); }
+.dd-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-5);
+}
+.dd-do .dd-tag   { background: rgba(34,197,94,0.12); color: var(--color-success); }
+.dd-dont .dd-tag { background: rgba(227,0,27,0.12); color: var(--color-error); }
+.dd-col ul { list-style: none; padding: 0; }
+.dd-col li {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  padding: 11px 0 11px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  line-height: var(--leading-normal);
+}
+.dd-col li:last-child { border-bottom: none; padding-bottom: 0; }
+.dd-do li::before   { content: "✓"; color: var(--color-success); position: absolute; left: 0; font-weight: var(--weight-bold); }
+.dd-dont li::before { content: "✗"; color: var(--color-error); position: absolute; left: 0; font-weight: var(--weight-bold); }
+
+/* ─── TOOLKIT ─────────────────────────────────────────────── */
+.tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+.tool-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  padding: var(--space-6);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -1px 0 rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+.tool-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, transparent 45%, rgba(0,0,0,0.08) 100%);
+  pointer-events: none; border-radius: 16px;
+}
+.tool-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(21,95,151,0.45);
+  box-shadow:
+    0 16px 48px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(21,95,151,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    inset 0 -1px 0 rgba(0,0,0,0.3);
+}
+.tool-icon {
+  width: 44px; height: 44px;
+  background: rgba(21,95,151,0.12);
+  border: 1px solid rgba(21,95,151,0.25);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto var(--space-4);
+  color: var(--color-blue-mid);
+}
+.tool-card h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+.tool-card p { font-size: var(--text-caption); color: var(--color-neutral-300); line-height: var(--leading-normal); }
+
+/* ─── WORKFLOW ────────────────────────────────────────────── */
+.workflow {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  position: relative; gap: 0;
+}
+.workflow::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: calc(10% + 24px);
+  right: calc(10% + 24px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-gold));
+  opacity: 0.5;
+}
+.wf-step {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  padding: 0 var(--space-4);
+  position: relative; z-index: 1;
+}
+.wf-dot {
+  width: 48px; height: 48px;
+  background: var(--color-black);
+  border: 2px solid var(--color-blue);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: var(--weight-medium);
+  color: var(--color-blue-mid);
+  margin-bottom: var(--space-5);
+  transition: all var(--transition-default);
+}
+.wf-step:hover .wf-dot { background: var(--color-blue); color: var(--color-white); }
+.wf-step h4 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+.wf-step p { font-size: var(--text-caption); color: var(--color-neutral-300); line-height: 1.5; }
+
+/* ─── COMING UP ───────────────────────────────────────────── */
+.next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+.next-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  position: relative; overflow: hidden;
+  transition: all var(--transition-default);
+}
+.next-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-gold));
+}
+.next-card:hover { transform: translateY(-3px); border-color: rgba(21,95,151,0.5); }
+.next-status {
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-3);
+}
+.next-card h4 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  line-height: var(--leading-snug);
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+}
+.next-card p { font-size: var(--text-body-sm); color: var(--color-neutral-300); line-height: var(--leading-relaxed); }
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+.footer {
+  background: var(--color-black);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--space-12) var(--space-20) var(--space-8);
+  margin-top: var(--space-20);
+}
+.footer-grid {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-12);
+}
+.footer-brand img { height: 36px; margin-bottom: var(--space-4); }
+.footer-brand p { font-size: var(--text-body-sm); color: var(--color-neutral-300); max-width: 280px; line-height: 1.6; }
+.footer-col h4 {
+  font-size: 11px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--color-neutral-400); margin-bottom: var(--space-4);
+}
+.footer-col a {
+  display: block;
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  padding: 6px 0;
+  transition: color var(--transition-fast);
+}
+.footer-col a:hover { color: var(--color-blue-mid); }
+.footer-bottom {
+  max-width: 1280px; margin: var(--space-8) auto 0;
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between;
+  font-size: var(--text-caption);
+  color: var(--color-neutral-400);
+}
+
+/* ─── CONTAS & SEGURANÇA ──────────────────────────────────── */
+.tier-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3); margin-bottom: var(--space-8);
+}
+.tier-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  position: relative; overflow: hidden;
+  transition: all var(--transition-default);
+}
+.tier-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+}
+.tier-max::before { background: var(--color-gold); }
+.tier-pro::before { background: var(--color-blue); }
+.tier-free::before { background: rgba(255,255,255,0.2); }
+.tier-level {
+  font-family: var(--font-display);
+  font-size: 36px; font-weight: var(--weight-black);
+  text-transform: uppercase; letter-spacing: -0.01em;
+  line-height: 1; margin-bottom: var(--space-1);
+}
+.tier-max .tier-level { color: var(--color-gold); }
+.tier-pro .tier-level { color: var(--color-blue-mid); }
+.tier-free .tier-level { color: var(--color-neutral-500); }
+.tier-name {
+  font-size: 11px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  color: var(--color-neutral-300); margin-bottom: var(--space-2);
+}
+.tier-price {
+  font-family: var(--font-mono);
+  font-size: 13px; color: var(--color-neutral-400);
+  margin-bottom: var(--space-5);
+}
+.tier-card p {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  line-height: var(--leading-relaxed);
+}
+.sec-quote {
+  background: rgba(201,168,76,0.05);
+  border: 1px solid rgba(201,168,76,0.22);
+  border-left: 3px solid var(--color-gold);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5) var(--space-8);
+}
+.sec-quote p {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-gold);
+  line-height: var(--leading-snug);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .nav { padding: 0 var(--space-6); }
+  .nav-breadcrumb { display: none; }
+  .nav-back { display: none; }
+  .nav-credit { display: none; }
+  .hero { padding: 60px var(--space-6) 48px; min-height: 60vh; }
+  section { padding: var(--space-12) var(--space-6); }
+  .use-grid, .next-grid, .dd-grid, .res-grid, .gal-steps, .tier-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr 1fr; }
+  .workflow { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  .workflow::before { display: none; }
+  .rules-layout { grid-template-columns: 1fr; }
+  .prompt-demo { display: none; }
+  .footer { padding: var(--space-10) var(--space-6) var(--space-6); }
+  .footer-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+  .footer-bottom { flex-direction: column; gap: var(--space-3); }
+
+}
+
+/* ─── SPLASH ──────────────────────────────────────────────── */
+.splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0D0D0D;
+  display: flex; align-items: center; justify-content: center;
+  animation: splash-exit 0.7s cubic-bezier(0.4,0,0.2,1) 2.5s forwards;
+  pointer-events: none;
+}
+.splash-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  text-align: center;
+  opacity: 0; transform: translateY(16px);
+  animation: splash-rise 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+}
+.splash-logo { height: 96px; filter: brightness(1.1); display: block; margin: 0 auto; }
+.splash-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding-left: 0.32em;
+}
+.splash-line {
+  width: 160px; height: 1px;
+  background: linear-gradient(to right, transparent, #155F97, transparent);
+  transform: scaleX(0); transform-origin: center;
+  animation: splash-expand 0.9s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;
+}
+@keyframes splash-rise { to { opacity: 1; transform: none; } }
+@keyframes splash-expand { to { transform: scaleX(1); } }
+@keyframes splash-exit { to { opacity: 0; visibility: hidden; } }
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash" class="splash">
+  <div class="splash-inner">
+    <img class="splash-logo" src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+    <div class="splash-tag">AI PLAYBOOK</div>
+    <div class="splash-line"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">
+    <img src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+  </a>
+  <div class="nav-breadcrumb">
+    <a href="../index.html"             data-i18n="bc.hub">Design System</a>
+    <span class="sep">/</span>
+    <a href="../index.html#playbooks"   data-i18n="bc.playbooks">Playbooks</a>
+    <span class="sep">/</span>
+    <span class="current"               data-i18n="bc.current">AI Marketing</span>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-back" href="../index.html" data-i18n="nav.back">← Voltar ao Hub</a>
+    <a class="nav-credit" href="mailto:design@absolut-sport.com.br?subject=Design%20System%20%C2%B7%20Sugest%C3%A3o" data-i18n-attr="title:nav.credit.title" title="Mauricio × Rafa · sugestões pra design@">
+      <span class="nav-credit-mark">MM × RR</span>
+    </a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+      <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+      <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+      <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:none;padding-left:var(--space-20);padding-right:var(--space-20)">
+  <div class="hero-grid"></div>
+  <div class="hero-bar"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">Marketing Global · Playbook Interno · v1.0</div>
+    <h1 data-i18n-html="hero.h1">
+      AI É O NOSSO<br>
+      <span class="accent">SEXTO JOGADOR.</span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero.sub">Você sabe vender o melhor lugar do estádio. AI cuida de tudo que não exige estar lá. Como o time global usa, e como usar certo.</p>
+  </div>
+</section>
+
+
+<!-- USE CASES -->
+<section>
+  <div class="section-eyebrow" data-i18n="use.eyebrow">Onde funciona</div>
+  <h2 class="section-title" data-i18n-html="use.title">Seis coisas<br><span class="accent">que AI faz.</span></h2>
+
+  <div class="use-grid">
+    <div class="use-card"><span class="use-num" data-i18n="use.c1.num">01 · Drafting</span><h3 data-i18n="use.c1.h">Primeiros drafts</h3><p data-i18n="use.c1.p">E-mails, newsletters, copy de produto, captions sociais. Você começa de algo real, não do zero.</p></div>
+    <div class="use-card"><span class="use-num" data-i18n="use.c2.num">02 · Idiomas</span><h3 data-i18n="use.c2.h">Tradução</h3><p data-i18n="use.c2.p">PT → EN → ES com velocidade. Decks, landing pages, descrição de pacote. Revisão humana antes de publicar.</p></div>
+    <div class="use-card"><span class="use-num" data-i18n="use.c3.num">03 · Decks</span><h3 data-i18n="use.c3.h">Apresentações</h3><p data-i18n="use.c3.p">Estrutura, talking points, one-pagers para liderança e cliente. A forma narrativa — não só bullet points.</p></div>
+    <div class="use-card"><span class="use-num" data-i18n="use.c4.num">04 · E-Commerce</span><h3 data-i18n="use.c4.h">Copy de produto</h3><p data-i18n="use.c4.p">Descrições de pacote, blurbs de hotel, listings Shopify. Tom consistente em 10+ produtos e 5 mercados.</p></div>
+    <div class="use-card"><span class="use-num" data-i18n="use.c5.num">05 · Planejamento</span><h3 data-i18n="use.c5.h">Campanhas</h3><p data-i18n="use.c5.p">Calendários, estruturas Gantt, outlines de brief. Alimente o contexto — receba o esqueleto. Você preenche o que só você sabe.</p></div>
+    <div class="use-card"><span class="use-num" data-i18n="use.c6.num">06 · Inteligência</span><h3 data-i18n="use.c6.h">Pesquisa</h3><p data-i18n="use.c6.p">Briefings de destino, benchmarks de concorrente, contexto de evento. Sintetize rápido, cite a fonte.</p></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- BRAND CALLOUT -->
+<section>
+  <div class="section-eyebrow" data-i18n="call.eyebrow">O destravamento</div>
+  <h2 class="section-title" data-i18n-html="call.title">O design system<br>muda <span class="accent">tudo.</span></h2>
+
+  <div class="callout">
+    <h3 data-i18n="call.h">Sem o design system, AI não sabe quem somos.</h3>
+    <p data-i18n-html="call.p1">Quando qualquer um do time pede pra AI escrever uma landing ou caption, ela não conhece nossas fontes, paleta, tom ou como escrevemos um subject line. O output é decente — mas não é <strong>inconfundivelmente ABSOLUT Sport</strong>.</p>
+    <p data-i18n-html="call.p2"><strong>O Design System está vivo agora</strong> — paleta, tipografia, logos, componentes e guidelines acessíveis em <code style="font-family:var(--font-mono);color:#fff">design.absolut-sport.com.br</code>. Cole o link como contexto antes de prompar.</p>
+    <p data-i18n="call.p3">Mostre, não descreva. Cole um e-mail real ASB ou um post antes do prompt — deixe o modelo espelhar o que já funciona.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- RESOURCES -->
+<section>
+  <div class="section-eyebrow" data-i18n="res.eyebrow">Recursos · Cole no prompt</div>
+  <h2 class="section-title" data-i18n-html="res.title">Os dois links<br><span class="accent">que você precisa.</span></h2>
+  <p class="section-intro" data-i18n="res.intro">Antes de qualquer prompt, abra essas duas abas e cole os links como contexto. AI passa a falar ABSOLUT.</p>
+
+  <div class="res-grid">
+    <a class="res-card" href="https://docs.google.com/spreadsheets/d/1T5mvZhz1vRNqVoc74V5xcmi5gJZU3e0HtTdLikbI4X4/edit?usp=drive_link" target="_blank">
+      <div class="res-icon">📊</div>
+      <div class="res-meta">
+        <div class="res-name" data-i18n="res.gal.name">Global Asset List</div>
+        <div class="res-desc" data-i18n="res.gal.desc">Planilha mestre com todos os assets, copy de produto e variações por mercado.</div>
+      </div>
+      <div class="res-arrow" data-i18n="res.open">Acessar</div>
+    </a>
+    <a class="res-card" href="../index.html" target="_blank">
+      <div class="res-icon">🎨</div>
+      <div class="res-meta">
+        <div class="res-name" data-i18n="res.ds.name">Design System</div>
+        <div class="res-desc" data-i18n="res.ds.desc">Hub completo com cores, tipografia, logos, componentes e guidelines.</div>
+      </div>
+      <div class="res-arrow" data-i18n="res.open">Acessar</div>
+    </a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- GAL PROCESS -->
+<section>
+  <div class="section-eyebrow" data-i18n="gal.eyebrow">Global Asset List · Processo</div>
+  <h2 class="section-title" data-i18n-html="gal.title">Como o GAL<br><span class="accent">fica vivo.</span></h2>
+  <p class="section-intro" data-i18n="gal.intro">3 passos. Cada geografia mantém o que é seu.</p>
+
+  <div class="gal-steps">
+    <div class="gal-step">
+      <div class="gal-step-num" data-i18n="gal.s1.num">01 · Ownership</div>
+      <h3 data-i18n="gal.s1.h">Geografia dona do projeto</h3>
+      <p data-i18n="gal.s1.p">Cada mercado é responsável pelos próprios assets. Sobe quem tem o lápis na mão.</p>
+    </div>
+    <div class="gal-step">
+      <div class="gal-step-num" data-i18n="gal.s2.num">02 · Editável</div>
+      <h3 data-i18n="gal.s2.h">Suba o arquivo editável</h3>
+      <p data-i18n="gal.s2.p">PPT ou Figma — o que estiver no fluxo do time. O próximo precisa abrir e remixar.</p>
+      <span class="gal-step-tag">.PPTX · .FIG</span>
+    </div>
+    <div class="gal-step">
+      <div class="gal-step-num" data-i18n="gal.s3.num">03 · PDF</div>
+      <h3 data-i18n="gal.s3.h">Suba também o PDF</h3>
+      <p data-i18n="gal.s3.p">Versão compartilhável pra apresentação, e-mail, WhatsApp. Quem precisa ver, vê. Quem precisa editar, abre o editável.</p>
+      <span class="gal-step-tag">.PDF</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DO / DON'T -->
+<section>
+  <div class="section-eyebrow" data-i18n="rules.eyebrow">As regras</div>
+  <h2 class="section-title" data-i18n-html="rules.title">Faça isso.<br><span class="accent">Não aquilo.</span></h2>
+
+  <div class="rules-layout">
+    <div class="dd-grid">
+      <div class="dd-col dd-do">
+        <div class="dd-tag" data-i18n="rules.do">Do</div>
+        <ul data-i18n-html="rules.do.list">
+          <li>Dê contexto completo: evento, audiência, tom, prazo — antes de qualquer prompt</li>
+          <li>Cole um sample real ASB para o modelo espelhar o que já funciona</li>
+          <li>Use para primeiros drafts, depois edite — sua voz continua sua</li>
+          <li>Sempre leia o output antes de enviar</li>
+          <li>Traduza rápido, depois um nativo faz o passe final</li>
+          <li>Peça estrutura primeiro, depois preencha o que só você sabe</li>
+          <li>Diga ao modelo o que NÃO quer tanto quanto o que quer</li>
+        </ul>
+      </div>
+      <div class="dd-col dd-dont">
+        <div class="dd-tag" data-i18n="rules.dont">Don't</div>
+        <ul data-i18n-html="rules.dont.list">
+          <li>Copy-paste do output direto em e-mail de cliente sem ler</li>
+          <li>Usar para decisões de preço, operações ou contratos</li>
+          <li>Confiar em números gerados por AI — verifique stats independentemente</li>
+          <li>Pular o contexto da marca e reclamar que "soa genérico"</li>
+          <li>Substituir seu julgamento de tom e timing pela máquina</li>
+          <li>Tratar o primeiro draft como final — uma iteração nunca basta</li>
+          <li>Inserir dado confidencial de cliente sem checar política</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROMPT DEMO SIDEBAR -->
+    <div class="prompt-demo">
+      <div class="pd-bar">
+        <div class="pd-dot" style="background:#e3001b"></div>
+        <div class="pd-dot" style="background:#f59e0b"></div>
+        <div class="pd-dot" style="background:#22c55e"></div>
+        <span class="pd-bar-label" data-i18n="rules.demo.title">Prompt Demo</span>
+      </div>
+      <div class="pd-body">
+        <div class="pd-label bad" data-i18n="rules.demo.bad">❌ Sem contexto</div>
+        <div class="pd-u-bad">
+          <p data-i18n="rules.demo.bad.q">Escreve uma caption pra Final VIP.</p>
+        </div>
+        <div class="pd-ai-bad">
+          <p data-i18n="rules.demo.bad.a">🎉 Não perca a Final dos seus sonhos! Pacote VIP exclusivo com os melhores benefícios...</p>
+        </div>
+        <div class="pd-sep" data-i18n="rules.demo.vs">vs</div>
+        <div class="pd-label good" data-i18n="rules.demo.good">✅ Com contexto ASB</div>
+        <div class="pd-u-good">
+          <p data-i18n="rules.demo.good.q">Caption · Final Libertadores · BsAs dez/26 · tom premium, urgente · público BR 25-45 · 3 linhas + CTA.</p>
+        </div>
+        <div class="pd-ai-good">
+          <div class="pd-chip" data-i18n="rules.demo.chip">On-brand · Pronto para postar</div>
+          <p data-i18n="rules.demo.good.a">A Final é em Buenos Aires. Dezembro. Seu lugar ainda está aqui. Link na bio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TOOLKIT -->
+<section>
+  <div class="section-eyebrow" data-i18n="tools.eyebrow">Nosso stack</div>
+  <h2 class="section-title" data-i18n-html="tools.title">Ferramentas<br><span class="accent">que de fato usamos.</span></h2>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+      <h4>Claude</h4>
+      <p data-i18n="tools.t1">Escrita, pesquisa, planejamento, tradução, documentos estratégicos</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <h4>Midjourney</h4>
+      <p data-i18n="tools.t2">Conceitos visuais e imagens de campanha (time BR)</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <h4>Claude + Figma</h4>
+      <p data-i18n="tools.t3">Design system e templates globais (Raphael)</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+      <h4>Claude + Asana</h4>
+      <p data-i18n="tools.t4">Resumos de projeto, drafts de tarefa, prep de reunião</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+      <h4>NotebookLM</h4>
+      <p data-i18n="tools.t5">Base de conhecimento interna. Pergunte sobre manuais e processos da ASB com respostas citadas.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <h4>Perplexity</h4>
+      <p data-i18n="tools.t6">Pesquisa com fontes verificadas. Para dados reais, não síntese genérica.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <h4>Claude Artifacts</h4>
+      <p data-i18n="tools.t7">Output estruturado renderizável: planilhas, dashboards, documentos — direto no chat.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <h4>ManyChat</h4>
+      <p data-i18n="tools.t8">Automação de WhatsApp e Instagram. Fluxos inteligentes para escalar atendimento.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WORKFLOW -->
+<section>
+  <div class="section-eyebrow" data-i18n="wf.eyebrow">Como funciona</div>
+  <h2 class="section-title" data-i18n-html="wf.title">A jogada<br><span class="accent">em 5 movimentos.</span></h2>
+
+  <div class="flow-ticker" aria-hidden="true">
+    <div class="flow-ticker-track">
+      <span class="flow-ticker-item"><span class="flow-ticker-n">01</span>Defina o contexto</span>
+      <span class="flow-ticker-arrow">→</span>
+      <span class="flow-ticker-item"><span class="flow-ticker-n">02</span>Cole referência</span>
+      <span class="flow-ticker-arrow">→</span>
+      <span class="flow-ticker-item"><span class="flow-ticker-n">03</span>Peça estrutura</span>
+      <span class="flow-ticker-arrow">→</span>
+      <span class="flow-ticker-item"><span class="flow-ticker-n">04</span>Itere uma vez</span>
+      <span class="flow-ticker-arrow">→</span>
+      <span class="flow-ticker-item"><span class="flow-ticker-n">05</span>Roteie antes</span>
+      <span class="flow-ticker-arrow">→</span>
+      <span class="flow-ticker-item"><span class="flow-ticker-n">01</span>Defina o contexto</span>
+      <span class="flow-ticker-arrow">→</span>
+      <span class="flow-ticker-item"><span class="flow-ticker-n">02</span>Cole referência</span>
+      <span class="flow-ticker-arrow">→</span>
+      <span class="flow-ticker-item"><span class="flow-ticker-n">03</span>Peça estrutura</span>
+      <span class="flow-ticker-arrow">→</span>
+      <span class="flow-ticker-item"><span class="flow-ticker-n">04</span>Itere uma vez</span>
+      <span class="flow-ticker-arrow">→</span>
+      <span class="flow-ticker-item"><span class="flow-ticker-n">05</span>Roteie antes</span>
+      <span class="flow-ticker-arrow">→</span>
+    </div>
+  </div>
+
+  <div class="workflow">
+    <div class="wf-step"><div class="wf-dot">1</div><h4 data-i18n="wf.s1.h">Defina o contexto</h4><p data-i18n="wf.s1.p">Evento, audiência, tom, prazo. Um parágrafo de contexto = 80% melhor output.</p></div>
+    <div class="wf-step"><div class="wf-dot">2</div><h4 data-i18n="wf.s2.h">Cole referência</h4><p data-i18n="wf.s2.p">Sample real ASB: e-mail, caption, post. Deixe o modelo espelhar o que funciona.</p></div>
+    <div class="wf-step"><div class="wf-dot">3</div><h4 data-i18n="wf.s3.h">Peça estrutura</h4><p data-i18n="wf.s3.p">Esqueleto primeiro. Seções e fluxo. Depois preencha o que só você sabe.</p></div>
+    <div class="wf-step"><div class="wf-dot">4</div><h4 data-i18n="wf.s4.h">Itere uma vez</h4><p data-i18n="wf.s4.p">Duas rodadas no máximo. Aí você assume. Seu julgamento é o produto.</p></div>
+    <div class="wf-step"><div class="wf-dot">5</div><h4 data-i18n="wf.s5.h">Roteie antes</h4><p data-i18n="wf.s5.p">Tradução → nativo. Copy de cliente → Mauricio ou Jack primeiro.</p></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMING UP -->
+<section>
+  <div class="section-eyebrow" data-i18n="next.eyebrow">A seguir</div>
+  <h2 class="section-title" data-i18n-html="next.title">O que<br><span class="accent">vem aí.</span></h2>
+
+  <div class="next-grid">
+    <div class="next-card"><div class="next-status" data-i18n="next.c1.s">Em progresso</div><h4 data-i18n="next.c1.h">Design System como contexto AI</h4><p data-i18n="next.c1.p">Tokens, logos e guidelines empacotados num arquivo de contexto único. Cole no prompt e o modelo herda toda a paleta e voz da ASB.</p></div>
+    <div class="next-card"><div class="next-status" data-i18n="next.c2.s">Planejado</div><h4 data-i18n="next.c2.h">Templates de Newsletter por mercado</h4><p data-i18n="next.c2.p">Brasil tem arquitetura de 7 módulos. US e Alemanha adaptam ao ciclo de eventos local. Uma metodologia, três execuções.</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+      <p data-i18n="footer.about">A única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col1">Sistema</h4>
+      <a href="../index.html#logos"        data-i18n="nav.logos">Logos</a>
+      <a href="../index.html#cores"        data-i18n="nav.colors">Cores</a>
+      <a href="../index.html#tipografia"   data-i18n="nav.typo">Tipografia</a>
+      <a href="../index.html#componentes"  data-i18n="nav.comp">Componentes</a>
+      <a href="../index.html#guidelines"   data-i18n="nav.guide">Guidelines</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col2">Playbook</h4>
+      <a href="#"   data-i18n="footer.l1">Use cases</a>
+      <a href="#"   data-i18n="footer.l2">Regras</a>
+      <a href="#"   data-i18n="footer.l3">Stack</a>
+      <a href="#"   data-i18n="footer.l4">Workflow</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col3">Equipe Global</h4>
+      <a data-i18n="footer.team1">Mauricio Lacerda · Head of Marketing Americas</a>
+      <a data-i18n="footer.team2">Raphael Ferreira · Design Lead</a>
+      <a>🇧🇷 🇩🇪 🇺🇸 🇦🇷</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copy">© 2026 ABSOLUT Sport · AI Marketing Playbook v1.0 · Abril 2026</span>
+    <span>
+      <span data-i18n="footer.coauth">Criado por Mauricio Lacerda × Rafa Rafa</span> ·
+      <a href="mailto:design@absolut-sport.com.br?subject=AI%20Playbook%20%C2%B7%20Sugest%C3%A3o" style="color:var(--color-gold);text-decoration:none">design@absolut-sport.com.br</a>
+    </span>
+  </div>
+</footer>
+
+<!-- I18N DICTIONARY -->
+<script>
+window.I18N_DICT = {
+  pt: {
+    'nav.back':'← Voltar ao Hub',
+    'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'AI Marketing',
+    'nav.logos':'Logos','nav.colors':'Cores','nav.typo':'Tipografia','nav.comp':'Componentes','nav.guide':'Guidelines',
+    'hero.eyebrow':'Marketing Global · Playbook Interno · v1.0',
+    'hero.h1':'AI É O NOSSO<br><span class="accent">SEXTO JOGADOR.</span>',
+    'hero.sub':'Você sabe vender o melhor lugar do estádio. AI cuida de tudo que não exige estar lá. Como o time global usa, e como usar certo.',
+    'stats.s1':'E-commerce 2024','stats.s2':'ROI digital','stats.s3':'Mercados','stats.s4':'Sistema · Vozes locais',
+    'use.eyebrow':'Onde funciona',
+    'use.title':'Seis coisas<br><span class="accent">que AI faz.</span>',
+    'use.c1.num':'01 · Drafting','use.c1.h':'Primeiros drafts','use.c1.p':'E-mails, newsletters, copy de produto, captions sociais. Você começa de algo real, não do zero.',
+    'use.c2.num':'02 · Idiomas','use.c2.h':'Tradução','use.c2.p':'PT → EN → ES com velocidade. Decks, landing pages, descrição de pacote. Revisão humana antes de publicar.',
+    'use.c3.num':'03 · Decks','use.c3.h':'Apresentações','use.c3.p':'Estrutura, talking points, one-pagers para liderança e cliente. A forma narrativa — não só bullet points.',
+    'use.c4.num':'04 · E-Commerce','use.c4.h':'Copy de produto','use.c4.p':'Descrições de pacote, blurbs de hotel, listings Shopify. Tom consistente em 10+ produtos e 5 mercados.',
+    'use.c5.num':'05 · Planejamento','use.c5.h':'Campanhas','use.c5.p':'Calendários, estruturas Gantt, outlines de brief. Alimente o contexto — receba o esqueleto. Você preenche o que só você sabe.',
+    'use.c6.num':'06 · Inteligência','use.c6.h':'Pesquisa','use.c6.p':'Briefings de destino, benchmarks de concorrente, contexto de evento. Sintetize rápido, cite a fonte.',
+    'call.eyebrow':'O destravamento',
+    'call.title':'O design system<br>muda <span class="accent">tudo.</span>',
+    'call.h':'Sem o design system, AI não sabe quem somos.',
+    'call.p1':'Quando qualquer um do time pede pra AI escrever uma landing ou caption, ela não conhece nossas fontes, paleta, tom ou como escrevemos um subject line. O output é decente — mas não é <strong>inconfundivelmente ABSOLUT Sport</strong>.',
+    'call.p2':'<strong>O Design System está vivo agora</strong> — paleta, tipografia, logos, componentes e guidelines acessíveis em <code style="font-family:var(--font-mono);color:#fff">design.absolut-sport.com.br</code>. Cole o link como contexto antes de prompar.',
+    'call.p3':'Mostre, não descreva. Cole um e-mail real ASB ou um post antes do prompt — deixe o modelo espelhar o que já funciona.',
+    'res.eyebrow':'Recursos · Cole no prompt',
+    'res.title':'Os dois links<br><span class="accent">que você precisa.</span>',
+    'res.intro':'Antes de qualquer prompt, abra essas duas abas e cole os links como contexto. AI passa a falar ABSOLUT.',
+    'res.gal.name':'Global Asset List',
+    'res.gal.desc':'Planilha mestre com todos os assets, copy de produto e variações por mercado.',
+    'res.open':'Acessar',
+    'rules.demo.title':'Prompt Demo','rules.demo.bad':'❌ Sem contexto','rules.demo.bad.q':'Escreve uma caption pra Final VIP.','rules.demo.bad.a':'🎉 Não perca a Final dos seus sonhos! Pacote VIP exclusivo com os melhores benefícios...','rules.demo.vs':'vs','rules.demo.good':'✅ Com contexto ASB','rules.demo.good.q':'Caption · Final Libertadores · BsAs dez/26 · tom premium, urgente · público BR 25-45 · 3 linhas + CTA.','rules.demo.good.a':'A Final é em Buenos Aires. Dezembro. Seu lugar ainda está aqui. Link na bio.','rules.demo.chip':'On-brand · Pronto para postar',
+    'res.ds.name':'Design System',
+    'res.ds.desc':'Hub completo com cores, tipografia, logos, componentes e guidelines.',
+    'gal.eyebrow':'Global Asset List · Processo',
+    'gal.title':'Como o GAL<br><span class="accent">fica vivo.</span>',
+    'gal.intro':'3 passos. Cada geografia mantém o que é seu.',
+    'gal.s1.num':'01 · Ownership','gal.s1.h':'Geografia dona do projeto','gal.s1.p':'Cada mercado é responsável pelos próprios assets. Sobe quem tem o lápis na mão.',
+    'gal.s2.num':'02 · Editável','gal.s2.h':'Suba o arquivo editável','gal.s2.p':'PPT ou Figma — o que estiver no fluxo do time. O próximo precisa abrir e remixar.',
+    'gal.s3.num':'03 · PDF','gal.s3.h':'Suba também o PDF','gal.s3.p':'Versão compartilhável pra apresentação, e-mail, WhatsApp. Quem precisa ver, vê. Quem precisa editar, abre o editável.',
+    'rules.eyebrow':'As regras',
+    'rules.title':'Faça isso.<br><span class="accent">Não aquilo.</span>',
+    'rules.do':'Do','rules.dont':'Don\'t',
+    'rules.do.list':'<li>Dê contexto completo: evento, audiência, tom, prazo — antes de qualquer prompt</li><li>Cole um sample real ASB para o modelo espelhar o que já funciona</li><li>Use para primeiros drafts, depois edite — sua voz continua sua</li><li>Sempre leia o output antes de enviar</li><li>Traduza rápido, depois um nativo faz o passe final</li><li>Peça estrutura primeiro, depois preencha o que só você sabe</li><li>Diga ao modelo o que NÃO quer tanto quanto o que quer</li><li>Dê um papel ao modelo: "você é especialista em hospitalidade de luxo" — contexto muda o output</li><li>Use Claude Projects para isolar contextos por cliente ou campanha</li>',
+    'rules.dont.list':'<li>Copy-paste do output direto em e-mail de cliente sem ler</li><li>Usar para decisões de preço, operações ou contratos</li><li>Confiar em números gerados por AI — verifique stats independentemente</li><li>Pular o contexto da marca e reclamar que "soa genérico"</li><li>Substituir seu julgamento de tom e timing pela máquina</li><li>Tratar o primeiro draft como final — uma iteração nunca basta</li><li>Inserir dado confidencial de cliente sem checar política</li><li>Inserir senhas, tokens ou chaves de API em prompts — nunca</li><li>Usar conta Free com dados confidenciais da empresa</li>',
+    'tools.eyebrow':'Nosso stack',
+    'tools.title':'Ferramentas<br><span class="accent">que de fato usamos.</span>',
+    'tools.t1':'Escrita, pesquisa, planejamento, tradução, documentos estratégicos',
+    'tools.t2':'Conceitos visuais e imagens de campanha (time BR)',
+    'tools.t3':'Design system e templates globais (Raphael)',
+    'tools.t4':'Resumos de projeto, drafts de tarefa, prep de reunião',
+    'tools.t5':'Base de conhecimento interna. Pergunte sobre manuais e processos da ASB com respostas citadas.',
+    'tools.t6':'Pesquisa com fontes verificadas. Para dados reais, não síntese genérica.',
+    'tools.t7':'Output estruturado renderizável: planilhas, dashboards, documentos — direto no chat.',
+    'tools.t8':'Automação de WhatsApp e Instagram. Fluxos inteligentes para escalar atendimento.',
+    'wf.eyebrow':'Como funciona',
+    'wf.title':'A jogada<br><span class="accent">em 5 movimentos.</span>',
+    'wf.s1.h':'Defina o contexto','wf.s1.p':'Evento, audiência, tom, prazo. Um parágrafo de contexto = 80% melhor output.',
+    'wf.s2.h':'Cole referência','wf.s2.p':'Sample real ASB: e-mail, caption, post. Deixe o modelo espelhar o que funciona.',
+    'wf.s3.h':'Peça estrutura','wf.s3.p':'Esqueleto primeiro. Seções e fluxo. Depois preencha o que só você sabe.',
+    'wf.s4.h':'Itere uma vez','wf.s4.p':'Duas rodadas no máximo. Aí você assume. Seu julgamento é o produto.',
+    'wf.s5.h':'Roteie antes','wf.s5.p':'Tradução → nativo. Copy de cliente → Mauricio ou Jack primeiro.',
+    'next.eyebrow':'A seguir',
+    'next.title':'O que<br><span class="accent">vem aí.</span>',
+    'next.c1.s':'Em progresso','next.c1.h':'Design System como contexto AI','next.c1.p':'Tokens, logos e guidelines empacotados num arquivo de contexto único. Cole no prompt e o modelo herda toda a paleta e voz da ASB.',
+    'next.c2.s':'Planejado','next.c2.h':'Templates de Newsletter por mercado','next.c2.p':'Brasil tem arquitetura de 7 módulos. US e Alemanha adaptam ao ciclo de eventos local. Uma metodologia, três execuções.',
+    'footer.about':'A única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™.',
+    'footer.col1':'Sistema','footer.col2':'Playbook','footer.col3':'Equipe Global',
+    'footer.l1':'Use cases','footer.l2':'Regras','footer.l3':'Stack','footer.l4':'Workflow',
+    'footer.team1':'Mauricio Lacerda · Head of Marketing Americas',
+    'footer.team2':'Raphael Ferreira · Design Lead',
+    'footer.copy':'© 2026 ABSOLUT Sport · AI Marketing Playbook v1.0 · Abril 2026',
+    'footer.coauth':'Criado por Mauricio Lacerda × Rafa Rafa',
+    'nav.credit.title':'Mauricio × Rafa · sugestões pra design@'
+  },
+  en: {
+    'nav.back':'← Back to Hub',
+    'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'AI Marketing',
+    'nav.logos':'Logos','nav.colors':'Colors','nav.typo':'Typography','nav.comp':'Components','nav.guide':'Guidelines',
+    'hero.eyebrow':'Global Marketing · Internal Playbook · v1.0',
+    'hero.h1':'AI IS OUR<br><span class="accent">SIXTH PLAYER.</span>',
+    'hero.sub':'You know how to sell the best seat in the stadium. AI handles everything that doesn\'t require being there. How the global team uses it, and how to use it right.',
+    'stats.s1':'E-commerce 2024','stats.s2':'Digital ROI','stats.s3':'Markets','stats.s4':'System · Local voices',
+    'use.eyebrow':'Where it works',
+    'use.title':'Six things<br><span class="accent">AI does every week.</span>',
+    'use.c1.num':'01 · Drafting','use.c1.h':'First drafts','use.c1.p':'Emails, newsletters, product copy, social captions. You start from something real, not from zero.',
+    'use.c2.num':'02 · Languages','use.c2.h':'Translation','use.c2.p':'PT → EN → ES at speed. Decks, landing pages, package descriptions. Human review before publishing.',
+    'use.c3.num':'03 · Decks','use.c3.h':'Presentations','use.c3.p':'Structure, talking points, one-pagers for leadership and clients. The narrative shape — not just bullet points.',
+    'use.c4.num':'04 · E-Commerce','use.c4.h':'Product copy','use.c4.p':'Package descriptions, hotel blurbs, Shopify listings. Consistent tone across 10+ products and 5 markets.',
+    'use.c5.num':'05 · Planning','use.c5.h':'Campaigns','use.c5.p':'Calendars, Gantt structures, brief outlines. Feed the context — get the skeleton. You fill in what only you know.',
+    'use.c6.num':'06 · Intelligence','use.c6.h':'Research','use.c6.p':'Destination briefings, competitor benchmarks, event context. Synthesize fast, cite the source.',
+    'call.eyebrow':'The unlock',
+    'call.title':'The design system<br>changes <span class="accent">everything.</span>',
+    'call.h':'Without the design system, AI doesn\'t know who we are.',
+    'call.p1':'When anyone on the team asks AI to write a landing page or caption, it doesn\'t know our fonts, palette, tone or how we write a subject line. The output is decent — but it\'s not <strong>unmistakably ABSOLUT Sport</strong>.',
+    'call.p2':'<strong>The Design System is live now</strong> — palette, typography, logos, components and guidelines accessible at <code style="font-family:var(--font-mono);color:#fff">design.absolut-sport.com.br</code>. Paste the link as context before prompting.',
+    'call.p3':'Show, don\'t describe. Paste a real ASB email or a post before the prompt — let the model mirror what already works.',
+    'res.eyebrow':'Resources · Paste into the prompt',
+    'res.title':'The two links<br><span class="accent">you actually need.</span>',
+    'res.intro':'Before any prompt, open these two tabs and paste the links as context. AI starts speaking ABSOLUT.',
+    'res.gal.name':'Global Asset List',
+    'res.gal.desc':'Master spreadsheet with all assets, product copy and per-market variations.',
+    'res.open':'Open',
+    'rules.demo.title':'Prompt Demo','rules.demo.bad':'❌ No context','rules.demo.bad.q':'Write a caption for the VIP Final package.','rules.demo.bad.a':'🎉 Don\'t miss the Final of your dreams! Exclusive VIP package with the best benefits...','rules.demo.vs':'vs','rules.demo.good':'✅ With ASB context','rules.demo.good.q':'Caption · Libertadores Final · Buenos Aires Dec/26 · premium urgent tone · BR audience 25-45 · 3 lines + CTA.','rules.demo.good.a':'The Final is in Buenos Aires. December. Your spot is still here. Link in bio.','rules.demo.chip':'On-brand · Ready to post',
+    'res.ds.name':'Design System',
+    'res.ds.desc':'Full hub with colors, typography, logos, components and guidelines.',
+    'gal.eyebrow':'Global Asset List · Process',
+    'gal.title':'How the GAL<br><span class="accent">stays alive.</span>',
+    'gal.intro':'3 steps. Each geography owns what\'s theirs.',
+    'gal.s1.num':'01 · Ownership','gal.s1.h':'Geography owns the project','gal.s1.p':'Each market is responsible for their own assets. Whoever holds the pen, uploads.',
+    'gal.s2.num':'02 · Editable','gal.s2.h':'Upload the editable','gal.s2.p':'PPT or Figma — whatever fits the team\'s workflow. The next team needs to open and remix.',
+    'gal.s3.num':'03 · PDF','gal.s3.h':'Upload the PDF too','gal.s3.p':'Shareable version for presentations, email, WhatsApp. Who needs to view, views. Who needs to edit, opens the editable.',
+    'rules.eyebrow':'The rules',
+    'rules.title':'Do this.<br><span class="accent">Not that.</span>',
+    'rules.do':'Do','rules.dont':'Don\'t',
+    'rules.do.list':'<li>Give full context: event, audience, tone, deadline — before any prompt</li><li>Paste a real ASB sample so the model mirrors what already works</li><li>Use for first drafts, then edit yourself — your voice stays yours</li><li>Always read the output before sending</li><li>Translate fast, then have a native speaker do the final pass</li><li>Ask for structure first, then fill in what only you know</li><li>Tell the model what you DON\'T want as much as what you do</li><li>Assign the model a role: "you\'re a luxury hospitality specialist" — context changes everything</li><li>Use Claude Projects to isolate context per client or campaign</li>',
+    'rules.dont.list':'<li>Copy-paste output into a client email without reading it</li><li>Use it for decisions on pricing, operations or contracts</li><li>Trust AI-generated numbers — verify stats independently</li><li>Skip the brand context and complain it "sounds generic"</li><li>Replace your judgment on tone and timing with the machine</li><li>Treat the first draft as final — one iteration is never enough</li><li>Input confidential client data without checking our policy</li><li>Put passwords, tokens or API keys in prompts — never</li><li>Use a Free account with confidential company data</li>',
+    'tools.eyebrow':'Our stack',
+    'tools.title':'Tools we<br><span class="accent">actually use.</span>',
+    'tools.t1':'Writing, research, planning, translation, strategy documents',
+    'tools.t2':'Visual concepts and campaign imagery (BR team)',
+    'tools.t3':'Design system and global templates (Raphael)',
+    'tools.t4':'Project summaries, task drafts, meeting prep',
+    'tools.t5':'Internal knowledge base. Ask questions about ASB manuals and processes with cited answers.',
+    'tools.t6':'Research with verified sources. For real data, not generic synthesis.',
+    'tools.t7':'Renderable structured output: spreadsheets, dashboards, documents — right in the chat.',
+    'tools.t8':'WhatsApp and Instagram automation. Smart flows to scale customer engagement.',
+    'wf.eyebrow':'How it works',
+    'wf.title':'The play<br><span class="accent">in 5 moves.</span>',
+    'wf.s1.h':'Set context','wf.s1.p':'Event, audience, tone, deadline. One paragraph of context = 80% better output.',
+    'wf.s2.h':'Paste reference','wf.s2.p':'Real ASB sample: email, caption, post. Let the model mirror what works.',
+    'wf.s3.h':'Ask for structure','wf.s3.p':'Skeleton first. Sections and flow. Then fill in what only you know.',
+    'wf.s4.h':'Iterate once','wf.s4.p':'Two rounds max. Then you own it. Your judgment is the product.',
+    'wf.s5.h':'Route before send','wf.s5.p':'Translation → native speaker. Client copy → Mauricio or Jack first.',
+    'next.eyebrow':'Coming up',
+    'next.title':'What\'s<br><span class="accent">next.</span>',
+    'next.c1.s':'In progress','next.c1.h':'Design System as AI context','next.c1.p':'Tokens, logos and guidelines bundled into a single context file. Paste in the prompt and the model inherits the full ASB palette and voice.',
+    'next.c2.s':'Planned','next.c2.h':'Newsletter templates per market','next.c2.p':'Brazil has the 7-module architecture. US and Germany adapt to their local event cycle. One methodology, three executions.',
+    'footer.about':'The sole official travel package agency for the CONMEBOL Libertadores™ and Sudamericana™ Finals.',
+    'footer.col1':'System','footer.col2':'Playbook','footer.col3':'Global Team',
+    'footer.l1':'Use cases','footer.l2':'Rules','footer.l3':'Stack','footer.l4':'Workflow',
+    'footer.team1':'Mauricio Lacerda · Head of Marketing Americas',
+    'footer.team2':'Raphael Ferreira · Design Lead',
+    'footer.copy':'© 2026 ABSOLUT Sport · AI Marketing Playbook v1.0 · April 2026',
+    'footer.coauth':'Created by Mauricio Lacerda × Rafa Rafa',
+    'nav.credit.title':'Mauricio × Rafa · suggestions to design@'
+  },
+  es: {
+    'nav.back':'← Volver al Hub',
+    'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'AI Marketing',
+    'nav.logos':'Logos','nav.colors':'Colores','nav.typo':'Tipografía','nav.comp':'Componentes','nav.guide':'Guidelines',
+    'hero.eyebrow':'Marketing Global · Playbook Interno · v1.0',
+    'hero.h1':'AI ES NUESTRO<br><span class="accent">SEXTO JUGADOR.</span>',
+    'hero.sub':'Sabes vender el mejor lugar del estadio. AI se encarga de todo lo que no exige estar ahí. Cómo el equipo global lo usa, y cómo usarlo bien.',
+    'stats.s1':'E-commerce 2024','stats.s2':'ROI digital','stats.s3':'Mercados','stats.s4':'Sistema · Voces locales',
+    'use.eyebrow':'Dónde funciona',
+    'use.title':'Seis cosas<br><span class="accent">que AI hace cada semana.</span>',
+    'use.c1.num':'01 · Drafting','use.c1.h':'Primeros drafts','use.c1.p':'Emails, newsletters, copy de producto, captions sociales. Empezás de algo real, no de cero.',
+    'use.c2.num':'02 · Idiomas','use.c2.h':'Traducción','use.c2.p':'PT → EN → ES con velocidad. Decks, landing pages, descripción de paquete. Revisión humana antes de publicar.',
+    'use.c3.num':'03 · Decks','use.c3.h':'Presentaciones','use.c3.p':'Estructura, talking points, one-pagers para liderazgo y cliente. La forma narrativa — no solo bullet points.',
+    'use.c4.num':'04 · E-Commerce','use.c4.h':'Copy de producto','use.c4.p':'Descripciones de paquete, blurbs de hotel, listings Shopify. Tono consistente en 10+ productos y 5 mercados.',
+    'use.c5.num':'05 · Planificación','use.c5.h':'Campañas','use.c5.p':'Calendarios, estructuras Gantt, outlines de brief. Alimentá el contexto — recibí el esqueleto. Vos completás lo que solo vos sabés.',
+    'use.c6.num':'06 · Inteligencia','use.c6.h':'Investigación','use.c6.p':'Briefings de destino, benchmarks de competencia, contexto de evento. Sintetizá rápido, citá la fuente.',
+    'call.eyebrow':'El destrabe',
+    'call.title':'El design system<br>cambia <span class="accent">todo.</span>',
+    'call.h':'Sin el design system, AI no sabe quiénes somos.',
+    'call.p1':'Cuando cualquiera del equipo le pide a AI que escriba una landing o caption, no conoce nuestras fuentes, paleta, tono o cómo escribimos un subject line. El output es decente — pero no es <strong>inconfundiblemente ABSOLUT Sport</strong>.',
+    'call.p2':'<strong>El Design System está vivo ahora</strong> — paleta, tipografía, logos, componentes y guidelines accesibles en <code style="font-family:var(--font-mono);color:#fff">design.absolut-sport.com.br</code>. Pegá el link como contexto antes de promptear.',
+    'call.p3':'Mostrá, no describas. Pegá un email real ASB o un post antes del prompt — dejá que el modelo refleje lo que ya funciona.',
+    'res.eyebrow':'Recursos · Pegá en el prompt',
+    'res.title':'Los dos links<br><span class="accent">que necesitás.</span>',
+    'res.intro':'Antes de cualquier prompt, abrí estas dos pestañas y pegá los links como contexto. AI empieza a hablar ABSOLUT.',
+    'res.gal.name':'Global Asset List',
+    'res.gal.desc':'Planilla maestra con todos los assets, copy de producto y variaciones por mercado.',
+    'res.open':'Acceder',
+    'rules.demo.title':'Prompt Demo','rules.demo.bad':'❌ Sin contexto','rules.demo.bad.q':'Escribí una caption para el Final VIP.','rules.demo.bad.a':'🎉 ¡No te pierdas la Final de tus sueños! Paquete VIP exclusivo con los mejores beneficios...','rules.demo.vs':'vs','rules.demo.good':'✅ Con contexto ASB','rules.demo.good.q':'Caption · Final Libertadores · BsAs dic/26 · tono premium urgente · público BR 25-45 · 3 líneas + CTA.','rules.demo.good.a':'La Final es en Buenos Aires. Diciembre. Tu lugar todavía está aquí. Link en bio.','rules.demo.chip':'On-brand · Listo para publicar',
+    'res.ds.name':'Design System',
+    'res.ds.desc':'Hub completo con colores, tipografía, logos, componentes y guidelines.',
+    'gal.eyebrow':'Global Asset List · Proceso',
+    'gal.title':'Cómo el GAL<br><span class="accent">se mantiene vivo.</span>',
+    'gal.intro':'3 pasos. Cada geografía mantiene lo que es suyo.',
+    'gal.s1.num':'01 · Ownership','gal.s1.h':'Geografía dueña del proyecto','gal.s1.p':'Cada mercado es responsable de sus propios assets. Sube quien tiene el lápiz en la mano.',
+    'gal.s2.num':'02 · Editable','gal.s2.h':'Subí el archivo editable','gal.s2.p':'PPT o Figma — lo que esté en el flujo del equipo. El próximo necesita abrir y remixar.',
+    'gal.s3.num':'03 · PDF','gal.s3.h':'Subí también el PDF','gal.s3.p':'Versión compartible para presentación, email, WhatsApp. Quien necesita ver, ve. Quien necesita editar, abre el editable.',
+    'rules.eyebrow':'Las reglas',
+    'rules.title':'Hacé esto.<br><span class="accent">No aquello.</span>',
+    'rules.do':'Do','rules.dont':'Don\'t',
+    'rules.do.list':'<li>Dá contexto completo: evento, audiencia, tono, plazo — antes de cualquier prompt</li><li>Pegá un sample real ASB para que el modelo refleje lo que ya funciona</li><li>Usalo para primeros drafts, después editá — tu voz sigue siendo tuya</li><li>Siempre leé el output antes de enviar</li><li>Traducí rápido, después un nativo hace el pase final</li><li>Pedí estructura primero, después completá lo que solo vos sabés</li><li>Decile al modelo lo que NO querés tanto como lo que sí</li><li>Asigná un rol al modelo: "sos especialista en hospitalidad de lujo" — el contexto cambia todo</li><li>Usá Claude Projects para aislar contextos por cliente o campaña</li>',
+    'rules.dont.list':'<li>Copy-paste del output directo a email de cliente sin leer</li><li>Usarlo para decisiones de precio, operaciones o contratos</li><li>Confiar en números generados por AI — verificá stats de forma independiente</li><li>Saltarte el contexto de marca y quejarte que "suena genérico"</li><li>Reemplazar tu juicio de tono y timing por la máquina</li><li>Tratar el primer draft como final — una iteración nunca alcanza</li><li>Ingresar dato confidencial de cliente sin chequear política</li><li>Poner contraseñas, tokens o claves de API en prompts — nunca</li><li>Usar cuenta Free con datos confidenciales de la empresa</li>',
+    'tools.eyebrow':'Nuestro stack',
+    'tools.title':'Herramientas<br><span class="accent">que de hecho usamos.</span>',
+    'tools.t1':'Escritura, investigación, planificación, traducción, documentos estratégicos',
+    'tools.t2':'Conceptos visuales e imágenes de campaña (equipo BR)',
+    'tools.t3':'Design system y templates globales (Raphael)',
+    'tools.t4':'Resúmenes de proyecto, drafts de tarea, prep de reunión',
+    'tools.t5':'Base de conocimiento interna. Preguntá sobre manuales y procesos de ASB con respuestas citadas.',
+    'tools.t6':'Investigación con fuentes verificadas. Para datos reales, no síntesis genérica.',
+    'tools.t7':'Output estructurado renderizable: planillas, dashboards, documentos — directo en el chat.',
+    'tools.t8':'Automatización de WhatsApp e Instagram. Flujos inteligentes para escalar la atención.',
+    'wf.eyebrow':'Cómo funciona',
+    'wf.title':'La jugada<br><span class="accent">en 5 movimientos.</span>',
+    'wf.s1.h':'Definí el contexto','wf.s1.p':'Evento, audiencia, tono, plazo. Un párrafo de contexto = 80% mejor output.',
+    'wf.s2.h':'Pegá referencia','wf.s2.p':'Sample real ASB: email, caption, post. Dejá que el modelo refleje lo que funciona.',
+    'wf.s3.h':'Pedí estructura','wf.s3.p':'Esqueleto primero. Secciones y flujo. Después completá lo que solo vos sabés.',
+    'wf.s4.h':'Iterá una vez','wf.s4.p':'Dos rondas máximo. Después vos te lo apropiás. Tu juicio es el producto.',
+    'wf.s5.h':'Ruteá antes','wf.s5.p':'Traducción → nativo. Copy de cliente → Mauricio o Jack primero.',
+    'next.eyebrow':'A seguir',
+    'next.title':'Lo que<br><span class="accent">viene.</span>',
+    'next.c1.s':'En progreso','next.c1.h':'Design System como contexto AI','next.c1.p':'Tokens, logos y guidelines empacados en un archivo de contexto único. Pegá en el prompt y el modelo hereda toda la paleta y voz de ASB.',
+    'next.c2.s':'Planificado','next.c2.h':'Templates de Newsletter por mercado','next.c2.p':'Brasil tiene la arquitectura de 7 módulos. US y Alemania adaptan al ciclo de eventos local. Una metodología, tres ejecuciones.',
+    'footer.about':'La única agencia oficial de paquetes para las Finales de la CONMEBOL Libertadores™ y Sudamericana™.',
+    'footer.col1':'Sistema','footer.col2':'Playbook','footer.col3':'Equipo Global',
+    'footer.l1':'Casos de uso','footer.l2':'Reglas','footer.l3':'Stack','footer.l4':'Flujo',
+    'footer.team1':'Mauricio Lacerda · Head of Marketing Americas',
+    'footer.team2':'Raphael Ferreira · Design Lead',
+    'footer.copy':'© 2026 ABSOLUT Sport · AI Marketing Playbook v1.0 · Abril 2026',
+    'footer.coauth':'Creado por Mauricio Lacerda × Rafa Rafa',
+    'nav.credit.title':'Mauricio × Rafa · sugerencias a design@'
+  },
+  de: {
+    'nav.back':'← Zurück zum Hub',
+    'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'AI Marketing',
+    'nav.logos':'Logos','nav.colors':'Farben','nav.typo':'Typografie','nav.comp':'Komponenten','nav.guide':'Guidelines',
+    'hero.eyebrow':'Global Marketing · Internes Playbook · v1.0',
+    'hero.h1':'AI IST UNSER<br><span class="accent">SECHSTER SPIELER.</span>',
+    'hero.sub':'Du weißt, wie man den besten Platz im Stadion verkauft. AI kümmert sich um alles, wofür man nicht dort sein muss. Wie das globale Team es nutzt, und wie man es richtig nutzt.',
+    'stats.s1':'E-Commerce 2024','stats.s2':'Digital ROI','stats.s3':'Märkte','stats.s4':'System · Lokale Stimmen',
+    'use.eyebrow':'Wo es funktioniert',
+    'use.title':'Sechs Dinge,<br><span class="accent">die AI jede Woche macht.</span>',
+    'use.c1.num':'01 · Drafting','use.c1.h':'Erste Drafts','use.c1.p':'E-Mails, Newsletter, Produkt-Copy, Social Captions. Du startest mit etwas Echtem, nicht bei null.',
+    'use.c2.num':'02 · Sprachen','use.c2.h':'Übersetzung','use.c2.p':'PT → EN → ES schnell. Decks, Landing Pages, Paketbeschreibungen. Menschliche Revision vor der Veröffentlichung.',
+    'use.c3.num':'03 · Decks','use.c3.h':'Präsentationen','use.c3.p':'Struktur, Talking Points, One-Pager für Führung und Kunden. Die narrative Form — nicht nur Bullet Points.',
+    'use.c4.num':'04 · E-Commerce','use.c4.h':'Produkt-Copy','use.c4.p':'Paketbeschreibungen, Hotel-Texte, Shopify-Listings. Konsistenter Ton über 10+ Produkte und 5 Märkte.',
+    'use.c5.num':'05 · Planung','use.c5.h':'Kampagnen','use.c5.p':'Kalender, Gantt-Strukturen, Brief-Outlines. Füttere den Kontext — bekomme das Skelett. Du füllst aus, was nur du weißt.',
+    'use.c6.num':'06 · Intelligenz','use.c6.h':'Recherche','use.c6.p':'Destination-Briefings, Competitor-Benchmarks, Event-Kontext. Schnell synthetisieren, Quelle zitieren.',
+    'call.eyebrow':'Der Schlüssel',
+    'call.title':'Das Design System<br>ändert <span class="accent">alles.</span>',
+    'call.h':'Ohne das Design System weiß AI nicht, wer wir sind.',
+    'call.p1':'Wenn jemand im Team AI bittet, eine Landing oder Caption zu schreiben, kennt sie unsere Schriften, Palette, unseren Ton oder unsere Subject Lines nicht. Der Output ist okay — aber nicht <strong>unverwechselbar ABSOLUT Sport</strong>.',
+    'call.p2':'<strong>Das Design System ist jetzt live</strong> — Palette, Typografie, Logos, Komponenten und Guidelines erreichbar unter <code style="font-family:var(--font-mono);color:#fff">design.absolut-sport.com.br</code>. Pack den Link als Kontext vor dem Prompt.',
+    'call.p3':'Zeigen, nicht beschreiben. Pack eine echte ASB-E-Mail oder einen Post vor dem Prompt — lass das Modell spiegeln, was schon funktioniert.',
+    'res.eyebrow':'Ressourcen · In den Prompt einfügen',
+    'res.title':'Die zwei Links,<br><span class="accent">die du brauchst.</span>',
+    'res.intro':'Bevor du irgendetwas promptest, öffne diese zwei Tabs und füg die Links als Kontext ein. AI fängt an, ABSOLUT zu sprechen.',
+    'res.gal.name':'Global Asset List',
+    'res.gal.desc':'Master-Tabelle mit allen Assets, Produkt-Copy und Markt-Variationen.',
+    'res.open':'Öffnen',
+    'rules.demo.title':'Prompt Demo','rules.demo.bad':'❌ Kein Kontext','rules.demo.bad.q':'Schreib eine Caption für das VIP-Final-Paket.','rules.demo.bad.a':'🎉 Verpass nicht das Finale deiner Träume! Exklusives VIP-Paket mit den besten Vorteilen...','rules.demo.vs':'vs','rules.demo.good':'✅ Mit ASB-Kontext','rules.demo.good.q':'Caption · Libertadores-Finale · Buenos Aires Dez/26 · Ton premium dringend · Publikum BR 25-45 · 3 Zeilen + CTA.','rules.demo.good.a':'Das Finale ist in Buenos Aires. Dezember. Dein Platz ist noch da. Link in Bio.','rules.demo.chip':'On-brand · Bereit zum Posten',
+    'res.ds.name':'Design System',
+    'res.ds.desc':'Vollständiger Hub mit Farben, Typografie, Logos, Komponenten und Guidelines.',
+    'gal.eyebrow':'Global Asset List · Prozess',
+    'gal.title':'Wie das GAL<br><span class="accent">lebendig bleibt.</span>',
+    'gal.intro':'3 Schritte. Jede Geografie verwaltet, was ihr gehört.',
+    'gal.s1.num':'01 · Ownership','gal.s1.h':'Geografie besitzt das Projekt','gal.s1.p':'Jeder Markt ist für seine eigenen Assets verantwortlich. Wer den Stift in der Hand hat, lädt hoch.',
+    'gal.s2.num':'02 · Editierbar','gal.s2.h':'Lade die editierbare Datei hoch','gal.s2.p':'PPT oder Figma — was im Workflow des Teams liegt. Das nächste Team muss öffnen und remixen können.',
+    'gal.s3.num':'03 · PDF','gal.s3.h':'Lade auch das PDF hoch','gal.s3.p':'Teilbare Version für Präsentation, E-Mail, WhatsApp. Wer sehen muss, sieht. Wer editieren muss, öffnet die editierbare Datei.',
+    'rules.eyebrow':'Die Regeln',
+    'rules.title':'Mach das.<br><span class="accent">Nicht jenes.</span>',
+    'rules.do':'Do','rules.dont':'Don\'t',
+    'rules.do.list':'<li>Gib vollständigen Kontext: Event, Zielgruppe, Ton, Deadline — vor jedem Prompt</li><li>Pack ein echtes ASB-Sample, damit das Modell spiegelt, was schon funktioniert</li><li>Nutze für erste Drafts, dann editiere — deine Stimme bleibt deine</li><li>Lies immer den Output, bevor du sendest</li><li>Schnell übersetzen, dann Native Speaker für den finalen Pass</li><li>Frag erst nach Struktur, dann fülle, was nur du weißt</li><li>Sag dem Modell, was du NICHT willst, genauso wie was du willst</li><li>Weise dem Modell eine Rolle zu: "Du bist Experte für Luxus-Hospitality" — Kontext verändert alles</li><li>Nutze Claude Projects, um Kontexte pro Kunde oder Kampagne zu isolieren</li>',
+    'rules.dont.list':'<li>Output direkt in Kunden-E-Mail kopieren ohne zu lesen</li><li>Nutze nicht für Entscheidungen über Preise, Operations oder Verträge</li><li>Vertrau nicht AI-generierten Zahlen — Stats unabhängig prüfen</li><li>Marken-Kontext überspringen und sich beschweren, dass es "generisch klingt"</li><li>Dein Urteil über Ton und Timing nicht durch die Maschine ersetzen</li><li>Den ersten Draft nicht als final behandeln — eine Iteration reicht nie</li><li>Vertrauliche Kundendaten nicht ohne Policy-Check eingeben</li><li>Passwörter, Tokens oder API-Keys in Prompts einfügen — nie</li><li>Free-Account mit vertraulichen Unternehmensdaten nutzen</li>',
+    'tools.eyebrow':'Unser Stack',
+    'tools.title':'Tools, die<br><span class="accent">wir wirklich nutzen.</span>',
+    'tools.t1':'Schreiben, Recherche, Planung, Übersetzung, strategische Dokumente',
+    'tools.t2':'Visual Concepts und Kampagnen-Imagery (BR-Team)',
+    'tools.t3':'Design System und globale Templates (Raphael)',
+    'tools.t4':'Projekt-Zusammenfassungen, Task-Drafts, Meeting-Prep',
+    'tools.t5':'Interne Wissensdatenbank. Frag nach ASB-Manualen und Prozessen — Antworten mit Quellenangabe.',
+    'tools.t6':'Recherche mit verifizierten Quellen. Für echte Daten, keine generische Synthese.',
+    'tools.t7':'Renderbarer strukturierter Output: Tabellen, Dashboards, Dokumente — direkt im Chat.',
+    'tools.t8':'WhatsApp- und Instagram-Automatisierung. Smarte Flows zum Skalieren des Kundenengagements.',
+    'wf.eyebrow':'So funktioniert es',
+    'wf.title':'Der Spielzug<br><span class="accent">in 5 Bewegungen.</span>',
+    'wf.s1.h':'Kontext setzen','wf.s1.p':'Event, Zielgruppe, Ton, Deadline. Ein Absatz Kontext = 80% besserer Output.',
+    'wf.s2.h':'Referenz einfügen','wf.s2.p':'Echtes ASB-Sample: E-Mail, Caption, Post. Lass das Modell spiegeln, was funktioniert.',
+    'wf.s3.h':'Struktur anfragen','wf.s3.p':'Skelett zuerst. Sektionen und Flow. Dann fülle, was nur du weißt.',
+    'wf.s4.h':'Einmal iterieren','wf.s4.p':'Maximal zwei Runden. Dann übernimmst du. Dein Urteil ist das Produkt.',
+    'wf.s5.h':'Vor dem Senden routen','wf.s5.p':'Übersetzung → Native Speaker. Kunden-Copy → Mauricio oder Jack zuerst.',
+    'next.eyebrow':'Als Nächstes',
+    'next.title':'Was<br><span class="accent">kommt.</span>',
+    'next.c1.s':'In Arbeit','next.c1.h':'Design System als AI-Kontext','next.c1.p':'Tokens, Logos und Guidelines in einer Kontext-Datei verpackt. Pack in den Prompt — das Modell erbt die volle ASB-Palette und Stimme.',
+    'next.c2.s':'Geplant','next.c2.h':'Newsletter-Templates pro Markt','next.c2.p':'Brasilien hat die 7-Modul-Architektur. US und Deutschland passen sich dem lokalen Event-Zyklus an. Eine Methodik, drei Ausführungen.',
+    'footer.about':'Die einzige offizielle Reisepaket-Agentur für die Finals der CONMEBOL Libertadores™ und Sudamericana™.',
+    'footer.col1':'System','footer.col2':'Playbook','footer.col3':'Globales Team',
+    'footer.l1':'Use Cases','footer.l2':'Regeln','footer.l3':'Stack','footer.l4':'Workflow',
+    'footer.team1':'Mauricio Lacerda · Head of Marketing Americas',
+    'footer.team2':'Raphael Ferreira · Design Lead',
+    'footer.copy':'© 2026 ABSOLUT Sport · AI Marketing Playbook v1.0 · April 2026',
+    'footer.coauth':'Erstellt von Mauricio Lacerda × Rafa Rafa',
+    'nav.credit.title':'Mauricio × Rafa · Vorschläge an design@'
+  }
+};
+</script>
+
+<!-- I18N TOGGLE -->
+<script src="../i18n.js"></script>
+
+<!-- ZERO-TO-O -->
+<script src="../zero-to-o.js"></script>
+
+<script>
+document.getElementById('splash').addEventListener('animationend', function(e) {
+  if (e.animationName === 'splash-exit') this.remove();
+}, { once: true });
+</script>
+</body>
+</html>

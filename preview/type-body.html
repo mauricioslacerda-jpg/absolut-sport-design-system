@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'SoulCraft'; src: url('../fonts/soulcraftgx.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAFA; padding: 28px; font-family: 'Barlow', sans-serif; }
+  .specimen { margin-bottom: 16px; border-bottom: 1px solid #E8E8E8; padding-bottom: 14px; }
+  .specimen:last-child { border-bottom: none; }
+  .meta { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9A9A9A; margin-bottom: 5px; font-family: 'Barlow', sans-serif; }
+  .display-ref {
+    font-family: 'SoulCraft', 'Barlow Condensed', sans-serif;
+    font-size: 28px; font-weight: 800; color: #0D0D0D;
+    text-transform: uppercase; line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .subtitle { font-family: 'Barlow', sans-serif; font-size: 18px; font-weight: 500; line-height: 1.5; color: #333333; }
+  .body-text { font-family: 'Barlow', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.65; color: #555555; }
+  .body-sm { font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.65; color: #555555; }
+  .caption { font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #7A7A7A; }
+  .label-text { font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #9A9A9A; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #7A7A7A; }
+  .price { font-family: 'Barlow', sans-serif; font-size: 22px; font-weight: 700; color: #C9A84C; }
+  .chip { display: inline-block; background: rgba(0,0,0,0.06); border-radius: 3px; padding: 1px 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #9A9A9A; vertical-align: middle; margin-left: 6px; }
+</style>
+</head>
+<body>
+
+  <div class="specimen">
+    <div class="meta">Display ref · SoulCraft <span class="chip">--font-display</span></div>
+    <div class="display-ref">CONMEBOL Libertadores™</div>
+  </div>
+
+  <div class="specimen">
+    <div class="meta">Subtitle · Barlow 500 · 18px <span class="chip">--font-body</span></div>
+    <div class="subtitle">Conectando torcedores ao maior espetáculo do futebol sul-americano</div>
+  </div>
+
+  <div class="specimen">
+    <div class="meta">Body · Barlow 400 · 16px</div>
+    <div class="body-text">Somos referência no segmento de sportainment, criando vivências imersivas e emocionantes que transcendem o jogo. Com escritórios no Rio de Janeiro, Frankfurt e Los Angeles.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="meta">Body Small · Barlow 400 · 14px</div>
+    <div class="body-sm">Ingressos oficiais com garantia de autenticidade total. Atendimento personalizado e suporte rápido para clientes.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="meta">Caption · Barlow 500 · 12px · wide tracking</div>
+    <div class="caption">Agência oficial CONMEBOL · Rio de Janeiro · Frankfurt · Los Angeles</div>
+  </div>
+
+  <div class="specimen">
+    <div class="meta">Label · Barlow 700 · 11px · widest tracking</div>
+    <div class="label-text">Pacote VIP · Categoria Premium</div>
+  </div>
+
+  <div class="specimen">
+    <div class="meta">Mono / Price · Barlow 700 <span class="chip">--font-body</span></div>
+    <div class="price">A partir de R$ 3.200</div>
+    <div class="mono" style="margin-top:4px">PKG-LIBERTADORES-2025-VIP</div>
+  </div>
+
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

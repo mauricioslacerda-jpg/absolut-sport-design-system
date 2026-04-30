@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise AI Guide — ABSOLUT Sport · Playbook Interno</title>
+<meta name="description" content="Guia corporativo de IA. Contas, segurança, boas práticas e arsenal de ferramentas para times que querem resultados reais.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  @font-face {
+    font-family: 'SoulCraft';
+    src: url('fonts/soulcraftgx.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+
+<link rel="stylesheet" href="colors_and_type.css">
+
+<style>
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV ─────────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: var(--z-sticky);
+  height: 68px; padding: 0 var(--space-12);
+  background: rgba(13,13,13,0.45);
+  border-bottom: 1px solid rgba(255,255,255,0.09);
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 4px 32px rgba(0,0,0,0.3);
+}
+.nav-logo img { height: 32px; }
+.nav-breadcrumb {
+  display: flex; align-items: center; gap: var(--space-3);
+  font-size: var(--text-caption); letter-spacing: var(--tracking-wide);
+  text-transform: uppercase; color: var(--color-neutral-300); font-weight: var(--weight-medium);
+}
+.nav-breadcrumb a { color: var(--color-neutral-300); transition: color var(--transition-fast); }
+.nav-breadcrumb a:hover { color: var(--color-blue-mid); }
+.nav-breadcrumb .sep { color: var(--color-neutral-600); }
+.nav-breadcrumb .current { color: var(--color-white); }
+.nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+.nav-credit {
+  display: inline-flex; align-items: center; padding: 5px 10px;
+  border: 1px solid rgba(201,168,76,0.35); border-radius: var(--radius-pill);
+  background: rgba(201,168,76,0.08); transition: all var(--transition-fast); text-decoration: none;
+}
+.nav-credit:hover { background: rgba(201,168,76,0.18); border-color: var(--color-gold); }
+.nav-credit-mark {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-wide); color: var(--color-gold); white-space: nowrap;
+}
+.lang-toggle {
+  display: inline-flex; background: var(--color-neutral-900);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-pill);
+  padding: 3px; gap: 2px;
+}
+.lang-btn {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-wide); padding: 5px 10px; border-radius: 100px;
+  background: transparent; color: var(--color-neutral-300); border: none; cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.lang-btn:hover { color: var(--color-white); }
+.lang-btn.active { background: var(--color-blue); color: var(--color-white); }
+.nav-back {
+  font-family: var(--font-display); font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-white);
+  border: 1px solid rgba(255,255,255,0.15); padding: 8px 18px; font-size: 12px;
+  border-radius: var(--radius-sm); transition: all var(--transition-fast);
+}
+.nav-back:hover { background: var(--color-blue); border-color: var(--color-blue); }
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero {
+  position: relative; min-height: 78vh;
+  background: linear-gradient(135deg, #0D0D0D 0%, #0a1520 50%, #0D0D0D 100%);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px var(--space-20) 64px; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.hero-bar {
+  position: absolute; left: 0; top: 18%; bottom: 18%; width: 4px;
+  background: linear-gradient(to bottom, transparent, var(--color-blue) 30%, var(--color-blue) 70%, transparent);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 1100px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(21,95,151,0.12); border: 1px solid rgba(21,95,151,0.3);
+  color: var(--color-blue-mid); padding: 5px 14px; border-radius: var(--radius-pill);
+  font-size: 11px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-wider);
+  text-transform: uppercase; margin-bottom: var(--space-6);
+}
+.hero-eyebrow::before { content: '●'; color: var(--color-blue); font-size: 10px; }
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(48px, 7vw, 96px);
+  font-weight: var(--weight-black); line-height: 0.95; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--color-white); margin-bottom: var(--space-6);
+}
+.hero h1 .accent { color: var(--color-blue-mid); display: block; }
+.hero-sub {
+  font-size: var(--text-subtitle); color: var(--color-neutral-200);
+  line-height: var(--leading-relaxed); max-width: 580px;
+}
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-8);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  padding: 4px 12px; border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.1); color: var(--color-neutral-400);
+  background: rgba(255,255,255,0.04);
+}
+.hero-badge.gold { color: var(--color-gold); border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.06); }
+
+/* ─── SECTION COMMONS ─────────────────────────────────────── */
+section {
+  padding: var(--space-20) var(--space-20);
+  max-width: 1280px; margin: 0 auto;
+}
+.section-eyebrow {
+  font-size: 11px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--color-blue-mid); margin-bottom: var(--space-3);
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px);
+  font-weight: var(--weight-extrabold); text-transform: uppercase;
+  line-height: 0.95; color: var(--color-white); margin-bottom: var(--space-10);
+}
+.section-title .accent { color: var(--color-blue-mid); display: block; }
+.section-intro {
+  font-size: var(--text-body-lg); color: var(--color-neutral-200);
+  max-width: 720px; margin-top: -24px; margin-bottom: var(--space-10);
+  line-height: var(--leading-relaxed);
+}
+.divider {
+  border: none; border-top: 1px solid rgba(255,255,255,0.07);
+  max-width: 1280px; margin: 0 auto;
+}
+
+/* ─── PILLARS ─────────────────────────────────────────────── */
+.pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.pillar-card {
+  background: var(--color-neutral-900); border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md); padding: var(--space-8);
+  position: relative; overflow: hidden; transition: all var(--transition-default);
+}
+.pillar-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-gold)); opacity: 0.6;
+}
+.pillar-card:hover { transform: translateY(-3px); border-color: rgba(21,95,151,0.5); }
+.pillar-icon { width: 32px; height: 32px; margin-bottom: var(--space-4); display: flex; align-items: center; justify-content: center; color: var(--color-blue-mid); }
+.pillar-card h3 {
+  font-family: var(--font-display); font-size: 22px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  color: var(--color-white); margin-bottom: var(--space-3);
+}
+.pillar-card p { font-size: var(--text-body-sm); color: var(--color-neutral-300); line-height: var(--leading-relaxed); }
+
+/* ─── TIERS ───────────────────────────────────────────────── */
+.tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-bottom: var(--space-8); }
+.tier-card {
+  background: var(--color-neutral-900); border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md); padding: var(--space-8);
+  position: relative; overflow: hidden; transition: all var(--transition-default);
+}
+.tier-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.tier-max::before { background: var(--color-gold); }
+.tier-pro::before { background: var(--color-blue); }
+.tier-free::before { background: rgba(255,255,255,0.2); }
+.tier-level {
+  font-family: var(--font-display); font-size: 36px; font-weight: var(--weight-black);
+  text-transform: uppercase; letter-spacing: -0.01em; line-height: 1; margin-bottom: var(--space-1);
+}
+.tier-max .tier-level { color: var(--color-gold); }
+.tier-pro .tier-level { color: var(--color-blue-mid); }
+.tier-free .tier-level { color: var(--color-neutral-500); }
+.tier-name {
+  font-size: 11px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-wider);
+  text-transform: uppercase; color: var(--color-neutral-300); margin-bottom: var(--space-2);
+}
+.tier-price { font-family: var(--font-mono); font-size: 13px; color: var(--color-neutral-400); margin-bottom: var(--space-5); }
+.tier-card p { font-size: var(--text-body-sm); color: var(--color-neutral-300); line-height: var(--leading-relaxed); }
+.tier-role {
+  display: inline-block; margin-top: var(--space-3); padding: 3px 10px;
+  border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 10px;
+  font-weight: 600; letter-spacing: var(--tracking-wider); text-transform: uppercase;
+}
+.tier-max .tier-role { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); color: var(--color-gold); }
+.tier-pro .tier-role { background: rgba(21,95,151,0.12); border: 1px solid rgba(21,95,151,0.3); color: var(--color-blue-mid); }
+.tier-free .tier-role { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-neutral-400); }
+
+/* ─── GOLDEN RULES ────────────────────────────────────────── */
+.rules-golden { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-bottom: var(--space-6); }
+.rule-item {
+  display: flex; gap: var(--space-4); align-items: flex-start;
+  padding: var(--space-5) var(--space-6);
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md); transition: border-color var(--transition-fast);
+}
+.rule-item:hover { border-color: rgba(21,95,151,0.3); }
+.rule-icon { width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; display: flex; color: var(--color-blue-mid); }
+.rule-item p { font-size: var(--text-body-sm); color: var(--color-neutral-300); line-height: var(--leading-relaxed); }
+
+/* ─── LUCIDE ICONS ─────────────────────────────────────────── */
+.pillar-icon svg, .sum-icon svg, .rule-icon svg {
+  width: 100%; height: 100%;
+  fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.tool-icon svg {
+  width: 22px; height: 22px;
+  fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.rule-item strong { color: var(--color-white); }
+.sec-quote {
+  background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.22);
+  border-left: 3px solid var(--color-gold); border-radius: var(--radius-sm);
+  padding: var(--space-5) var(--space-8);
+}
+.sec-quote p {
+  font-family: var(--font-display); font-size: clamp(14px, 2vw, 18px);
+  font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  color: var(--color-gold); line-height: var(--leading-snug);
+}
+
+/* ─── BOAS PRÁTICAS ───────────────────────────────────────── */
+.practices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+details {
+  background: var(--color-neutral-900); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md); overflow: hidden; transition: border-color 0.2s;
+}
+details[open] { border-color: rgba(21,95,151,0.4); }
+summary {
+  padding: var(--space-6) var(--space-8); cursor: pointer;
+  display: flex; align-items: center; gap: var(--space-4);
+  font-family: var(--font-display); font-size: 16px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  color: var(--color-white); list-style: none; user-select: none;
+  transition: color var(--transition-fast);
+}
+summary::-webkit-details-marker { display: none; }
+summary:hover { color: var(--color-blue-mid); }
+summary .sum-icon { width: 20px; height: 20px; flex-shrink: 0; display: flex; }
+summary::after {
+  content: '›'; margin-left: auto; font-size: 1.2rem;
+  color: var(--color-neutral-400); transition: transform 0.2s; display: inline-block;
+}
+details[open] summary::after { transform: rotate(90deg); color: var(--color-blue-mid); }
+.practice-body { padding: 0 var(--space-8) var(--space-6); border-top: 1px solid rgba(255,255,255,0.06); }
+.practice-list {
+  list-style: none; padding: 0; margin-top: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-3);
+}
+.practice-list li {
+  display: flex; gap: var(--space-3); align-items: flex-start;
+  font-size: var(--text-body-sm); color: var(--color-neutral-300); line-height: var(--leading-relaxed);
+}
+.practice-list li::before { content: '▸'; color: var(--color-blue-mid); flex-shrink: 0; margin-top: 1px; }
+.practice-list strong { color: var(--color-white); }
+.practice-highlight {
+  margin-top: var(--space-5); padding: var(--space-4) var(--space-5);
+  background: rgba(21,95,151,0.08); border-left: 3px solid var(--color-blue);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--text-body-sm); color: var(--color-blue-mid); line-height: var(--leading-relaxed);
+}
+.practice-highlight strong { color: var(--color-white); }
+
+/* ─── TOOLKIT ─────────────────────────────────────────────── */
+.tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+.tool-card {
+  position: relative;
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.13); border-radius: 16px;
+  padding: var(--space-6); text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+.tool-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, transparent 45%, rgba(0,0,0,0.08) 100%);
+  pointer-events: none; border-radius: 16px;
+}
+.tool-card:hover {
+  transform: translateY(-4px) scale(1.01); border-color: rgba(21,95,151,0.45);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(21,95,151,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(0,0,0,0.3);
+}
+.tool-icon {
+  width: 44px; height: 44px; background: rgba(21,95,151,0.12); border: 1px solid rgba(21,95,151,0.25);
+  border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
+  margin: 0 auto var(--space-4); color: var(--color-blue-mid);
+}
+.tool-card h4 {
+  font-family: var(--font-display); font-size: 14px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-white); margin-bottom: var(--space-2);
+}
+.tool-card p { font-size: var(--text-caption); color: var(--color-neutral-300); line-height: var(--leading-normal); }
+
+/* ─── CONTACT ─────────────────────────────────────────────── */
+.contact-card {
+  background: var(--color-neutral-900); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: var(--space-12); position: relative; overflow: hidden;
+}
+.contact-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-blue));
+}
+.contact-author {
+  display: flex; align-items: center; gap: var(--space-6);
+  padding-bottom: var(--space-8); border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: var(--space-8);
+}
+.contact-photo {
+  width: 68px; height: 68px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.25), 0 0 0 6px var(--color-black);
+}
+.mit-credential {
+  display: flex; align-items: center; gap: var(--space-5);
+  background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.22);
+  border-left: 3px solid var(--color-gold); border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6); margin-bottom: var(--space-8);
+}
+.mit-credential-seal { height: 52px; width: 52px; object-fit: contain; flex-shrink: 0; }
+.mit-credential h5 {
+  font-family: var(--font-display); font-size: 14px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--color-gold);
+  margin: 0 0 4px;
+}
+.mit-credential p { font-size: 12px; color: var(--color-neutral-400); line-height: 1.5; margin: 0; }
+.contact-name {
+  font-family: var(--font-display); font-size: 22px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-white);
+}
+.contact-role { font-size: var(--text-body-sm); color: var(--color-neutral-400); margin-top: 4px; }
+.contact-badges { display: flex; gap: var(--space-2); margin-top: var(--space-3); flex-wrap: wrap; }
+.contact-badge {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+}
+.contact-badge.gold { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); color: var(--color-gold); }
+.contact-badge.neutral { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--color-neutral-400); }
+.tags-label {
+  font-size: 11px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-widest);
+  text-transform: uppercase; color: var(--color-neutral-400); margin-bottom: var(--space-4);
+}
+.tags-wrap { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-8); }
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: var(--text-body-sm); font-weight: var(--weight-medium);
+  color: var(--color-neutral-300); background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px;
+  border-radius: var(--radius-pill); cursor: pointer; transition: all 0.18s; user-select: none;
+}
+.tag:hover { border-color: rgba(21,95,151,0.4); color: var(--color-white); }
+.tag.selected { background: rgba(21,95,151,0.15); border-color: rgba(21,95,151,0.5); color: var(--color-blue-mid); }
+.tag-check {
+  width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid currentColor;
+  display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0;
+}
+.tag.selected .tag-check { background: var(--color-blue); border-color: var(--color-blue); }
+.tag.selected .tag-check::after { content: '✓'; color: #fff; font-weight: 900; font-size: 8px; }
+.contact-cta { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 13px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  background: var(--color-blue); color: var(--color-white);
+  padding: 12px 28px; border-radius: var(--radius-pill); border: none; cursor: pointer;
+  transition: all 0.2s; text-decoration: none;
+}
+.btn-primary:hover { background: var(--color-blue-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(21,95,151,0.4); }
+.btn-primary.disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+.selected-count { font-size: var(--text-body-sm); color: var(--color-neutral-400); }
+.selected-count strong { color: var(--color-blue-mid); }
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+.footer {
+  background: var(--color-black); border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--space-12) var(--space-20) var(--space-8); margin-top: var(--space-20);
+}
+.footer-grid {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-12);
+}
+.footer-brand img { height: 36px; margin-bottom: var(--space-4); }
+.footer-brand p { font-size: var(--text-body-sm); color: var(--color-neutral-300); max-width: 280px; line-height: 1.6; }
+.footer-col h4 {
+  font-size: 11px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-widest);
+  text-transform: uppercase; color: var(--color-neutral-400); margin-bottom: var(--space-4);
+}
+.footer-col a { display: block; font-size: var(--text-body-sm); color: var(--color-neutral-300); padding: 6px 0; transition: color var(--transition-fast); }
+.footer-col a:hover { color: var(--color-blue-mid); }
+.footer-bottom {
+  max-width: 1280px; margin: var(--space-8) auto 0; padding-top: var(--space-6);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between;
+  font-size: var(--text-caption); color: var(--color-neutral-400);
+}
+
+/* ─── ORG TREE ────────────────────────────────────────────── */
+.org-tree-section { margin: var(--space-10) 0; }
+.org-tree-label {
+  font-size: 11px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-widest);
+  text-transform: uppercase; color: var(--color-neutral-400); margin-bottom: var(--space-6); text-align: center;
+}
+.org-tree { display: flex; flex-direction: column; align-items: center; }
+.org-hub-row { display: flex; justify-content: center; width: 100%; }
+.org-hub-node {
+  background: rgba(201,168,76,0.06); border: 2px solid rgba(201,168,76,0.35);
+  border-radius: var(--radius-md); padding: var(--space-5) var(--space-10);
+  text-align: center; min-width: 280px; position: relative; overflow: hidden;
+}
+.org-hub-node::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--color-gold); }
+.org-hub-tag { font-size: 10px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--color-gold); margin-bottom: 4px; }
+.org-hub-name { font-size: 13px; font-weight: var(--weight-medium); color: var(--color-white); margin-bottom: 4px; }
+.gold-plan { font-family: var(--font-display); font-size: 20px; font-weight: var(--weight-black); text-transform: uppercase; color: var(--color-gold); line-height: 1; }
+.org-v-line { width: 2px; height: 28px; background: linear-gradient(to bottom, rgba(201,168,76,0.4), rgba(21,95,151,0.4)); }
+.org-v-line.short { height: 18px; background: rgba(21,95,151,0.35); }
+.org-h-line-wrap { width: 82%; display: flex; align-items: center; }
+.org-h-line { width: 100%; height: 2px; background: rgba(21,95,151,0.25); }
+.org-depts-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); width: 100%; }
+.org-dept-col { display: flex; flex-direction: column; align-items: center; }
+.org-dept-node {
+  background: rgba(21,95,151,0.08); border: 1px solid rgba(21,95,151,0.3);
+  border-radius: var(--radius-md); padding: var(--space-4) var(--space-5);
+  text-align: center; width: 100%;
+}
+.org-dept-name { font-size: 12px; font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--color-white); margin-bottom: 4px; }
+.org-dept-plan { font-family: var(--font-display); font-size: 15px; font-weight: var(--weight-black); text-transform: uppercase; color: var(--color-blue-mid); }
+.org-team-node {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius-sm); padding: var(--space-3) var(--space-4);
+  text-align: center; width: 100%;
+}
+.org-team-plan { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--color-neutral-300); text-transform: uppercase; }
+.org-team-sub { font-size: 10px; color: var(--color-neutral-500); margin-top: 2px; text-transform: uppercase; letter-spacing: var(--tracking-wider); }
+.org-tree-note { font-size: var(--text-caption); color: var(--color-neutral-500); text-align: center; margin-top: var(--space-6); font-style: italic; }
+
+/* ─── MIT BADGE ───────────────────────────────────────────── */
+.mit-badge { display: inline-flex !important; align-items: center; gap: 6px; padding-left: 6px; }
+.mit-seal-img { height: 24px; width: 24px; object-fit: contain; border-radius: 50%; }
+
+/* ─── FADE IN ─────────────────────────────────────────────── */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .nav { padding: 0 var(--space-6); }
+  .nav-breadcrumb { display: none; }
+  .nav-back { display: none; }
+  .nav-credit { display: none; }
+  .hero { padding: 60px var(--space-6) 48px; min-height: 60vh; }
+  section { padding: var(--space-12) var(--space-6); }
+  .pillar-grid, .tier-grid, .rules-golden, .practices-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr 1fr; }
+  .org-depts-row { grid-template-columns: 1fr 1fr; }
+  .org-h-line-wrap { display: none; }
+  .footer { padding: var(--space-10) var(--space-6) var(--space-6); }
+  .footer-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+  .footer-bottom { flex-direction: column; gap: var(--space-3); }
+}
+
+/* ─── SPLASH ──────────────────────────────────────────────── */
+.splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0D0D0D;
+  display: flex; align-items: center; justify-content: center;
+  animation: splash-exit 0.7s cubic-bezier(0.4,0,0.2,1) 2.5s forwards;
+  pointer-events: none;
+}
+.splash-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  text-align: center;
+  opacity: 0; transform: translateY(16px);
+  animation: splash-rise 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+}
+.splash-logo { height: 96px; filter: brightness(1.1); display: block; margin: 0 auto; }
+.splash-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding-left: 0.32em;
+}
+.splash-line {
+  width: 160px; height: 1px;
+  background: linear-gradient(to right, transparent, #155F97, transparent);
+  transform: scaleX(0); transform-origin: center;
+  animation: splash-expand 0.9s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;
+}
+@keyframes splash-rise { to { opacity: 1; transform: none; } }
+@keyframes splash-expand { to { transform: scaleX(1); } }
+@keyframes splash-exit { to { opacity: 0; visibility: hidden; } }
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash" class="splash">
+  <div class="splash-inner">
+    <img class="splash-logo" src="assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+    <div class="splash-tag">AI GUIDE</div>
+    <div class="splash-line"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <img src="assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+  </a>
+  <div class="nav-breadcrumb">
+    <a href="index.html" data-i18n="bc.hub">Design System</a>
+    <span class="sep">/</span>
+    <a href="index.html#playbooks" data-i18n="bc.playbooks">Playbooks</a>
+    <span class="sep">/</span>
+    <span class="current" data-i18n="bc.current">Enterprise AI Guide</span>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-back" href="index.html" data-i18n="nav.back">← Voltar ao Hub</a>
+    <a class="nav-credit" href="mailto:design@absolut-sport.com.br?subject=Design%20System%20%C2%B7%20Sugest%C3%A3o" data-i18n-attr="title:nav.credit.title" title="Mauricio × Rafa · sugestões pra design@">
+      <span class="nav-credit-mark">MM × RR</span>
+    </a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+      <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+      <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+      <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:none;padding-left:var(--space-20);padding-right:var(--space-20)">
+  <div class="hero-grid"></div>
+  <div class="hero-bar"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">Corporativo · Playbook Interno · v1.0</div>
+    <h1><span data-i18n="hero.h1a">IA PARA O SEU TIME.</span><br><span class="accent" data-i18n-html="hero.h1b">CADA PESSOA,<br>UM TIME INTEIRO.</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Não se trata de substituir pessoas. Trata-se de dar a cada uma delas a capacidade de um time inteiro. Contas, segurança, boas práticas e arsenal — tudo que o time precisa para usar IA com confiança e resultado.</p>
+    <div class="hero-badges">
+      <span class="hero-badge gold" data-i18n="hero.badge.mit">MIT AI &amp; ML for Business</span>
+      <span class="hero-badge" data-i18n="hero.badge.prod">12+ meses em produção</span>
+      <span class="hero-badge" data-i18n="hero.badge.auth">Mauricio Lacerda · AI Strategist</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- POR QUE IA -->
+<section id="contexto" class="fade-in">
+  <div class="section-eyebrow" data-i18n="why.ey">O contexto</div>
+  <h2 class="section-title"><span data-i18n="why.t1">Por que o time</span><br><span class="accent" data-i18n="why.t2">precisa de IA agora.</span></h2>
+  <p class="section-intro" data-i18n="why.intro">Velocidade, escala e consistência. Os três vetores que mudam quando IA entra no fluxo de trabalho do time.</p>
+
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <span class="pillar-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+      <h3 data-i18n="p1.title">Velocidade</h3>
+      <p data-i18n="p1.body">Tarefas que levavam horas — análise, redação, pesquisa, código — entregues em minutos com o contexto certo.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon"><svg viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
+      <h3 data-i18n="p2.title">Escala</h3>
+      <p data-i18n="p2.body">Um único operador conduz múltiplos agentes IA em paralelo, amplificando a capacidade do time sem aumentar o headcount.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+      <h3 data-i18n="p3.title">Consistência</h3>
+      <p data-i18n="p3.body">Com o contexto certo — Projects, Skills, Specs — o output é consistente. A qualidade não depende do humor ou da memória de ninguém.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMO USAR IA -->
+<section id="praticas" class="fade-in">
+  <div class="section-eyebrow" data-i18n="prac.ey">Linguagem &amp; Uso</div>
+  <h2 class="section-title"><span data-i18n="prac.t1">FALE COM</span><br><span class="accent" data-i18n="prac.t2">A MÁQUINA.</span></h2>
+  <p class="section-intro" data-i18n="prac.intro">Baseado em 12+ meses de operação diária com IA e na metodologia MIT AI &amp; ML for Business. Expanda cada seção.</p>
+
+  <div class="practices-grid">
+    <details open>
+      <summary><span class="sum-icon"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span data-i18n="s2.sum">Como Conversar com IA</span></summary>
+      <div class="practice-body" data-i18n-html="s2.body">
+        <ul class="practice-list">
+          <li><strong>Dê um papel:</strong> "Você é especialista em hospitalidade de luxo..." — contexto muda tudo.</li>
+          <li><strong>Seja específico:</strong> "Escreva um email de 3 parágrafos, tom profissional mas caloroso, para o cliente que pediu prazo estendido."</li>
+          <li><strong>Dê exemplos (few-shot):</strong> "Aqui está um email no tom que queremos: [exemplo]. Agora escreva um similar sobre..."</li>
+          <li><strong>Itere:</strong> Nunca aceite o primeiro resultado sem ajustes. Peça: "Torne mais conciso", "Adicione urgência", "Reformule o 2º parágrafo."</li>
+          <li><strong>Use Artifacts:</strong> Para tabelas, documentos e código — peça output estruturado, não paredes de texto.</li>
+        </ul>
+        <div class="practice-highlight"><strong>Método RPI:</strong> Research → Plan → Implement. Nunca pule direto para a execução.</div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="sum-icon"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span><span data-i18n="s4.sum">Como Extrair o Máximo</span></summary>
+      <div class="practice-body" data-i18n-html="s4.body">
+        <ul class="practice-list">
+          <li><strong>Método RPI:</strong> Research (explore com IA livre) → Plan (estruture o que aprendeu) → Implement (execute com contexto limpo).</li>
+          <li><strong>Use Research Mode do Claude</strong> para tarefas que precisam de fontes externas verificadas.</li>
+          <li><strong>NotebookLM para base de conhecimento interna.</strong> Coloque manuais, processos e PDFs — a IA responde com base nos seus documentos.</li>
+          <li><strong>Crie Skills reutilizáveis.</strong> Tarefas recorrentes viram instruções salvas: email de follow-up, proposta, análise de métricas.</li>
+          <li><strong>Valide sempre:</strong> IA pode alucinar. Use como acelerador inteligente, não como fonte final de verdade.</li>
+        </ul>
+        <div class="practice-highlight">NotebookLM com os documentos da empresa = IA que fala a linguagem da empresa, não do mundo genérico.</div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="sum-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><span data-i18n="s3.sum">Economia de Tokens</span></summary>
+      <div class="practice-body" data-i18n-html="s3.body">
+        <ul class="practice-list">
+          <li><strong>Use Projects com instruções fixas.</strong> Configurado uma vez, você não repete o contexto em cada conversa.</li>
+          <li><strong>Resuma conversas longas.</strong> Antes de continuar: "Resuma em 5 pontos o que decidimos até agora" → nova conversa.</li>
+          <li><strong>Modelos certos para as tarefas certas.</strong> Haiku para triagem e rascunhos; Sonnet para trabalho complexo; Opus para decisões estratégicas.</li>
+          <li><strong>Não carregue arquivos desnecessários.</strong> O contexto é finito — só inclua o que é realmente relevante.</li>
+          <li><strong>Regra dos 40%:</strong> Máximo 40% do contexto deve ser histórico. 60% deve ser instrução estruturada.</li>
+        </ul>
+        <div class="practice-highlight">Projects + Regra dos 40% = contexto sempre fresco. Qualidade consistente sem desperdício.</div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="sum-icon"><svg viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span data-i18n="s1.sum">Segurança e Privacidade</span></summary>
+      <div class="practice-body" data-i18n-html="s1.body">
+        <ul class="practice-list">
+          <li><strong>Nunca coloque senhas, tokens ou chaves de API em prompts.</strong> Use variáveis de ambiente — nunca texto direto.</li>
+          <li><strong>Não use conta Free com dados confidenciais da empresa.</strong> No plano Free, o histórico pode ser usado para treinar modelos.</li>
+          <li><strong>Use Projects para isolar contextos.</strong> Dados de um cliente não devem cruzar para o projeto de outro.</li>
+          <li><strong>Revise antes de enviar para clientes.</strong> A IA não conhece seus relacionamentos — valide o tom e os fatos.</li>
+          <li><strong>Dados pessoais de terceiros? Não coloque no prompt.</strong> CPFs, cartões, dados médicos — nunca.</li>
+        </ul>
+        <div class="practice-highlight">Regra de ouro: se você não colocaria essa informação num email corporativo sem criptografia, não coloque na IA.</div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- HIERARQUIA & CONTAS -->
+<section id="contas" class="fade-in">
+  <div class="section-eyebrow" data-i18n="acc.ey">Hierarquia &amp; Contas</div>
+  <h2 class="section-title"><span data-i18n="acc.t1">ESTRUTURE</span><br><span class="accent" data-i18n="acc.t2">O TIME.</span></h2>
+  <p class="section-intro" data-i18n="acc.intro">A escolha do plano certo para cada função é o primeiro passo para usar IA com eficiência e sem desperdício.</p>
+
+  <div class="tier-grid">
+    <div class="tier-card tier-max">
+      <div class="tier-level">MAX</div>
+      <div class="tier-name" data-i18n="tier.max.name">Hub / Estratégia</div>
+      <p data-i18n="tier.max.body">AI Strategist e Leads de área. Contexto máximo, Claude Code, modelos mais recentes com prioridade.</p>
+      <span class="tier-role" data-i18n="tier.max.role">Leads · Estratégia</span>
+    </div>
+    <div class="tier-card tier-pro">
+      <div class="tier-level">PRO</div>
+      <div class="tier-name" data-i18n="tier.pro.name">Colaborador</div>
+      <p data-i18n="tier.pro.body">Uso regular de negócio. 5× mais capacidade que Free, Projects e acesso aos modelos principais incluídos.</p>
+      <span class="tier-role" data-i18n="tier.pro.role">Time</span>
+    </div>
+    <div class="tier-card tier-free">
+      <div class="tier-level">FREE</div>
+      <div class="tier-name" data-i18n="tier.free.name">Exploração</div>
+      <p data-i18n-html="tier.free.body">Testar antes de decidir. <strong style="color:var(--color-error)">Nunca usar com dados da empresa</strong> — no plano Free, o histórico pode ser usado para treinar modelos.</p>
+      <span class="tier-role" data-i18n="tier.free.role">Onboarding</span>
+    </div>
+  </div>
+
+  <!-- ORG HIERARCHY -->
+  <div class="org-tree-section">
+    <div class="org-tree-label" data-i18n="org.label">Estrutura recomendada por departamento</div>
+    <div class="org-tree">
+      <div class="org-hub-row">
+        <div class="org-hub-node">
+          <div class="org-hub-tag" data-i18n="org.hub.tag">⬡ AI HUB · Estratégia</div>
+          <div class="org-hub-name" data-i18n="org.hub.name">AI Strategist · Leads de Área</div>
+          <div class="gold-plan" data-i18n="org.hub.plan">Claude MAX</div>
+        </div>
+      </div>
+      <div class="org-v-line"></div>
+      <div class="org-h-line-wrap"><div class="org-h-line"></div></div>
+      <div class="org-depts-row">
+        <div class="org-dept-col">
+          <div class="org-v-line short"></div>
+          <div class="org-dept-node">
+            <div class="org-dept-name" data-i18n="org.d1">Marketing</div>
+            <div class="org-dept-plan" data-i18n="org.d.plan">MAX Lead</div>
+          </div>
+          <div class="org-v-line short"></div>
+          <div class="org-team-node">
+            <div class="org-team-plan" data-i18n="org.team.plan">Pro ×N</div>
+            <div class="org-team-sub" data-i18n="org.team.sub">Time</div>
+          </div>
+        </div>
+        <div class="org-dept-col">
+          <div class="org-v-line short"></div>
+          <div class="org-dept-node">
+            <div class="org-dept-name" data-i18n="org.d2">Sales</div>
+            <div class="org-dept-plan" data-i18n="org.d.plan">MAX Lead</div>
+          </div>
+          <div class="org-v-line short"></div>
+          <div class="org-team-node">
+            <div class="org-team-plan" data-i18n="org.team.plan">Pro ×N</div>
+            <div class="org-team-sub" data-i18n="org.team.sub">Time</div>
+          </div>
+        </div>
+        <div class="org-dept-col">
+          <div class="org-v-line short"></div>
+          <div class="org-dept-node">
+            <div class="org-dept-name" data-i18n="org.d3">Operations</div>
+            <div class="org-dept-plan" data-i18n="org.d.plan">MAX Lead</div>
+          </div>
+          <div class="org-v-line short"></div>
+          <div class="org-team-node">
+            <div class="org-team-plan" data-i18n="org.team.plan">Pro ×N</div>
+            <div class="org-team-sub" data-i18n="org.team.sub">Time</div>
+          </div>
+        </div>
+        <div class="org-dept-col">
+          <div class="org-v-line short"></div>
+          <div class="org-dept-node">
+            <div class="org-dept-name" data-i18n="org.d4">Tech / Dev</div>
+            <div class="org-dept-plan" data-i18n="org.d4.plan">MAX + Code</div>
+          </div>
+          <div class="org-v-line short"></div>
+          <div class="org-team-node">
+            <div class="org-team-plan" data-i18n="org.team.plan">Pro ×N</div>
+            <div class="org-team-sub" data-i18n="org.team.sub">Time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="org-tree-note" data-i18n="org.note">Cada departamento tem um Project dedicado com contexto isolado. Escalável conforme o crescimento da empresa.</div>
+  </div>
+
+  <div class="rules-golden">
+    <div class="rule-item">
+      <span class="rule-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></span>
+      <p data-i18n-html="rule1.body"><strong>Nunca compartilhe login.</strong> 1 conta = 1 pessoa. Compartilhar viola os termos e compromete a segurança.</p>
+    </div>
+    <div class="rule-item">
+      <span class="rule-icon"><svg viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></span>
+      <p data-i18n-html="rule2.body"><strong>Crie Projects por cliente ou projeto.</strong> Contexto isolado, reutilizável e consistente para o time inteiro.</p>
+    </div>
+    <div class="rule-item">
+      <span class="rule-icon"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg></span>
+      <p data-i18n-html="rule3.body"><strong>O Time Lead é o guardião do Project.</strong> Responsável pelas instruções iniciais e pela qualidade do contexto.</p>
+    </div>
+    <div class="rule-item">
+      <span class="rule-icon"><svg viewBox="0 0 24 24"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></span>
+      <p data-i18n-html="rule4.body"><strong>MAX vs Pro:</strong> MAX para quem usa IA como ferramenta central de trabalho. Pro para uso regular. Free apenas para exploração.</p>
+    </div>
+  </div>
+
+  <div class="sec-quote">
+    <p data-i18n="acc.quote">Se você não colocaria essa informação num email corporativo sem criptografia — não coloque na IA.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ARSENAL -->
+<section id="arsenal" class="fade-in">
+  <div class="section-eyebrow" data-i18n="ars.ey">Ferramentas</div>
+  <h2 class="section-title"><span data-i18n="ars.t1">Arsenal de IA.</span><br><span class="accent" data-i18n="ars.t2">O que usamos.</span></h2>
+  <p class="section-intro" data-i18n="ars.intro">Cada ferramenta tem um propósito claro. Usar a certa na hora certa é a diferença entre velocidade e retrabalho.</p>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div>
+      <h4 data-i18n="t1.name">Claude Projects</h4>
+      <p data-i18n="t1.body">Contexto persistente por cliente ou projeto. O time acessa o mesmo "cérebro" compartilhado.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg></div>
+      <h4 data-i18n="t2.name">Claude Code</h4>
+      <p data-i18n="t2.body">Automação, desenvolvimento e operações avançadas. Para os tech leads do time.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <h4 data-i18n="t3.name">NotebookLM</h4>
+      <p data-i18n="t3.body">Base de conhecimento interna. Perguntas sobre documentos da empresa com respostas citadas.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+      <h4 data-i18n="t4.name">Perplexity</h4>
+      <p data-i18n="t4.body">Pesquisa com fontes verificadas. Para quando você precisa de dados reais, não síntese de treinamento.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+      <h4 data-i18n="t5.name">ManyChat</h4>
+      <p data-i18n="t5.body">Automação de WhatsApp e Instagram. Fluxos inteligentes sem código para escalar atendimento.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+      <h4 data-i18n="t6.name">Canva AI</h4>
+      <p data-i18n="t6.body">Design assistido por IA. Criativos em minutos com identidade visual consistente.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+      <h4 data-i18n="t7.name">Claude Artifacts</h4>
+      <p data-i18n="t7.body">Output estruturado renderizável: planilhas, dashboards, landing pages — direto no chat.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></div>
+      <h4 data-i18n="t8.name">Agentes Multi-Step</h4>
+      <p data-i18n="t8.body">Sequências automáticas: pesquisa → análise → relatório → envio. Um comando, resultado completo.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FALE COMIGO -->
+<section id="contato" class="fade-in">
+  <div class="section-eyebrow" data-i18n="contact.ey">Implementação</div>
+  <h2 class="section-title"><span data-i18n="contact.t1">Posso ajudar</span><br><span class="accent" data-i18n="contact.t2">o seu time.</span></h2>
+  <p class="section-intro" data-i18n="contact.intro">Selecione os tópicos em que você quer suporte e mande um email. Vou responder com um plano específico para o seu contexto.</p>
+
+  <div class="contact-card">
+    <div class="contact-author">
+      <img class="contact-photo" src="assets/mauricio.jpg" alt="Mauricio Lacerda">
+      <div>
+        <div class="contact-name" data-i18n="contact.name">Mauricio Lacerda</div>
+        <div class="contact-role" data-i18n="contact.role">AI Strategist &amp; Operador de Sistemas Inteligentes</div>
+        <div class="contact-badges">
+          <span class="contact-badge neutral" data-i18n="contact.badge.prod">12+ meses em produção</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mit-credential">
+      <img src="assets/mit-seal.svg" alt="MIT" class="mit-credential-seal">
+      <div>
+        <h5 data-i18n="contact.mit.title">MIT AI &amp; ML for Business</h5>
+        <p data-i18n="contact.mit.body">Massachusetts Institute of Technology · Certificação em Inteligência Artificial e Machine Learning para Negócios. Base técnica e estratégica da metodologia aplicada neste guia.</p>
+      </div>
+    </div>
+
+    <div class="tags-label" data-i18n="tags.label">Selecione os tópicos em que precisa de ajuda</div>
+    <div class="tags-wrap" id="tags-wrap">
+      <div class="tag" onclick="toggleTag(this)" data-tagkey="tag1"><span class="tag-check"></span><span data-i18n="tag1">Configuração Claude MAX</span></div>
+      <div class="tag" onclick="toggleTag(this)" data-tagkey="tag2"><span class="tag-check"></span><span data-i18n="tag2">Treinamento do Time</span></div>
+      <div class="tag" onclick="toggleTag(this)" data-tagkey="tag3"><span class="tag-check"></span><span data-i18n="tag3">Automação de Workflows</span></div>
+      <div class="tag" onclick="toggleTag(this)" data-tagkey="tag4"><span class="tag-check"></span><span data-i18n="tag4">Agentes IA</span></div>
+      <div class="tag" onclick="toggleTag(this)" data-tagkey="tag5"><span class="tag-check"></span><span data-i18n="tag5">Segurança &amp; Compliance</span></div>
+      <div class="tag" onclick="toggleTag(this)" data-tagkey="tag6"><span class="tag-check"></span><span data-i18n="tag6">NotebookLM &amp; Knowledge Base</span></div>
+      <div class="tag" onclick="toggleTag(this)" data-tagkey="tag7"><span class="tag-check"></span><span data-i18n="tag7">Arquitetura de Prompts</span></div>
+      <div class="tag" onclick="toggleTag(this)" data-tagkey="tag8"><span class="tag-check"></span><span data-i18n="tag8">Claude Code</span></div>
+      <div class="tag" onclick="toggleTag(this)" data-tagkey="tag9"><span class="tag-check"></span><span data-i18n="tag9">Estratégia de IA</span></div>
+    </div>
+
+    <div class="contact-cta">
+      <a id="email-btn" class="btn-primary disabled" href="#" onclick="return sendEmail(event)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span data-i18n="btn.email">Enviar Email</span>
+      </a>
+      <span class="selected-count" id="selected-count" data-i18n="btn.select">Selecione ao menos 1 tópico</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+      <p data-i18n="footer.brand">A única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col1">Playbook</h4>
+      <a href="#contexto" data-i18n="footer.l1">Por que IA</a>
+      <a href="#contas" data-i18n="footer.l2">Contas</a>
+      <a href="#praticas" data-i18n="footer.l3">Boas Práticas</a>
+      <a href="#arsenal" data-i18n="footer.l4">Arsenal</a>
+      <a href="#contato" data-i18n="footer.l5">Fale Comigo</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col2">Design System</h4>
+      <a href="index.html" data-i18n="footer.ds1">← Voltar ao Hub</a>
+      <a href="playbooks/ai-marketing.html" data-i18n="footer.ds2">AI Marketing Playbook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copy">© 2026 ABSOLUT Sport · IA para Times v1.0 · Abril 2026</span>
+    <span data-i18n="footer.coauth">Mauricio Lacerda × Rafa Rafa</span>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+window.I18N_DICT = {
+
+/* ─── PORTUGUÊS ──────────────────────────────────────────── */
+pt: {
+  'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'Enterprise AI Guide',
+  'nav.back':'← Voltar ao Hub',
+  'nav.credit.title':'Mauricio × Rafa · sugestões pra design@',
+
+  'hero.eyebrow':'Corporativo · Playbook Interno · v1.0',
+  'hero.h1a':'IA PARA O SEU TIME.',
+  'hero.h1b':'CADA PESSOA,<br>UM TIME INTEIRO.',
+  'hero.sub':'Não se trata de substituir pessoas. Trata-se de dar a cada uma delas a capacidade de um time inteiro. Contas, segurança, boas práticas e arsenal — tudo que o time precisa para usar IA com confiança e resultado.',
+  'hero.badge.mit':'MIT AI & ML for Business',
+  'hero.badge.prod':'12+ meses em produção',
+  'hero.badge.auth':'Mauricio Lacerda · AI Strategist',
+
+  'why.ey':'O contexto',
+  'why.t1':'Por que o time',
+  'why.t2':'precisa de IA agora.',
+  'why.intro':'Velocidade, escala e consistência. Os três vetores que mudam quando IA entra no fluxo de trabalho do time.',
+  'p1.title':'Velocidade',
+  'p1.body':'Tarefas que levavam horas — análise, redação, pesquisa, código — entregues em minutos com o contexto certo.',
+  'p2.title':'Escala',
+  'p2.body':'Um único operador conduz múltiplos agentes IA em paralelo, amplificando a capacidade do time sem aumentar o headcount.',
+  'p3.title':'Consistência',
+  'p3.body':'Com o contexto certo — Projects, Skills, Specs — o output é consistente. A qualidade não depende do humor ou da memória de ninguém.',
+
+  'acc.ey':'Hierarquia & Contas',
+  'acc.t1':'ESTRUTURE',
+  'acc.t2':'O TIME.',
+  'acc.intro':'A escolha do plano certo para cada função é o primeiro passo para usar IA com eficiência e sem desperdício.',
+  'tier.max.name':'Hub / Estratégia',
+  'tier.max.body':'AI Strategist e Leads de área. Contexto máximo, Claude Code, modelos mais recentes com prioridade.',
+  'tier.max.role':'Leads · Estratégia',
+  'tier.pro.name':'Colaborador',
+  'tier.pro.body':'Uso regular de negócio. 5× mais capacidade que Free, Projects e acesso aos modelos principais incluídos.',
+  'tier.pro.role':'Time',
+  'tier.free.name':'Exploração',
+  'tier.free.body':'Testar antes de decidir. <strong style="color:var(--color-error)">Nunca usar com dados da empresa</strong> — no plano Free, o histórico pode ser usado para treinar modelos.',
+  'tier.free.role':'Onboarding',
+
+  'org.label':'Estrutura recomendada por departamento',
+  'org.hub.tag':'⬡ AI HUB · Estratégia',
+  'org.hub.name':'AI Strategist · Leads de Área',
+  'org.hub.plan':'Claude MAX',
+  'org.d1':'Marketing','org.d2':'Sales','org.d3':'Operations','org.d4':'Tech / Dev',
+  'org.d.plan':'MAX Lead','org.d4.plan':'MAX + Code',
+  'org.team.plan':'Pro ×N','org.team.sub':'Time',
+  'org.note':'Cada departamento tem um Project dedicado com contexto isolado. Escalável conforme o crescimento da empresa.',
+
+  'rule1.body':'<strong>Nunca compartilhe login.</strong> 1 conta = 1 pessoa. Compartilhar viola os termos e compromete a segurança.',
+  'rule2.body':'<strong>Crie Projects por cliente ou projeto.</strong> Contexto isolado, reutilizável e consistente para o time inteiro.',
+  'rule3.body':'<strong>O Time Lead é o guardião do Project.</strong> Responsável pelas instruções iniciais e pela qualidade do contexto.',
+  'rule4.body':'<strong>MAX vs Pro:</strong> MAX para quem usa IA como ferramenta central de trabalho. Pro para uso regular. Free apenas para exploração.',
+  'acc.quote':'Se você não colocaria essa informação num email corporativo sem criptografia — não coloque na IA.',
+
+  'prac.ey':'Linguagem & Uso',
+  'prac.t1':'FALE COM',
+  'prac.t2':'A MÁQUINA.',
+  'prac.intro':'Baseado em 12+ meses de operação diária com IA e na metodologia MIT AI & ML for Business. Expanda cada seção.',
+  's1.sum':'Segurança e Privacidade',
+  's1.body':'<ul class="practice-list"><li><strong>Nunca coloque senhas, tokens ou chaves de API em prompts.</strong> Use variáveis de ambiente — nunca texto direto.</li><li><strong>Não use conta Free com dados confidenciais da empresa.</strong> No plano Free, o histórico pode ser usado para treinar modelos.</li><li><strong>Use Projects para isolar contextos.</strong> Dados de um cliente não devem cruzar para o projeto de outro.</li><li><strong>Revise antes de enviar para clientes.</strong> A IA não conhece seus relacionamentos — valide o tom e os fatos.</li><li><strong>Dados pessoais de terceiros? Não coloque no prompt.</strong> CPFs, cartões, dados médicos — nunca.</li></ul><div class="practice-highlight">Regra de ouro: se você não colocaria essa informação num email corporativo sem criptografia, não coloque na IA.</div>',
+  's2.sum':'Como Conversar com IA',
+  's2.body':'<ul class="practice-list"><li><strong>Dê um papel:</strong> "Você é especialista em hospitalidade de luxo..." — contexto muda tudo.</li><li><strong>Seja específico:</strong> "Escreva um email de 3 parágrafos, tom profissional mas caloroso, para o cliente que pediu prazo estendido."</li><li><strong>Dê exemplos (few-shot):</strong> "Aqui está um email no tom que queremos: [exemplo]. Agora escreva um similar sobre..."</li><li><strong>Itere:</strong> Nunca aceite o primeiro resultado sem ajustes. Peça: "Torne mais conciso", "Adicione urgência", "Reformule o 2º parágrafo."</li><li><strong>Use Artifacts:</strong> Para tabelas, documentos e código — peça output estruturado, não paredes de texto.</li></ul><div class="practice-highlight"><strong>Método RPI:</strong> Research → Plan → Implement. Nunca pule direto para a execução.</div>',
+  's3.sum':'Economia de Tokens',
+  's3.body':'<ul class="practice-list"><li><strong>Use Projects com instruções fixas.</strong> Configurado uma vez, você não repete o contexto em cada conversa.</li><li><strong>Resuma conversas longas.</strong> Antes de continuar: "Resuma em 5 pontos o que decidimos até agora" → nova conversa.</li><li><strong>Modelos certos para as tarefas certas.</strong> Haiku para triagem e rascunhos; Sonnet para trabalho complexo; Opus para decisões estratégicas.</li><li><strong>Não carregue arquivos desnecessários.</strong> O contexto é finito — só inclua o que é realmente relevante.</li><li><strong>Regra dos 40%:</strong> Máximo 40% do contexto deve ser histórico. 60% deve ser instrução estruturada.</li></ul><div class="practice-highlight">Projects + Regra dos 40% = contexto sempre fresco. Qualidade consistente sem desperdício.</div>',
+  's4.sum':'Como Extrair o Máximo',
+  's4.body':'<ul class="practice-list"><li><strong>Método RPI:</strong> Research (explore com IA livre) → Plan (estruture o que aprendeu) → Implement (execute com contexto limpo).</li><li><strong>Use Research Mode do Claude</strong> para tarefas que precisam de fontes externas verificadas.</li><li><strong>NotebookLM para base de conhecimento interna.</strong> Coloque manuais, processos e PDFs — a IA responde com base nos seus documentos.</li><li><strong>Crie Skills reutilizáveis.</strong> Tarefas recorrentes viram instruções salvas: email de follow-up, proposta, análise de métricas.</li><li><strong>Valide sempre:</strong> IA pode alucinar. Use como acelerador inteligente, não como fonte final de verdade.</li></ul><div class="practice-highlight">NotebookLM com os documentos da empresa = IA que fala a linguagem da empresa, não do mundo genérico.</div>',
+
+  'ars.ey':'Ferramentas',
+  'ars.t1':'Arsenal de IA.',
+  'ars.t2':'O que usamos.',
+  'ars.intro':'Cada ferramenta tem um propósito claro. Usar a certa na hora certa é a diferença entre velocidade e retrabalho.',
+  't1.name':'Claude Projects','t1.body':'Contexto persistente por cliente ou projeto. O time acessa o mesmo "cérebro" compartilhado.',
+  't2.name':'Claude Code','t2.body':'Automação, desenvolvimento e operações avançadas. Para os tech leads do time.',
+  't3.name':'NotebookLM','t3.body':'Base de conhecimento interna. Perguntas sobre documentos da empresa com respostas citadas.',
+  't4.name':'Perplexity','t4.body':'Pesquisa com fontes verificadas. Para quando você precisa de dados reais, não síntese de treinamento.',
+  't5.name':'ManyChat','t5.body':'Automação de WhatsApp e Instagram. Fluxos inteligentes sem código para escalar atendimento.',
+  't6.name':'Canva AI','t6.body':'Design assistido por IA. Criativos em minutos com identidade visual consistente.',
+  't7.name':'Claude Artifacts','t7.body':'Output estruturado renderizável: planilhas, dashboards, landing pages — direto no chat.',
+  't8.name':'Agentes Multi-Step','t8.body':'Sequências automáticas: pesquisa → análise → relatório → envio. Um comando, resultado completo.',
+
+  'contact.ey':'Implementação',
+  'contact.t1':'Posso ajudar',
+  'contact.t2':'o seu time.',
+  'contact.intro':'Selecione os tópicos em que você quer suporte e mande um email. Vou responder com um plano específico para o seu contexto.',
+  'contact.name':'Mauricio Lacerda',
+  'contact.role':'AI Strategist & Operador de Sistemas Inteligentes',
+  'contact.badge.prod':'12+ meses em produção',
+  'contact.mit.title':'MIT AI & ML for Business',
+  'contact.mit.body':'Massachusetts Institute of Technology · Certificação em Inteligência Artificial e Machine Learning para Negócios. Base técnica e estratégica da metodologia aplicada neste guia.',
+  'tags.label':'Selecione os tópicos em que precisa de ajuda',
+  'tag1':'Configuração Claude MAX','tag2':'Treinamento do Time','tag3':'Automação de Workflows',
+  'tag4':'Agentes IA','tag5':'Segurança & Compliance','tag6':'NotebookLM & Knowledge Base',
+  'tag7':'Arquitetura de Prompts','tag8':'Claude Code','tag9':'Estratégia de IA',
+  'btn.email':'Enviar Email','btn.select':'Selecione ao menos 1 tópico',
+
+  'footer.brand':'A única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™.',
+  'footer.col1':'Playbook','footer.l1':'Por que IA','footer.l2':'Contas','footer.l3':'Boas Práticas','footer.l4':'Arsenal','footer.l5':'Fale Comigo',
+  'footer.col2':'Design System','footer.ds1':'← Voltar ao Hub','footer.ds2':'AI Marketing Playbook',
+  'footer.copy':'© 2026 ABSOLUT Sport · IA para Times v1.0 · Abril 2026',
+  'footer.coauth':'Mauricio Lacerda × Rafa Rafa'
+},
+
+/* ─── ENGLISH ────────────────────────────────────────────── */
+en: {
+  'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'Enterprise AI Guide',
+  'nav.back':'← Back to Hub',
+  'nav.credit.title':'Mauricio × Rafa · suggestions to design@',
+
+  'hero.eyebrow':'Corporate · Internal Playbook · v1.0',
+  'hero.h1a':'AI FOR YOUR TEAM.',
+  'hero.h1b':'EACH PERSON,<br>A WHOLE TEAM.',
+  'hero.sub':'It\'s not about replacing people. It\'s about giving each of them the capacity of an entire team. Accounts, security, best practices and toolkit — everything your team needs to use AI with confidence and results.',
+  'hero.badge.mit':'MIT AI & ML for Business',
+  'hero.badge.prod':'12+ months in production',
+  'hero.badge.auth':'Mauricio Lacerda · AI Strategist',
+
+  'why.ey':'Context',
+  'why.t1':'Why the team',
+  'why.t2':'needs AI now.',
+  'why.intro':'Speed, scale and consistency. The three vectors that shift when AI enters the team\'s workflow.',
+  'p1.title':'Speed',
+  'p1.body':'Tasks that used to take hours — analysis, writing, research, code — delivered in minutes with the right context.',
+  'p2.title':'Scale',
+  'p2.body':'A single operator runs multiple AI agents in parallel, amplifying team capacity without adding headcount.',
+  'p3.title':'Consistency',
+  'p3.body':'With the right context — Projects, Skills, Specs — output is consistent. Quality doesn\'t depend on anyone\'s mood or memory.',
+
+  'acc.ey':'Hierarchy & Accounts',
+  'acc.t1':'STRUCTURE',
+  'acc.t2':'YOUR TEAM.',
+  'acc.intro':'Choosing the right plan for each role is the first step to using AI efficiently without waste.',
+  'tier.max.name':'Hub / Strategy',
+  'tier.max.body':'AI Strategist and team leads. Maximum context, Claude Code, latest models with priority access.',
+  'tier.max.role':'Leads · Strategy',
+  'tier.pro.name':'Collaborator',
+  'tier.pro.body':'Regular business use. 5× more capacity than Free, Projects and access to main models included.',
+  'tier.pro.role':'Team',
+  'tier.free.name':'Exploration',
+  'tier.free.body':'Test before deciding. <strong style="color:var(--color-error)">Never use with company data</strong> — on the Free plan, history may be used to train models.',
+  'tier.free.role':'Onboarding',
+
+  'org.label':'Recommended structure by department',
+  'org.hub.tag':'⬡ AI HUB · Strategy',
+  'org.hub.name':'AI Strategist · Area Leads',
+  'org.hub.plan':'Claude MAX',
+  'org.d1':'Marketing','org.d2':'Sales','org.d3':'Operations','org.d4':'Tech / Dev',
+  'org.d.plan':'MAX Lead','org.d4.plan':'MAX + Code',
+  'org.team.plan':'Pro ×N','org.team.sub':'Team',
+  'org.note':'Each department has a dedicated Project with isolated context. Scalable as the company grows.',
+
+  'rule1.body':'<strong>Never share login.</strong> 1 account = 1 person. Sharing violates terms and compromises security.',
+  'rule2.body':'<strong>Create Projects per client or project.</strong> Isolated, reusable and consistent context for the whole team.',
+  'rule3.body':'<strong>The Team Lead owns the Project.</strong> Responsible for the initial instructions and context quality.',
+  'rule4.body':'<strong>MAX vs Pro:</strong> MAX for those who use AI as a central work tool. Pro for regular use. Free for exploration only.',
+  'acc.quote':'If you wouldn\'t put that information in a corporate email without encryption — don\'t put it in AI.',
+
+  'prac.ey':'Language & Usage',
+  'prac.t1':'TALK TO',
+  'prac.t2':'THE MACHINE.',
+  'prac.intro':'Based on 12+ months of daily AI operations and the MIT AI & ML for Business methodology. Expand each section.',
+  's1.sum':'Security & Privacy',
+  's1.body':'<ul class="practice-list"><li><strong>Never put passwords, tokens or API keys in prompts.</strong> Use environment variables — never direct text.</li><li><strong>Don\'t use a Free account with confidential company data.</strong> On the Free plan, history may be used to train models.</li><li><strong>Use Projects to isolate contexts.</strong> Data from one client should not cross into another project.</li><li><strong>Review before sending to clients.</strong> AI doesn\'t know your relationships — validate tone and facts.</li><li><strong>Third-party personal data? Don\'t put it in the prompt.</strong> IDs, cards, medical data — never.</li></ul><div class="practice-highlight">Golden rule: if you wouldn\'t put that information in a corporate email without encryption, don\'t put it in AI.</div>',
+  's2.sum':'How to Talk to AI',
+  's2.body':'<ul class="practice-list"><li><strong>Give it a role:</strong> "You are a luxury hospitality specialist..." — context changes everything.</li><li><strong>Be specific:</strong> "Write a 3-paragraph email, professional but warm tone, for the client who requested an extended deadline."</li><li><strong>Give examples (few-shot):</strong> "Here\'s an email in the tone we want: [example]. Now write a similar one about..."</li><li><strong>Iterate:</strong> Never accept the first result without adjustments. Ask: "Make it more concise", "Add urgency", "Rewrite the 2nd paragraph."</li><li><strong>Use Artifacts:</strong> For tables, documents and code — request structured output, not walls of text.</li></ul><div class="practice-highlight"><strong>RPI Method:</strong> Research → Plan → Implement. Never jump straight to execution.</div>',
+  's3.sum':'Token Economy',
+  's3.body':'<ul class="practice-list"><li><strong>Use Projects with fixed instructions.</strong> Once set up, you don\'t repeat context in every conversation.</li><li><strong>Summarize long conversations.</strong> Before continuing: "Summarize in 5 points what we decided so far" → new conversation.</li><li><strong>Right models for right tasks.</strong> Haiku for triage and quick drafts; Sonnet for complex work; Opus for strategic decisions.</li><li><strong>Don\'t load unnecessary files.</strong> Context is finite — only include what is truly relevant.</li><li><strong>The 40% rule:</strong> Maximum 40% of context should be conversation history. 60% should be structured instruction.</li></ul><div class="practice-highlight">Projects + 40% Rule = always fresh context. Consistent quality without waste.</div>',
+  's4.sum':'How to Extract the Most',
+  's4.body':'<ul class="practice-list"><li><strong>RPI Method:</strong> Research (explore freely with AI) → Plan (structure what you learned) → Implement (execute with clean context).</li><li><strong>Use Claude\'s Research Mode</strong> for tasks that need verified external sources.</li><li><strong>NotebookLM for internal knowledge base.</strong> Upload manuals, processes and PDFs — AI answers based on your documents.</li><li><strong>Create reusable Skills.</strong> Recurring tasks become saved instructions: follow-up email, proposal, metrics analysis.</li><li><strong>Always validate:</strong> AI can hallucinate. Use it as an intelligent accelerator, not as the final source of truth.</li></ul><div class="practice-highlight">NotebookLM with company documents = AI that speaks your company\'s language, not the generic world\'s.</div>',
+
+  'ars.ey':'Tools',
+  'ars.t1':'AI Arsenal.',
+  'ars.t2':'What we use.',
+  'ars.intro':'Each tool has a clear purpose. Using the right one at the right time is the difference between speed and rework.',
+  't1.name':'Claude Projects','t1.body':'Persistent context per client or project. The team accesses the same shared "brain".',
+  't2.name':'Claude Code','t2.body':'Automation, development and advanced operations. For the team\'s tech leads.',
+  't3.name':'NotebookLM','t3.body':'Internal knowledge base. Ask questions about company documents with cited answers.',
+  't4.name':'Perplexity','t4.body':'Search with verified sources. For when you need real data, not training synthesis.',
+  't5.name':'ManyChat','t5.body':'WhatsApp and Instagram automation. Intelligent no-code flows to scale customer service.',
+  't6.name':'Canva AI','t6.body':'AI-assisted design. Creative assets in minutes with consistent brand identity.',
+  't7.name':'Claude Artifacts','t7.body':'Renderable structured output: spreadsheets, dashboards, landing pages — directly in chat.',
+  't8.name':'Multi-Step Agents','t8.body':'Automated sequences: research → analysis → report → send. One command, complete result.',
+
+  'contact.ey':'Implementation',
+  'contact.t1':'I can help',
+  'contact.t2':'your team.',
+  'contact.intro':'Select the topics you want support on and send an email. I\'ll respond with a specific plan for your context.',
+  'contact.name':'Mauricio Lacerda',
+  'contact.role':'AI Strategist & Intelligent Systems Operator',
+  'contact.badge.prod':'12+ months in production',
+  'contact.mit.title':'MIT AI & ML for Business',
+  'contact.mit.body':'Massachusetts Institute of Technology · Certification in Artificial Intelligence and Machine Learning for Business. Technical and strategic foundation of the methodology applied in this guide.',
+  'tags.label':'Select the topics where you need help',
+  'tag1':'Claude MAX Setup','tag2':'Team Training','tag3':'Workflow Automation',
+  'tag4':'AI Agents','tag5':'Security & Compliance','tag6':'NotebookLM & Knowledge Base',
+  'tag7':'Prompt Architecture','tag8':'Claude Code','tag9':'AI Strategy',
+  'btn.email':'Send Email','btn.select':'Select at least 1 topic',
+
+  'footer.brand':'The only official package agency for CONMEBOL Libertadores™ and Sudamericana™ Finals.',
+  'footer.col1':'Playbook','footer.l1':'Why AI','footer.l2':'Accounts','footer.l3':'Best Practices','footer.l4':'Arsenal','footer.l5':'Contact Me',
+  'footer.col2':'Design System','footer.ds1':'← Back to Hub','footer.ds2':'AI Marketing Playbook',
+  'footer.copy':'© 2026 ABSOLUT Sport · AI for Teams v1.0 · April 2026',
+  'footer.coauth':'Mauricio Lacerda × Rafa Rafa'
+},
+
+/* ─── ESPAÑOL ────────────────────────────────────────────── */
+es: {
+  'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'Enterprise AI Guide',
+  'nav.back':'← Volver al Hub',
+  'nav.credit.title':'Mauricio × Rafa · sugerencias a design@',
+
+  'hero.eyebrow':'Corporativo · Playbook Interno · v1.0',
+  'hero.h1a':'IA PARA TU EQUIPO.',
+  'hero.h1b':'CADA PERSONA,<br>UN EQUIPO ENTERO.',
+  'hero.sub':'No se trata de reemplazar personas. Se trata de darle a cada una la capacidad de un equipo entero. Cuentas, seguridad, buenas prácticas y arsenal — todo lo que el equipo necesita para usar IA con confianza y resultados.',
+  'hero.badge.mit':'MIT AI & ML for Business',
+  'hero.badge.prod':'12+ meses en producción',
+  'hero.badge.auth':'Mauricio Lacerda · AI Strategist',
+
+  'why.ey':'El contexto',
+  'why.t1':'Por qué el equipo',
+  'why.t2':'necesita IA ahora.',
+  'why.intro':'Velocidad, escala y consistencia. Los tres vectores que cambian cuando la IA entra en el flujo de trabajo del equipo.',
+  'p1.title':'Velocidad',
+  'p1.body':'Tareas que tomaban horas — análisis, redacción, investigación, código — entregadas en minutos con el contexto correcto.',
+  'p2.title':'Escala',
+  'p2.body':'Un único operador conduce múltiples agentes IA en paralelo, amplificando la capacidad del equipo sin aumentar el personal.',
+  'p3.title':'Consistencia',
+  'p3.body':'Con el contexto correcto — Projects, Skills, Specs — el output es consistente. La calidad no depende del estado de ánimo ni de la memoria de nadie.',
+
+  'acc.ey':'Jerarquía & Cuentas',
+  'acc.t1':'ESTRUCTURA',
+  'acc.t2':'EL EQUIPO.',
+  'acc.intro':'Elegir el plan correcto para cada función es el primer paso para usar IA con eficiencia y sin desperdicio.',
+  'tier.max.name':'Hub / Estrategia',
+  'tier.max.body':'AI Strategist y líderes de área. Contexto máximo, Claude Code, modelos más recientes con prioridad.',
+  'tier.max.role':'Líderes · Estrategia',
+  'tier.pro.name':'Colaborador',
+  'tier.pro.body':'Uso regular de negocio. 5× más capacidad que Free, Projects y acceso a los modelos principales incluidos.',
+  'tier.pro.role':'Equipo',
+  'tier.free.name':'Exploración',
+  'tier.free.body':'Probar antes de decidir. <strong style="color:var(--color-error)">Nunca usar con datos de la empresa</strong> — en el plan Free, el historial puede usarse para entrenar modelos.',
+  'tier.free.role':'Onboarding',
+
+  'org.label':'Estructura recomendada por departamento',
+  'org.hub.tag':'⬡ AI HUB · Estrategia',
+  'org.hub.name':'AI Strategist · Líderes de Área',
+  'org.hub.plan':'Claude MAX',
+  'org.d1':'Marketing','org.d2':'Sales','org.d3':'Operations','org.d4':'Tech / Dev',
+  'org.d.plan':'MAX Lead','org.d4.plan':'MAX + Code',
+  'org.team.plan':'Pro ×N','org.team.sub':'Equipo',
+  'org.note':'Cada departamento tiene un Project dedicado con contexto aislado. Escalable conforme crece la empresa.',
+
+  'rule1.body':'<strong>Nunca compartas login.</strong> 1 cuenta = 1 persona. Compartir viola los términos y compromete la seguridad.',
+  'rule2.body':'<strong>Crea Projects por cliente o proyecto.</strong> Contexto aislado, reutilizable y consistente para todo el equipo.',
+  'rule3.body':'<strong>El Team Lead es el guardián del Project.</strong> Responsable de las instrucciones iniciales y la calidad del contexto.',
+  'rule4.body':'<strong>MAX vs Pro:</strong> MAX para quienes usan IA como herramienta central. Pro para uso regular. Free solo para exploración.',
+  'acc.quote':'Si no pondrías esa información en un email corporativo sin cifrar — no la pongas en la IA.',
+
+  'prac.ey':'Lenguaje & Uso',
+  'prac.t1':'HABLA CON',
+  'prac.t2':'LA MÁQUINA.',
+  'prac.intro':'Basado en 12+ meses de operación diaria con IA y la metodología MIT AI & ML for Business. Expande cada sección.',
+  's1.sum':'Seguridad y Privacidad',
+  's1.body':'<ul class="practice-list"><li><strong>Nunca pongas contraseñas, tokens o claves API en prompts.</strong> Usa variables de entorno — nunca texto directo.</li><li><strong>No uses cuenta Free con datos confidenciales de la empresa.</strong> En el plan Free, el historial puede usarse para entrenar modelos.</li><li><strong>Usa Projects para aislar contextos.</strong> Los datos de un cliente no deben cruzarse al proyecto de otro.</li><li><strong>Revisa antes de enviar a clientes.</strong> La IA no conoce tus relaciones — valida el tono y los hechos.</li><li><strong>¿Datos personales de terceros? No los pongas en el prompt.</strong> DNI, tarjetas, datos médicos — nunca.</li></ul><div class="practice-highlight">Regla de oro: si no pondrías esa información en un email corporativo sin cifrar, no la pongas en la IA.</div>',
+  's2.sum':'Cómo Hablar con IA',
+  's2.body':'<ul class="practice-list"><li><strong>Dale un rol:</strong> "Eres especialista en hospitalidad de lujo..." — el contexto lo cambia todo.</li><li><strong>Sé específico:</strong> "Escribe un email de 3 párrafos, tono profesional pero cálido, para el cliente que pidió plazo extendido."</li><li><strong>Da ejemplos (few-shot):</strong> "Aquí hay un email en el tono que queremos: [ejemplo]. Ahora escribe uno similar sobre..."</li><li><strong>Itera:</strong> Nunca aceptes el primer resultado sin ajustes. Pide: "Hazlo más conciso", "Agrega urgencia", "Reescribe el 2.º párrafo."</li><li><strong>Usa Artifacts:</strong> Para tablas, documentos y código — pide output estructurado, no paredes de texto.</li></ul><div class="practice-highlight"><strong>Método RPI:</strong> Research → Plan → Implement. Nunca saltes directo a la ejecución.</div>',
+  's3.sum':'Economía de Tokens',
+  's3.body':'<ul class="practice-list"><li><strong>Usa Projects con instrucciones fijas.</strong> Una vez configurado, no repites el contexto en cada conversación.</li><li><strong>Resume conversaciones largas.</strong> Antes de continuar: "Resume en 5 puntos lo que decidimos hasta ahora" → nueva conversación.</li><li><strong>Modelos correctos para las tareas correctas.</strong> Haiku para triaje y borradores; Sonnet para trabajo complejo; Opus para decisiones estratégicas.</li><li><strong>No cargues archivos innecesarios.</strong> El contexto es finito — incluye solo lo realmente relevante.</li><li><strong>Regla del 40%:</strong> Máximo 40% del contexto debe ser historial. 60% debe ser instrucción estructurada.</li></ul><div class="practice-highlight">Projects + Regla del 40% = contexto siempre fresco. Calidad consistente sin desperdicio.</div>',
+  's4.sum':'Cómo Extraer el Máximo',
+  's4.body':'<ul class="practice-list"><li><strong>Método RPI:</strong> Research (explora libremente con IA) → Plan (estructura lo que aprendiste) → Implement (ejecuta con contexto limpio).</li><li><strong>Usa el Research Mode de Claude</strong> para tareas que necesitan fuentes externas verificadas.</li><li><strong>NotebookLM para base de conocimiento interna.</strong> Sube manuales, procesos y PDFs — la IA responde basándose en tus documentos.</li><li><strong>Crea Skills reutilizables.</strong> Las tareas recurrentes se convierten en instrucciones guardadas: email de seguimiento, propuesta, análisis de métricas.</li><li><strong>Valida siempre:</strong> La IA puede alucinar. Úsala como acelerador inteligente, no como fuente final de verdad.</li></ul><div class="practice-highlight">NotebookLM con los documentos de la empresa = IA que habla el idioma de la empresa, no del mundo genérico.</div>',
+
+  'ars.ey':'Herramientas',
+  'ars.t1':'Arsenal de IA.',
+  'ars.t2':'Lo que usamos.',
+  'ars.intro':'Cada herramienta tiene un propósito claro. Usar la correcta en el momento correcto es la diferencia entre velocidad y retrabajo.',
+  't1.name':'Claude Projects','t1.body':'Contexto persistente por cliente o proyecto. El equipo accede al mismo "cerebro" compartido.',
+  't2.name':'Claude Code','t2.body':'Automatización, desarrollo y operaciones avanzadas. Para los tech leads del equipo.',
+  't3.name':'NotebookLM','t3.body':'Base de conocimiento interna. Preguntas sobre documentos de la empresa con respuestas citadas.',
+  't4.name':'Perplexity','t4.body':'Búsqueda con fuentes verificadas. Para cuando necesitas datos reales, no síntesis de entrenamiento.',
+  't5.name':'ManyChat','t5.body':'Automatización de WhatsApp e Instagram. Flujos inteligentes sin código para escalar la atención.',
+  't6.name':'Canva AI','t6.body':'Diseño asistido por IA. Creativos en minutos con identidad visual consistente.',
+  't7.name':'Claude Artifacts','t7.body':'Output estructurado renderizable: planillas, dashboards, landing pages — directo en el chat.',
+  't8.name':'Agentes Multi-Step','t8.body':'Secuencias automáticas: investigación → análisis → informe → envío. Un comando, resultado completo.',
+
+  'contact.ey':'Implementación',
+  'contact.t1':'Puedo ayudar',
+  'contact.t2':'a tu equipo.',
+  'contact.intro':'Selecciona los temas en los que quieres apoyo y envía un email. Responderé con un plan específico para tu contexto.',
+  'contact.name':'Mauricio Lacerda',
+  'contact.role':'AI Strategist & Operador de Sistemas Inteligentes',
+  'contact.badge.prod':'12+ meses en producción',
+  'contact.mit.title':'MIT AI & ML for Business',
+  'contact.mit.body':'Massachusetts Institute of Technology · Certificación en Inteligencia Artificial y Machine Learning para Negocios. Base técnica y estratégica de la metodología aplicada en esta guía.',
+  'tags.label':'Selecciona los temas en los que necesitas ayuda',
+  'tag1':'Configuración Claude MAX','tag2':'Capacitación del Equipo','tag3':'Automatización de Workflows',
+  'tag4':'Agentes IA','tag5':'Seguridad & Compliance','tag6':'NotebookLM & Base de Conocimiento',
+  'tag7':'Arquitectura de Prompts','tag8':'Claude Code','tag9':'Estrategia de IA',
+  'btn.email':'Enviar Email','btn.select':'Selecciona al menos 1 tema',
+
+  'footer.brand':'La única agencia oficial de paquetes para las Finales de la CONMEBOL Libertadores™ y Sudamericana™.',
+  'footer.col1':'Playbook','footer.l1':'Por qué IA','footer.l2':'Cuentas','footer.l3':'Buenas Prácticas','footer.l4':'Arsenal','footer.l5':'Contáctame',
+  'footer.col2':'Design System','footer.ds1':'← Volver al Hub','footer.ds2':'AI Marketing Playbook',
+  'footer.copy':'© 2026 ABSOLUT Sport · IA para Equipos v1.0 · Abril 2026',
+  'footer.coauth':'Mauricio Lacerda × Rafa Rafa'
+},
+
+/* ─── DEUTSCH ────────────────────────────────────────────── */
+de: {
+  'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'Enterprise AI Guide',
+  'nav.back':'← Zurück zum Hub',
+  'nav.credit.title':'Mauricio × Rafa · Vorschläge an design@',
+
+  'hero.eyebrow':'Unternehmen · Internes Playbook · v1.0',
+  'hero.h1a':'KI FÜR IHR TEAM.',
+  'hero.h1b':'JEDE PERSON,<br>EIN GANZES TEAM.',
+  'hero.sub':'Es geht nicht darum, Menschen zu ersetzen. Es geht darum, jedem die Kapazität eines ganzen Teams zu geben. Konten, Sicherheit, Best Practices und Toolkit — alles, was das Team braucht, um KI mit Vertrauen und Ergebnis einzusetzen.',
+  'hero.badge.mit':'MIT AI & ML for Business',
+  'hero.badge.prod':'12+ Monate im Einsatz',
+  'hero.badge.auth':'Mauricio Lacerda · AI Strategist',
+
+  'why.ey':'Kontext',
+  'why.t1':'Warum das Team',
+  'why.t2':'KI jetzt braucht.',
+  'why.intro':'Geschwindigkeit, Skalierung und Konsistenz. Die drei Vektoren, die sich verändern, wenn KI in den Team-Workflow einzieht.',
+  'p1.title':'Geschwindigkeit',
+  'p1.body':'Aufgaben, die Stunden dauerten — Analyse, Texte, Recherche, Code — in Minuten mit dem richtigen Kontext geliefert.',
+  'p2.title':'Skalierung',
+  'p2.body':'Ein einziger Operator führt mehrere KI-Agenten parallel, multipliziert die Teamkapazität ohne zusätzliches Personal.',
+  'p3.title':'Konsistenz',
+  'p3.body':'Mit dem richtigen Kontext — Projects, Skills, Specs — ist der Output konsistent. Die Qualität hängt nicht von der Stimmung oder Erinnerung von niemandem ab.',
+
+  'acc.ey':'Hierarchie & Konten',
+  'acc.t1':'STRUKTURIERE',
+  'acc.t2':'DAS TEAM.',
+  'acc.intro':'Den richtigen Plan für jede Funktion zu wählen ist der erste Schritt, KI effizient und ohne Verschwendung einzusetzen.',
+  'tier.max.name':'Hub / Strategie',
+  'tier.max.body':'AI Strategist und Teamleiter. Maximaler Kontext, Claude Code, neueste Modelle mit Priorität.',
+  'tier.max.role':'Leads · Strategie',
+  'tier.pro.name':'Mitarbeiter',
+  'tier.pro.body':'Regulärer Geschäftseinsatz. 5× mehr Kapazität als Free, Projects und Zugang zu den Hauptmodellen inklusive.',
+  'tier.pro.role':'Team',
+  'tier.free.name':'Erkundung',
+  'tier.free.body':'Testen vor der Entscheidung. <strong style="color:var(--color-error)">Niemals mit Unternehmensdaten verwenden</strong> — im Free-Plan kann der Verlauf zum Trainieren von Modellen genutzt werden.',
+  'tier.free.role':'Onboarding',
+
+  'org.label':'Empfohlene Struktur nach Abteilung',
+  'org.hub.tag':'⬡ AI HUB · Strategie',
+  'org.hub.name':'AI Strategist · Bereichsleiter',
+  'org.hub.plan':'Claude MAX',
+  'org.d1':'Marketing','org.d2':'Sales','org.d3':'Operations','org.d4':'Tech / Dev',
+  'org.d.plan':'MAX Lead','org.d4.plan':'MAX + Code',
+  'org.team.plan':'Pro ×N','org.team.sub':'Team',
+  'org.note':'Jede Abteilung hat ein dediziertes Project mit isoliertem Kontext. Skalierbar mit dem Unternehmenswachstum.',
+
+  'rule1.body':'<strong>Niemals Login teilen.</strong> 1 Konto = 1 Person. Teilen verstößt gegen die Nutzungsbedingungen und gefährdet die Sicherheit.',
+  'rule2.body':'<strong>Projects pro Kunde oder Projekt erstellen.</strong> Isolierter, wiederverwendbarer und konsistenter Kontext für das gesamte Team.',
+  'rule3.body':'<strong>Der Team Lead ist der Hüter des Projects.</strong> Verantwortlich für die initialen Anweisungen und die Kontextqualität.',
+  'rule4.body':'<strong>MAX vs Pro:</strong> MAX für diejenigen, die KI als zentrale Arbeitswerkzeug nutzen. Pro für den regulären Einsatz. Free nur zur Erkundung.',
+  'acc.quote':'Was du nicht in einer unverschlüsselten Firmen-E-Mail schreiben würdest — kommt nicht in die KI.',
+
+  'prac.ey':'Sprache & Nutzung',
+  'prac.t1':'SPRICH MIT',
+  'prac.t2':'DER MASCHINE.',
+  'prac.intro':'Basierend auf 12+ Monaten täglichem KI-Einsatz und der MIT AI & ML for Business Methodik. Jeden Abschnitt aufklappen.',
+  's1.sum':'Sicherheit & Datenschutz',
+  's1.body':'<ul class="practice-list"><li><strong>Niemals Passwörter, Tokens oder API-Schlüssel in Prompts eingeben.</strong> Umgebungsvariablen nutzen — niemals direkt als Text.</li><li><strong>Kein Free-Account für vertrauliche Unternehmensdaten.</strong> Im Free-Plan kann der Verlauf zum Trainieren von Modellen genutzt werden.</li><li><strong>Projects zur Kontextisolierung nutzen.</strong> Daten eines Kunden dürfen nicht in das Projekt eines anderen gelangen.</li><li><strong>Vor dem Senden an Kunden überprüfen.</strong> KI kennt deine Beziehungen nicht — Ton und Fakten validieren.</li><li><strong>Personenbezogene Daten Dritter? Niemals in den Prompt.</strong> Ausweise, Karten, medizinische Daten — niemals.</li></ul><div class="practice-highlight">Goldene Regel: Was du nicht in einer unverschlüsselten Firmen-E-Mail schreiben würdest, kommt nicht in die KI.</div>',
+  's2.sum':'Wie man mit KI spricht',
+  's2.body':'<ul class="practice-list"><li><strong>Eine Rolle geben:</strong> „Du bist Experte für Luxus-Hospitality..." — Kontext verändert alles.</li><li><strong>Spezifisch sein:</strong> „Schreibe eine 3-Absatz-E-Mail, professionell aber warmherzig, für den Kunden, der um Fristverlängerung bat."</li><li><strong>Beispiele geben (Few-Shot):</strong> „Hier ist eine E-Mail im gewünschten Ton: [Beispiel]. Schreibe jetzt eine ähnliche über..."</li><li><strong>Iterieren:</strong> Nie das erste Ergebnis ohne Anpassungen akzeptieren. Bitten: „Kürzer fassen", „Dringlichkeit hinzufügen", „2. Absatz umschreiben."</li><li><strong>Artifacts nutzen:</strong> Für Tabellen, Dokumente und Code — strukturierten Output anfordern, keine Textwände.</li></ul><div class="practice-highlight"><strong>RPI-Methode:</strong> Research → Plan → Implement. Nie direkt zur Ausführung springen.</div>',
+  's3.sum':'Token-Ökonomie',
+  's3.body':'<ul class="practice-list"><li><strong>Projects mit festen Anweisungen nutzen.</strong> Einmal eingerichtet, wird der Kontext nicht in jedem Gespräch wiederholt.</li><li><strong>Lange Gespräche zusammenfassen.</strong> Vor dem Fortfahren: „Fasse in 5 Punkten zusammen, was wir bisher entschieden haben" → neues Gespräch.</li><li><strong>Richtige Modelle für richtige Aufgaben.</strong> Haiku für Triagen und Entwürfe; Sonnet für komplexe Arbeit; Opus für strategische Entscheidungen.</li><li><strong>Keine unnötigen Dateien laden.</strong> Der Kontext ist begrenzt — nur wirklich Relevantes einbeziehen.</li><li><strong>Die 40%-Regel:</strong> Maximal 40% des Kontexts sollte Gesprächsverlauf sein. 60% sollte strukturierte Anweisung sein.</li></ul><div class="practice-highlight">Projects + 40%-Regel = stets frischer Kontext. Gleichbleibende Qualität ohne Verschwendung.</div>',
+  's4.sum':'Das Maximum herausholen',
+  's4.body':'<ul class="practice-list"><li><strong>RPI-Methode:</strong> Research (frei mit KI erkunden) → Plan (Gelerntes strukturieren) → Implement (mit sauberem Kontext ausführen).</li><li><strong>Claude\'s Research Mode nutzen</strong> für Aufgaben, die verifizierte externe Quellen erfordern.</li><li><strong>NotebookLM für interne Wissensdatenbank.</strong> Handbücher, Prozesse und PDFs hochladen — KI antwortet basierend auf den eigenen Dokumenten.</li><li><strong>Wiederverwendbare Skills erstellen.</strong> Wiederkehrende Aufgaben werden zu gespeicherten Anweisungen: Follow-up-E-Mail, Angebot, Metriken-Analyse.</li><li><strong>Immer validieren:</strong> KI kann halluzinieren. Als intelligenten Beschleuniger nutzen, nicht als letzte Wahrheit.</li></ul><div class="practice-highlight">NotebookLM mit Unternehmensunterlagen = KI, die die Sprache des Unternehmens spricht, nicht die der generischen Welt.</div>',
+
+  'ars.ey':'Werkzeuge',
+  'ars.t1':'KI-Arsenal.',
+  'ars.t2':'Was wir nutzen.',
+  'ars.intro':'Jedes Werkzeug hat einen klaren Zweck. Das Richtige zur richtigen Zeit zu nutzen ist der Unterschied zwischen Geschwindigkeit und Nacharbeit.',
+  't1.name':'Claude Projects','t1.body':'Persistenter Kontext pro Kunde oder Projekt. Das Team greift auf dasselbe geteilte „Gehirn" zu.',
+  't2.name':'Claude Code','t2.body':'Automatisierung, Entwicklung und erweiterte Operationen. Für die Tech Leads des Teams.',
+  't3.name':'NotebookLM','t3.body':'Interne Wissensdatenbank. Fragen zu Unternehmensunterlagen mit zitierten Antworten.',
+  't4.name':'Perplexity','t4.body':'Suche mit verifizierten Quellen. Für wenn echte Daten gebraucht werden, keine Trainings-Synthese.',
+  't5.name':'ManyChat','t5.body':'WhatsApp- und Instagram-Automatisierung. Intelligente No-Code-Flows zur Skalierung des Kundenservices.',
+  't6.name':'Canva AI','t6.body':'KI-unterstütztes Design. Kreative Assets in Minuten mit konsistenter Markenidentität.',
+  't7.name':'Claude Artifacts','t7.body':'Renderbare strukturierte Ausgabe: Tabellen, Dashboards, Landing Pages — direkt im Chat.',
+  't8.name':'Multi-Step-Agenten','t8.body':'Automatisierte Sequenzen: Recherche → Analyse → Bericht → Versand. Ein Befehl, vollständiges Ergebnis.',
+
+  'contact.ey':'Implementierung',
+  'contact.t1':'Ich kann helfen',
+  'contact.t2':'Ihrem Team.',
+  'contact.intro':'Wählen Sie die Themen aus, bei denen Sie Unterstützung wünschen, und senden Sie eine E-Mail. Ich antworte mit einem spezifischen Plan für Ihren Kontext.',
+  'contact.name':'Mauricio Lacerda',
+  'contact.role':'AI Strategist & Operator intelligenter Systeme',
+  'contact.badge.prod':'12+ Monate im Einsatz',
+  'contact.mit.title':'MIT AI & ML for Business',
+  'contact.mit.body':'Massachusetts Institute of Technology · Zertifizierung in Künstlicher Intelligenz und Machine Learning für Unternehmen. Technische und strategische Grundlage der in diesem Leitfaden angewandten Methodik.',
+  'tags.label':'Wählen Sie die Themen aus, bei denen Sie Hilfe benötigen',
+  'tag1':'Claude MAX Einrichtung','tag2':'Team-Schulung','tag3':'Workflow-Automatisierung',
+  'tag4':'KI-Agenten','tag5':'Sicherheit & Compliance','tag6':'NotebookLM & Wissensdatenbank',
+  'tag7':'Prompt-Architektur','tag8':'Claude Code','tag9':'KI-Strategie',
+  'btn.email':'E-Mail senden','btn.select':'Mindestens 1 Thema auswählen',
+
+  'footer.brand':'Die einzige offizielle Paketagentur für die Finalspiele der CONMEBOL Libertadores™ und Sudamericana™.',
+  'footer.col1':'Playbook','footer.l1':'Warum KI','footer.l2':'Konten','footer.l3':'Best Practices','footer.l4':'Arsenal','footer.l5':'Kontakt',
+  'footer.col2':'Design System','footer.ds1':'← Zurück zum Hub','footer.ds2':'AI Marketing Playbook',
+  'footer.copy':'© 2026 ABSOLUT Sport · KI für Teams v1.0 · April 2026',
+  'footer.coauth':'Mauricio Lacerda × Rafa Rafa'
+}
+
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function toggleTag(el) { el.classList.toggle('selected'); updateEmailButton(); }
+
+function getSelectedTags() {
+  const lang = localStorage.getItem('asb_lang') || 'pt';
+  const dict = (window.I18N_DICT && window.I18N_DICT[lang]) || window.I18N_DICT.pt;
+  return Array.from(document.querySelectorAll('.tag.selected')).map(function(t) {
+    const key = t.dataset.tagkey;
+    return (dict && dict[key]) || t.querySelector('[data-i18n]').textContent;
+  });
+}
+
+function updateEmailButton() {
+  const lang = localStorage.getItem('asb_lang') || 'pt';
+  const dict = (window.I18N_DICT && window.I18N_DICT[lang]) || window.I18N_DICT.pt;
+  const tags = getSelectedTags();
+  const btn = document.getElementById('email-btn');
+  const count = document.getElementById('selected-count');
+  if (tags.length === 0) {
+    btn.classList.add('disabled'); btn.href = '#';
+    count.textContent = dict['btn.select'] || 'Selecione ao menos 1 tópico';
+  } else {
+    btn.classList.remove('disabled');
+    const n = tags.length;
+    const countTexts = {
+      pt: '<strong>' + n + '</strong> tópico' + (n > 1 ? 's' : '') + ' selecionado' + (n > 1 ? 's' : ''),
+      en: '<strong>' + n + '</strong> topic' + (n > 1 ? 's' : '') + ' selected',
+      es: '<strong>' + n + '</strong> tema' + (n > 1 ? 's' : '') + ' seleccionado' + (n > 1 ? 's' : ''),
+      de: '<strong>' + n + '</strong> Thema' + (n > 1 ? 'n' : '') + ' ausgewählt'
+    };
+    count.innerHTML = countTexts[lang] || countTexts.pt;
+    const subjects = { pt: 'IA para Times — ', en: 'AI for Teams — ', es: 'IA para Equipos — ', de: 'KI für Teams — ' };
+    const intros = {
+      pt: 'Olá Mauricio,\n\nEstou interessado em suporte nos seguintes tópicos:\n\n• ',
+      en: 'Hi Mauricio,\n\nI am interested in support on the following topics:\n\n• ',
+      es: 'Hola Mauricio,\n\nEstoy interesado en soporte en los siguientes temas:\n\n• ',
+      de: 'Hallo Mauricio,\n\nIch interessiere mich für Unterstützung bei folgenden Themen:\n\n• '
+    };
+    const outros = {
+      pt: '\n\nPodemos conversar?\n\n[Seu nome e departamento]',
+      en: '\n\nCan we talk?\n\n[Your name and department]',
+      es: '\n\n¿Podemos hablar?\n\n[Tu nombre y departamento]',
+      de: '\n\nKönnen wir sprechen?\n\n[Ihr Name und Abteilung]'
+    };
+    const subject = encodeURIComponent((subjects[lang] || subjects.pt) + tags.join(', '));
+    const body = encodeURIComponent((intros[lang] || intros.pt) + tags.join('\n• ') + (outros[lang] || outros.pt));
+    btn.href = 'mailto:mauricio.s.lacerda@gmail.com?subject=' + subject + '&body=' + body;
+  }
+}
+
+function sendEmail(e) {
+  if (getSelectedTags().length === 0) { e.preventDefault(); return false; }
+  return true;
+}
+</script>
+
+<script>
+document.getElementById('splash').addEventListener('animationend', function(e) {
+  if (e.animationName === 'splash-exit') this.remove();
+}, { once: true });
+</script>
+</body>
+</html>

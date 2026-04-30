@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Playbook — ABSOLUT Sport</title>
+
+<!-- Canonical design tokens — single source of truth -->
+<link rel="stylesheet" href="../../colors_and_type.css">
+
+<style>
+/* ─────────────────────────────────────────────────────────────────
+   BASE
+   ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-base);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reduced-motion baseline */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   NAVBAR
+   ───────────────────────────────────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--bg-overlay-strong);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: var(--space-4) var(--space-10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo { height: 32px; display: flex; align-items: center; }
+.nav-logo svg { height: 32px; width: auto; }
+
+.nav-label {
+  font-family: var(--font-display);
+  font-size: var(--text-label);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--fg-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   HERO
+   ───────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--color-black);
+}
+
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 40%, rgba(21, 95, 151, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 70% at 90% 20%, rgba(21, 95, 151, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse 120% 50% at 50% 110%, rgba(21, 95, 151, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.hero-stripe {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-blue) 0%,
+    var(--color-blue-mid) 40%,
+    var(--color-gold) 70%,
+    var(--color-blue) 100%
+  );
+  z-index: 2;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-24) var(--space-10) var(--space-20);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-16);
+  align-items: end;
+}
+
+.hero-badge-row {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.badge-gold {
+  background: rgba(201, 168, 76, 0.10);
+  border: 1px solid var(--border-gold);
+  color: var(--color-gold);
+}
+
+.badge-blue {
+  background: rgba(21, 95, 151, 0.15);
+  border: 1px solid rgba(21, 95, 151, 0.45);
+  color: var(--color-blue-mid);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-none);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-primary);
+  margin-bottom: var(--space-6);
+}
+
+.hero-headline .blue { color: var(--color-blue-mid); }
+.hero-headline .gold { color: var(--color-gold); }
+
+.hero-sub {
+  font-size: var(--text-subtitle);
+  font-weight: var(--weight-light);
+  color: var(--fg-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 440px;
+}
+
+/* RIGHT — stat cards */
+.hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-default), box-shadow var(--transition-default);
+}
+
+.stat-card:hover {
+  border-color: rgba(21, 95, 151, 0.5);
+  box-shadow: var(--shadow-blue);
+}
+
+.stat-num {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: var(--weight-medium);
+  color: var(--color-blue-mid);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.stat-text strong {
+  display: block;
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  color: var(--fg-primary);
+  margin-bottom: 2px;
+}
+
+.stat-text span {
+  font-size: var(--text-caption);
+  color: var(--fg-tertiary);
+  line-height: 1.4;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYOUT
+   ───────────────────────────────────────────────────────────────── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-10) var(--space-24);
+}
+
+section.section { padding-top: var(--space-20); }
+
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-blue-mid);
+  margin-bottom: var(--space-3);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: var(--weight-extrabold);
+  text-transform: uppercase;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-primary);
+  margin-bottom: var(--space-10);
+}
+
+.section-title .gold { color: var(--color-gold); }
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: var(--space-20) 0 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   USE CASES GRID
+   ───────────────────────────────────────────────────────────────── */
+.use-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.use-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-default), border-color var(--transition-default), box-shadow var(--transition-default);
+  position: relative;
+  overflow: hidden;
+}
+
+.use-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--color-blue);
+  opacity: 0;
+  transition: opacity var(--transition-default);
+}
+
+.use-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(21, 95, 151, 0.45);
+  box-shadow: var(--shadow-blue);
+}
+
+.use-card:hover::after { opacity: 1; }
+
+.use-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-blue-mid);
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.use-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-primary);
+  margin-bottom: var(--space-2);
+}
+
+.use-card p {
+  font-size: var(--text-body-sm);
+  color: var(--fg-secondary);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--weight-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   BRAND KIT CALLOUT
+   ───────────────────────────────────────────────────────────────── */
+.brand-callout {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: var(--space-12);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-12);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-callout::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-blue-mid));
+}
+
+.brand-callout-mark {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: var(--weight-black);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-gold);
+  opacity: 0.15;
+  text-align: center;
+  user-select: none;
+}
+
+.brand-callout h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-headline);
+  font-weight: var(--weight-extrabold);
+  text-transform: uppercase;
+  line-height: var(--leading-snug);
+  color: var(--color-gold);
+  margin-bottom: var(--space-4);
+}
+
+.brand-callout p {
+  font-size: var(--text-body);
+  color: var(--fg-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-3);
+  font-weight: var(--weight-light);
+}
+
+.brand-callout p:last-child { margin-bottom: 0; }
+.brand-callout strong { color: var(--fg-primary); font-weight: var(--weight-semibold); }
+
+/* ─────────────────────────────────────────────────────────────────
+   DO / DON'T
+   ───────────────────────────────────────────────────────────────── */
+.dd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.dd-col {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.dd-col::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.dd-do::before   { background: var(--color-success); }
+.dd-dont::before { background: var(--color-error); }
+
+.dd-label {
+  display: inline-block;
+  font-size: var(--text-label);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-6);
+}
+
+.dd-do .dd-label   { background: rgba(34, 197, 94, 0.10);  color: var(--color-success); }
+.dd-dont .dd-label { background: rgba(227, 0, 27, 0.10);   color: var(--color-error); }
+
+.dd-col ul { list-style: none; }
+
+.dd-col li {
+  font-size: var(--text-body-sm);
+  color: var(--fg-secondary);
+  padding: 10px 0 10px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-light);
+}
+
+.dd-col li:last-child { border-bottom: none; padding-bottom: 0; }
+
+.dd-do li::before   { content: "\2713"; color: var(--color-success); position: absolute; left: 0; font-weight: var(--weight-bold); }
+.dd-dont li::before { content: "\2717"; color: var(--color-error);   position: absolute; left: 0; font-weight: var(--weight-bold); }
+
+/* ─────────────────────────────────────────────────────────────────
+   TOOLKIT
+   ───────────────────────────────────────────────────────────────── */
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-default), border-color var(--transition-default);
+}
+
+.tool-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(21, 95, 151, 0.45);
+}
+
+.tool-icon {
+  width: 44px; height: 44px;
+  background: var(--accent-blue-soft);
+  border: 1px solid rgba(21, 95, 151, 0.25);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto var(--space-4);
+  color: var(--color-blue-mid);
+}
+
+.tool-card h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-subtitle);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-primary);
+  margin-bottom: var(--space-2);
+}
+
+.tool-card p {
+  font-size: var(--text-caption);
+  color: var(--fg-secondary);
+  line-height: 1.5;
+  font-weight: var(--weight-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   WORKFLOW
+   ───────────────────────────────────────────────────────────────── */
+.workflow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  position: relative;
+  gap: 0;
+}
+
+.workflow::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: calc(10% + 24px);
+  right: calc(10% + 24px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-gold) 100%);
+  opacity: 0.5;
+}
+
+.wf-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 var(--space-4);
+  position: relative;
+  z-index: 1;
+}
+
+.wf-dot {
+  width: 48px; height: 48px;
+  background: var(--bg-base);
+  border: 2px solid var(--color-blue);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  color: var(--color-blue-mid);
+  margin-bottom: var(--space-5);
+  flex-shrink: 0;
+  transition: background var(--transition-default), border-color var(--transition-default);
+}
+
+.wf-step:nth-child(odd) .wf-dot {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.wf-step:hover .wf-dot {
+  background: var(--color-blue);
+  color: var(--color-white);
+  border-color: var(--color-blue);
+}
+
+.wf-step h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-primary);
+  margin-bottom: var(--space-2);
+}
+
+.wf-step p {
+  font-size: var(--text-caption);
+  color: var(--fg-secondary);
+  line-height: 1.5;
+  font-weight: var(--weight-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   COMING UP
+   ───────────────────────────────────────────────────────────────── */
+.next-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.next-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-default), border-color var(--transition-default);
+  position: relative;
+  overflow: hidden;
+}
+
+.next-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-gold));
+}
+
+.next-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(21, 95, 151, 0.45);
+}
+
+.next-status {
+  font-size: var(--text-label);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-3);
+}
+
+.next-card h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  line-height: var(--leading-snug);
+  color: var(--fg-primary);
+  margin-bottom: var(--space-3);
+}
+
+.next-card p {
+  font-size: var(--text-body-sm);
+  color: var(--fg-secondary);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--weight-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--space-10);
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo svg { height: 28px; width: auto; }
+
+.footer-meta {
+  font-size: var(--text-caption);
+  color: var(--fg-secondary);
+  text-align: right;
+  line-height: 1.7;
+  font-weight: var(--weight-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .container  { padding: 0 var(--space-6) var(--space-16); }
+  .nav        { padding: var(--space-4) var(--space-6); }
+  .hero-inner { padding: var(--space-16) var(--space-6) var(--space-12); gap: var(--space-10); grid-template-columns: 1fr; }
+  .hero-stats { display: none; }
+}
+
+@media (max-width: 768px) {
+  .use-grid           { grid-template-columns: 1fr 1fr; }
+  .brand-callout      { grid-template-columns: 1fr; }
+  .brand-callout-mark { display: none; }
+  .dd-grid            { grid-template-columns: 1fr; }
+  .toolkit-grid       { grid-template-columns: repeat(2, 1fr); }
+  .workflow           { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+  .workflow::before   { display: none; }
+  .next-grid          { grid-template-columns: 1fr; }
+  .footer             { flex-direction: column; gap: var(--space-6); }
+  .footer-meta        { text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .use-grid     { grid-template-columns: 1fr; }
+  .toolkit-grid { grid-template-columns: 1fr 1fr; }
+  .workflow     { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Playbook navigation">
+  <div class="nav-logo" aria-label="ABSOLUT Sport">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650.75 334.83" role="img" aria-labelledby="navLogoTitle">
+      <title id="navLogoTitle">ABSOLUT Sport</title>
+      <defs>
+        <style>.cls-1{fill:#fff}.cls-2{fill:none}.cls-3{clip-path:url(#clippath-1)}.cls-4{fill:#3a6195}.cls-5{fill:#bcbbbc}.cls-6{clip-path:url(#clippath)}</style>
+        <clipPath id="clippath"><rect class="cls-2" x="23.19" y="10.99" width="604.37" height="312.86"/></clipPath>
+        <clipPath id="clippath-1"><rect class="cls-2" x="23.19" y="10.99" width="604.37" height="312.86"/></clipPath>
+      </defs>
+      <g class="cls-6"><g class="cls-3">
+        <path class="cls-4" d="M98.05,133.6l-57.15-15.88c-12.9,18.26-19.24,37.66-17.38,57.3,1.16,12.1,5.39,23.55,12.23,34.16l54.09-4.41c-2.96-8.16-4.57-16.75-4.76-25.42-.32-15.93,4.31-31.31,12.97-45.74"/>
+        <path class="cls-4" d="M446.47,46.77c36.62,9.05,68.45,22.83,92.86,40.03-16.07-22.75-44.48-41.46-81.03-54.66l-11.84,14.63Z"/>
+        <path class="cls-4" d="M104.06,124.58c4.28-5.79,9.02-11.24,14.18-16.27,2.52-2.52,4.97-4.67,4.97-4.67,12.48-11.2,27.73-21.38,45.15-30.31l-31.89-25.55c-23.5,10.19-44.23,22.04-61.25,35.14-2.63,1.98-6.88,5.52-6.88,5.52-7.44,6.22-14.34,13.07-20.61,20.48l56.33,15.66Z"/>
+        <path class="cls-4" d="M270.41,40.89c21.51-3.57,43.25-5.57,65.05-5.99,6.28-.13,12.47-.07,18.64.08l5.26-22.71c-27.9-2.01-55.9-1.66-83.74,1.02-5.15.49-10.25,1.08-15.31,1.72l10.09,25.88Z"/>
+        <path class="cls-4" d="M178.58,68.32c20.2-9.33,42.97-17.04,67.65-22.69,7.46-1.79,8.72-1.9,8.72-1.9,1.69-.34,3.43-.66,5.12-.98l-10.25-26.26c-2.33.33-4.67.64-6.97,1-3.52.55-10.52,1.81-10.52,1.81-30.75,5.57-59.39,13.79-85.04,23.97l31.29,25.05Z"/>
+        <path class="cls-4" d="M94.22,214.98l-.13-.21-51.21,4.18c.83.98,1.39,1.59,1.39,1.59,24.84,28.53,69.91,49.94,126.05,60.52-36.03-17.1-62.88-39.93-76.11-66.08"/>
+        <path class="cls-4" d="M364.61,35.3c9.54.42,18.96,1.07,28.15,2.05,2.24.24,8.09.95,8.09.95,11.85,1.5,23.33,3.5,34.46,5.9l12.59-15.59c-12.17-3.87-24.55-7.05-37.08-9.53l-8.82-1.65c-10.4-1.83-21.21-3.23-32.26-4.29l-5.14,22.17Z"/>
+        <path class="cls-1" d="M203.02,301.94c7.53,4.19,16,6.43,24.62,6.5,11.93,0,18.58-5.6,18.58-13.9,0-7.71-5.13-12.24-18.12-16.92-16.77-6.04-27.5-14.96-27.5-29.62,0-16.62,13.9-29.29,35.96-29.29,11.04,0,19.2,2.41,24.48,5.13l-4.54,14.95c-3.63-1.96-10.72-4.83-20.24-4.83-11.8,0-16.93,6.34-16.93,12.24,0,7.85,5.89,11.48,19.5,16.76,17.67,6.64,26.28,15.56,26.28,30.21,0,16.32-12.39,30.67-38.67,30.67-10.74,0-21.91-3.18-27.49-6.5l4.07-15.41Z"/>
+        <path class="cls-1" d="M300.31,269.17c2.28.61,5.29.76,9.07.76,13.9,0,22.35-6.79,22.35-18.73s-7.86-17.38-20.7-17.38c-5.14,0-8.75.46-10.72.92v34.43ZM281.87,221.73c6.65-1.21,15.86-2.11,28.41-2.11,13.59,0,23.58,2.87,30.05,8.31,6.04,4.98,9.97,12.98,9.97,22.51s-3.01,17.68-8.75,23.11c-7.42,7.41-19.02,10.88-32.19,10.88-3.48,0-6.64-.15-9.07-.6v38.35h-18.41v-100.45Z"/>
+        <path class="cls-1" d="M380.65,271.73c0,20.69,10.43,37.31,28.25,37.31s28.1-16.76,28.1-38.06c0-19.2-9.51-37.47-28.1-37.47-18.44,0-28.25,17.22-28.25,38.22M456.63,270.21c0,34.15-20.67,53.64-48.79,53.64s-46.82-21.9-46.82-51.81c-.02-31.28,19.63-53.34,48.35-53.34s47.27,22.51,47.27,51.52"/>
+        <path class="cls-1" d="M491.07,266.75h11.03c12.53,0,20.39-6.65,20.39-16.76,0-11.19-7.86-16.33-19.94-16.33-5.9,0-9.68.45-11.48.91v32.18ZM472.63,221.73c6.95-1.21,17.38-2.11,28.11-2.11,14.66,0,24.63,2.41,31.43,8.16,5.58,4.67,8.75,11.79,8.75,20.38,0,13.16-8.92,22.06-18.43,25.54v.45c7.25,2.72,11.62,9.82,14.19,19.63,3.19,12.69,5.89,24.47,8.01,28.41h-19.19c-1.53-3.02-3.93-11.33-6.8-24.01-2.88-13.32-7.72-17.54-18.29-17.83h-9.37v41.85h-18.43v-100.46Z"/>
+        <polygon class="cls-1" points="578.82 235.92 549.82 235.92 549.82 220.35 626.7 220.35 626.7 235.92 597.42 235.92 597.42 322.18 578.83 322.18 578.82 235.92"/>
+        <path class="cls-1" d="M243.95,156.94l-7.2-21.18c-1.65-4.81-2.73-9.17-3.83-13.43h-.22c-1.09,4.36-2.28,8.84-3.7,13.32l-7.23,21.3h22.19ZM219.82,164.37l-7.66,23.13h-9.8l25-73.6h11.47l25.11,73.6h-10.16l-7.86-23.13h-26.1Z"/>
+        <path class="cls-1" d="M284.29,180.31c1.86.34,4.59.44,7.96.44,9.85,0,18.91-3.61,18.91-14.31,0-10.04-8.62-14.19-19.02-14.19h-7.84v28.06ZM284.29,145.03h8.61c10.05,0,15.95-5.24,15.95-12.33,0-8.63-6.56-12.02-16.16-12.02-4.37,0-6.88.34-8.41.66v23.7ZM274.78,114.89c4.15-.88,10.71-1.53,17.37-1.53,9.5,0,15.59,1.64,20.19,5.36,3.83,2.84,6.12,7.21,6.12,13,0,7.1-4.69,13.32-12.45,16.15v.22c6.99,1.76,15.18,7.54,15.18,18.45.09,5.57-2.17,10.91-6.23,14.74-5.13,4.7-13.43,6.88-25.44,6.88-4.93.03-9.86-.26-14.74-.87v-72.4Z"/>
+        <path class="cls-1" d="M332.69,175.94c5.15,3.09,11.03,4.75,17.03,4.81,9.71,0,15.39-5.14,15.39-12.55,0-6.88-3.93-10.82-13.87-14.64-12.01-4.27-19.44-10.49-19.44-20.86,0-11.47,9.51-19.98,23.81-19.98,7.52,0,13,1.75,16.26,3.59l-2.63,7.75c-4.29-2.31-9.1-3.51-13.97-3.5-10.04,0-13.88,6.01-13.88,11.04,0,6.88,4.48,10.27,14.63,14.18,12.46,4.82,18.79,10.81,18.79,21.63,0,11.36-8.41,21.31-25.77,21.31-7.1,0-14.83-2.18-18.78-4.81l2.41-7.99Z"/>
+        <path class="cls-1" d="M393.66,151.15c0,15.73,8.53,29.81,23.48,29.81s23.59-13.87,23.59-30.58c0-14.63-7.65-29.91-23.48-29.91s-23.6,14.53-23.6,30.68h0ZM450.77,149.95c0,25.33-15.39,38.76-34.18,38.76s-33.09-15.06-33.09-37.34c0-23.38,14.52-38.65,34.17-38.65s33.1,15.38,33.1,37.23"/>
+        <polygon class="cls-1" points="463.14 113.91 472.65 113.91 472.65 179.55 504.11 179.55 504.11 187.49 463.14 187.49 463.14 113.91"/>
+        <path class="cls-1" d="M520.3,113.91v43.58c0,16.48,7.31,23.47,17.12,23.47,10.92,0,17.9-7.2,17.9-23.47v-43.58h9.62v42.91c0,22.61-11.9,31.88-27.84,31.88-15.08,0-26.43-8.62-26.43-31.44v-43.37h9.63Z"/>
+        <polygon class="cls-1" points="595.45 121.99 573.07 121.99 573.07 113.92 627.56 113.92 627.56 121.99 605.07 121.99 605.07 187.5 595.45 187.5 595.45 121.99"/>
+        <path class="cls-5" d="M208.29,92.11c18.68-8.37,39.95-15.22,63.15-20.25l-8.37-21.47c-1.52.29-3.02.56-4.52.88l-8.45,1.83c-23.07,5.28-44.61,12.53-63.87,21.33l22.05,17.67Z"/>
+        <path class="cls-5" d="M146.1,136.27c12.51-15.02,30.16-28.27,51.85-39.23l-22.04-17.66c-16.92,8.61-31.74,18.49-43.8,29.33l-4.89,4.62c-4.53,4.43-8.73,9.19-12.55,14.23l31.42,8.72Z"/>
+        <path class="cls-5" d="M125.9,201.95c-.89-6.12-1.05-12.33-.49-18.49,1.26-13.62,6.12-26.47,14.05-38.33l-30.9-8.6c-8.53,14.04-12.82,28.77-12.52,43.54.19,8.15,1.72,16.2,4.51,23.85l25.36-1.96Z"/>
+        <path class="cls-5" d="M362.81,43.09l-4.37,18.92c20.25-.41,40.52.33,60.68,2.21l10.54-13.05c-9.93-2.08-20.11-3.78-30.56-5.12l-7.9-.92c-9.34-1-18.85-1.67-28.39-2.05"/>
+        <path class="cls-5" d="M431.33,65.49c29.72,3.42,58.02,9.13,84.22,16.71-21.26-12.07-46.71-21.77-74.67-28.51l-9.55,11.8Z"/>
+        <path class="cls-5" d="M128.76,214.5l-.79-2.52-1.78.14-21.35,1.75c11.38,22.31,33.52,42.39,64.24,58.4-20.13-17.83-34.10-37.41-40.32-57.77"/>
+        <path class="cls-5" d="M281.68,69.79c21.82-4.08,43.93-6.58,66.12-7.45l4.52-19.56c-2.46-.04-4.92-.1-7.38-.1-2.95,0-5.91.03-8.87.09-21,.41-41.95,2.34-62.67,5.76l8.29,21.26Z"/>
+      </g></g>
+    </svg>
+  </div>
+  <span class="nav-label">Global Marketing &middot; AI Playbook</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-atmosphere" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-stripe" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge-row">
+        <span class="badge badge-gold">Internal Playbook &middot; April 2026</span>
+        <span class="badge badge-blue">Global Marketing</span>
+      </div>
+
+      <h1 class="hero-headline">
+        AI is our<br>
+        <span class="blue">sixth</span><br>
+        <span class="gold">player.</span>
+      </h1>
+
+      <p class="hero-sub">
+        You know how to sell the best seat in the house. AI handles everything that doesn't require being there. Here's how the global team uses it &mdash; and how to use it right.
+      </p>
+    </div>
+
+    <dl class="hero-stats" aria-label="Impact metrics">
+      <div class="stat-card">
+        <dt class="stat-num" aria-label="More than 6 million reais">R$6M+</dt>
+        <dd class="stat-text">
+          <strong>E-commerce revenue &middot; 2024</strong>
+          <span>AI-assisted campaigns, product copy, and email architecture</span>
+        </dd>
+      </div>
+      <div class="stat-card">
+        <dt class="stat-num" aria-label="120 times return on investment">120&times;</dt>
+        <dd class="stat-text">
+          <strong>ROI on digital sales</strong>
+          <span>R$80k invested &rarr; R$9.6M in revenue. Validated by the team.</span>
+        </dd>
+      </div>
+      <div class="stat-card">
+        <dt class="stat-num">5</dt>
+        <dd class="stat-text">
+          <strong>Markets. One system.</strong>
+          <span>BR &middot; US &middot; MX &middot; CO &middot; AR &mdash; same methodology, localized execution</span>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- USE CASES -->
+  <section class="section">
+    <p class="section-eyebrow">Where it works</p>
+    <h2 class="section-title">Six things AI does<br>for us <span class="gold">every week.</span></h2>
+    <div class="use-grid">
+      <article class="use-card">
+        <span class="use-num">01 / Drafting</span>
+        <h3>First Drafts</h3>
+        <p>Emails, newsletters, product copy, social captions. You start from something real, not from zero.</p>
+      </article>
+      <article class="use-card">
+        <span class="use-num">02 / Languages</span>
+        <h3>Translation</h3>
+        <p>PT &rarr; EN &rarr; ES at speed. Sales decks, landing pages, package descriptions. Human review before anything goes live.</p>
+      </article>
+      <article class="use-card">
+        <span class="use-num">03 / Decks</span>
+        <h3>Presentations</h3>
+        <p>Structure, talking points, one-pagers for leadership and clients. The narrative shape &mdash; not just bullet points.</p>
+      </article>
+      <article class="use-card">
+        <span class="use-num">04 / E-Commerce</span>
+        <h3>Product Copy</h3>
+        <p>Package descriptions, hotel blurbs, Shopify listings. Consistent tone across 10+ products and 5 markets.</p>
+      </article>
+      <article class="use-card">
+        <span class="use-num">05 / Planning</span>
+        <h3>Campaigns</h3>
+        <p>Calendars, Gantt structures, brief outlines. Feed the context &mdash; get the skeleton. You fill in what only you know.</p>
+      </article>
+      <article class="use-card">
+        <span class="use-num">06 / Intelligence</span>
+        <h3>Research</h3>
+        <p>Destination briefings, competitor benchmarks, event background for content. Synthesize fast, cite the source.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- BRAND KIT -->
+  <section class="section">
+    <p class="section-eyebrow">The unlock</p>
+    <h2 class="section-title">Brand Kit 1.0<br>changes <span class="gold">everything.</span></h2>
+    <div class="brand-callout">
+      <div class="brand-callout-mark" aria-hidden="true">BK<br>1.0</div>
+      <div>
+        <h3>Without the brand kit, AI doesn't know who we are.</h3>
+        <p>Right now, when any of us prompt AI for a landing page or a caption, it doesn't know our fonts, our palette, our tone, or how we write subject lines. The output is solid &mdash; but it's not <strong>unmistakably ABSOLUT Sport.</strong></p>
+        <p><strong>Raphael Ferreira is already building Brand Kit 1.0 inside Claude + Figma.</strong> Once live: one file, every office, every prompt. You paste it as context before you start.</p>
+        <p>Until then &mdash; paste a real ASB email or post before prompting. Let the model mirror what already works. Show it. Don't describe it.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- DO / DON'T -->
+  <section class="section">
+    <p class="section-eyebrow">The rules</p>
+    <h2 class="section-title">Do this.<br><span class="gold">Not that.</span></h2>
+    <div class="dd-grid">
+      <div class="dd-col dd-do">
+        <span class="dd-label">Do</span>
+        <ul>
+          <li>Give full context: event, audience, tone, deadline &mdash; before any prompt</li>
+          <li>Paste a real ASB sample so the model mirrors what already works</li>
+          <li>Use it for first drafts, then edit yourself &mdash; your voice stays yours</li>
+          <li>Always read the output before hitting send</li>
+          <li>Translate fast, then have a native speaker do the final pass</li>
+          <li>Ask for structure first, then layer in what only you know</li>
+          <li>Tell the model what you don't want as much as what you do</li>
+        </ul>
+      </div>
+      <div class="dd-col dd-dont">
+        <span class="dd-label">Don't</span>
+        <ul>
+          <li>Copy-paste output into a client email without reading it</li>
+          <li>Use it for decisions on pricing, operations, or contracts</li>
+          <li>Trust AI-generated numbers &mdash; verify stats independently, always</li>
+          <li>Skip the brand context and complain the output "sounds generic"</li>
+          <li>Use it to replace your judgment on tone and timing</li>
+          <li>Treat the first draft as final &mdash; one iteration is almost never enough</li>
+          <li>Input confidential client data without checking our data policy</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- TOOLKIT -->
+  <section class="section">
+    <p class="section-eyebrow">Our stack</p>
+    <h2 class="section-title">Tools we<br>actually <span class="gold">use.</span></h2>
+    <div class="toolkit-grid">
+      <article class="tool-card">
+        <div class="tool-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h4>Claude</h4>
+        <p>Writing, research, planning, translation, strategy documents</p>
+      </article>
+      <article class="tool-card">
+        <div class="tool-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <h4>Midjourney</h4>
+        <p>Visual concepts and campaign imagery (BR team)</p>
+      </article>
+      <article class="tool-card">
+        <div class="tool-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h4>Claude + Figma</h4>
+        <p>Brand Kit 1.0 and global design templates (Raphael)</p>
+      </article>
+      <article class="tool-card">
+        <div class="tool-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <h4>Claude + Asana</h4>
+        <p>Project summaries, task drafts, meeting prep</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- WORKFLOW -->
+  <section class="section">
+    <p class="section-eyebrow">How it works</p>
+    <h2 class="section-title">The play<br>in <span class="gold">5 moves.</span></h2>
+    <ol class="workflow">
+      <li class="wf-step">
+        <div class="wf-dot">1</div>
+        <h4>Set Context</h4>
+        <p>Event, audience, tone, deadline. One paragraph of context = 80% better output.</p>
+      </li>
+      <li class="wf-step">
+        <div class="wf-dot">2</div>
+        <h4>Paste Brand Ref</h4>
+        <p>Real ASB sample: email, caption, post. Let the model mirror what already works.</p>
+      </li>
+      <li class="wf-step">
+        <div class="wf-dot">3</div>
+        <h4>Ask for Structure</h4>
+        <p>Skeleton first. Sections and flow. Then fill in what only you know.</p>
+      </li>
+      <li class="wf-step">
+        <div class="wf-dot">4</div>
+        <h4>Iterate Once</h4>
+        <p>Two rounds max. Then you own it. Your judgment is the product.</p>
+      </li>
+      <li class="wf-step">
+        <div class="wf-dot">5</div>
+        <h4>Route Before Send</h4>
+        <p>Translations &rarr; native speaker. Client copy &rarr; Mauricio or Jack first.</p>
+      </li>
+    </ol>
+  </section>
+
+  <hr class="divider">
+
+  <!-- COMING UP -->
+  <section class="section">
+    <p class="section-eyebrow">Next up</p>
+    <h2 class="section-title">What's<br><span class="gold">coming.</span></h2>
+    <div class="next-grid">
+      <article class="next-card">
+        <div class="next-status">In Progress</div>
+        <h4>Brand Kit 1.0 &rarr; AI Context File</h4>
+        <p>Raphael is building this now. One file unlocks consistent output across every office and every prompt.</p>
+      </article>
+      <article class="next-card">
+        <div class="next-status">Planned</div>
+        <h4>Newsletter Templates Per Market</h4>
+        <p>Brazil has the 7-module architecture. US and Germany adapt to their event cycles. One methodology, three executions.</p>
+      </article>
+      <article class="next-card">
+        <div class="next-status">Planned</div>
+        <h4>AI-Assisted FWC26 Product Pages</h4>
+        <p>Each city package gets a landing page built with Claude + brand context. Faster, consistent, localized.</p>
+      </article>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo" aria-label="ABSOLUT Sport">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650.75 334.83" role="img" aria-labelledby="footerLogoTitle">
+      <title id="footerLogoTitle">ABSOLUT Sport</title>
+      <defs>
+        <style>.fl1{fill:#fff}.fl2{fill:none}.fl3{clip-path:url(#fcp2)}.fl4{fill:#3a6195}.fl6{clip-path:url(#fcp1)}</style>
+        <clipPath id="fcp1"><rect class="fl2" x="23.19" y="10.99" width="604.37" height="312.86"/></clipPath>
+        <clipPath id="fcp2"><rect class="fl2" x="23.19" y="10.99" width="604.37" height="312.86"/></clipPath>
+      </defs>
+      <g class="fl6"><g class="fl3">
+        <path class="fl4" d="M98.05,133.6l-57.15-15.88c-12.9,18.26-19.24,37.66-17.38,57.3,1.16,12.1,5.39,23.55,12.23,34.16l54.09-4.41c-2.96-8.16-4.57-16.75-4.76-25.42-.32-15.93,4.31-31.31,12.97-45.74"/>
+        <path class="fl4" d="M446.47,46.77c36.62,9.05,68.45,22.83,92.86,40.03-16.07-22.75-44.48-41.46-81.03-54.66l-11.84,14.63Z"/>
+        <path class="fl1" d="M203.02,301.94c7.53,4.19,16,6.43,24.62,6.5,11.93,0,18.58-5.6,18.58-13.9,0-7.71-5.13-12.24-18.12-16.92-16.77-6.04-27.5-14.96-27.5-29.62,0-16.62,13.9-29.29,35.96-29.29,11.04,0,19.2,2.41,24.48,5.13l-4.54,14.95c-3.63-1.96-10.72-4.83-20.24-4.83-11.8,0-16.93,6.34-16.93,12.24,0,7.85,5.89,11.48,19.5,16.76,17.67,6.64,26.28,15.56,26.28,30.21,0,16.32-12.39,30.67-38.67,30.67-10.74,0-21.91-3.18-27.49-6.5l4.07-15.41Z"/>
+        <polygon class="fl1" points="578.82 235.92 549.82 235.92 549.82 220.35 626.7 220.35 626.7 235.92 597.42 235.92 597.42 322.18 578.83 322.18 578.82 235.92"/>
+      </g></g>
+    </svg>
+  </div>
+  <div class="footer-meta">
+    Global Marketing Initiative &middot; April 2026<br>
+    Mauricio Lacerda &mdash; Head of Marketing Americas<br>
+    Raphael Ferreira &mdash; Design Lead
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'SoulCraft'; src: url('../fonts/soulcraftgx.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAFA; font-family: 'Barlow', sans-serif; }
+
+  .panel { padding: 22px 24px; }
+  .panel-dark { background: #0D0D0D; }
+  .mode-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 14px; }
+  .light-label { color: #9A9A9A; }
+  .dark-label  { color: #555; }
+  .divider-l { border: none; border-top: 1px solid #E8E8E8; margin: 6px 0 16px; }
+  .divider-d { border: none; border-top: 1px solid #1A1A1A; margin: 6px 0 16px; }
+
+  /* Stats strip light */
+  .stats-l { display: flex; background: #FFFFFF; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .stat-l  { flex: 1; padding: 18px 0; text-align: center; border-right: 1px solid rgba(0,0,0,0.06); }
+  .stat-l:last-child { border-right: none; }
+  .stat-val-l { font-family: 'SoulCraft','Barlow Condensed',sans-serif; font-size: 30px; font-weight: 900; color: #155F97; line-height: 1; }
+  .stat-label-l { font-size: 11px; color: #7A7A7A; margin-top: 4px; font-weight: 500; }
+
+  /* Stats strip dark */
+  .stats-d { display: flex; background: #141414; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+  .stat-d  { flex: 1; padding: 18px 0; text-align: center; border-right: 1px solid rgba(255,255,255,0.06); }
+  .stat-d:last-child { border-right: none; }
+  .stat-val-d { font-family: 'SoulCraft','Barlow Condensed',sans-serif; font-size: 30px; font-weight: 900; color: #1E7ABE; line-height: 1; }
+  .stat-label-d { font-size: 11px; color: #555; margin-top: 4px; font-weight: 500; }
+
+  /* Features light */
+  .feat-item-l { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 9px; }
+  .feat-check-l { width: 20px; height: 20px; background: rgba(21,95,151,0.1); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .feat-text-l { font-size: 13px; color: #333; line-height: 1.45; }
+
+  /* Features dark */
+  .feat-item-d { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 9px; }
+  .feat-check-d { width: 20px; height: 20px; background: rgba(30,122,190,0.15); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .feat-text-d { font-size: 13px; color: #9A9A9A; line-height: 1.45; }
+</style>
+</head>
+<body>
+
+  <!-- LIGHT -->
+  <div class="panel">
+    <div class="mode-label light-label">☀️ Stats Strip — Light Mode</div>
+    <div class="stats-l">
+      <div class="stat-l"><div class="stat-val-l">+5oo</div><div class="stat-label-l">Eventos anuais</div></div>
+      <div class="stat-l"><div class="stat-val-l">+1oK</div><div class="stat-label-l">Viagens por ano</div></div>
+      <div class="stat-l"><div class="stat-val-l">+3o</div><div class="stat-label-l">Parceiros globais</div></div>
+    </div>
+
+    <hr class="divider-l">
+    <div class="mode-label light-label">Features / Benefits</div>
+    <div class="feat-item-l">
+      <div class="feat-check-l"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L4 7L9 1" stroke="#155F97" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-text-l">Ingressos oficiais com garantia de autenticidade total</div>
+    </div>
+    <div class="feat-item-l">
+      <div class="feat-check-l"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L4 7L9 1" stroke="#155F97" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-text-l">Segurança e suporte 24h durante todo o evento</div>
+    </div>
+    <div class="feat-item-l">
+      <div class="feat-check-l"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L4 7L9 1" stroke="#155F97" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-text-l">Acesso a áreas exclusivas e lounges VIP no evento</div>
+    </div>
+  </div>
+
+  <!-- DARK -->
+  <div class="panel panel-dark">
+    <div class="mode-label dark-label">🌙 Stats Strip — Dark Mode</div>
+    <div class="stats-d">
+      <div class="stat-d"><div class="stat-val-d">+5oo</div><div class="stat-label-d">Eventos anuais</div></div>
+      <div class="stat-d"><div class="stat-val-d">+1oK</div><div class="stat-label-d">Viagens por ano</div></div>
+      <div class="stat-d"><div class="stat-val-d">+3o</div><div class="stat-label-d">Parceiros globais</div></div>
+    </div>
+
+    <hr class="divider-d">
+    <div class="mode-label dark-label">Features / Benefits</div>
+    <div class="feat-item-d">
+      <div class="feat-check-d"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L4 7L9 1" stroke="#1E7ABE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-text-d">Ingressos oficiais com garantia de autenticidade total</div>
+    </div>
+    <div class="feat-item-d">
+      <div class="feat-check-d"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L4 7L9 1" stroke="#1E7ABE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-text-d">Segurança e suporte 24h durante todo o evento</div>
+    </div>
+    <div class="feat-item-d">
+      <div class="feat-check-d"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L4 7L9 1" stroke="#1E7ABE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-text-d">Acesso a áreas exclusivas e lounges VIP no evento</div>
+    </div>
+  </div>
+
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

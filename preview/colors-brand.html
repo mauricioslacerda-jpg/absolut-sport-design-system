@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'SoulCraft'; src: url('../fonts/soulcraftgx.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAFA; font-family: 'Barlow', sans-serif; padding: 24px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #9A9A9A; margin-bottom: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+  .swatch { border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .swatch-color { height: 64px; }
+  .swatch-info { padding: 8px 10px; background: #fff; }
+  .swatch-name { font-size: 11px; font-weight: 700; color: #1A1A1A; }
+  .swatch-hex  { font-size: 10px; color: #9A9A9A; font-family: monospace; margin-top: 2px; }
+  .tag { display: inline-block; background: rgba(21,95,151,0.1); color: #155F97; border: 1px solid rgba(21,95,151,0.2); font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 1px 6px; border-radius: 100px; margin-left: 4px; }
+  .tag-hl { background: rgba(40,87,247,0.1); color: #2857F7; border-color: rgba(40,87,247,0.2); }
+  .divider { border: none; border-top: 1px solid #E8E8E8; margin: 4px 0 18px; }
+  .grid-neutral { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+</style>
+</head>
+<body>
+
+  <div class="section-label">Brand Core</div>
+  <div class="grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#155F97;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Azul ASB <span class="tag">Primary</span></div>
+        <div class="swatch-hex">#155F97</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#2857F7;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Azul Highlight <span class="tag tag-hl">Accent</span></div>
+        <div class="swatch-hex">#2857F7</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#C0C0C0;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Cinza ASB</div>
+        <div class="swatch-hex">#C0C0C0</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FAFAFA; border:1px solid #E0E0E0;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Branco ASB <span class="tag">BG</span></div>
+        <div class="swatch-hex">#FAFAFA</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="section-label">Blue Scale</div>
+  <div class="grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#0F4A75;"></div>
+      <div class="swatch-info"><div class="swatch-name">Azul Dark</div><div class="swatch-hex">#0F4A75</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#155F97;"></div>
+      <div class="swatch-info"><div class="swatch-name">Azul ASB</div><div class="swatch-hex">#155F97</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1E7ABE;"></div>
+      <div class="swatch-info"><div class="swatch-name">Azul Mid</div><div class="swatch-hex">#1E7ABE</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#2857F7;"></div>
+      <div class="swatch-info"><div class="swatch-name">Highlight</div><div class="swatch-hex">#2857F7</div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="section-label">Supporting</div>
+  <div class="grid-neutral">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#0D0D0D;"></div>
+      <div class="swatch-info"><div class="swatch-name">Black</div><div class="swatch-hex">#0D0D0D</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#C0C0C0;"></div>
+      <div class="swatch-info"><div class="swatch-name">Cinza</div><div class="swatch-hex">#C0C0C0</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#C9A84C;"></div>
+      <div class="swatch-info"><div class="swatch-name">Gold VIP</div><div class="swatch-hex">#C9A84C</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#E3001B;"></div>
+      <div class="swatch-info"><div class="swatch-name">Red Alert</div><div class="swatch-hex">#E3001B</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#22C55E;"></div>
+      <div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#22C55E</div></div>
+    </div>
+  </div>
+
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

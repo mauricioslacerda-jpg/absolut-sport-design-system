@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABSOLUT Sport — Design System</title>
+<meta name="description" content="Sistema de marca oficial da ABSOLUT Sport. Cores, tipografia, logos, componentes e diretrizes para toda a empresa.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<!-- SoulCraft local -->
+<style>
+  @font-face {
+    font-family: 'SoulCraft';
+    src: url('fonts/soulcraftgx.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+
+<link rel="stylesheet" href="colors_and_type.css">
+
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── SPLASH ──────────────────────────────────────────────── */
+.splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0D0D0D;
+  display: flex; align-items: center; justify-content: center;
+  animation: splash-exit 0.7s cubic-bezier(0.4,0,0.2,1) 2.5s forwards;
+  pointer-events: none;
+}
+.splash-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  text-align: center;
+  opacity: 0; transform: translateY(16px);
+  animation: splash-rise 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+}
+.splash-logo { height: 96px; filter: brightness(1.1); display: block; margin: 0 auto; }
+.splash-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding-left: 0.32em; /* compensa deslocamento ótico do letter-spacing */
+}
+.splash-line {
+  width: 160px; height: 1px;
+  background: linear-gradient(to right, transparent, #155F97, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: splash-expand 0.9s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;
+}
+@keyframes splash-rise { to { opacity: 1; transform: none; } }
+@keyframes splash-expand { to { transform: scaleX(1); } }
+@keyframes splash-exit { to { opacity: 0; visibility: hidden; } }
+
+/* ─── NAV ─────────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: var(--z-sticky);
+  height: 68px; padding: 0 var(--space-12);
+  background: rgba(13, 13, 13, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 4px 32px rgba(0,0,0,0.3);
+}
+.nav-logo img { height: 32px; }
+.nav-menu { display: flex; gap: var(--space-8); }
+.nav-menu a {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-neutral-300);
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+.nav-menu a:hover { color: var(--color-white); border-bottom-color: var(--color-blue); }
+
+.nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+.nav-credit {
+  display: inline-flex; align-items: center;
+  padding: 5px 10px;
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: var(--radius-pill);
+  background: rgba(201,168,76,0.08);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+.nav-credit:hover {
+  background: rgba(201,168,76,0.18);
+  border-color: var(--color-gold);
+}
+.nav-credit-mark {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  background: var(--color-neutral-900);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+}
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  padding: 5px 10px;
+  border-radius: 100px;
+  background: transparent;
+  color: var(--color-neutral-300);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.lang-btn:hover { color: var(--color-white); }
+.lang-btn.active {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+.nav-cta {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  background: var(--color-blue);
+  color: var(--color-white);
+  padding: 10px 22px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+.nav-cta:hover { background: var(--color-blue-dark); }
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  background: linear-gradient(135deg, #0D0D0D 0%, #0a1520 50%, #0D0D0D 100%);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 100px var(--space-20) 80px;
+  overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-bar {
+  position: absolute; left: 0; top: 18%; bottom: 18%;
+  width: 4px;
+  background: linear-gradient(to bottom, transparent, var(--color-blue) 30%, var(--color-blue) 70%, transparent);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 1100px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(21,95,151,0.12);
+  border: 1px solid rgba(21,95,151,0.3);
+  color: var(--color-blue-mid);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+}
+.hero-eyebrow::before { content: '●'; color: var(--color-blue); font-size: 10px; }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 108px);
+  font-weight: 900;
+  font-variation-settings: 'wght' 900;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  text-rendering: geometricPrecision;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: var(--space-8);
+}
+.hero h1 .accent {
+  color: var(--color-blue-mid);
+  display: block;
+  font-weight: 900;
+  font-variation-settings: 'wght' 900;
+}
+
+.hero-sub {
+  font-size: var(--text-subtitle);
+  color: var(--color-neutral-200);
+  line-height: var(--leading-relaxed);
+  max-width: 580px;
+  margin-bottom: var(--space-10);
+}
+
+.hero-cities {
+  display: flex; flex-wrap: wrap;
+  gap: var(--space-3) var(--space-8);
+  font-size: var(--text-caption);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+}
+.hero-cities .city-hq    { color: rgba(255,255,255,0.68); }
+.hero-cities .city-market { color: rgba(255,255,255,0.30); }
+
+
+/* ─── SECTION COMMONS ─────────────────────────────────────── */
+section {
+  padding: var(--space-24) var(--space-20);
+  max-width: 1360px; margin: 0 auto;
+}
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-blue-mid);
+  margin-bottom: var(--space-3);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 900;
+  font-variation-settings: 'wght' 900;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  text-rendering: geometricPrecision;
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--color-white);
+  margin-bottom: var(--space-10);
+}
+.section-title .accent {
+  color: var(--color-blue-mid);
+  display: block;
+  font-weight: 900;
+  font-variation-settings: 'wght' 900;
+}
+
+.section-intro {
+  font-size: var(--text-body-lg);
+  color: var(--color-neutral-200);
+  max-width: 720px;
+  margin-top: -24px; margin-bottom: var(--space-12);
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── LOGOS ───────────────────────────────────────────────── */
+.logos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+.logo-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.logo-display {
+  height: 220px;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-display img { max-width: 60%; max-height: 90px; object-fit: contain; }
+.logo-display.bg-light { background: var(--color-off-white); }
+.logo-display.bg-dark  { background: var(--color-black); }
+.logo-display.bg-blue  { background: var(--color-blue); }
+.logo-meta {
+  padding: var(--space-5) var(--space-6);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: var(--space-4);
+}
+.logo-meta-text { flex: 1; }
+.logo-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
+.logo-use { font-size: var(--text-body-sm); color: var(--color-neutral-300); }
+.logo-download {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--color-white);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+.logo-download:hover { background: var(--color-blue); border-color: var(--color-blue); }
+
+/* ─── COLORS ──────────────────────────────────────────────── */
+.color-section { margin-bottom: var(--space-12); }
+.color-section h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-neutral-300);
+  margin-bottom: var(--space-5);
+}
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-3);
+}
+.color-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+.color-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.2); }
+.color-swatch { height: 80px; }
+.color-info { padding: 12px 14px; }
+.color-name { font-size: var(--text-body-sm); font-weight: var(--weight-semibold); color: var(--color-white); margin-bottom: 2px; }
+.color-hex { font-family: var(--font-mono); font-size: 11px; color: var(--color-neutral-300); }
+.color-token { font-family: var(--font-mono); font-size: 10px; color: var(--color-neutral-400); margin-top: 2px; }
+.copied-toast {
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+  background: var(--color-blue);
+  color: var(--color-white);
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-semibold);
+  box-shadow: 0 8px 32px rgba(21,95,151,0.4);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: var(--z-toast);
+}
+.copied-toast.show { opacity: 1; }
+
+/* ─── TYPOGRAPHY ──────────────────────────────────────────── */
+.type-stack > div { padding: var(--space-6) 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.type-stack > div:last-child { border-bottom: none; }
+.type-meta {
+  font-size: 11px; color: var(--color-neutral-400);
+  letter-spacing: var(--tracking-wide); margin-bottom: var(--space-3);
+  font-family: var(--font-mono);
+}
+.type-hero {
+  font-family: var(--font-display);
+  font-size: 72px; font-weight: var(--weight-black);
+  line-height: 1; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--color-white);
+}
+.type-hero .accent { color: var(--color-blue-mid); }
+.type-display {
+  font-family: var(--font-display);
+  font-size: 48px; font-weight: var(--weight-extrabold);
+  line-height: 1.05; text-transform: uppercase; color: var(--color-white);
+}
+.type-headline {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: var(--weight-bold);
+  line-height: 1.1; text-transform: uppercase; color: var(--color-white);
+}
+.type-title {
+  font-family: var(--font-body);
+  font-size: 22px; font-weight: var(--weight-semibold);
+  color: var(--color-white);
+}
+.type-body {
+  font-family: var(--font-body);
+  font-size: 16px; line-height: 1.65;
+  color: var(--color-neutral-200); max-width: 640px;
+}
+
+/* ─── SPACING & RADII ─────────────────────────────────────── */
+.tokens-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-12); }
+.tokens-h {
+  font-family: var(--font-display); font-size: 16px;
+  font-weight: 700; text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-neutral-300);
+  margin-bottom: var(--space-5);
+}
+.spacing-list { display: flex; flex-direction: column; gap: var(--space-3); }
+.spacing-row { display: grid; grid-template-columns: 90px 1fr 60px; align-items: center; gap: var(--space-4); }
+.spacing-name { font-family: var(--font-mono); font-size: 12px; color: var(--color-neutral-300); }
+.spacing-bar { height: 14px; background: var(--color-blue); border-radius: 2px; }
+.spacing-px { font-family: var(--font-mono); font-size: 12px; color: var(--color-neutral-400); text-align: right; }
+
+.radius-list { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.radius-card {
+  flex: 1; min-width: 110px;
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  padding: var(--space-5);
+  text-align: center;
+}
+.radius-shape { width: 64px; height: 64px; background: var(--color-blue); margin: 0 auto var(--space-3); }
+.radius-card[data-radius="sm"]   .radius-shape { border-radius: 4px; }
+.radius-card[data-radius="md"]   .radius-shape { border-radius: 8px; }
+.radius-card[data-radius="lg"]   .radius-shape { border-radius: 12px; }
+.radius-card[data-radius="xl"]   .radius-shape { border-radius: 16px; }
+.radius-card[data-radius="pill"] .radius-shape { border-radius: 100px; width: 96px; height: 36px; }
+.radius-name {
+  font-family: var(--font-display); font-size: 14px;
+  font-weight: var(--weight-bold); text-transform: uppercase;
+  letter-spacing: var(--tracking-wide); color: var(--color-white);
+}
+.radius-px { font-family: var(--font-mono); font-size: 11px; color: var(--color-neutral-400); margin-top: 4px; }
+
+/* ─── COMPONENTS ──────────────────────────────────────────── */
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+}
+.component-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -1px 0 rgba(0,0,0,0.25);
+}
+.component-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg,
+    rgba(255,255,255,0.10) 0%,
+    transparent 45%,
+    rgba(0,0,0,0.08) 100%);
+  pointer-events: none; z-index: 0;
+  border-radius: 16px;
+}
+.component-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(21,95,151,0.45);
+  box-shadow:
+    0 16px 48px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(21,95,151,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    inset 0 -1px 0 rgba(0,0,0,0.3);
+}
+.component-thumb {
+  position: relative; height: 150px;
+  background: linear-gradient(135deg,
+    rgba(21,95,151,0.35) 0%,
+    rgba(30,122,190,0.18) 50%,
+    rgba(13,13,13,0.6) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.component-thumb::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.component-thumb-icon {
+  font-family: var(--font-display); font-size: 52px;
+  font-weight: var(--weight-black);
+  color: rgba(255,255,255,0.22);
+  text-transform: uppercase; z-index: 1;
+  text-shadow: 0 2px 12px rgba(21,95,151,0.4);
+}
+.component-meta { padding: var(--space-5) var(--space-6); position: relative; z-index: 1; }
+.component-cat {
+  font-size: 10px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  color: var(--color-blue-mid); margin-bottom: 4px;
+}
+.component-name {
+  font-family: var(--font-display); font-size: 18px;
+  font-weight: var(--weight-bold); text-transform: uppercase;
+  color: var(--color-white); margin-bottom: 4px;
+}
+.component-link {
+  font-size: var(--text-body-sm);
+  color: rgba(255,255,255,0.4);
+  margin-top: var(--space-3);
+  transition: color 0.2s ease;
+}
+.component-link::after { content: ' →'; }
+.component-card:hover .component-link { color: var(--color-blue-mid); }
+
+/* ─── FIGMA TEMPLATES ─────────────────────────────────────── */
+.figma-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+.figma-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-default);
+  display: flex;
+}
+.figma-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(21,95,151,0.5);
+  box-shadow: 0 8px 32px rgba(21,95,151,0.15);
+}
+.figma-cover {
+  width: 200px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0F4A75 60%, #0a1520 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.figma-cover::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.figma-cover-label {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  position: relative; z-index: 1;
+  text-align: center;
+  line-height: 1;
+}
+.figma-meta {
+  padding: var(--space-6);
+  flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  min-width: 0;
+}
+.figma-cat {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  color: var(--color-blue-mid);
+  margin-bottom: 6px;
+}
+.figma-name {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: 6px;
+}
+.figma-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+.figma-link {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--color-blue-mid);
+}
+.figma-link::after { content: ' ↗'; }
+
+/* ─── BRAND TOOLKIT — zip download CTA ────────────────────── */
+.toolkit-cta {
+  display: flex; align-items: center; gap: var(--space-6);
+  background: linear-gradient(135deg, #0a1520 0%, #1a0d05 100%);
+  border: 2px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  padding: var(--space-10) var(--space-12);
+  text-decoration: none;
+  position: relative; overflow: hidden;
+  transition: all var(--transition-default);
+}
+.toolkit-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at left, rgba(201,168,76,0.14) 0%, transparent 60%);
+  pointer-events: none;
+}
+.toolkit-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 56px rgba(201,168,76,0.25);
+  border-color: var(--color-gold-light);
+}
+.toolkit-icon {
+  font-size: 36px; width: 72px; height: 72px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.toolkit-meta { flex: 1; min-width: 0; position: relative; z-index: 1; }
+.toolkit-name {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 6px;
+  word-break: break-all;
+}
+.toolkit-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  line-height: 1.5;
+}
+.toolkit-arrow {
+  font-family: var(--font-mono);
+  font-size: 36px; font-weight: 300;
+  color: var(--color-gold);
+  flex-shrink: 0; position: relative; z-index: 1;
+  transition: transform var(--transition-default);
+}
+.toolkit-cta:hover .toolkit-arrow { transform: translateY(4px); }
+
+/* ─── DECISION TREE — matriz 2x2 ──────────────────────────── */
+.decision-matrix {
+  display: grid;
+  grid-template-columns: 130px 1fr 1fr;
+  gap: var(--space-3);
+  max-width: 760px;
+}
+.decision-corner { /* empty top-left */ }
+.decision-axis-x {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  text-align: center;
+  align-self: end;
+  padding-bottom: var(--space-3);
+}
+.decision-axis-y {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: flex; align-items: center; justify-content: flex-end;
+  padding-right: var(--space-4);
+}
+.decision-cell {
+  background: var(--color-off-white);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  aspect-ratio: 1.4 / 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  transition: border-color var(--transition-default), transform var(--transition-default);
+}
+.decision-cell:hover {
+  border-color: rgba(21,95,151,0.5);
+  transform: translateY(-2px);
+}
+.decision-cell-dark { background: var(--color-black); }
+.decision-cell img { max-width: 65%; max-height: 60px; object-fit: contain; }
+.decision-cell span {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-align: center;
+}
+.decision-cell:not(.decision-cell-dark) span { color: var(--color-black); }
+.decision-cell-dark span { color: var(--color-white); }
+
+/* ─── ICONOGRAPHY — Lucide grid ───────────────────────────── */
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--space-3);
+}
+.icon-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex; flex-direction: column;
+  align-items: center; gap: var(--space-3);
+  transition: all var(--transition-default);
+}
+.icon-card:hover {
+  border-color: rgba(21,95,151,0.5);
+  background: var(--color-neutral-800);
+  transform: translateY(-2px);
+}
+.icon-card svg {
+  width: 28px; height: 28px;
+  color: var(--color-white);
+  stroke: currentColor; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.icon-card span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-neutral-300);
+}
+
+/* ─── MOTION LIBRARY — transições com preview ─────────────── */
+.motion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+.motion-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+.motion-card:hover { border-color: rgba(21,95,151,0.5); }
+.motion-track {
+  position: relative;
+  height: 80px;
+  margin-bottom: var(--space-6);
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+.motion-preview {
+  width: 60px; height: 60px;
+  background: var(--color-blue);
+  border-radius: var(--radius-sm);
+  position: absolute; top: 10px; left: 0;
+  transition-property: transform, background;
+  transition-timing-function: ease-out;
+}
+.motion-card[data-speed="fast"] .motion-preview { transition-duration: 0.15s; }
+.motion-card[data-speed="default"] .motion-preview { transition-duration: 0.20s; }
+.motion-card[data-speed="slow"] .motion-preview { transition-duration: 0.35s; }
+.motion-card:hover .motion-preview {
+  transform: translateX(calc(100% + 80px));
+  background: var(--color-gold);
+}
+.motion-token {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-blue-mid);
+  margin-bottom: 4px;
+}
+.motion-time {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-neutral-300);
+  margin-bottom: var(--space-3);
+}
+.motion-use {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  line-height: 1.5;
+}
+.motion-h {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+}
+.motion-principles { list-style: none; padding: 0; }
+.motion-principles li {
+  font-size: var(--text-body);
+  color: var(--color-neutral-200);
+  padding: 12px 0 12px 28px;
+  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  line-height: 1.5;
+}
+.motion-principles li:last-child { border-bottom: none; }
+.motion-principles li::before {
+  content: "✓";
+  color: var(--color-gold);
+  position: absolute; left: 0;
+  font-weight: var(--weight-bold);
+}
+.motion-principles li code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-blue-mid);
+  background: rgba(21,95,151,0.12);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* ─── GUIDELINES ──────────────────────────────────────────── */
+.guidelines-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+.guideline-block {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+}
+.guideline-block h3 {
+  font-family: var(--font-display); font-size: 22px;
+  font-weight: var(--weight-bold); text-transform: uppercase;
+  letter-spacing: var(--tracking-wide); color: var(--color-white);
+  margin-bottom: var(--space-4);
+}
+.guideline-block ul { list-style: none; padding: 0; margin-top: var(--space-3); }
+.guideline-block li {
+  font-size: var(--text-body-sm); color: var(--color-neutral-300);
+  padding: 8px 0 8px 22px; position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.guideline-block li:last-child { border-bottom: none; }
+.guideline-block.do li::before { content: "✓"; color: var(--color-success); position: absolute; left: 0; font-weight: var(--weight-bold); }
+.guideline-block.dont li::before { content: "✗"; color: var(--color-error); position: absolute; left: 0; font-weight: var(--weight-bold); }
+.guideline-tag {
+  display: inline-block; padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 10px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+.guideline-block.do .guideline-tag   { background: rgba(34,197,94,0.12); color: var(--color-success); }
+.guideline-block.dont .guideline-tag { background: rgba(227,0,27,0.12); color: var(--color-error); }
+
+/* ─── DEVS ────────────────────────────────────────────────── */
+.devs-block {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-12);
+}
+.devs-block h3 {
+  font-family: var(--font-display); font-size: 24px;
+  font-weight: var(--weight-bold); text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-6); color: var(--color-white);
+}
+.devs-block p { color: var(--color-neutral-300); margin-bottom: var(--space-6); line-height: 1.65; }
+.code-block {
+  background: var(--color-black);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-neutral-200);
+  overflow-x: auto;
+  margin-bottom: var(--space-4);
+  white-space: pre-wrap;
+}
+.code-block .comment { color: var(--color-neutral-400); }
+.code-block .tag     { color: var(--color-blue-mid); }
+.code-block .attr    { color: var(--color-gold); }
+.code-block .string  { color: #7EE787; }
+
+/* ─── CHILD PAGES ─────────────────────────────────────────── */
+.children-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-4); }
+.child-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-default);
+}
+.child-card:hover { transform: translateY(-3px); border-color: rgba(21,95,151,0.5); }
+.child-cover {
+  height: 140px;
+  background: linear-gradient(135deg, #0a1520 0%, var(--color-blue) 100%);
+  position: relative;
+  display: flex; align-items: flex-end; padding: var(--space-5);
+}
+.child-cover::after {
+  content: ''; position: absolute; left: 0; top: 20%; bottom: 20%; width: 3px;
+  background: var(--color-gold);
+}
+.child-tag {
+  font-size: 10px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Coming-soon card: cover usa Gray ASB (cinza institucional da marca)
+   com texto escuro — inversão proposital pra marcar "inativo" via cor de marca,
+   não via opacity (que mata contraste). */
+.child-card-soon { cursor: default; }
+.child-card-soon:hover { transform: none; border-color: rgba(255,255,255,0.07); }
+.child-cover-soon {
+  height: 140px;
+  background: var(--color-gray-asb);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(0,0,0,0.04) 12px, rgba(0,0,0,0.04) 24px);
+  border-bottom: 1px dashed rgba(0,0,0,0.2);
+  display: flex; align-items: center; justify-content: center;
+}
+.soon-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-neutral-800);
+}
+.child-card-soon .child-name { color: var(--color-neutral-200); }
+.child-card-soon .child-desc { color: var(--color-neutral-300); }
+.child-meta { padding: var(--space-5) var(--space-6); }
+.child-name {
+  font-family: var(--font-display); font-size: 22px;
+  font-weight: var(--weight-bold); text-transform: uppercase;
+  letter-spacing: var(--tracking-wide); color: var(--color-white);
+  margin-bottom: 6px;
+}
+.child-desc { font-size: var(--text-body-sm); color: var(--color-neutral-300); line-height: 1.5; }
+
+.photo-tbd {
+  background: var(--color-neutral-900);
+  border: 1.5px dashed rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-neutral-400);
+  text-transform: uppercase;
+}
+
+/* ─── ASK RAFA — high-personality contact banner ──────────── */
+.ask-rafa-section {
+  background: linear-gradient(135deg, #0a1520 0%, #0D0D0D 60%, #1a0d05 100%);
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+  padding: var(--space-16) 0;
+  margin-top: var(--space-20);
+  position: relative;
+  overflow: hidden;
+}
+.ask-rafa-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 100% at 50% 50%, black 30%, transparent 80%);
+  pointer-events: none;
+}
+.ask-rafa-section::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(201,168,76,0.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+.ask-rafa-link {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 var(--space-12);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-default);
+}
+.ask-rafa-link:hover {
+  transform: translateY(-3px);
+}
+.ask-rafa-poster {
+  width: clamp(220px, 26vw, 340px);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow:
+    0 16px 56px rgba(0,0,0,0.6),
+    0 0 32px rgba(201,168,76,0.18),
+    inset 0 0 0 2px rgba(201,168,76,0.3);
+  transition: transform var(--transition-slow), box-shadow var(--transition-default);
+}
+.ask-rafa-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ask-rafa-link:hover .ask-rafa-poster {
+  transform: rotate(-1deg) scale(1.03);
+  box-shadow:
+    0 24px 72px rgba(0,0,0,0.7),
+    0 0 48px rgba(201,168,76,0.32),
+    inset 0 0 0 2px rgba(201,168,76,0.6);
+}
+.ask-rafa-text { flex: 1; min-width: 0; }
+.ask-rafa-eyebrow {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-4);
+  display: inline-block;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--color-gold);
+}
+.ask-rafa-cta {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 68px);
+  font-weight: 900;
+  font-variation-settings: 'wght' 900;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  text-transform: uppercase;
+  line-height: 0.92;
+  margin-bottom: var(--space-5);
+}
+.ask-rafa-cta .gold {
+  color: var(--color-gold);
+  display: block;
+}
+.ask-rafa-sub {
+  font-size: var(--text-body-lg);
+  color: var(--color-neutral-200);
+  line-height: 1.55;
+  max-width: 560px;
+  margin-bottom: var(--space-5);
+}
+.ask-rafa-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: var(--color-gold);
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-default);
+}
+.ask-rafa-action::after {
+  content: '→';
+  font-family: var(--font-mono);
+  font-size: 20px;
+  transition: transform var(--transition-default);
+}
+.ask-rafa-link:hover .ask-rafa-action {
+  background: var(--color-gold-light);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+}
+.ask-rafa-link:hover .ask-rafa-action::after {
+  transform: translateX(6px);
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+.footer {
+  background: var(--color-black);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--space-12) var(--space-20) var(--space-8);
+  margin-top: var(--space-20);
+}
+.footer-grid {
+  max-width: 1360px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-12);
+}
+.footer-brand img { height: 36px; margin-bottom: var(--space-4); }
+.footer-brand p { font-size: var(--text-body-sm); color: var(--color-neutral-300); max-width: 280px; line-height: 1.6; }
+.footer-col h4 {
+  font-size: 11px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--color-neutral-400); margin-bottom: var(--space-4);
+}
+.footer-col a {
+  display: block; font-size: var(--text-body-sm);
+  color: var(--color-neutral-300); padding: 6px 0;
+  transition: color var(--transition-fast);
+}
+.footer-col a:hover { color: var(--color-blue-mid); }
+.footer-bottom {
+  max-width: 1360px; margin: var(--space-8) auto 0;
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between;
+  font-size: var(--text-caption); color: var(--color-neutral-400);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+/* Acessibilidade: respeitar preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .nav { padding: 0 var(--space-6); }
+  .nav-menu { display: none; }
+  .nav-cta { display: none; }
+  .nav-credit { display: none; }
+  .toolkit-cta { flex-direction: column; align-items: flex-start; padding: var(--space-8) var(--space-6); gap: var(--space-4); }
+  .toolkit-arrow { align-self: flex-end; }
+  .decision-matrix { grid-template-columns: 100px 1fr 1fr; max-width: 100%; }
+  .motion-grid { grid-template-columns: 1fr; }
+  .hero { padding: 80px var(--space-6) 60px; }
+  section { padding: var(--space-16) var(--space-6); }
+  .logos-grid, .guidelines-grid, .tokens-row, .figma-grid { grid-template-columns: 1fr; }
+  .figma-card { flex-direction: column; }
+  .figma-cover { width: 100%; height: 110px; }
+  .ask-rafa-section { padding: var(--space-10) 0; }
+  .ask-rafa-link { flex-direction: column; align-items: flex-start; gap: var(--space-6); padding: 0 var(--space-6); }
+  .ask-rafa-poster { width: 200px; }
+  .footer { padding: var(--space-10) var(--space-6) var(--space-6); }
+  .footer-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+  .footer-bottom { flex-direction: column; gap: var(--space-3); }
+
+}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash" class="splash">
+  <div class="splash-inner">
+    <img class="splash-logo" src="assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+    <div class="splash-tag">DESIGN SYSTEM</div>
+    <div class="splash-line"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="#top">
+    <img src="assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+  </a>
+  <div class="nav-menu">
+    <a href="#toolkit"      data-i18n="nav.toolkit">Brand Kit</a>
+    <a href="#logos"        data-i18n="nav.logos">Logos</a>
+    <a href="#cores"        data-i18n="nav.colors">Cores</a>
+    <a href="#tipografia"   data-i18n="nav.typo">Tipografia</a>
+    <a href="#iconografia"  data-i18n="nav.icons">Ícones</a>
+    <a href="#motion"       data-i18n="nav.motion">Motion</a>
+    <a href="#componentes"  data-i18n="nav.comp">Componentes</a>
+    <a href="#figma"        data-i18n="nav.figma">Figma</a>
+    <a href="#guidelines"   data-i18n="nav.guide">Guidelines</a>
+    <a href="#playbooks"    data-i18n="nav.play">Playbooks</a>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-cta" href="#devs" data-i18n="nav.cta">Para Devs</a>
+    <a class="nav-credit" href="mailto:design@absolut-sport.com.br?subject=Design%20System%20%C2%B7%20Sugest%C3%A3o" data-i18n-attr="title:nav.credit.title" title="Mauricio × Rafa · sugestões pra design@">
+      <span class="nav-credit-mark">MM × RR</span>
+    </a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+      <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+      <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+      <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top" style="max-width:none;padding-left:var(--space-20);padding-right:var(--space-20)">
+  <div class="hero-grid"></div>
+  <div class="hero-bar"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">Sistema de Marca · v1.0</div>
+    <h1 data-i18n-html="hero.h1">
+      ABSOLUT SPORT<br>
+      <span class="accent">DESIGN SYSTEM</span><br>
+      PARA TODA A EQUIPE
+    </h1>
+    <p class="hero-sub" data-i18n="hero.sub">Tudo que a marca usa, num lugar só. Cores, tipografia, logos, componentes. Use, baixe, contribua.</p>
+    <div class="hero-cities">
+      <span class="city-hq">🇩🇪 Frankfurt</span>
+      <span class="city-hq">🇧🇷 Rio de Janeiro</span>
+      <span class="city-hq">🇺🇸 Los Angeles</span>
+      <span class="city-market">🇦🇷 Argentina</span>
+      <span class="city-market">🇨🇴 Colombia</span>
+      <span class="city-market">🇲🇽 México</span>
+      <span class="city-market">🇵🇪 Peru</span>
+      <span class="city-market">🇳🇱 Holanda</span>
+      <span class="city-market">🇵🇹 Portugal</span>
+      <span class="city-market">🇨🇳 China</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- BRAND TOOLKIT -->
+<section id="toolkit">
+  <div class="section-eyebrow" data-i18n="toolkit.eyebrow">Brand Kit · Download</div>
+  <h2 class="section-title" data-i18n-html="toolkit.title">Toda a marca,<br><span class="accent">num zip.</span></h2>
+  <p class="section-intro" data-i18n="toolkit.intro">Logos, SoulCraft GX, tokens CSS e o script Zero-to-O. Tudo o que precisa pra começar.</p>
+
+  <a class="toolkit-cta" href="assets/absolut-brand-kit.zip" download>
+    <div class="toolkit-icon">📦</div>
+    <div class="toolkit-meta">
+      <div class="toolkit-name">absolut-brand-kit.zip</div>
+      <div class="toolkit-desc" data-i18n="toolkit.desc">4 logos · SoulCraft GX · tokens.css · zero-to-o.js · README</div>
+    </div>
+    <div class="toolkit-arrow">↓</div>
+  </a>
+</section>
+
+<!-- LOGOS -->
+<section id="logos">
+  <div class="section-eyebrow" data-i18n="logos.eyebrow">Marca · Identidade</div>
+  <h2 class="section-title" data-i18n-html="logos.title">Logos<br><span class="accent">oficiais.</span></h2>
+  <p class="section-intro" data-i18n-html="logos.intro">Quatro variantes pra cobrir qualquer fundo. <strong style="color:#fff">ABSOLUT Sport</strong> sempre escrito completo, nunca só "Absolut". Azul+preto é o padrão. Azul+branco em fundo escuro. Monocromático em P&B.</p>
+
+  <div class="logos-grid">
+    <div class="logo-card">
+      <div class="logo-display bg-light"><img src="assets/logo-azul-preto.svg" alt="Logo Azul + Preto"></div>
+      <div class="logo-meta">
+        <div class="logo-meta-text">
+          <div class="logo-name" data-i18n="logos.c1.name">Azul + Preto · Primária</div>
+          <div class="logo-use" data-i18n="logos.c1.use">Fundos claros · Light mode · Material institucional</div>
+        </div>
+        <a class="logo-download" href="assets/logo-azul-preto.svg" download>SVG ↓</a>
+      </div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-display bg-dark"><img src="assets/logo-azul-branco.svg" alt="Logo Azul + Branco"></div>
+      <div class="logo-meta">
+        <div class="logo-meta-text">
+          <div class="logo-name" data-i18n="logos.c2.name">Azul + Branco</div>
+          <div class="logo-use" data-i18n="logos.c2.use">Fundos escuros · Dark mode · Foto noturna</div>
+        </div>
+        <a class="logo-download" href="assets/logo-azul-branco.svg" download>SVG ↓</a>
+      </div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-display bg-blue"><img src="assets/logo-branco.svg" alt="Logo Branco Monocromático"></div>
+      <div class="logo-meta">
+        <div class="logo-meta-text">
+          <div class="logo-name" data-i18n="logos.c3.name">Branco · Monocromático</div>
+          <div class="logo-use" data-i18n="logos.c3.use">Fundos azuis ou escuros · Aplicações especiais</div>
+        </div>
+        <a class="logo-download" href="assets/logo-branco.svg" download>SVG ↓</a>
+      </div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-display bg-light"><img src="assets/logo-preto.svg" alt="Logo Preto Monocromático"></div>
+      <div class="logo-meta">
+        <div class="logo-meta-text">
+          <div class="logo-name" data-i18n="logos.c4.name">Preto · Monocromático</div>
+          <div class="logo-use" data-i18n="logos.c4.use">Impressão P&B · Fundos claros · Documentos</div>
+        </div>
+        <a class="logo-download" href="assets/logo-preto.svg" download>SVG ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISION TREE -->
+<section id="decision">
+  <div class="section-eyebrow" data-i18n="dec.eyebrow">Logo · Qual usar</div>
+  <h2 class="section-title" data-i18n-html="dec.title">Decisão em<br><span class="accent">uma olhada.</span></h2>
+  <p class="section-intro" data-i18n="dec.intro">Onde vai aparecer? A matriz responde.</p>
+
+  <div class="decision-matrix">
+    <div class="decision-corner"></div>
+    <div class="decision-axis-x" data-i18n="dec.axis.light">Fundo claro</div>
+    <div class="decision-axis-x" data-i18n="dec.axis.dark">Fundo escuro</div>
+
+    <div class="decision-axis-y" data-i18n="dec.axis.color">Colorido</div>
+    <div class="decision-cell"><img src="assets/logo-azul-preto.svg" alt="Logo Azul + Preto"><span data-i18n="dec.c1">Azul + Preto</span></div>
+    <div class="decision-cell decision-cell-dark"><img src="assets/logo-azul-branco.svg" alt="Logo Azul + Branco"><span data-i18n="dec.c2">Azul + Branco</span></div>
+
+    <div class="decision-axis-y" data-i18n="dec.axis.mono">Monocromático</div>
+    <div class="decision-cell"><img src="assets/logo-preto.svg" alt="Logo Preto Mono"><span data-i18n="dec.c3">Preto mono</span></div>
+    <div class="decision-cell decision-cell-dark"><img src="assets/logo-branco.svg" alt="Logo Branco Mono"><span data-i18n="dec.c4">Branco mono</span></div>
+  </div>
+</section>
+
+<!-- CORES -->
+<section id="cores">
+  <div class="section-eyebrow" data-i18n="colors.eyebrow">Paleta · Tokens</div>
+  <h2 class="section-title" data-i18n-html="colors.title">Cores da<br><span class="accent">marca.</span></h2>
+  <p class="section-intro" data-i18n-html="colors.intro">Clique em qualquer card para copiar o hex. Tokens CSS estão em <code style="font-family:var(--font-mono);color:#fff">colors_and_type.css</code>.</p>
+
+  <div class="color-section">
+    <h3 data-i18n="colors.brand">Brand Core</h3>
+    <div class="color-grid" id="brand-colors"></div>
+  </div>
+  <div class="color-section">
+    <h3 data-i18n="colors.neutrals">Neutrais</h3>
+    <div class="color-grid" id="neutral-colors"></div>
+  </div>
+  <div class="color-section">
+    <h3 data-i18n="colors.status">Status</h3>
+    <div class="color-grid" id="status-colors"></div>
+  </div>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section id="tipografia">
+  <div class="section-eyebrow" data-i18n="typo.eyebrow">Tipografia · DNA Tipográfico</div>
+  <h2 class="section-title" data-i18n-html="typo.title">Sistema<br><span class="accent">tipográfico.</span></h2>
+  <p class="section-intro" data-i18n-html="typo.intro"><strong style="color:#fff">SoulCraft GX</strong> é a fonte da marca — todo headline usa ela. <strong style="color:#fff">Barlow</strong> resolve UI e corpo. <strong style="color:#fff">JetBrains Mono</strong> resolve dados, preços e código.</p>
+
+  <div class="type-stack">
+    <div>
+      <div class="type-meta" data-i18n="typo.hero.meta">Hero · 72px · SoulCraft Black · Headlines de marca</div>
+      <div class="type-hero" data-i18n-html="typo.hero.text">DOS ESTÁDIOS<br><span class="accent">PARA A HISTÓRIA</span></div>
+    </div>
+    <div>
+      <div class="type-meta" data-i18n="typo.disp.meta">Display · 48px · SoulCraft ExtraBold</div>
+      <div class="type-display" data-i18n="typo.disp.text">Experiências Lendárias</div>
+    </div>
+    <div>
+      <div class="type-meta" data-i18n="typo.head.meta">Headline · 32px · SoulCraft Bold</div>
+      <div class="type-headline" data-i18n="typo.head.text">CONMEBOL Libertadores™ 2025</div>
+    </div>
+    <div>
+      <div class="type-meta" data-i18n="typo.title.meta">Title · 22px · Barlow SemiBold · UI headings</div>
+      <div class="type-title" data-i18n="typo.title.text">Agência Oficial de Pacotes para as Finais</div>
+    </div>
+    <div>
+      <div class="type-meta" data-i18n="typo.body.meta">Body · 16px · Barlow Regular · Corpo de texto</div>
+      <p class="type-body" data-i18n="typo.body.text">Somos a única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™. Conectamos torcedores, empresas e delegações a momentos inesquecíveis com eficiência alemã, entusiasmo brasileiro e estilo de vida californiano.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ICONOGRAPHY -->
+<section id="iconografia">
+  <div class="section-eyebrow" data-i18n="icons.eyebrow">Iconografia · Lucide</div>
+  <h2 class="section-title" data-i18n-html="icons.title">Ícones<br><span class="accent">do sistema.</span></h2>
+  <p class="section-intro" data-i18n-html="icons.intro"><strong style="color:#fff">Lucide</strong> é o set oficial. 2px stroke, geométrico, moderno. <a href="https://lucide.dev" target="_blank" style="color:var(--color-blue-mid)">Catálogo completo →</a></p>
+
+  <div class="icons-grid">
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg><span>trophy</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg><span>ticket</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg><span>plane</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M3 22V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14"/><path d="M2 22h20"/><path d="M9 22v-4h6v4"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/></svg><span>hotel</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg><span>calendar</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>map-pin</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>users</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span>shield</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><span>star</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>check</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>arrow-right</span></div>
+    <div class="icon-card"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span>info</span></div>
+  </div>
+</section>
+
+<!-- MOTION -->
+<section id="motion">
+  <div class="section-eyebrow" data-i18n="motion.eyebrow">Motion · Transições</div>
+  <h2 class="section-title" data-i18n-html="motion.title">Movimento<br><span class="accent">com propósito.</span></h2>
+  <p class="section-intro" data-i18n="motion.intro">Três velocidades. Três funções. Passe o mouse nos cards pra sentir.</p>
+
+  <div class="motion-grid">
+    <div class="motion-card" data-speed="fast">
+      <div class="motion-track"><div class="motion-preview"></div></div>
+      <div class="motion-token">--transition-fast</div>
+      <div class="motion-time">0.15s ease-out</div>
+      <div class="motion-use" data-i18n="motion.fast">Feedback instantâneo: hover, click, toggle.</div>
+    </div>
+    <div class="motion-card" data-speed="default">
+      <div class="motion-track"><div class="motion-preview"></div></div>
+      <div class="motion-token">--transition-default</div>
+      <div class="motion-time">0.20s ease-out</div>
+      <div class="motion-use" data-i18n="motion.default">Padrão: cards, botões, mudança de estado.</div>
+    </div>
+    <div class="motion-card" data-speed="slow">
+      <div class="motion-track"><div class="motion-preview"></div></div>
+      <div class="motion-token">--transition-slow</div>
+      <div class="motion-time">0.35s ease-out</div>
+      <div class="motion-use" data-i18n="motion.slow">Ênfase: modal, drawer, reveal de conteúdo.</div>
+    </div>
+  </div>
+
+  <h3 class="motion-h" data-i18n="motion.principles.h">Princípios</h3>
+  <ul class="motion-principles">
+    <li data-i18n="motion.p1">Movimento é função, nunca decoração.</li>
+    <li data-i18n-html="motion.p2">Hover sobe 3px. Press desce 2px. Sempre <code>ease-out</code>.</li>
+    <li data-i18n="motion.p3">Nada de mola. Energia controlada, não saltitante.</li>
+    <li data-i18n-html="motion.p4">Respeite <code>prefers-reduced-motion</code>.</li>
+  </ul>
+</section>
+
+<!-- TOKENS -->
+<section id="tokens">
+  <div class="section-eyebrow" data-i18n="tokens.eyebrow">Tokens · Espaço · Forma</div>
+  <h2 class="section-title" data-i18n-html="tokens.title">Espaçamento<br><span class="accent">e forma.</span></h2>
+
+  <div class="tokens-row">
+    <div>
+      <h3 class="tokens-h" data-i18n="tokens.spacing.h">Escala de Espaço</h3>
+      <div class="spacing-list" id="spacing-list"></div>
+    </div>
+    <div>
+      <h3 class="tokens-h" data-i18n="tokens.radius.h">Border Radius</h3>
+      <div class="radius-list">
+        <div class="radius-card" data-radius="sm"><div class="radius-shape"></div><div class="radius-name">SM</div><div class="radius-px" data-i18n="tokens.r.sm">4px · botões</div></div>
+        <div class="radius-card" data-radius="md"><div class="radius-shape"></div><div class="radius-name">MD</div><div class="radius-px" data-i18n="tokens.r.md">8px · cards</div></div>
+        <div class="radius-card" data-radius="lg"><div class="radius-shape"></div><div class="radius-name">LG</div><div class="radius-px">12px</div></div>
+        <div class="radius-card" data-radius="xl"><div class="radius-shape"></div><div class="radius-name">XL</div><div class="radius-px">16px</div></div>
+        <div class="radius-card" data-radius="pill"><div class="radius-shape"></div><div class="radius-name">Pill</div><div class="radius-px" data-i18n="tokens.r.pill">100px · badges</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTES -->
+<section id="componentes" style="background: linear-gradient(160deg, #050d18 0%, #0a1520 40%, #08101c 100%)">
+  <div class="section-eyebrow" data-i18n="comp.eyebrow">Biblioteca · Componentes</div>
+  <h2 class="section-title" data-i18n-html="comp.title">Catálogo de<br><span class="accent">componentes.</span></h2>
+  <p class="section-intro" data-i18n="comp.intro">13 previews vivos. Clica num e abre o componente em nova aba.</p>
+
+  <div class="components-grid">
+    <a class="component-card" href="preview/brand-logo.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">A</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.identity">Identidade</div><div class="component-name">Logo Mark</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/colors-brand.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">●</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.colors">Cores</div><div class="component-name">Brand Colors</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/colors-semantic.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">◐</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.colors">Cores</div><div class="component-name">Semantic Colors</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/type-display.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">Aa</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.typo">Tipografia</div><div class="component-name">Display Type</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/type-body.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">Tt</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.typo">Tipografia</div><div class="component-name">Body Type</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/spacing-tokens.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">▤</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.layout">Layout</div><div class="component-name">Spacing Tokens</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/spacing-shadows.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">▣</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.layout">Layout</div><div class="component-name">Shadows</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/components-buttons.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">[ ]</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.ui">UI</div><div class="component-name">Buttons</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/components-badges.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">●</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.ui">UI</div><div class="component-name">Badges</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/components-forms.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">▭</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.ui">UI</div><div class="component-name">Forms</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/components-navbar.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">═</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.nav">Navegação</div><div class="component-name">Navbar</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/components-stats.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">123</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.display">Display</div><div class="component-name">Stat Strip</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+    <a class="component-card" href="preview/components-event-card.html" target="_blank">
+      <div class="component-thumb"><div class="component-thumb-icon">▦</div></div>
+      <div class="component-meta"><div class="component-cat" data-i18n="comp.cat.pattern">Pattern</div><div class="component-name">Event Card</div><div class="component-link" data-i18n="comp.link">Ver preview</div></div>
+    </a>
+  </div>
+</section>
+
+<!-- FIGMA TEMPLATES -->
+<section id="figma">
+  <div class="section-eyebrow" data-i18n="figma.eyebrow">Figma · Templates oficiais</div>
+  <h2 class="section-title" data-i18n-html="figma.title">Templates<br><span class="accent">prontos pra baixar.</span></h2>
+  <p class="section-intro" data-i18n="figma.intro">Quatro arquivos Figma. O Rafa mantém. Duplica no teu workspace e adapta pro evento.</p>
+
+  <div class="figma-grid">
+    <a class="figma-card" href="https://www.figma.com/design/Y3KDjv8vza80a9nLiZQdgH/TEMPLATE-Enxovais-ADS-2026?node-id=124-2692" target="_blank">
+      <div class="figma-cover"><span class="figma-cover-label">ENXOVAL<br>ADS</span></div>
+      <div class="figma-meta">
+        <div class="figma-cat" data-i18n="figma.c1.cat">Anúncios · Social</div>
+        <div class="figma-name" data-i18n="figma.c1.name">Enxoval ADS 2026</div>
+        <div class="figma-desc" data-i18n="figma.c1.desc">Kit completo de anúncios para campanhas de evento. Formatos para Instagram, Facebook e display ads.</div>
+        <div class="figma-link" data-i18n="figma.link">Abrir no Figma</div>
+      </div>
+    </a>
+    <a class="figma-card" href="https://www.figma.com/design/bvamEsFlkA2CJoQCdf8x3m/TEMPLATE-E-COM-2026?node-id=0-1" target="_blank">
+      <div class="figma-cover"><span class="figma-cover-label">E-COM</span></div>
+      <div class="figma-meta">
+        <div class="figma-cat" data-i18n="figma.c2.cat">E-Commerce · Loja</div>
+        <div class="figma-name" data-i18n="figma.c2.name">E-COM 2026</div>
+        <div class="figma-desc" data-i18n="figma.c2.desc">Templates para a loja Shopify — banners promocionais, descrições de pacote, layouts de produto.</div>
+        <div class="figma-link" data-i18n="figma.link">Abrir no Figma</div>
+      </div>
+    </a>
+    <a class="figma-card" href="https://www.figma.com/design/t34xerDPXn61uUnaTFRxgb/Modelo-Voucher?node-id=0-1" target="_blank">
+      <div class="figma-cover"><span class="figma-cover-label">VOUCHER</span></div>
+      <div class="figma-meta">
+        <div class="figma-cat" data-i18n="figma.c3.cat">Ingresso · Voucher</div>
+        <div class="figma-name" data-i18n="figma.c3.name">Modelo Voucher</div>
+        <div class="figma-desc" data-i18n="figma.c3.desc">Modelos de voucher e ingresso digital — pacotes, hospedagem e experiências VIP.</div>
+        <div class="figma-link" data-i18n="figma.link">Abrir no Figma</div>
+      </div>
+    </a>
+    <a class="figma-card" href="https://www.figma.com/design/K9GfC6DcquFKeOBraKhfdP/TEMPLATE-E-Mail-MKT-2026?node-id=205-49" target="_blank">
+      <div class="figma-cover"><span class="figma-cover-label">E-MAIL</span></div>
+      <div class="figma-meta">
+        <div class="figma-cat" data-i18n="figma.c4.cat">E-Mail Marketing</div>
+        <div class="figma-name" data-i18n="figma.c4.name">Template E-Mail MKT 2026</div>
+        <div class="figma-desc" data-i18n="figma.c4.desc">Templates de e-mail marketing — newsletter, lançamento de pacote, follow-up de carrinho.</div>
+        <div class="figma-link" data-i18n="figma.link">Abrir no Figma</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- GUIDELINES -->
+<section id="guidelines">
+  <div class="section-eyebrow" data-i18n="guide.eyebrow">Princípios · Aplicação</div>
+  <h2 class="section-title" data-i18n-html="guide.title">Como<br><span class="accent">usar.</span></h2>
+
+  <div class="guidelines-grid">
+    <div class="guideline-block do">
+      <div class="guideline-tag" data-i18n="guide.do">Do</div>
+      <h3 data-i18n="guide.voice.h">Voz e tom</h3>
+      <ul data-i18n-html="guide.voice.do">
+        <li>Bold e aspiracional — escreva com carga emocional</li>
+        <li>Segunda pessoa (você) — fale direto com o cliente</li>
+        <li>Caps em headlines maiores e CTAs principais</li>
+        <li>"ABSOLUT Sport" — sempre escrito completo</li>
+        <li>Marcos oficiais com ™ — Libertadores™, Sudamericana™</li>
+      </ul>
+    </div>
+    <div class="guideline-block dont">
+      <div class="guideline-tag" data-i18n="guide.dont">Don't</div>
+      <h3 data-i18n="guide.voice.h">Voz e tom</h3>
+      <ul data-i18n-html="guide.voice.dont">
+        <li>Não use frieza luxo — não somos cold luxury</li>
+        <li>Não escreva apenas "Absolut" sem o "Sport"</li>
+        <li>Não exagere em emojis em peças institucionais</li>
+        <li>Não misture vozes — defina uma e siga</li>
+        <li>Não use linguagem corporativa genérica</li>
+      </ul>
+    </div>
+
+    <div class="guideline-block do">
+      <div class="guideline-tag" data-i18n="guide.do">Do</div>
+      <h3 data-i18n="guide.photo.h">Fotografia</h3>
+      <ul data-i18n-html="guide.photo.do">
+        <li>Full-bleed photography — multidão, estádio noturno</li>
+        <li>Overlay escuro de baixo para cima — legibilidade</li>
+        <li>Highlights quentes, contraste dramático</li>
+        <li>Iluminação noturna de estádio é a paleta</li>
+        <li>Pessoas em movimento, emoção real capturada</li>
+      </ul>
+    </div>
+    <div class="guideline-block dont">
+      <div class="guideline-tag" data-i18n="guide.dont">Don't</div>
+      <h3 data-i18n="guide.photo.h">Fotografia</h3>
+      <ul data-i18n-html="guide.photo.dont">
+        <li>Sem ilustrações desenhadas à mão</li>
+        <li>Sem padrões decorativos planos</li>
+        <li>Sem stock photos genéricas de business</li>
+        <li>Sem imagens AI-generated em peças finais</li>
+        <li>Sem filtros saturados de Instagram dos anos 2010</li>
+      </ul>
+    </div>
+
+    <div class="guideline-block do">
+      <div class="guideline-tag" data-i18n="guide.do">Do</div>
+      <h3 data-i18n="guide.type.h">Tipografia</h3>
+      <ul data-i18n-html="guide.type.do">
+        <li>SoulCraft GX para todo headline de marca</li>
+        <li>Barlow para corpo, UI e menus</li>
+        <li>JetBrains Mono para preços, dados e código</li>
+        <li>Use o truque do "0 → O" em texto SoulCraft</li>
+        <li>Respeite a hierarquia: Hero · Display · Headline · Title · Body</li>
+      </ul>
+    </div>
+    <div class="guideline-block dont">
+      <div class="guideline-tag" data-i18n="guide.dont">Don't</div>
+      <h3 data-i18n="guide.type.h">Tipografia</h3>
+      <ul data-i18n-html="guide.type.dont">
+        <li>Não use Google Fonts aleatórias por estética</li>
+        <li>Não misture mais de 3 famílias na mesma peça</li>
+        <li>Não use fontes com serifa em material institucional</li>
+        <li>Não estique ou aperte SoulCraft — ela já é condensada</li>
+        <li>Não use ALL CAPS em corpo de texto longo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DEVS -->
+<section id="devs">
+  <div class="section-eyebrow" data-i18n="devs.eyebrow">Engenharia · Implementação</div>
+  <h2 class="section-title" data-i18n-html="devs.title">Para<br><span class="accent">devs.</span></h2>
+  <p class="section-intro" data-i18n="devs.intro">Importe os tokens e a página herda toda a paleta, tipografia e escala. Funciona em qualquer HTML/CSS/React.</p>
+
+  <div class="devs-block">
+    <h3 data-i18n="devs.s1.h">1. Importe o CSS de tokens</h3>
+    <p data-i18n-html="devs.s1.p">Cole no <code style="font-family:var(--font-mono);color:#fff">&lt;head&gt;</code> antes de qualquer estilo seu. Todas as variáveis ficam disponíveis globalmente.</p>
+    <div class="code-block"><span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://design.absolut-sport.com.br/colors_and_type.css"</span><span class="tag">&gt;</span></div>
+
+    <h3 style="margin-top:var(--space-10)" data-i18n="devs.s2.h">2. Use os tokens via CSS Variables</h3>
+    <p data-i18n-html="devs.s2.p">Cores, tipografia, spacing, radius — tudo via <code style="font-family:var(--font-mono);color:#fff">var(--token)</code>. Nunca hardcoded.</p>
+    <div class="code-block"><span class="comment">/* ✓ correto */</span>
+.cta {
+  background: <span class="tag">var</span>(<span class="attr">--color-blue</span>);
+  color: <span class="tag">var</span>(<span class="attr">--color-white</span>);
+  font-family: <span class="tag">var</span>(<span class="attr">--font-display</span>);
+  padding: <span class="tag">var</span>(<span class="attr">--space-3</span>) <span class="tag">var</span>(<span class="attr">--space-6</span>);
+  border-radius: <span class="tag">var</span>(<span class="attr">--radius-sm</span>);
+}
+
+<span class="comment">/* ✗ errado — não use valores hardcoded */</span>
+.cta { background: <span class="string">#155F97</span>; padding: <span class="string">12px 24px</span>; }</div>
+
+    <h3 style="margin-top:var(--space-10)" data-i18n="devs.s3.h">3. Para texto SoulCraft, ative o "Zero-to-O"</h3>
+    <p data-i18n-html="devs.s3.p">Script que troca todo "0" por "O" maiúsculo dentro de elementos SoulCraft. É uma assinatura da marca — números viram <code style="font-family:var(--font-mono);color:#fff">+5oo</code>, <code style="font-family:var(--font-mono);color:#fff">1oK</code>, <code style="font-family:var(--font-mono);color:#fff">12o×</code>.</p>
+    <div class="code-block"><span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="string">"https://design.absolut-sport.com.br/zero-to-o.js"</span><span class="tag">&gt;&lt;/script&gt;</span></div>
+  </div>
+</section>
+
+<!-- PLAYBOOKS -->
+<section id="playbooks">
+  <div class="section-eyebrow" data-i18n="play.eyebrow">Páginas filhas · Playbooks</div>
+  <h2 class="section-title" data-i18n-html="play.title">Playbooks<br><span class="accent">aplicados.</span></h2>
+  <p class="section-intro" data-i18n="play.intro">Cada time aplica o sistema do seu jeito. Aqui mora a versão de cada um.</p>
+
+  <div class="children-grid">
+    <a class="child-card" href="playbooks/ai-marketing.html">
+      <div class="child-cover"><div class="child-tag" data-i18n="play.ai.tag">Marketing Global · Interno</div></div>
+      <div class="child-meta">
+        <div class="child-name" data-i18n="play.ai.name">AI Playbook</div>
+        <div class="child-desc" data-i18n="play.ai.desc">Como o time de marketing global usa AI no dia a dia. Use cases, regras, workflow e ferramentas.</div>
+      </div>
+    </a>
+    <a class="child-card" href="higgsfield-ai-guide.html">
+      <div class="child-cover"><div class="child-tag" data-i18n="play.hig.tag">Enterprise · IA para Times</div></div>
+      <div class="child-meta">
+        <div class="child-name" data-i18n="play.hig.name">Enterprise AI Guide</div>
+        <div class="child-desc" data-i18n="play.hig.desc">Contas, segurança, boas práticas e arsenal de IA. Para times que querem usar IA com confiança e resultado.</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ASK RAFA BANNER -->
+<section class="ask-rafa-section" aria-label="Contato Raphael Ferreira">
+  <a class="ask-rafa-link" href="mailto:raphael.ferreira@absolut-sport.com.br?subject=D%C3%BAvida%20Design%20System%20ABSOLUT%20Sport">
+    <div class="ask-rafa-poster">
+      <img src="assets/rafa-rafa.png" alt="Rafa Rafa · Mainstreet Festival">
+    </div>
+    <div class="ask-rafa-text">
+      <div class="ask-rafa-eyebrow" data-i18n="rafa.eyebrow">Rafa Rafa</div>
+      <div class="ask-rafa-cta" data-i18n-html="rafa.cta">Tudo o que é bom,<br><span class="gold">vem em dobro.</span></div>
+      <div class="ask-rafa-sub" data-i18n="rafa.sub">Design Lead, dono do sistema, e o cara que vai te resolver. Manda a dúvida — ele responde.</div>
+      <span class="ask-rafa-action" data-i18n="rafa.action">Pergunte pro Rafa</span>
+    </div>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+      <p data-i18n="footer.about">A única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col1">Sistema</h4>
+      <a href="#logos"        data-i18n="nav.logos">Logos</a>
+      <a href="#cores"        data-i18n="nav.colors">Cores</a>
+      <a href="#tipografia"   data-i18n="nav.typo">Tipografia</a>
+      <a href="#tokens"       data-i18n="nav.tokens">Tokens</a>
+      <a href="#componentes"  data-i18n="nav.comp">Componentes</a>
+      <a href="#figma"        data-i18n="nav.figma">Figma</a>
+      <a href="#guidelines"   data-i18n="nav.guide">Guidelines</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col2">Empresa</h4>
+      <a href="#playbooks"    data-i18n="nav.play">Playbooks</a>
+      <a href="mailto:raphael.ferreira@absolut-sport.com.br?subject=D%C3%BAvida%20Design%20System%20ABSOLUT%20Sport" data-i18n="footer.contact">Tire dúvidas com Raphael →</a>
+      <a href="https://help.figma.com/hc/en-us" target="_blank" data-i18n="footer.figma">Tutorial Figma →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copy">© 2026 ABSOLUT Sport · Design System v1.0</span>
+    <span>
+      <span data-i18n="footer.coauth">Criado por Mauricio Lacerda × Rafa Rafa</span> ·
+      <a href="mailto:design@absolut-sport.com.br?subject=Design%20System%20%C2%B7%20Sugest%C3%A3o" style="color:var(--color-gold);text-decoration:none">design@absolut-sport.com.br</a>
+    </span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="copied-toast" id="toast" data-i18n="toast.copied">Copiado!</div>
+
+<!-- I18N DICTIONARY -->
+<script>
+window.I18N_DICT = {
+  pt: {
+    'nav.toolkit':'Brand Kit','nav.logos':'Logos','nav.colors':'Cores','nav.typo':'Tipografia','nav.icons':'Ícones','nav.motion':'Motion','nav.tokens':'Tokens','nav.comp':'Componentes','nav.figma':'Figma','nav.guide':'Guidelines','nav.play':'Playbooks','nav.cta':'Para Devs',
+    'hero.eyebrow':'Sistema de Marca · v1.0',
+    'hero.h1':'ABSOLUT SPORT<br><span class="accent">DESIGN SYSTEM</span><br>PARA TODA A EQUIPE',
+    'hero.sub':'Tudo que a marca usa, num lugar só. Cores, tipografia, logos, componentes. Use, baixe, contribua.',
+    'stats.tokens':'Tokens','stats.components':'Componentes','stats.logos':'Variantes de logo','stats.years':'Anos de marca',
+    'logos.eyebrow':'Marca · Identidade',
+    'logos.title':'Logos<br><span class="accent">oficiais.</span>',
+    'logos.intro':'Quatro variantes pra cobrir qualquer fundo. <strong style="color:#fff">ABSOLUT Sport</strong> sempre escrito completo, nunca só "Absolut". Azul+preto é o padrão. Azul+branco em fundo escuro. Monocromático em P&B.',
+    'logos.c1.name':'Azul + Preto · Primária','logos.c1.use':'Fundos claros · Light mode · Material institucional',
+    'logos.c2.name':'Azul + Branco','logos.c2.use':'Fundos escuros · Dark mode · Foto noturna',
+    'logos.c3.name':'Branco · Monocromático','logos.c3.use':'Fundos azuis ou escuros · Aplicações especiais',
+    'logos.c4.name':'Preto · Monocromático','logos.c4.use':'Impressão P&B · Fundos claros · Documentos',
+    'colors.eyebrow':'Paleta · Tokens',
+    'colors.title':'Cores da<br><span class="accent">marca.</span>',
+    'colors.intro':'Clique em qualquer card para copiar o hex. Tokens CSS estão em <code style="font-family:var(--font-mono);color:#fff">colors_and_type.css</code>.',
+    'colors.brand':'Brand Core','colors.neutrals':'Neutrais','colors.status':'Status',
+    'typo.eyebrow':'Tipografia · DNA Tipográfico',
+    'typo.title':'Sistema<br><span class="accent">tipográfico.</span>',
+    'typo.intro':'<strong style="color:#fff">SoulCraft GX</strong> é a fonte da marca — todo headline usa ela. <strong style="color:#fff">Barlow</strong> resolve UI e corpo. <strong style="color:#fff">JetBrains Mono</strong> resolve dados, preços e código.',
+    'typo.hero.meta':'Hero · 72px · SoulCraft Black · Headlines de marca',
+    'typo.hero.text':'DOS ESTÁDIOS<br><span class="accent">PARA A HISTÓRIA</span>',
+    'typo.disp.meta':'Display · 48px · SoulCraft ExtraBold','typo.disp.text':'Experiências Lendárias',
+    'typo.head.meta':'Headline · 32px · SoulCraft Bold','typo.head.text':'CONMEBOL Libertadores™ 2025',
+    'typo.title.meta':'Title · 22px · Barlow SemiBold · UI headings','typo.title.text':'Agência Oficial de Pacotes para as Finais',
+    'typo.body.meta':'Body · 16px · Barlow Regular · Corpo de texto',
+    'typo.body.text':'Somos a única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™. Conectamos torcedores, empresas e delegações a momentos inesquecíveis com eficiência alemã, entusiasmo brasileiro e estilo de vida californiano.',
+    'tokens.eyebrow':'Tokens · Espaço · Forma',
+    'tokens.title':'Espaçamento<br><span class="accent">e forma.</span>',
+    'tokens.spacing.h':'Escala de Espaço','tokens.radius.h':'Border Radius',
+    'tokens.r.sm':'4px · botões','tokens.r.md':'8px · cards','tokens.r.pill':'100px · badges',
+    'comp.eyebrow':'Biblioteca · Componentes',
+    'comp.title':'Catálogo de<br><span class="accent">componentes.</span>',
+    'comp.intro':'13 previews vivos. Clica num e abre o componente em nova aba.',
+    'comp.cat.identity':'Identidade','comp.cat.colors':'Cores','comp.cat.typo':'Tipografia','comp.cat.layout':'Layout','comp.cat.ui':'UI','comp.cat.nav':'Navegação','comp.cat.display':'Display','comp.cat.pattern':'Pattern',
+    'comp.link':'Ver preview',
+    'figma.eyebrow':'Figma · Templates oficiais',
+    'figma.title':'Templates<br><span class="accent">prontos pra baixar.</span>',
+    'figma.intro':'Quatro arquivos Figma. O Rafa mantém. Duplica no teu workspace e adapta pro evento.',
+    'figma.c1.cat':'Anúncios · Social','figma.c1.name':'Enxoval ADS 2026','figma.c1.desc':'Kit completo de anúncios para campanhas de evento. Formatos para Instagram, Facebook e display ads.',
+    'figma.c2.cat':'E-Commerce · Loja','figma.c2.name':'E-COM 2026','figma.c2.desc':'Templates para a loja Shopify — banners promocionais, descrições de pacote, layouts de produto.',
+    'figma.c3.cat':'Ingresso · Voucher','figma.c3.name':'Modelo Voucher','figma.c3.desc':'Modelos de voucher e ingresso digital — pacotes, hospedagem e experiências VIP.',
+    'figma.c4.cat':'E-Mail Marketing','figma.c4.name':'Template E-Mail MKT 2026','figma.c4.desc':'Templates de e-mail marketing — newsletter, lançamento de pacote, follow-up de carrinho.',
+    'figma.link':'Abrir no Figma',
+    'guide.eyebrow':'Princípios · Aplicação',
+    'guide.title':'Como<br><span class="accent">usar.</span>',
+    'guide.do':'Do','guide.dont':'Don\'t',
+    'guide.voice.h':'Voz e tom',
+    'guide.voice.do':'<li>Bold e aspiracional — escreva com carga emocional</li><li>Segunda pessoa (você) — fale direto com o cliente</li><li>Caps em headlines maiores e CTAs principais</li><li>"ABSOLUT Sport" — sempre escrito completo</li><li>Marcos oficiais com ™ — Libertadores™, Sudamericana™</li>',
+    'guide.voice.dont':'<li>Não adote o tom cold luxury — não somos distantes</li><li>Não escreva apenas "Absolut" sem o "Sport"</li><li>Não exagere em emojis em peças institucionais</li><li>Não misture vozes — defina uma e siga</li><li>Não use linguagem corporativa genérica</li>',
+    'guide.photo.h':'Fotografia',
+    'guide.photo.do':'<li>Full-bleed photography — multidão, estádio noturno</li><li>Overlay escuro de baixo para cima — legibilidade</li><li>Highlights quentes, contraste dramático</li><li>Iluminação noturna de estádio é a paleta</li><li>Pessoas em movimento, emoção real capturada</li>',
+    'guide.photo.dont':'<li>Sem ilustrações desenhadas à mão</li><li>Sem padrões decorativos planos</li><li>Sem stock photos genéricas de business</li><li>Sem imagens AI-generated em peças finais</li><li>Sem filtros saturados de Instagram dos anos 2010</li>',
+    'guide.type.h':'Tipografia',
+    'guide.type.do':'<li>SoulCraft GX para todo headline de marca</li><li>Barlow para corpo, UI e menus</li><li>JetBrains Mono para preços, dados e código</li><li>Use o truque do "0 → O" em texto SoulCraft</li><li>Respeite a hierarquia: Hero · Display · Headline · Title · Body</li>',
+    'guide.type.dont':'<li>Não use Google Fonts aleatórias por estética</li><li>Não misture mais de 3 famílias na mesma peça</li><li>Não use fontes com serifa em material institucional</li><li>Não estique ou aperte SoulCraft — ela já é condensada</li><li>Não use ALL CAPS em corpo de texto longo</li>',
+    'devs.eyebrow':'Engenharia · Implementação',
+    'devs.title':'Para<br><span class="accent">devs.</span>',
+    'devs.intro':'Importe os tokens e a página herda toda a paleta, tipografia e escala. Funciona em qualquer HTML/CSS/React.',
+    'devs.s1.h':'1. Importe o CSS de tokens',
+    'devs.s1.p':'Cole no <code style="font-family:var(--font-mono);color:#fff">&lt;head&gt;</code> antes de qualquer estilo seu. Todas as variáveis ficam disponíveis globalmente.',
+    'devs.s2.h':'2. Use os tokens via CSS Variables',
+    'devs.s2.p':'Cores, tipografia, spacing, radius — tudo via <code style="font-family:var(--font-mono);color:#fff">var(--token)</code>. Nunca hardcoded.',
+    'devs.s3.h':'3. Para texto SoulCraft, ative o "Zero-to-O"',
+    'devs.s3.p':'Script que troca todo "0" por "O" maiúsculo dentro de elementos SoulCraft. É uma assinatura da marca — números viram <code style="font-family:var(--font-mono);color:#fff">+5oo</code>, <code style="font-family:var(--font-mono);color:#fff">1oK</code>, <code style="font-family:var(--font-mono);color:#fff">12o×</code>.',
+    'play.eyebrow':'Páginas filhas · Playbooks',
+    'play.title':'Playbooks<br><span class="accent">aplicados.</span>',
+    'play.intro':'Cada time aplica o sistema do seu jeito. Aqui mora a versão de cada um.',
+    'play.ai.tag':'Marketing Global · Interno','play.ai.name':'AI Playbook',
+    'play.ai.desc':'Como o time de marketing global usa AI no dia a dia. Use cases, regras, workflow e ferramentas.',
+    'play.hig.tag':'Enterprise · IA para Times','play.hig.name':'Enterprise AI Guide',
+    'play.hig.desc':'Contas, segurança, boas práticas e arsenal de IA. Para times que querem usar IA com confiança e resultado.',
+    'rafa.eyebrow':'Rafa Rafa',
+    'rafa.cta':'Tudo o que é bom,<br><span class="gold">vem em dobro.</span>',
+    'rafa.sub':'Design Lead, dono do sistema, e o cara que vai te resolver. Manda a dúvida — ele responde.',
+    'rafa.action':'Pergunte pro Rafa',
+    'footer.about':'A única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™.',
+    'footer.col1':'Sistema','footer.col2':'Empresa',
+    'footer.contact':'Tire dúvidas com Raphael →',
+    'footer.figma':'Tutorial Figma →',
+    'footer.copy':'© 2026 ABSOLUT Sport · Design System v1.0',
+    'footer.coauth':'Criado por Mauricio Lacerda × Rafa Rafa',
+    'nav.credit.title':'Mauricio × Rafa · sugestões pra design@',
+    'toolkit.eyebrow':'Brand Kit · Download',
+    'toolkit.title':'Toda a marca,<br><span class="accent">num zip.</span>',
+    'toolkit.intro':'Logos, SoulCraft GX, tokens CSS e o script Zero-to-O. Tudo o que precisa pra começar.',
+    'toolkit.desc':'4 logos · SoulCraft GX · tokens.css · zero-to-o.js · README',
+    'dec.eyebrow':'Logo · Qual usar',
+    'dec.title':'Decisão em<br><span class="accent">uma olhada.</span>',
+    'dec.intro':'Onde vai aparecer? A matriz responde.',
+    'dec.axis.light':'Fundo claro','dec.axis.dark':'Fundo escuro','dec.axis.color':'Colorido','dec.axis.mono':'Monocromático',
+    'dec.c1':'Azul + Preto','dec.c2':'Azul + Branco','dec.c3':'Preto mono','dec.c4':'Branco mono',
+    'icons.eyebrow':'Iconografia · Lucide',
+    'icons.title':'Ícones<br><span class="accent">do sistema.</span>',
+    'icons.intro':'<strong style="color:#fff">Lucide</strong> é o set oficial. 2px stroke, geométrico, moderno. <a href="https://lucide.dev" target="_blank" style="color:var(--color-blue-mid)">Catálogo completo →</a>',
+    'motion.eyebrow':'Motion · Transições',
+    'motion.title':'Movimento<br><span class="accent">com propósito.</span>',
+    'motion.intro':'Três velocidades. Três funções. Passe o mouse nos cards pra sentir.',
+    'motion.fast':'Feedback instantâneo: hover, click, toggle.',
+    'motion.default':'Padrão: cards, botões, mudança de estado.',
+    'motion.slow':'Ênfase: modal, drawer, reveal de conteúdo.',
+    'motion.principles.h':'Princípios',
+    'motion.p1':'Movimento é função, nunca decoração.',
+    'motion.p2':'Hover sobe 3px. Press desce 2px. Sempre <code>ease-out</code>.',
+    'motion.p3':'Nada de mola. Energia controlada, não saltitante.',
+    'motion.p4':'Respeite <code>prefers-reduced-motion</code>.',
+    'toast.copied':'Copiado!'
+  },
+  en: {
+    'nav.toolkit':'Brand Kit','nav.logos':'Logos','nav.colors':'Colors','nav.typo':'Typography','nav.icons':'Icons','nav.motion':'Motion','nav.tokens':'Tokens','nav.comp':'Components','nav.figma':'Figma','nav.guide':'Guidelines','nav.play':'Playbooks','nav.cta':'For Devs',
+    'hero.eyebrow':'Brand System · v1.0',
+    'hero.h1':'ABSOLUT SPORT<br><span class="accent">DESIGN SYSTEM</span><br>FOR THE WHOLE TEAM',
+    'hero.sub':'Everything the brand uses, in one place. Colors, typography, logos, components. Use, download, contribute.',
+    'stats.tokens':'Tokens','stats.components':'Components','stats.logos':'Logo variants','stats.years':'Years of brand',
+    'logos.eyebrow':'Brand · Identity',
+    'logos.title':'Official<br><span class="accent">logos.</span>',
+    'logos.intro':'Four variants for any background. <strong style="color:#fff">ABSOLUT Sport</strong> always written in full, never just "Absolut". Blue+black is the default. Blue+white on dark backgrounds. Monochrome for B&W.',
+    'logos.c1.name':'Blue + Black · Primary','logos.c1.use':'Light backgrounds · Light mode · Institutional material',
+    'logos.c2.name':'Blue + White','logos.c2.use':'Dark backgrounds · Dark mode · Night photography',
+    'logos.c3.name':'White · Monochrome','logos.c3.use':'Blue or dark backgrounds · Special applications',
+    'logos.c4.name':'Black · Monochrome','logos.c4.use':'B&W print · Light backgrounds · Documents',
+    'colors.eyebrow':'Palette · Tokens',
+    'colors.title':'Brand<br><span class="accent">colors.</span>',
+    'colors.intro':'Click any card to copy the hex. CSS tokens live in <code style="font-family:var(--font-mono);color:#fff">colors_and_type.css</code>.',
+    'colors.brand':'Brand Core','colors.neutrals':'Neutrals','colors.status':'Status',
+    'typo.eyebrow':'Typography · Typographic DNA',
+    'typo.title':'Type<br><span class="accent">system.</span>',
+    'typo.intro':'<strong style="color:#fff">SoulCraft GX</strong> is the brand font — every headline uses it. <strong style="color:#fff">Barlow</strong> handles UI and body. <strong style="color:#fff">JetBrains Mono</strong> handles data, prices and code.',
+    'typo.hero.meta':'Hero · 72px · SoulCraft Black · Brand headlines',
+    'typo.hero.text':'FROM THE STADIUMS<br><span class="accent">TO HISTORY</span>',
+    'typo.disp.meta':'Display · 48px · SoulCraft ExtraBold','typo.disp.text':'Legendary Experiences',
+    'typo.head.meta':'Headline · 32px · SoulCraft Bold','typo.head.text':'CONMEBOL Libertadores™ 2025',
+    'typo.title.meta':'Title · 22px · Barlow SemiBold · UI headings','typo.title.text':'Official Travel Package Agency for the Finals',
+    'typo.body.meta':'Body · 16px · Barlow Regular · Body copy',
+    'typo.body.text':'We are the sole official travel package agency for the CONMEBOL Libertadores™ and Sudamericana™ Finals. We connect fans, corporations and sports delegations to unforgettable moments with German efficiency, Brazilian enthusiasm and Californian lifestyle.',
+    'tokens.eyebrow':'Tokens · Space · Shape',
+    'tokens.title':'Spacing<br><span class="accent">and shape.</span>',
+    'tokens.spacing.h':'Spacing Scale','tokens.radius.h':'Border Radius',
+    'tokens.r.sm':'4px · buttons','tokens.r.md':'8px · cards','tokens.r.pill':'100px · badges',
+    'comp.eyebrow':'Library · Components',
+    'comp.title':'Component<br><span class="accent">catalog.</span>',
+    'comp.intro':'13 live previews. Click any to open the component in a new tab.',
+    'comp.cat.identity':'Identity','comp.cat.colors':'Colors','comp.cat.typo':'Typography','comp.cat.layout':'Layout','comp.cat.ui':'UI','comp.cat.nav':'Navigation','comp.cat.display':'Display','comp.cat.pattern':'Pattern',
+    'comp.link':'View preview',
+    'figma.eyebrow':'Figma · Official templates',
+    'figma.title':'Templates<br><span class="accent">ready to use.</span>',
+    'figma.intro':'Four Figma files. Rafa maintains them. Duplicate to your workspace and adapt to the event.',
+    'figma.c1.cat':'Ads · Social','figma.c1.name':'Enxoval ADS 2026','figma.c1.desc':'Complete ads kit for event campaigns. Formats for Instagram, Facebook and display ads.',
+    'figma.c2.cat':'E-Commerce · Store','figma.c2.name':'E-COM 2026','figma.c2.desc':'Templates for the Shopify store — promotional banners, package descriptions, product layouts.',
+    'figma.c3.cat':'Ticket · Voucher','figma.c3.name':'Voucher Template','figma.c3.desc':'Voucher and digital ticket templates — packages, hospitality, and VIP experiences.',
+    'figma.c4.cat':'Email Marketing','figma.c4.name':'E-Mail MKT Template 2026','figma.c4.desc':'Email marketing templates — newsletter, package launch, cart follow-up.',
+    'figma.link':'Open in Figma',
+    'guide.eyebrow':'Principles · Application',
+    'guide.title':'How to<br><span class="accent">use.</span>',
+    'guide.do':'Do','guide.dont':'Don\'t',
+    'guide.voice.h':'Voice and tone',
+    'guide.voice.do':'<li>Bold and aspirational — write with emotional charge</li><li>Second person (you) — speak directly to the customer</li><li>Caps for big headlines and primary CTAs</li><li>"ABSOLUT Sport" — always written in full</li><li>Official marks with ™ — Libertadores™, Sudamericana™</li>',
+    'guide.voice.dont':'<li>Don\'t use cold luxury — we are not detached</li><li>Don\'t write just "Absolut" without the "Sport"</li><li>Don\'t overdo emojis in institutional pieces</li><li>Don\'t mix voices — pick one and stay there</li><li>Don\'t use generic corporate language</li>',
+    'guide.photo.h':'Photography',
+    'guide.photo.do':'<li>Full-bleed photography — crowds, night stadiums</li><li>Dark gradient overlay bottom-up — for legibility</li><li>Warm highlights, dramatic contrast</li><li>Stadium night lighting is the palette</li><li>People in motion, real captured emotion</li>',
+    'guide.photo.dont':'<li>No hand-drawn illustrations</li><li>No flat decorative patterns</li><li>No generic business stock photos</li><li>No AI-generated images in final pieces</li><li>No saturated 2010s Instagram filters</li>',
+    'guide.type.h':'Typography',
+    'guide.type.do':'<li>SoulCraft GX for every brand headline</li><li>Barlow for body, UI and menus</li><li>JetBrains Mono for prices, data and code</li><li>Use the "0 → O" trick in SoulCraft text</li><li>Respect the hierarchy: Hero · Display · Headline · Title · Body</li>',
+    'guide.type.dont':'<li>Don\'t use random Google Fonts for aesthetics</li><li>Don\'t mix more than 3 families in one piece</li><li>Don\'t use serif fonts in institutional material</li><li>Don\'t stretch or condense SoulCraft — it\'s already condensed</li><li>Don\'t use ALL CAPS in long body copy</li>',
+    'devs.eyebrow':'Engineering · Implementation',
+    'devs.title':'For<br><span class="accent">devs.</span>',
+    'devs.intro':'Import the tokens and your page inherits the full palette, typography and scale. Works in any HTML/CSS/React.',
+    'devs.s1.h':'1. Import the tokens CSS',
+    'devs.s1.p':'Paste in <code style="font-family:var(--font-mono);color:#fff">&lt;head&gt;</code> before any of your styles. All variables become globally available.',
+    'devs.s2.h':'2. Use tokens via CSS Variables',
+    'devs.s2.p':'Colors, typography, spacing, radius — everything via <code style="font-family:var(--font-mono);color:#fff">var(--token)</code>. Never hardcoded.',
+    'devs.s3.h':'3. For SoulCraft text, enable "Zero-to-O"',
+    'devs.s3.p':'Script that swaps every "0" for capital "O" inside SoulCraft elements. It\'s a brand signature — numbers become <code style="font-family:var(--font-mono);color:#fff">+5oo</code>, <code style="font-family:var(--font-mono);color:#fff">1oK</code>, <code style="font-family:var(--font-mono);color:#fff">12o×</code>.',
+    'play.eyebrow':'Child pages · Playbooks',
+    'play.title':'Playbooks<br><span class="accent">in action.</span>',
+    'play.intro':'Each team applies the system their own way. Each team\'s version lives here.',
+    'play.ai.tag':'Global Marketing · Internal','play.ai.name':'AI Playbook',
+    'play.ai.desc':'How the global marketing team uses AI day-to-day. Use cases, rules, workflow and tools.',
+    'play.hig.tag':'Enterprise · AI for Teams','play.hig.name':'Enterprise AI Guide',
+    'play.hig.desc':'Accounts, security, best practices and AI arsenal. For teams that want to use AI with confidence and results.',
+    'rafa.eyebrow':'Rafa Rafa',
+    'rafa.cta':'Everything good<br><span class="gold">comes in twos.</span>',
+    'rafa.sub':'Design Lead, system owner, and the guy who gets it done. Drop the question — he answers.',
+    'rafa.action':'Ask Rafa',
+    'footer.about':'The sole official travel package agency for the CONMEBOL Libertadores™ and Sudamericana™ Finals.',
+    'footer.col1':'System','footer.col2':'Company',
+    'footer.contact':'Ask Raphael →',
+    'footer.figma':'Figma tutorial →',
+    'footer.copy':'© 2026 ABSOLUT Sport · Design System v1.0',
+    'footer.coauth':'Created by Mauricio Lacerda × Rafa Rafa',
+    'nav.credit.title':'Mauricio × Rafa · suggestions to design@',
+    'toolkit.eyebrow':'Brand Kit · Download',
+    'toolkit.title':'The whole brand,<br><span class="accent">one zip.</span>',
+    'toolkit.intro':'Logos, SoulCraft GX, CSS tokens and the Zero-to-O script. Everything you need to start.',
+    'toolkit.desc':'4 logos · SoulCraft GX · tokens.css · zero-to-o.js · README',
+    'dec.eyebrow':'Logo · Which to use',
+    'dec.title':'A decision<br><span class="accent">at a glance.</span>',
+    'dec.intro':'Where will it appear? The matrix answers.',
+    'dec.axis.light':'Light background','dec.axis.dark':'Dark background','dec.axis.color':'Color','dec.axis.mono':'Monochrome',
+    'dec.c1':'Blue + Black','dec.c2':'Blue + White','dec.c3':'Black mono','dec.c4':'White mono',
+    'icons.eyebrow':'Iconography · Lucide',
+    'icons.title':'System<br><span class="accent">icons.</span>',
+    'icons.intro':'<strong style="color:#fff">Lucide</strong> is the official set. 2px stroke, geometric, modern. <a href="https://lucide.dev" target="_blank" style="color:var(--color-blue-mid)">Full catalog →</a>',
+    'motion.eyebrow':'Motion · Transitions',
+    'motion.title':'Movement<br><span class="accent">with purpose.</span>',
+    'motion.intro':'Three speeds. Three functions. Hover the cards to feel it.',
+    'motion.fast':'Instant feedback: hover, click, toggle.',
+    'motion.default':'Default: cards, buttons, state change.',
+    'motion.slow':'Emphasis: modal, drawer, content reveal.',
+    'motion.principles.h':'Principles',
+    'motion.p1':'Motion is function, never decoration.',
+    'motion.p2':'Hover lifts 3px. Press drops 2px. Always <code>ease-out</code>.',
+    'motion.p3':'No springs. Controlled energy, not bouncy.',
+    'motion.p4':'Respect <code>prefers-reduced-motion</code>.',
+    'toast.copied':'Copied!'
+  },
+  es: {
+    'nav.toolkit':'Brand Kit','nav.logos':'Logos','nav.colors':'Colores','nav.typo':'Tipografía','nav.icons':'Iconos','nav.motion':'Motion','nav.tokens':'Tokens','nav.comp':'Componentes','nav.figma':'Figma','nav.guide':'Guidelines','nav.play':'Playbooks','nav.cta':'Para Devs',
+    'hero.eyebrow':'Sistema de Marca · v1.0',
+    'hero.h1':'ABSOLUT SPORT<br><span class="accent">DESIGN SYSTEM</span><br>PARA TODO EL EQUIPO',
+    'hero.sub':'Todo lo que la marca usa, en un solo lugar. Colores, tipografía, logos, componentes. Usa, descarga, contribuye.',
+    'stats.tokens':'Tokens','stats.components':'Componentes','stats.logos':'Variantes de logo','stats.years':'Años de marca',
+    'logos.eyebrow':'Marca · Identidad',
+    'logos.title':'Logos<br><span class="accent">oficiales.</span>',
+    'logos.intro':'Cuatro variantes para cualquier fondo. <strong style="color:#fff">ABSOLUT Sport</strong> siempre escrito completo, nunca solo "Absolut". Azul+negro es el estándar. Azul+blanco en fondo oscuro. Monocromático en B/N.',
+    'logos.c1.name':'Azul + Negro · Primaria','logos.c1.use':'Fondos claros · Modo claro · Material institucional',
+    'logos.c2.name':'Azul + Blanco','logos.c2.use':'Fondos oscuros · Modo oscuro · Foto nocturna',
+    'logos.c3.name':'Blanco · Monocromático','logos.c3.use':'Fondos azules u oscuros · Aplicaciones especiales',
+    'logos.c4.name':'Negro · Monocromático','logos.c4.use':'Impresión B/N · Fondos claros · Documentos',
+    'colors.eyebrow':'Paleta · Tokens',
+    'colors.title':'Colores de<br><span class="accent">la marca.</span>',
+    'colors.intro':'Haz click en cualquier tarjeta para copiar el hex. Los tokens CSS están en <code style="font-family:var(--font-mono);color:#fff">colors_and_type.css</code>.',
+    'colors.brand':'Brand Core','colors.neutrals':'Neutros','colors.status':'Status',
+    'typo.eyebrow':'Tipografía · ADN Tipográfico',
+    'typo.title':'Sistema<br><span class="accent">tipográfico.</span>',
+    'typo.intro':'<strong style="color:#fff">SoulCraft GX</strong> es la fuente de la marca — todo headline la usa. <strong style="color:#fff">Barlow</strong> resuelve UI y cuerpo. <strong style="color:#fff">JetBrains Mono</strong> resuelve datos, precios y código.',
+    'typo.hero.meta':'Hero · 72px · SoulCraft Black · Headlines de marca',
+    'typo.hero.text':'DE LOS ESTADIOS<br><span class="accent">A LA HISTORIA</span>',
+    'typo.disp.meta':'Display · 48px · SoulCraft ExtraBold','typo.disp.text':'Experiencias Legendarias',
+    'typo.head.meta':'Headline · 32px · SoulCraft Bold','typo.head.text':'CONMEBOL Libertadores™ 2025',
+    'typo.title.meta':'Title · 22px · Barlow SemiBold · UI headings','typo.title.text':'Agencia Oficial de Paquetes para las Finales',
+    'typo.body.meta':'Body · 16px · Barlow Regular · Cuerpo de texto',
+    'typo.body.text':'Somos la única agencia oficial de paquetes para las Finales de la CONMEBOL Libertadores™ y Sudamericana™. Conectamos hinchas, empresas y delegaciones a momentos inolvidables con eficiencia alemana, entusiasmo brasileño y estilo de vida californiano.',
+    'tokens.eyebrow':'Tokens · Espacio · Forma',
+    'tokens.title':'Espaciado<br><span class="accent">y forma.</span>',
+    'tokens.spacing.h':'Escala de Espacio','tokens.radius.h':'Border Radius',
+    'tokens.r.sm':'4px · botones','tokens.r.md':'8px · cards','tokens.r.pill':'100px · badges',
+    'comp.eyebrow':'Biblioteca · Componentes',
+    'comp.title':'Catálogo de<br><span class="accent">componentes.</span>',
+    'comp.intro':'13 previews en vivo. Hacé click en uno y abre el componente en una nueva pestaña.',
+    'comp.cat.identity':'Identidad','comp.cat.colors':'Colores','comp.cat.typo':'Tipografía','comp.cat.layout':'Layout','comp.cat.ui':'UI','comp.cat.nav':'Navegación','comp.cat.display':'Display','comp.cat.pattern':'Pattern',
+    'comp.link':'Ver preview',
+    'figma.eyebrow':'Figma · Templates oficiales',
+    'figma.title':'Plantillas<br><span class="accent">listas para usar.</span>',
+    'figma.intro':'Cuatro archivos Figma. Rafa los mantiene. Duplicá en tu workspace y adaptá al evento.',
+    'figma.c1.cat':'Anuncios · Social','figma.c1.name':'Enxoval ADS 2026','figma.c1.desc':'Kit completo de anuncios para campañas de evento. Formatos para Instagram, Facebook y display ads.',
+    'figma.c2.cat':'E-Commerce · Tienda','figma.c2.name':'E-COM 2026','figma.c2.desc':'Templates para la tienda Shopify — banners promocionales, descripciones de paquete, layouts de producto.',
+    'figma.c3.cat':'Ticket · Voucher','figma.c3.name':'Modelo Voucher','figma.c3.desc':'Modelos de voucher y ticket digital — paquetes, hospedaje y experiencias VIP.',
+    'figma.c4.cat':'Email Marketing','figma.c4.name':'Template E-Mail MKT 2026','figma.c4.desc':'Templates de email marketing — newsletter, lanzamiento de paquete, follow-up de carrito.',
+    'figma.link':'Abrir en Figma',
+    'guide.eyebrow':'Principios · Aplicación',
+    'guide.title':'Cómo<br><span class="accent">usar.</span>',
+    'guide.do':'Do','guide.dont':'Don\'t',
+    'guide.voice.h':'Voz y tono',
+    'guide.voice.do':'<li>Bold y aspiracional — escribe con carga emocional</li><li>Segunda persona (tú) — habla directo al cliente</li><li>Mayúsculas en headlines grandes y CTAs principales</li><li>"ABSOLUT Sport" — siempre escrito completo</li><li>Marcas oficiales con ™ — Libertadores™, Sudamericana™</li>',
+    'guide.voice.dont':'<li>No uses frialdad de lujo — no somos cold luxury</li><li>No escribas solo "Absolut" sin el "Sport"</li><li>No exageres con emojis en piezas institucionales</li><li>No mezcles voces — define una y sigue</li><li>No uses lenguaje corporativo genérico</li>',
+    'guide.photo.h':'Fotografía',
+    'guide.photo.do':'<li>Fotografía full-bleed — multitud, estadio nocturno</li><li>Overlay oscuro de abajo hacia arriba — legibilidad</li><li>Highlights cálidos, contraste dramático</li><li>Iluminación nocturna de estadio es la paleta</li><li>Personas en movimiento, emoción real capturada</li>',
+    'guide.photo.dont':'<li>Sin ilustraciones dibujadas a mano</li><li>Sin patrones decorativos planos</li><li>Sin stock photos genéricas de business</li><li>Sin imágenes generadas por AI en piezas finales</li><li>Sin filtros saturados de Instagram de los 2010</li>',
+    'guide.type.h':'Tipografía',
+    'guide.type.do':'<li>SoulCraft GX para todo headline de marca</li><li>Barlow para cuerpo, UI y menús</li><li>JetBrains Mono para precios, datos y código</li><li>Usa el truco del "0 → O" en texto SoulCraft</li><li>Respeta la jerarquía: Hero · Display · Headline · Title · Body</li>',
+    'guide.type.dont':'<li>No uses Google Fonts aleatorias por estética</li><li>No mezcles más de 3 familias en la misma pieza</li><li>No uses fuentes con serifa en material institucional</li><li>No estires ni condenses SoulCraft — ya es condensada</li><li>No uses ALL CAPS en cuerpo de texto largo</li>',
+    'devs.eyebrow':'Ingeniería · Implementación',
+    'devs.title':'Para<br><span class="accent">devs.</span>',
+    'devs.intro':'Importa los tokens y la página hereda toda la paleta, tipografía y escala. Funciona en cualquier HTML/CSS/React.',
+    'devs.s1.h':'1. Importa el CSS de tokens',
+    'devs.s1.p':'Pega en <code style="font-family:var(--font-mono);color:#fff">&lt;head&gt;</code> antes de cualquier estilo tuyo. Todas las variables quedan disponibles globalmente.',
+    'devs.s2.h':'2. Usa los tokens vía CSS Variables',
+    'devs.s2.p':'Colores, tipografía, spacing, radius — todo vía <code style="font-family:var(--font-mono);color:#fff">var(--token)</code>. Nunca hardcoded.',
+    'devs.s3.h':'3. Para texto SoulCraft, activa el "Zero-to-O"',
+    'devs.s3.p':'Script que cambia todo "0" por "O" mayúscula dentro de elementos SoulCraft. Es una firma de la marca — los números se convierten en <code style="font-family:var(--font-mono);color:#fff">+5oo</code>, <code style="font-family:var(--font-mono);color:#fff">1oK</code>, <code style="font-family:var(--font-mono);color:#fff">12o×</code>.',
+    'play.eyebrow':'Páginas hijas · Playbooks',
+    'play.title':'Playbooks<br><span class="accent">aplicados.</span>',
+    'play.intro':'Cada equipo aplica el sistema a su manera. Acá vive la versión de cada uno.',
+    'play.ai.tag':'Marketing Global · Interno','play.ai.name':'AI Playbook',
+    'play.ai.desc':'Cómo el equipo de marketing global usa AI día a día. Casos de uso, reglas, flujo y herramientas.',
+    'play.hig.tag':'Enterprise · IA para Equipos','play.hig.name':'Enterprise AI Guide',
+    'play.hig.desc':'Cuentas, seguridad, buenas prácticas y arsenal de IA. Para equipos que quieren usar IA con confianza y resultados.',
+    'rafa.eyebrow':'Rafa Rafa',
+    'rafa.cta':'Todo lo bueno<br><span class="gold">viene doble.</span>',
+    'rafa.sub':'Design Lead, dueño del sistema, y el que te lo va a resolver. Tirá la pregunta — él responde.',
+    'rafa.action':'Preguntá a Rafa',
+    'footer.about':'La única agencia oficial de paquetes para las Finales de la CONMEBOL Libertadores™ y Sudamericana™.',
+    'footer.col1':'Sistema','footer.col2':'Empresa',
+    'footer.contact':'Consulta a Raphael →',
+    'footer.figma':'Tutorial Figma →',
+    'footer.copy':'© 2026 ABSOLUT Sport · Design System v1.0',
+    'footer.coauth':'Creado por Mauricio Lacerda × Rafa Rafa',
+    'nav.credit.title':'Mauricio × Rafa · sugerencias a design@',
+    'toolkit.eyebrow':'Brand Kit · Descarga',
+    'toolkit.title':'Toda la marca,<br><span class="accent">en un zip.</span>',
+    'toolkit.intro':'Logos, SoulCraft GX, tokens CSS y el script Zero-to-O. Todo lo que necesitás para empezar.',
+    'toolkit.desc':'4 logos · SoulCraft GX · tokens.css · zero-to-o.js · README',
+    'dec.eyebrow':'Logo · Cuál usar',
+    'dec.title':'Decisión en<br><span class="accent">una mirada.</span>',
+    'dec.intro':'¿Dónde va a aparecer? La matriz responde.',
+    'dec.axis.light':'Fondo claro','dec.axis.dark':'Fondo oscuro','dec.axis.color':'Color','dec.axis.mono':'Monocromático',
+    'dec.c1':'Azul + Negro','dec.c2':'Azul + Blanco','dec.c3':'Negro mono','dec.c4':'Blanco mono',
+    'icons.eyebrow':'Iconografía · Lucide',
+    'icons.title':'Iconos<br><span class="accent">del sistema.</span>',
+    'icons.intro':'<strong style="color:#fff">Lucide</strong> es el set oficial. 2px stroke, geométrico, moderno. <a href="https://lucide.dev" target="_blank" style="color:var(--color-blue-mid)">Catálogo completo →</a>',
+    'motion.eyebrow':'Motion · Transiciones',
+    'motion.title':'Movimiento<br><span class="accent">con propósito.</span>',
+    'motion.intro':'Tres velocidades. Tres funciones. Pasá el mouse en las tarjetas para sentirlo.',
+    'motion.fast':'Feedback instantáneo: hover, click, toggle.',
+    'motion.default':'Default: tarjetas, botones, cambio de estado.',
+    'motion.slow':'Énfasis: modal, drawer, reveal de contenido.',
+    'motion.principles.h':'Principios',
+    'motion.p1':'Movimiento es función, nunca decoración.',
+    'motion.p2':'Hover sube 3px. Press baja 2px. Siempre <code>ease-out</code>.',
+    'motion.p3':'Sin resortes. Energía controlada, no rebote.',
+    'motion.p4':'Respetá <code>prefers-reduced-motion</code>.',
+    'toast.copied':'¡Copiado!'
+  },
+  de: {
+    'nav.toolkit':'Brand Kit','nav.logos':'Logos','nav.colors':'Farben','nav.typo':'Typografie','nav.icons':'Icons','nav.motion':'Motion','nav.tokens':'Tokens','nav.comp':'Komponenten','nav.figma':'Figma','nav.guide':'Guidelines','nav.play':'Playbooks','nav.cta':'Für Devs',
+    'hero.eyebrow':'Markensystem · v1.0',
+    'hero.h1':'ABSOLUT SPORT<br><span class="accent">DESIGN SYSTEM</span><br>FÜR DAS GANZE TEAM',
+    'hero.sub':'Alles, was die Marke nutzt, an einem Ort. Farben, Typografie, Logos, Komponenten. Nutzen, herunterladen, beitragen.',
+    'stats.tokens':'Tokens','stats.components':'Komponenten','stats.logos':'Logo-Varianten','stats.years':'Jahre Marke',
+    'logos.eyebrow':'Marke · Identität',
+    'logos.title':'Offizielle<br><span class="accent">Logos.</span>',
+    'logos.intro':'Vier Varianten für jeden Hintergrund. <strong style="color:#fff">ABSOLUT Sport</strong> immer vollständig geschrieben, nie nur "Absolut". Blau+Schwarz ist der Standard. Blau+Weiß auf dunklem Hintergrund. Monochrom für S/W.',
+    'logos.c1.name':'Blau + Schwarz · Primär','logos.c1.use':'Helle Hintergründe · Light Mode · Institutionelles Material',
+    'logos.c2.name':'Blau + Weiß','logos.c2.use':'Dunkle Hintergründe · Dark Mode · Nachtaufnahmen',
+    'logos.c3.name':'Weiß · Monochrom','logos.c3.use':'Blaue oder dunkle Hintergründe · Spezielle Anwendungen',
+    'logos.c4.name':'Schwarz · Monochrom','logos.c4.use':'S/W-Druck · Helle Hintergründe · Dokumente',
+    'colors.eyebrow':'Palette · Tokens',
+    'colors.title':'Marken-<br><span class="accent">farben.</span>',
+    'colors.intro':'Klick auf eine Karte, um den Hex-Code zu kopieren. CSS-Tokens findest du in <code style="font-family:var(--font-mono);color:#fff">colors_and_type.css</code>.',
+    'colors.brand':'Brand Core','colors.neutrals':'Neutrale','colors.status':'Status',
+    'typo.eyebrow':'Typografie · Typografische DNA',
+    'typo.title':'Type-<br><span class="accent">System.</span>',
+    'typo.intro':'<strong style="color:#fff">SoulCraft GX</strong> ist die Markenschrift — jedes Headline nutzt sie. <strong style="color:#fff">Barlow</strong> für UI und Body. <strong style="color:#fff">JetBrains Mono</strong> für Daten, Preise und Code.',
+    'typo.hero.meta':'Hero · 72px · SoulCraft Black · Marken-Headlines',
+    'typo.hero.text':'AUS DEN STADIEN<br><span class="accent">IN DIE GESCHICHTE</span>',
+    'typo.disp.meta':'Display · 48px · SoulCraft ExtraBold','typo.disp.text':'Legendäre Erlebnisse',
+    'typo.head.meta':'Headline · 32px · SoulCraft Bold','typo.head.text':'CONMEBOL Libertadores™ 2025',
+    'typo.title.meta':'Title · 22px · Barlow SemiBold · UI-Headings','typo.title.text':'Offizielle Reisepaket-Agentur für die Finals',
+    'typo.body.meta':'Body · 16px · Barlow Regular · Fließtext',
+    'typo.body.text':'Wir sind die einzige offizielle Reisepaket-Agentur für die Finals der CONMEBOL Libertadores™ und Sudamericana™. Wir verbinden Fans, Unternehmen und Sportdelegationen mit unvergesslichen Momenten — mit deutscher Effizienz, brasilianischer Begeisterung und kalifornischem Lifestyle.',
+    'tokens.eyebrow':'Tokens · Raum · Form',
+    'tokens.title':'Abstände<br><span class="accent">und Formen.</span>',
+    'tokens.spacing.h':'Abstands-Skala','tokens.radius.h':'Border Radius',
+    'tokens.r.sm':'4px · Buttons','tokens.r.md':'8px · Cards','tokens.r.pill':'100px · Badges',
+    'comp.eyebrow':'Bibliothek · Komponenten',
+    'comp.title':'Komponenten-<br><span class="accent">Katalog.</span>',
+    'comp.intro':'13 Live-Previews. Klick auf einen, um die Komponente in einem neuen Tab zu öffnen.',
+    'comp.cat.identity':'Identität','comp.cat.colors':'Farben','comp.cat.typo':'Typografie','comp.cat.layout':'Layout','comp.cat.ui':'UI','comp.cat.nav':'Navigation','comp.cat.display':'Display','comp.cat.pattern':'Pattern',
+    'comp.link':'Preview öffnen',
+    'figma.eyebrow':'Figma · Offizielle Templates',
+    'figma.title':'Templates<br><span class="accent">zum Download.</span>',
+    'figma.intro':'Vier Figma-Dateien. Rafa pflegt sie. Dupliziere in deinen Workspace und passe an das Event an.',
+    'figma.c1.cat':'Anzeigen · Social','figma.c1.name':'Enxoval ADS 2026','figma.c1.desc':'Komplettes Anzeigen-Kit für Event-Kampagnen. Formate für Instagram, Facebook und Display Ads.',
+    'figma.c2.cat':'E-Commerce · Shop','figma.c2.name':'E-COM 2026','figma.c2.desc':'Templates für den Shopify-Shop — Promo-Banner, Paketbeschreibungen, Produkt-Layouts.',
+    'figma.c3.cat':'Ticket · Voucher','figma.c3.name':'Voucher-Vorlage','figma.c3.desc':'Voucher- und digitale Ticket-Templates — Pakete, Hospitality und VIP-Erlebnisse.',
+    'figma.c4.cat':'E-Mail Marketing','figma.c4.name':'E-Mail MKT Template 2026','figma.c4.desc':'E-Mail-Marketing-Templates — Newsletter, Paket-Launches, Warenkorb-Follow-up.',
+    'figma.link':'In Figma öffnen',
+    'guide.eyebrow':'Prinzipien · Anwendung',
+    'guide.title':'So<br><span class="accent">nutzt du es.</span>',
+    'guide.do':'Do','guide.dont':'Don\'t',
+    'guide.voice.h':'Stimme und Ton',
+    'guide.voice.do':'<li>Mutig und aspirational — schreib mit emotionaler Aufladung</li><li>Zweite Person (du) — sprich direkt mit dem Kunden</li><li>Großbuchstaben in großen Headlines und Haupt-CTAs</li><li>"ABSOLUT Sport" — immer vollständig geschrieben</li><li>Offizielle Marken mit ™ — Libertadores™, Sudamericana™</li>',
+    'guide.voice.dont':'<li>Keine kalte Luxus-Sprache — wir sind kein Cold Luxury</li><li>Schreib nie nur "Absolut" ohne "Sport"</li><li>Keine übertriebenen Emojis in institutionellem Material</li><li>Keine Stimmen mischen — wähl eine und bleib dabei</li><li>Keine generische Konzern-Sprache</li>',
+    'guide.photo.h':'Fotografie',
+    'guide.photo.do':'<li>Full-Bleed-Fotografie — Menschenmenge, Stadion bei Nacht</li><li>Dunkles Overlay von unten nach oben — für Lesbarkeit</li><li>Warme Highlights, dramatischer Kontrast</li><li>Stadion-Nachtbeleuchtung ist die Palette</li><li>Menschen in Bewegung, echte Emotion eingefangen</li>',
+    'guide.photo.dont':'<li>Keine handgezeichneten Illustrationen</li><li>Keine flachen Dekomuster</li><li>Keine generischen Business-Stockfotos</li><li>Keine AI-generierten Bilder in finalen Materialien</li><li>Keine übersättigten 2010er-Instagram-Filter</li>',
+    'guide.type.h':'Typografie',
+    'guide.type.do':'<li>SoulCraft GX für jedes Marken-Headline</li><li>Barlow für Body, UI und Menüs</li><li>JetBrains Mono für Preise, Daten und Code</li><li>Nutze den "0 → O"-Trick in SoulCraft-Text</li><li>Halt die Hierarchie ein: Hero · Display · Headline · Title · Body</li>',
+    'guide.type.dont':'<li>Keine zufälligen Google Fonts aus Ästhetik</li><li>Mische nicht mehr als 3 Schriftfamilien in einem Stück</li><li>Keine Serifen-Schriften in institutionellem Material</li><li>SoulCraft nicht strecken oder stauchen — sie ist schon condensed</li><li>Kein ALL CAPS in langen Body-Texten</li>',
+    'devs.eyebrow':'Engineering · Implementierung',
+    'devs.title':'Für<br><span class="accent">Devs.</span>',
+    'devs.intro':'Importiere die Tokens und deine Seite erbt Palette, Typografie und Skala. Funktioniert in jedem HTML/CSS/React.',
+    'devs.s1.h':'1. Importiere das Tokens-CSS',
+    'devs.s1.p':'Füge im <code style="font-family:var(--font-mono);color:#fff">&lt;head&gt;</code> vor allen eigenen Styles ein. Alle Variablen werden global verfügbar.',
+    'devs.s2.h':'2. Nutze Tokens via CSS Variables',
+    'devs.s2.p':'Farben, Typografie, Spacing, Radius — alles via <code style="font-family:var(--font-mono);color:#fff">var(--token)</code>. Nie hardcoded.',
+    'devs.s3.h':'3. Für SoulCraft-Text aktiviere "Zero-to-O"',
+    'devs.s3.p':'Skript, das jede "0" durch ein großes "O" in SoulCraft-Elementen ersetzt. Eine Markensignatur — Zahlen werden zu <code style="font-family:var(--font-mono);color:#fff">+5oo</code>, <code style="font-family:var(--font-mono);color:#fff">1oK</code>, <code style="font-family:var(--font-mono);color:#fff">12o×</code>.',
+    'play.eyebrow':'Unterseiten · Playbooks',
+    'play.title':'Angewandte<br><span class="accent">Playbooks.</span>',
+    'play.intro':'Jedes Team wendet das System auf eigene Weise an. Jedes Team hat seine Version hier.',
+    'play.ai.tag':'Global Marketing · Intern','play.ai.name':'AI Playbook',
+    'play.ai.desc':'Wie das globale Marketing-Team AI im Alltag nutzt. Use Cases, Regeln, Workflow und Tools.',
+    'play.hig.tag':'Enterprise · KI für Teams','play.hig.name':'Enterprise AI Guide',
+    'play.hig.desc':'Konten, Sicherheit, Best Practices und KI-Arsenal. Für Teams, die KI mit Zuversicht und Ergebnissen nutzen wollen.',
+    'rafa.eyebrow':'Rafa Rafa',
+    'rafa.cta':'Alles Gute<br><span class="gold">kommt doppelt.</span>',
+    'rafa.sub':'Design Lead, System-Owner und der Typ, der das für dich klärt. Schick die Frage — er antwortet.',
+    'rafa.action':'Frag Rafa',
+    'footer.about':'Die einzige offizielle Reisepaket-Agentur für die Finals der CONMEBOL Libertadores™ und Sudamericana™.',
+    'footer.col1':'System','footer.col2':'Unternehmen',
+    'footer.contact':'Frag Raphael →',
+    'footer.figma':'Figma-Tutorial →',
+    'footer.copy':'© 2026 ABSOLUT Sport · Design System v1.0',
+    'footer.coauth':'Erstellt von Mauricio Lacerda × Rafa Rafa',
+    'nav.credit.title':'Mauricio × Rafa · Vorschläge an design@',
+    'toolkit.eyebrow':'Brand Kit · Download',
+    'toolkit.title':'Die ganze Marke,<br><span class="accent">ein Zip.</span>',
+    'toolkit.intro':'Logos, SoulCraft GX, CSS-Tokens und das Zero-to-O-Skript. Alles, was du zum Starten brauchst.',
+    'toolkit.desc':'4 Logos · SoulCraft GX · tokens.css · zero-to-o.js · README',
+    'dec.eyebrow':'Logo · Welches nutzen',
+    'dec.title':'Entscheidung auf<br><span class="accent">einen Blick.</span>',
+    'dec.intro':'Wo wird es erscheinen? Die Matrix antwortet.',
+    'dec.axis.light':'Heller Hintergrund','dec.axis.dark':'Dunkler Hintergrund','dec.axis.color':'Farbig','dec.axis.mono':'Monochrom',
+    'dec.c1':'Blau + Schwarz','dec.c2':'Blau + Weiß','dec.c3':'Schwarz mono','dec.c4':'Weiß mono',
+    'icons.eyebrow':'Ikonografie · Lucide',
+    'icons.title':'System-<br><span class="accent">Icons.</span>',
+    'icons.intro':'<strong style="color:#fff">Lucide</strong> ist das offizielle Set. 2px Stroke, geometrisch, modern. <a href="https://lucide.dev" target="_blank" style="color:var(--color-blue-mid)">Vollständiger Katalog →</a>',
+    'motion.eyebrow':'Motion · Übergänge',
+    'motion.title':'Bewegung<br><span class="accent">mit Zweck.</span>',
+    'motion.intro':'Drei Geschwindigkeiten. Drei Funktionen. Hover über die Karten, um es zu spüren.',
+    'motion.fast':'Sofortiges Feedback: Hover, Klick, Toggle.',
+    'motion.default':'Standard: Cards, Buttons, Statuswechsel.',
+    'motion.slow':'Betonung: Modal, Drawer, Content-Reveal.',
+    'motion.principles.h':'Prinzipien',
+    'motion.p1':'Bewegung ist Funktion, nie Dekoration.',
+    'motion.p2':'Hover hebt 3px. Press senkt 2px. Immer <code>ease-out</code>.',
+    'motion.p3':'Keine Federn. Kontrollierte Energie, nicht hüpfend.',
+    'motion.p4':'<code>prefers-reduced-motion</code> beachten.',
+    'toast.copied':'Kopiert!'
+  }
+};
+</script>
+
+<!-- COLOR/SPACING DATA + RENDER -->
+<script>
+  const BRAND_COLORS = [
+    { name: 'Azul ASB',       hex: '#155F97', token: '--color-blue' },
+    { name: 'Azul Dark',      hex: '#0F4A75', token: '--color-blue-dark' },
+    { name: 'Azul Mid',       hex: '#1E7ABE', token: '--color-blue-mid' },
+    { name: 'Azul Highlight', hex: '#2857F7', token: '--color-blue-highlight' },
+    { name: 'Black',          hex: '#0D0D0D', token: '--color-black' },
+    { name: 'White',          hex: '#FFFFFF', token: '--color-white' },
+    { name: 'Off-White',      hex: '#FAFAFA', token: '--color-off-white' },
+    { name: 'Gray ASB',       hex: '#C0C0C0', token: '--color-gray-asb' },
+    { name: 'Gold',           hex: '#C9A84C', token: '--color-gold' },
+    { name: 'Gold Light',     hex: '#E8C96A', token: '--color-gold-light' },
+  ];
+  const NEUTRALS = [
+    { name: 'Neutral 950', hex: '#0D0D0D', token: '--color-neutral-950' },
+    { name: 'Neutral 900', hex: '#141414', token: '--color-neutral-900' },
+    { name: 'Neutral 800', hex: '#1A1A1A', token: '--color-neutral-800' },
+    { name: 'Neutral 700', hex: '#252525', token: '--color-neutral-700' },
+    { name: 'Neutral 600', hex: '#333333', token: '--color-neutral-600' },
+    { name: 'Neutral 500', hex: '#555555', token: '--color-neutral-500' },
+    { name: 'Neutral 400', hex: '#7A7A7A', token: '--color-neutral-400' },
+    { name: 'Neutral 300', hex: '#9A9A9A', token: '--color-neutral-300' },
+    { name: 'Neutral 200', hex: '#C4C4C4', token: '--color-neutral-200' },
+    { name: 'Neutral 100', hex: '#E8E8E8', token: '--color-neutral-100' },
+    { name: 'Neutral 50',  hex: '#F5F5F5', token: '--color-neutral-50' },
+  ];
+  const STATUS = [
+    { name: 'Success', hex: '#22C55E', token: '--color-success' },
+    { name: 'Warning', hex: '#F59E0B', token: '--color-warning' },
+    { name: 'Error',   hex: '#E3001B', token: '--color-error' },
+    { name: 'Info',    hex: '#3B82F6', token: '--color-info' },
+  ];
+
+  function renderColors(targetId, colors) {
+    document.getElementById(targetId).innerHTML = colors.map(c => `
+      <div class="color-card" data-hex="${c.hex}">
+        <div class="color-swatch" style="background:${c.hex}"></div>
+        <div class="color-info">
+          <div class="color-name">${c.name}</div>
+          <div class="color-hex">${c.hex}</div>
+          <div class="color-token">${c.token}</div>
+        </div>
+      </div>`).join('');
+  }
+  renderColors('brand-colors', BRAND_COLORS);
+  renderColors('neutral-colors', NEUTRALS);
+  renderColors('status-colors', STATUS);
+
+  const toast = document.getElementById('toast');
+  document.querySelectorAll('.color-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const hex = card.dataset.hex;
+      navigator.clipboard.writeText(hex).then(() => {
+        const lang = localStorage.getItem('asb_lang') || 'pt';
+        const label = (window.I18N_DICT[lang] && window.I18N_DICT[lang]['toast.copied']) || 'Copiado!';
+        toast.textContent = `${hex} — ${label}`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1500);
+      }).catch(() => {});
+    });
+  });
+
+  const SPACING = [
+    ['--space-1',  4],   ['--space-2',  8],   ['--space-3',  12],
+    ['--space-4',  16],  ['--space-5',  20],  ['--space-6',  24],
+    ['--space-8',  32],  ['--space-10', 40],  ['--space-12', 48],
+    ['--space-16', 64],  ['--space-20', 80],  ['--space-24', 96],
+  ];
+  const SPACING_MAX = 96;
+  document.getElementById('spacing-list').innerHTML = SPACING.map(([n, px]) => `
+    <div class="spacing-row">
+      <div class="spacing-name">${n}</div>
+      <div class="spacing-bar" style="width:${(px / SPACING_MAX) * 100}%"></div>
+      <div class="spacing-px">${px}px</div>
+    </div>`).join('');
+</script>
+
+<!-- I18N TOGGLE -->
+<script src="i18n.js"></script>
+
+<!-- ZERO-TO-O -->
+<script src="zero-to-o.js"></script>
+
+<!-- SPLASH REMOVE -->
+<script>
+document.getElementById('splash').addEventListener('animationend', function(e) {
+  if (e.animationName === 'splash-exit') this.remove();
+}, { once: true });
+</script>
+
+</body>
+</html>

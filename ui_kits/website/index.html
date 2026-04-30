@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABSOLUT Sport — Website UI Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'SoulCraft'; src: url('../../fonts/soulcraftgx.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Barlow', sans-serif; -webkit-font-smoothing: antialiased; transition: background 0.3s; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f0f0f0; }
+  ::-webkit-scrollbar-thumb { background: #C0C0C0; border-radius: 3px; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<script type="text/babel" src="Components.jsx"></script>
+<script type="text/babel">
+
+const EVENTS = [
+  { id: 1, name: "CONMEBOL\nLibertadores™", location: "Buenos Aires", date: "Nov 2025", price: "R$ 4.800", color1: "#0d2240", color2: "#155F97" },
+  { id: 2, name: "CONMEBOL\nSudamericana™", location: "Montevidéu",   date: "Nov 2025", price: "R$ 3.200", color1: "#0d1a30", color2: "#1a3a6e" },
+  { id: 3, name: "Formula 1\nGP México",    location: "Cidade do México", date: "Out 2025", price: "R$ 6.500", color1: "#1a1a0a", color2: "#3a3a10" },
+  { id: 4, name: "NFL\nSuperBowl LX",       location: "New Orleans",  date: "Fev 2026", price: "R$ 12.000",color1: "#0a0d1a", color2: "#1a2040" },
+  { id: 5, name: "Wimbledon\n2025",          location: "Londres",      date: "Jul 2025", price: "R$ 5.900", color1: "#0a1a0a", color2: "#1a3a1a" },
+  { id: 6, name: "Copa América\n2026",       location: "Estados Unidos",date: "Jun 2026", price: "R$ 7.200", color1: "#0d2240", color2: "#0d1a30" },
+];
+
+const FEATURES = [
+  "Ingressos oficiais com garantia de autenticidade total",
+  "Segurança e suporte 24h durante todo o evento",
+  "Acesso a áreas exclusivas e lounges VIP",
+  "Opções de parcelamento sem juros e sem burocracia",
+  "Hotéis selecionados e transfers confiáveis",
+  "Atendimento personalizado e suporte rápido",
+];
+
+// ─── HERO ────────────────────────────────────────────────────────────────────
+const HeroSection = ({ onNavigate }) => {
+  const { dark } = React.useContext(ThemeContext);
+  const t = dark ? DARK : LIGHT;
+  const [tick, setTick] = React.useState(0);
+  React.useEffect(() => { const id = setInterval(() => setTick(x => x+1), 4000); return () => clearInterval(id); }, []);
+  const lines = [["DOS ESTÁDIOS", "PARA A HISTÓRIA"], ["EXPERIÊNCIAS", "LENDÁRIAS"], ["ISSO É", "VIVER"]];
+  const [l1, l2] = lines[tick % lines.length];
+  return (
+    <div style={{
+      position: 'relative', minHeight: '88vh',
+      background: dark
+        ? 'linear-gradient(135deg, #0D0D0D 0%, #0a1520 40%, #0D0D0D 100%)'
+        : 'linear-gradient(135deg, #EAF2FB 0%, #FAFAFA 60%, #f0f4fa 100%)',
+      display: 'flex', flexDirection: 'column', justifyContent: 'center',
+      padding: '80px 80px', overflow: 'hidden',
+    }}>
+      {/* Subtle grid */}
+      <div style={{
+        position: 'absolute', inset: 0, opacity: dark ? 0.03 : 0.04,
+        backgroundImage: `linear-gradient(${t.border} 1px, transparent 1px), linear-gradient(90deg, ${t.border} 1px, transparent 1px)`,
+        backgroundSize: '60px 60px',
+      }} />
+      {/* Blue left accent */}
+      <div style={{ position: 'absolute', left: 0, top: '20%', bottom: '20%', width: 4, background: `linear-gradient(to bottom, transparent, ${t.accent}, transparent)` }} />
+
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 900 }}>
+        <div style={{ marginBottom: 20 }}><Badge variant={dark ? "blue" : "blue"}>● Agência Oficial CONMEBOL</Badge></div>
+        <h1 style={{
+          fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif",
+          fontSize: 'clamp(52px, 8vw, 100px)', fontWeight: 900,
+          lineHeight: 0.95, textTransform: 'uppercase',
+          color: t.fgPrimary, marginBottom: 28, transition: 'opacity 0.4s',
+        }}>
+          <div>{l1}</div>
+          <div style={{ color: t.accent }}>{l2}</div>
+        </h1>
+        <p style={{ fontSize: 18, color: t.fgSecondary, lineHeight: 1.65, maxWidth: 560, marginBottom: 36 }}>
+          A única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™. Experiências esportivas lendárias para torcedores, empresas e delegações.
+        </p>
+        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          <Button size="lg" onClick={() => onNavigate('Eventos')}>Ver Todos os Eventos</Button>
+          <Button variant="secondary" size="lg" onClick={() => onNavigate('Libertadores')}>Libertadores 2025</Button>
+        </div>
+        <div style={{ marginTop: 48, display: 'flex', gap: 32 }}>
+          {[['Rio de Janeiro','🇧🇷'],['Frankfurt','🇩🇪'],['Los Angeles','🇺🇸'],['Buenos Aires','🇦🇷']].map(([city, flag]) => (
+            <div key={city} style={{ fontSize: 12, color: t.fgMuted, fontWeight: 500 }}>{flag} {city}</div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── EVENTS PAGE ─────────────────────────────────────────────────────────────
+const EventsPage = ({ onSelect }) => {
+  const { dark } = React.useContext(ThemeContext);
+  const t = dark ? DARK : LIGHT;
+  const [active, setActive] = React.useState('Todos');
+  const filters = ['Todos','Libertadores','Sudamericana','Formula 1','NFL','Tênis'];
+  return (
+    <div style={{ padding: '64px 80px', maxWidth: 1360, margin: '0 auto' }}>
+      <div style={{ marginBottom: 40 }}>
+        <div style={{ fontFamily: "'SoulCraft', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: t.accent, marginBottom: 10 }}>Temporada 2025–2026</div>
+        <h2 style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 48, fontWeight: 900, textTransform: 'uppercase', color: t.fgPrimary, lineHeight: 1 }}>TODOS OS EVENTOS</h2>
+        <p style={{ fontSize: 16, color: t.fgMuted, marginTop: 12, maxWidth: 480 }}>Pacotes exclusivos com ingressos oficiais, hotéis selecionados e experiências VIP.</p>
+      </div>
+      <div style={{ display: 'flex', gap: 10, marginBottom: 36, flexWrap: 'wrap' }}>
+        {filters.map(tag => (
+          <div key={tag} onClick={() => setActive(tag)} style={{
+            padding: '7px 18px', borderRadius: 100, cursor: 'pointer',
+            background: active === tag ? t.accent : t.bgCard,
+            color: active === tag ? '#fff' : t.fgMuted,
+            border: `1px solid ${active === tag ? t.accent : t.border}`,
+            fontSize: 13, fontWeight: 600, transition: 'all 0.15s',
+          }}>{tag}</div>
+        ))}
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
+        {EVENTS.map(ev => <EventCard key={ev.id} event={ev} onSelect={onSelect} />)}
+      </div>
+    </div>
+  );
+};
+
+// ─── EVENT DETAIL ────────────────────────────────────────────────────────────
+const EventDetailPage = ({ event, onBack }) => {
+  const { dark } = React.useContext(ThemeContext);
+  const t = dark ? DARK : LIGHT;
+  return (
+    <div>
+      <div style={{
+        background: `linear-gradient(135deg, ${event.color1} 0%, ${event.color2} 60%, #0D0D0D 100%)`,
+        padding: '80px 80px 64px', position: 'relative', overflow: 'hidden',
+      }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.3), transparent)' }} />
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <button onClick={onBack} style={{ background: 'none', border: 'none', color: '#9A9A9A', cursor: 'pointer', fontSize: 13, marginBottom: 24, padding: 0 }}>← Voltar para Eventos</button>
+          <div style={{ display: 'flex', gap: 10, marginBottom: 18 }}>
+            <Badge variant="blue">Agência Oficial</Badge>
+            <Badge variant="gold">Pacotes VIP</Badge>
+          </div>
+          <h1 style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 64, fontWeight: 900, textTransform: 'uppercase', color: '#fff', lineHeight: 0.95, whiteSpace: 'pre-line' }}>{event.name}</h1>
+          <div style={{ display: 'flex', gap: 24, marginTop: 20, fontSize: 15, color: '#C0C0C0' }}>
+            <span>📍 {event.location}</span><span>📅 {event.date}</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', gap: 48, padding: '64px 80px', maxWidth: 1200, margin: '0 auto' }}>
+        <div style={{ flex: 2 }}>
+          <h3 style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 28, fontWeight: 800, textTransform: 'uppercase', color: t.fgPrimary, marginBottom: 20 }}>O QUE ESTÁ INCLUSO</h3>
+          <FeatureList items={FEATURES} />
+          <div style={{ marginTop: 48 }}>
+            <h3 style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 28, fontWeight: 800, textTransform: 'uppercase', color: t.fgPrimary, marginBottom: 20 }}>CATEGORIAS DE PACOTE</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                { name: 'Standard', price: event.price, desc: 'Ingresso + Transfer + Hotel 3★' },
+                { name: 'Premium',  price: 'R$ ' + (parseInt(event.price.replace(/\D/g,'')) * 1.5).toLocaleString('pt-BR'), desc: 'Ingresso Preferencial + Transfer VIP + Hotel 4★' },
+                { name: 'VIP Lounge', price: 'R$ ' + (parseInt(event.price.replace(/\D/g,'')) * 2.2).toLocaleString('pt-BR'), desc: 'Camarote VIP + Backstage + Hotel 5★', gold: true },
+              ].map(pkg => (
+                <div key={pkg.name} style={{
+                  background: pkg.gold ? 'rgba(201,168,76,0.06)' : t.bgCard,
+                  border: `1px solid ${pkg.gold ? 'rgba(201,168,76,0.25)' : t.border}`,
+                  borderRadius: 8, padding: '20px 24px',
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                }}>
+                  <div>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: pkg.gold ? '#C9A84C' : t.fgPrimary, marginBottom: 4 }}>{pkg.name}</div>
+                    <div style={{ fontSize: 13, color: t.fgMuted }}>{pkg.desc}</div>
+                  </div>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 22, fontWeight: 800, color: pkg.gold ? '#C9A84C' : t.fgPrimary }}>{pkg.price}</div>
+                    <div style={{ fontSize: 11, color: t.fgMuted }}>/pessoa</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div style={{ flex: 1 }}>
+          <div style={{ background: t.bgCard, borderRadius: 8, padding: 28, border: `1px solid ${t.border}`, position: 'sticky', top: 88 }}>
+            <div style={{ fontFamily: 'Barlow, sans-serif', fontSize: 11, color: t.fgMuted }}>A partir de</div>
+            <div style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 42, fontWeight: 900, color: dark ? '#FFFFFF' : t.accent, lineHeight: 1 }}>{event.price}</div>
+            <div style={{ fontSize: 12, color: t.fgMuted, marginBottom: 24 }}>por pessoa · parcelamento disponível</div>
+            <Button style={{ width: '100%', display: 'block', marginBottom: 12 }}>Comprar Agora</Button>
+            <Button variant="secondary" style={{ width: '100%', display: 'block' }}>Falar com Consultor</Button>
+            <div style={{ marginTop: 20, paddingTop: 20, borderTop: `1px solid ${t.border}`, fontSize: 12, color: t.fgMuted, lineHeight: 1.8 }}>
+              ✓ Parcelas sem juros<br/>✓ Cancelamento em 7 dias<br/>✓ Ingressos 100% autênticos<br/>✓ Suporte 24h no evento
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── ABOUT PAGE ──────────────────────────────────────────────────────────────
+const AboutPage = () => {
+  const { dark } = React.useContext(ThemeContext);
+  const t = dark ? DARK : LIGHT;
+  return (
+    <div style={{ maxWidth: 1200, margin: '0 auto', padding: '64px 80px' }}>
+      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: t.accent, marginBottom: 12, fontFamily: 'Barlow, sans-serif' }}>Nossa história</div>
+      <h2 style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 52, fontWeight: 900, textTransform: 'uppercase', color: t.fgPrimary, lineHeight: 0.95, marginBottom: 32 }}>
+        EFICIÊNCIA ALEMÃ,<br/><span style={{ color: t.accent }}>ENTUSIASMO BRASILEIRO,</span><br/>ESTILO CALIFORNIANO
+      </h2>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, marginBottom: 56 }}>
+        <p style={{ fontSize: 16, color: t.fgSecondary, lineHeight: 1.7 }}>
+          Somos a única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™. Com mais de 14 anos de experiência, conectamos torcedores, empresas e delegações a momentos inesquecíveis.
+        </p>
+        <p style={{ fontSize: 16, color: t.fgSecondary, lineHeight: 1.7 }}>
+          Com escritórios em Rio de Janeiro, Frankfurt, Los Angeles e Buenos Aires, somos referência global no segmento de sportainment — criando vivências imersivas que transcendem o jogo.
+        </p>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        {[
+          { title: 'Torcedores', desc: 'Ingressos oficiais, hotéis selecionados e a melhor experiência para você e sua família.' },
+          { title: 'Empresas',   desc: 'Hospitalidade corporativa, lounges VIP e experiências exclusivas para seus clientes.' },
+          { title: 'Delegações', desc: 'Logística completa e suporte especializado para equipes e organizações esportivas.' },
+        ].map(card => (
+          <div key={card.title} style={{ background: t.bgCard, borderRadius: 8, padding: '28px 24px', border: `1px solid ${t.border}` }}>
+            <div style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 22, fontWeight: 800, textTransform: 'uppercase', color: t.fgPrimary, marginBottom: 12 }}>{card.title}</div>
+            <p style={{ fontSize: 14, color: t.fgMuted, lineHeight: 1.6 }}>{card.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+const App = () => {
+  const [dark, setDark] = React.useState(() => localStorage.getItem('as_dark') === 'true');
+  const [page, setPage] = React.useState(() => localStorage.getItem('as_page') || 'Home');
+  const [selectedEvent, setSelectedEvent] = React.useState(null);
+  const t = dark ? DARK : LIGHT;
+
+  const toggle = () => setDark(d => { localStorage.setItem('as_dark', !d); return !d; });
+  const navigate = (p) => { setPage(p); localStorage.setItem('as_page', p); setSelectedEvent(null); };
+  const selectEvent = (ev) => { setSelectedEvent(ev); setPage('EventDetail'); localStorage.setItem('as_page', 'EventDetail'); };
+
+  return (
+    <ThemeContext.Provider value={{ dark, toggle }}>
+      <div style={{ minHeight: '100vh', background: t.bgBase, color: t.fgPrimary, transition: 'background 0.3s, color 0.3s' }}>
+        <Navbar currentPage={page} onNavigate={navigate} />
+
+        {page === 'Home' && <>
+          <HeroSection onNavigate={navigate} />
+          <StatStrip />
+          <div style={{ padding: '64px 80px', maxWidth: 1360, margin: '0 auto' }}>
+            <div style={{ marginBottom: 36 }}>
+              <div style={{ fontFamily: 'Barlow, sans-serif', fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: t.accent, marginBottom: 10 }}>Em destaque</div>
+              <h2 style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 40, fontWeight: 900, textTransform: 'uppercase', color: t.fgPrimary }}>PRÓXIMOS EVENTOS</h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
+              {EVENTS.slice(0, 3).map(ev => <EventCard key={ev.id} event={ev} onSelect={selectEvent} />)}
+            </div>
+            <div style={{ textAlign: 'center', marginTop: 40 }}>
+              <Button variant="secondary" onClick={() => navigate('Eventos')}>Ver Todos os Eventos →</Button>
+            </div>
+          </div>
+          <div style={{ background: dark ? '#141414' : '#155F97', padding: '64px 80px' }}>
+            <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+              <h2 style={{ fontFamily: "'SoulCraft', 'Barlow Condensed', sans-serif", fontSize: 40, fontWeight: 900, textTransform: 'uppercase', color: '#fff', marginBottom: 36, textAlign: 'center' }}>POR QUE ABSOLUT SPORT?</h2>
+              <FeatureList items={FEATURES} />
+            </div>
+          </div>
+          <Footer />
+        </>}
+
+        {(page === 'Eventos' || page === 'Libertadores') && <>
+          <EventsPage onSelect={selectEvent} />
+          <Footer />
+        </>}
+
+        {page === 'EventDetail' && selectedEvent && <>
+          <EventDetailPage event={selectedEvent} onBack={() => navigate('Eventos')} />
+          <Footer />
+        </>}
+
+        {page === 'Sobre Nós' && <>
+          <AboutPage />
+          <Footer />
+        </>}
+      </div>
+    </ThemeContext.Provider>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+<div id="root"></div>
+<script src="../../zero-to-o.js"></script>
+</body>
+</html>

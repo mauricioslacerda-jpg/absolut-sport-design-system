@@ -166,6 +166,8 @@ See `assets/` folder:
 | `preview/` | Preview cards de cada componente (linkados do Hub). |
 | `assets/` | Logos e brand assets (.svg). |
 | `assets/absolut-brand-kit.zip` | **Brand Kit completo** — 4 logos + SoulCraft GX + colors_and_type.css + zero-to-o.js + README. Linkado no Hub via CTA "Brand Kit". Regenerar via PowerShell `Compress-Archive` quando atualizar tokens/logos/fonte. |
+| `assets/rafa-rafa.png` | Cartaz do banner "Pergunte pro Rafa" no rodapé do Hub. Também usado como `og:image` em todas as páginas. |
+| `assets/mauricio.jpg` | _TODO_: foto do Mauricio Lacerda. Reservada para uso planejado (banner de coautoria, perfil de coordenação, ou expansão do banner Rafa Rafa pra dupla). Mantida no repo até a decisão de uso. |
 | `ui_kits/website/` | UI kit React para absolut-sport.com.br. |
 | `SKILL.md` | Descritor de agent skill. |
 

@@ -6,6 +6,16 @@
 <title>Enterprise AI Guide — ABSOLUT Sport · Playbook Interno</title>
 <meta name="description" content="Guia corporativo de IA. Contas, segurança, boas práticas e arsenal de ferramentas para times que querem resultados reais.">
 
+<!-- Open Graph -->
+<meta property="og:title" content="Enterprise AI Guide · ABSOLUT Sport">
+<meta property="og:description" content="Guia corporativo de IA. Contas, segurança, boas práticas e arsenal de ferramentas.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://design.absolut-sport.com.br/higgsfield-ai-guide.html">
+<meta property="og:image" content="https://design.absolut-sport.com.br/assets/rafa-rafa.png">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="ABSOLUT Sport Design System">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -475,6 +485,16 @@ details[open] summary::after { transform: rotate(90deg); color: var(--color-blue
 .fade-in.visible { opacity: 1; transform: none; }
 
 /* ─── RESPONSIVE ──────────────────────────────────────────── */
+/* Acessibilidade: respeitar preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @media (max-width: 960px) {
   .nav { padding: 0 var(--space-6); }
   .nav-breadcrumb { display: none; }

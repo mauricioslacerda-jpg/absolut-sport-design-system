@@ -1,8 +1,36 @@
+# Claude / IDE / OS
 .claude/
 .DS_Store
 Thumbs.db
 desktop.ini
-*.log
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# Google Drive sync detritos
+.tmp.drivedownload
+*.tmp
+.~lock.*
+~$*
+
+# Google Docs/Sheets shortcuts (não são arquivos reais, só ponteiros)
+*.gdoc
+*.gsheet
+*.gslides
+
+# Build / cache (caso entre algum dia)
 node_modules/
+.cache/
+dist/
+build/
+
+# Local secrets / env
+.env
+.env.local
+*.local
+
+# Logs
+*.log
+npm-debug.log*

@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growth Playbook — ABSOLUT Sport · Time interno</title>
+<meta name="description" content="Como o time de Growth da ABSOLUT Sport opera. Pilares, métricas, plataformas, metodologia e workflow.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Growth Playbook — ABSOLUT Sport">
+<meta property="og:description" content="Pilares, métricas, plataformas e metodologia. Como Growth opera no time.">
+<meta property="og:url" content="https://mauricioslacerda-jpg.github.io/absolut-sport-design-system/playbooks/growth.html">
+<meta property="og:image" content="https://mauricioslacerda-jpg.github.io/absolut-sport-design-system/assets/rafa-rafa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  @font-face {
+    font-family: 'SoulCraft';
+    src: url('../fonts/soulcraftgx.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+
+<link rel="stylesheet" href="../colors_and_type.css">
+
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV (glassmorphism) ──────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: var(--z-sticky);
+  height: 68px; padding: 0 var(--space-12);
+  background: rgba(13, 13, 13, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 4px 32px rgba(0,0,0,0.3);
+}
+.nav-logo img { height: 32px; }
+.nav-breadcrumb {
+  display: flex; align-items: center; gap: var(--space-3);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-neutral-300);
+  font-weight: var(--weight-medium);
+}
+.nav-breadcrumb a { color: var(--color-neutral-300); transition: color var(--transition-fast); }
+.nav-breadcrumb a:hover { color: var(--color-blue-mid); }
+.nav-breadcrumb .sep { color: var(--color-neutral-600); }
+.nav-breadcrumb .current { color: var(--color-white); }
+
+.nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+.nav-credit {
+  display: inline-flex; align-items: center;
+  padding: 5px 10px;
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: var(--radius-pill);
+  background: rgba(201,168,76,0.08);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+.nav-credit:hover { background: rgba(201,168,76,0.18); border-color: var(--color-gold); }
+.nav-credit-mark {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-gold); white-space: nowrap;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  background: var(--color-neutral-900);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-pill);
+  padding: 3px; gap: 2px;
+}
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  padding: 5px 10px; border-radius: 100px;
+  background: transparent; color: var(--color-neutral-300);
+  border: none; cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.lang-btn:hover { color: var(--color-white); }
+.lang-btn.active { background: var(--color-blue); color: var(--color-white); }
+
+.nav-back {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-white);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 18px; font-size: 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+.nav-back:hover { background: var(--color-blue); border-color: var(--color-blue); }
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero {
+  position: relative; min-height: 78vh;
+  background: linear-gradient(135deg, #0D0D0D 0%, #0a1520 40%, #1a0d05 100%);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px var(--space-20) 64px; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-bar {
+  position: absolute; left: 0; top: 18%; bottom: 18%; width: 4px;
+  background: linear-gradient(to bottom, transparent, var(--color-gold) 30%, var(--color-blue) 70%, transparent);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 1100px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--color-gold);
+  padding: 5px 14px; border-radius: var(--radius-pill);
+  font-size: 11px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  margin-bottom: var(--space-6);
+}
+.hero-eyebrow::before { content: '●'; color: var(--color-gold); font-size: 10px; }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: var(--weight-black);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: var(--space-6);
+}
+.hero h1 .accent { color: var(--color-gold); display: block; }
+
+.hero-sub {
+  font-size: var(--text-subtitle);
+  color: var(--color-neutral-200);
+  line-height: var(--leading-relaxed);
+  max-width: 580px;
+}
+
+/* ─── STAT STRIP ──────────────────────────────────────────── */
+.statstrip {
+  display: flex;
+  background: var(--color-neutral-900);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.statstrip-cell {
+  flex: 1; padding: var(--space-8) 0;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.statstrip-cell:last-child { border-right: none; }
+.statstrip-num {
+  font-family: var(--font-display);
+  font-size: 44px; font-weight: var(--weight-black);
+  color: var(--color-gold); line-height: 1;
+}
+.statstrip-label {
+  font-size: var(--text-caption);
+  color: var(--color-neutral-300);
+  margin-top: 8px; font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+}
+
+/* ─── SECTION COMMONS ─────────────────────────────────────── */
+section {
+  padding: var(--space-20) var(--space-20);
+  max-width: 1280px; margin: 0 auto;
+}
+.section-eyebrow {
+  font-size: 11px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--color-gold); margin-bottom: var(--space-3);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: var(--weight-extrabold);
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--color-white);
+  margin-bottom: var(--space-10);
+}
+.section-title .accent { color: var(--color-gold); display: block; }
+
+.section-intro {
+  font-size: var(--text-body-lg);
+  color: var(--color-neutral-200);
+  max-width: 720px;
+  margin-top: -24px; margin-bottom: var(--space-10);
+  line-height: var(--leading-relaxed);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ─── PILLARS (AAARRR) ────────────────────────────────────── */
+.pillars-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-3); }
+.pillar-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-5);
+  transition: all var(--transition-default);
+  position: relative;
+}
+.pillar-card:hover { transform: translateY(-3px); border-color: rgba(201,168,76,0.5); }
+.pillar-icon {
+  width: 44px; height: 44px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--space-4);
+  color: var(--color-gold);
+}
+.pillar-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pillar-name {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+.pillar-def {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+.pillar-metric {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-gold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--space-3);
+}
+
+/* ─── METRICS GRID ────────────────────────────────────────── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+.metric-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  transition: all var(--transition-default);
+}
+.metric-card:hover { border-color: rgba(21,95,151,0.5); }
+.metric-sigla {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 900;
+  font-variation-settings: 'wght' 900;
+  letter-spacing: -0.01em;
+  color: var(--color-blue-mid);
+  line-height: 0.95;
+  margin-bottom: var(--space-2);
+}
+.metric-name {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+}
+.metric-formula {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-neutral-200);
+  background: var(--color-black);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-3);
+  display: block;
+  word-break: break-all;
+}
+.metric-why {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+.metric-bench {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-gold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--space-3);
+}
+
+/* ─── PLATFORMS GRID ──────────────────────────────────────── */
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+.platform-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  transition: all var(--transition-default);
+}
+.platform-card:hover { transform: translateY(-2px); border-color: rgba(21,95,151,0.5); }
+.platform-icon {
+  font-size: 24px;
+  width: 48px; height: 48px;
+  background: rgba(21,95,151,0.12);
+  border: 1px solid rgba(21,95,151,0.25);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--space-4);
+}
+.platform-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+.platform-funnel {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-3);
+}
+.platform-funnel.top { background: rgba(201,168,76,0.12); color: var(--color-gold); }
+.platform-funnel.mid { background: rgba(21,95,151,0.15); color: var(--color-blue-mid); }
+.platform-funnel.bot { background: rgba(34,197,94,0.12); color: var(--color-success); }
+.platform-metric {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  line-height: 1.5;
+}
+
+/* ─── METHODOLOGY ─────────────────────────────────────────── */
+.method-aforismo {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: var(--weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--color-gold);
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  background: var(--color-neutral-900);
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-10);
+  position: relative;
+  overflow: hidden;
+}
+.method-aforismo::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.method-steps { list-style: none; padding: 0; counter-reset: method; }
+.method-steps li {
+  counter-increment: method;
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-16);
+  margin-bottom: var(--space-3);
+  position: relative;
+  font-size: var(--text-body);
+  color: var(--color-neutral-200);
+  line-height: 1.55;
+}
+.method-steps li::before {
+  content: counter(method, decimal-leading-zero);
+  position: absolute;
+  left: var(--space-5);
+  top: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+.method-steps strong { color: var(--color-white); font-weight: var(--weight-semibold); }
+.method-steps code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-blue-mid);
+  background: rgba(21,95,151,0.12);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+/* ─── WORKFLOW ────────────────────────────────────────────── */
+.workflow {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  position: relative; gap: 0;
+}
+.workflow::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: calc(10% + 24px); right: calc(10% + 24px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-gold));
+  opacity: 0.5;
+}
+.wf-step {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  padding: 0 var(--space-4);
+  position: relative; z-index: 1;
+}
+.wf-dot {
+  width: 48px; height: 48px;
+  background: var(--color-black);
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 16px; font-weight: var(--weight-medium);
+  color: var(--color-gold);
+  margin-bottom: var(--space-5);
+  transition: all var(--transition-default);
+}
+.wf-step:hover .wf-dot { background: var(--color-gold); color: var(--color-black); }
+.wf-step h4 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+.wf-step p { font-size: var(--text-caption); color: var(--color-neutral-300); line-height: 1.5; }
+
+/* ─── DO / DON'T ──────────────────────────────────────────── */
+.dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+.dd-col {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  position: relative;
+}
+.dd-col::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.dd-do::before { background: var(--color-success); }
+.dd-dont::before { background: var(--color-error); }
+.dd-tag {
+  display: inline-block;
+  padding: 4px 12px; border-radius: var(--radius-pill);
+  font-size: 10px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  margin-bottom: var(--space-5);
+}
+.dd-do .dd-tag   { background: rgba(34,197,94,0.12); color: var(--color-success); }
+.dd-dont .dd-tag { background: rgba(227,0,27,0.12); color: var(--color-error); }
+.dd-col ul { list-style: none; padding: 0; }
+.dd-col li {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  padding: 11px 0 11px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  line-height: var(--leading-normal);
+}
+.dd-col li:last-child { border-bottom: none; padding-bottom: 0; }
+.dd-do li::before   { content: "✓"; color: var(--color-success); position: absolute; left: 0; font-weight: var(--weight-bold); }
+.dd-dont li::before { content: "✗"; color: var(--color-error); position: absolute; left: 0; font-weight: var(--weight-bold); }
+
+/* ─── GLOSSARY ────────────────────────────────────────────── */
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3) var(--space-8);
+}
+.glossary-item {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: var(--space-4);
+  align-items: baseline;
+}
+.glossary-term {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-gold);
+}
+.glossary-def {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  line-height: 1.5;
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+.footer {
+  background: var(--color-black);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--space-12) var(--space-20) var(--space-8);
+  margin-top: var(--space-20);
+}
+.footer-grid {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-12);
+}
+.footer-brand img { height: 36px; margin-bottom: var(--space-4); }
+.footer-brand p { font-size: var(--text-body-sm); color: var(--color-neutral-300); max-width: 280px; line-height: 1.6; }
+.footer-col h4 {
+  font-size: 11px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--color-neutral-400); margin-bottom: var(--space-4);
+}
+.footer-col a {
+  display: block;
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  padding: 6px 0;
+  transition: color var(--transition-fast);
+}
+.footer-col a:hover { color: var(--color-gold); }
+.footer-bottom {
+  max-width: 1280px; margin: var(--space-8) auto 0;
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between;
+  font-size: var(--text-caption);
+  color: var(--color-neutral-400);
+}
+
+/* ─── REDUCED MOTION ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .nav { padding: 0 var(--space-6); }
+  .nav-breadcrumb { display: none; }
+  .nav-back { display: none; }
+  .nav-credit { display: none; }
+  .hero { padding: 60px var(--space-6) 48px; min-height: 60vh; }
+  section { padding: var(--space-12) var(--space-6); }
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .dd-grid { grid-template-columns: 1fr; }
+  .glossary-grid { grid-template-columns: 1fr; }
+  .workflow { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  .workflow::before { display: none; }
+  .footer { padding: var(--space-10) var(--space-6) var(--space-6); }
+  .footer-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+  .footer-bottom { flex-direction: column; gap: var(--space-3); }
+  .statstrip-num { font-size: 32px; }
+}
+@media (max-width: 600px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+  .glossary-item { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">
+    <img src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+  </a>
+  <div class="nav-breadcrumb">
+    <a href="../index.html"             data-i18n="bc.hub">Design System</a>
+    <span class="sep">/</span>
+    <a href="../index.html#playbooks"   data-i18n="bc.playbooks">Playbooks</a>
+    <span class="sep">/</span>
+    <span class="current"               data-i18n="bc.current">Growth</span>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-back" href="../index.html" data-i18n="nav.back">← Voltar ao Hub</a>
+    <a class="nav-credit" href="mailto:design@absolut-sport.com.br?subject=Growth%20Playbook%20%C2%B7%20Sugest%C3%A3o" data-i18n-attr="title:nav.credit.title" title="Mauricio × Rafa · sugestões pra design@">
+      <span class="nav-credit-mark">MM × RR</span>
+    </a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+      <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+      <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+      <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:none;padding-left:var(--space-20);padding-right:var(--space-20)">
+  <div class="hero-grid"></div>
+  <div class="hero-bar"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">Growth · Time interno · v1.0</div>
+    <h1 data-i18n-html="hero.h1">GROWTH NÃO É VIRALIDADE.<br><span class="accent">É SISTEMA.</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Hipótese, teste, decisão. O time de Growth opera com método: cada experimento responde uma pergunta. Cada métrica conta uma história. Aqui mora o manual.</p>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="statstrip">
+  <div class="statstrip-cell"><div class="statstrip-num">5</div><div class="statstrip-label" data-i18n="stat.s1">Pilares · AAARRR</div></div>
+  <div class="statstrip-cell"><div class="statstrip-num">10</div><div class="statstrip-label" data-i18n="stat.s2">Métricas centrais</div></div>
+  <div class="statstrip-cell"><div class="statstrip-num">7</div><div class="statstrip-label" data-i18n="stat.s3">Plataformas</div></div>
+  <div class="statstrip-cell"><div class="statstrip-num">4</div><div class="statstrip-label" data-i18n="stat.s4">Mercados servidos</div></div>
+</div>
+
+<!-- PILARES -->
+<section>
+  <div class="section-eyebrow" data-i18n="pil.eyebrow">Os 5 pilares · AAARRR</div>
+  <h2 class="section-title" data-i18n-html="pil.title">O funil em<br><span class="accent">5 etapas.</span></h2>
+  <p class="section-intro" data-i18n="pil.intro">AAARRR é o "Pirate Funnel" do Dave McClure. Cada pilar tem uma métrica primária. Otimize um por vez.</p>
+
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <div class="pillar-name" data-i18n="pil.p1.name">Aquisição</div>
+      <div class="pillar-def" data-i18n="pil.p1.def">Como pessoas chegam até a gente. Mídia, busca, indicação, parcerias.</div>
+      <div class="pillar-metric" data-i18n="pil.p1.metric">Métrica · CAC</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="pillar-name" data-i18n="pil.p2.name">Ativação</div>
+      <div class="pillar-def" data-i18n="pil.p2.def">Primeiro momento de valor. O cliente entendeu o que você vende.</div>
+      <div class="pillar-metric" data-i18n="pil.p2.metric">Métrica · Activation rate</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
+      <div class="pillar-name" data-i18n="pil.p3.name">Retenção</div>
+      <div class="pillar-def" data-i18n="pil.p3.def">Quem volta pro próximo evento. No nosso caso, ciclo longo: 1-2 anos.</div>
+      <div class="pillar-metric" data-i18n="pil.p3.metric">Métrica · Cohort retention</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="pillar-name" data-i18n="pil.p4.name">Receita</div>
+      <div class="pillar-def" data-i18n="pil.p4.def">Quanto cada cliente gera. Ticket médio + recorrência por evento.</div>
+      <div class="pillar-metric" data-i18n="pil.p4.metric">Métrica · LTV / AOV</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 11-3-3-3 3"/><path d="M19 8v6"/></svg></div>
+      <div class="pillar-name" data-i18n="pil.p5.name">Recomendação</div>
+      <div class="pillar-def" data-i18n="pil.p5.def">Quem traz outros. Indicação espontânea ou programa de referral.</div>
+      <div class="pillar-metric" data-i18n="pil.p5.metric">Métrica · NPS / Referral rate</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- MÉTRICAS -->
+<section>
+  <div class="section-eyebrow" data-i18n="met.eyebrow">Métricas que importam</div>
+  <h2 class="section-title" data-i18n-html="met.title">Quem não mede,<br><span class="accent">supõe.</span></h2>
+  <p class="section-intro" data-i18n="met.intro">As 10 métricas que decidem onde investir e onde cortar. Cada uma com fórmula, função e benchmark de referência.</p>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-sigla">CAC</div>
+      <div class="metric-name" data-i18n="met.cac.n">Customer Acquisition Cost</div>
+      <code class="metric-formula">$ marketing + sales / # clientes novos</code>
+      <p class="metric-why" data-i18n="met.cac.w">Quanto custa cada cliente novo. Compara contra LTV pra ver se vale.</p>
+      <div class="metric-bench" data-i18n="met.cac.b">Alvo · LTV:CAC ≥ 3:1</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-sigla">LTV</div>
+      <div class="metric-name" data-i18n="met.ltv.n">Lifetime Value</div>
+      <code class="metric-formula">AOV × frequência × margem × tempo</code>
+      <p class="metric-why" data-i18n="met.ltv.w">Quanto um cliente vai gerar de receita ao longo do relacionamento.</p>
+      <div class="metric-bench" data-i18n="met.ltv.b">Alvo · 3× CAC mínimo</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-sigla">ROAS</div>
+      <div class="metric-name" data-i18n="met.roas.n">Return on Ad Spend</div>
+      <code class="metric-formula">receita / gasto em mídia</code>
+      <p class="metric-why" data-i18n="met.roas.w">Retorno por real investido em mídia paga. Curto prazo, contas brutas.</p>
+      <div class="metric-bench" data-i18n="met.roas.b">Alvo · ≥ 4:1 (varia por canal)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-sigla">CR</div>
+      <div class="metric-name" data-i18n="met.cr.n">Conversion Rate</div>
+      <code class="metric-formula">conversões / sessões × 100</code>
+      <p class="metric-why" data-i18n="met.cr.w">% de visitantes que viram cliente. Mede saúde do funil de aquisição.</p>
+      <div class="metric-bench" data-i18n="met.cr.b">Varia muito por categoria</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-sigla">AOV</div>
+      <div class="metric-name" data-i18n="met.aov.n">Average Order Value</div>
+      <code class="metric-formula">receita total / # pedidos</code>
+      <p class="metric-why" data-i18n="met.aov.w">Ticket médio. Sobe via upsell, cross-sell, bundles.</p>
+      <div class="metric-bench" data-i18n="met.aov.b">Alvo · crescimento contínuo</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-sigla">Churn</div>
+      <div class="metric-name" data-i18n="met.churn.n">Churn Rate</div>
+      <code class="metric-formula">clientes perdidos / total no período</code>
+      <p class="metric-why" data-i18n="met.churn.w">% que não volta. Inverso da retenção. Mede saúde do produto.</p>
+      <div class="metric-bench" data-i18n="met.churn.b">Quanto menor, melhor</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-sigla">Cohort</div>
+      <div class="metric-name" data-i18n="met.coh.n">Cohort Retention</div>
+      <code class="metric-formula">% retidos por safra ao longo do tempo</code>
+      <p class="metric-why" data-i18n="met.coh.w">Mostra se cada nova safra retém melhor que a anterior. Vetor real do produto.</p>
+      <div class="metric-bench" data-i18n="met.coh.b">Curva achatada = produto cresce</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-sigla">NPS</div>
+      <div class="metric-name" data-i18n="met.nps.n">Net Promoter Score</div>
+      <code class="metric-formula">% promotores − % detratores</code>
+      <p class="metric-why" data-i18n="met.nps.w">Quão recomendável seu produto é. Leading indicator de referral.</p>
+      <div class="metric-bench" data-i18n="met.nps.b">Bom ≥ 50 · Excelente ≥ 70</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-sigla">MQL</div>
+      <div class="metric-name" data-i18n="met.mql.n">Marketing Qualified Lead</div>
+      <code class="metric-formula">leads que atingem critério de marketing</code>
+      <p class="metric-why" data-i18n="met.mql.w">Quem mostrou intenção. Pronto pra entrar no fluxo de nurture.</p>
+      <div class="metric-bench" data-i18n="met.mql.b">Conversão MQL→SQL ≥ 30%</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-sigla">SQL</div>
+      <div class="metric-name" data-i18n="met.sql.n">Sales Qualified Lead</div>
+      <code class="metric-formula">leads aprovados por vendas</code>
+      <p class="metric-why" data-i18n="met.sql.w">Pronto pra contato comercial. Vendas valida que vale o tempo.</p>
+      <div class="metric-bench" data-i18n="met.sql.b">Conversão SQL→cliente ≥ 20%</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PLATAFORMAS -->
+<section>
+  <div class="section-eyebrow" data-i18n="plat.eyebrow">Plataformas · Onde Growth roda</div>
+  <h2 class="section-title" data-i18n-html="plat.title">Sete canais.<br><span class="accent">Funções diferentes.</span></h2>
+  <p class="section-intro" data-i18n="plat.intro">Cada canal tem papel claro no funil. Não confunda função: paid social não fecha venda complexa, e WhatsApp não escala awareness.</p>
+
+  <div class="platforms-grid">
+    <div class="platform-card">
+      <div class="platform-icon">📣</div>
+      <div class="platform-name" data-i18n="plat.p1.name">Paid Social</div>
+      <span class="platform-funnel top" data-i18n="plat.funnel.top">Top do funil</span>
+      <div class="platform-metric" data-i18n="plat.p1.m">Meta, TikTok. Aquisição em massa, prospecção de audiência fria.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">🔍</div>
+      <div class="platform-name" data-i18n="plat.p2.name">Paid Search</div>
+      <span class="platform-funnel bot" data-i18n="plat.funnel.bot">Bottom do funil</span>
+      <div class="platform-metric" data-i18n="plat.p2.m">Google. Captura de demanda quente. Quem já está pesquisando o evento.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">✉️</div>
+      <div class="platform-name" data-i18n="plat.p3.name">Email</div>
+      <span class="platform-funnel mid" data-i18n="plat.funnel.mid">Mid do funil</span>
+      <div class="platform-metric" data-i18n="plat.p3.m">Klaviyo / Mailchimp. Nurture, retenção, upsell para próxima edição.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">📝</div>
+      <div class="platform-name" data-i18n="plat.p4.name">SEO / Conteúdo</div>
+      <span class="platform-funnel top" data-i18n="plat.funnel.top">Top do funil</span>
+      <div class="platform-metric" data-i18n="plat.p4.m">Demanda orgânica. Lento de construir, alto retorno composto no tempo.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">🤝</div>
+      <div class="platform-name" data-i18n="plat.p5.name">Influência · Parcerias</div>
+      <span class="platform-funnel mid" data-i18n="plat.funnel.mid">Mid do funil</span>
+      <div class="platform-metric" data-i18n="plat.p5.m">Aquisição com confiança emprestada. Mede ROAS por criador, não por post.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">🔁</div>
+      <div class="platform-name" data-i18n="plat.p6.name">Referral</div>
+      <span class="platform-funnel bot" data-i18n="plat.funnel.bot">Bottom do funil</span>
+      <div class="platform-metric" data-i18n="plat.p6.m">Cliente traz cliente. CAC baixo, LTV alto, NPS como leading indicator.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">💬</div>
+      <div class="platform-name" data-i18n="plat.p7.name">Direct Sales · WhatsApp</div>
+      <span class="platform-funnel bot" data-i18n="plat.funnel.bot">Bottom do funil</span>
+      <div class="platform-metric" data-i18n="plat.p7.m">Pacote alto, decisão complexa. Fechamento humano, suporte 24h.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- METODOLOGIA -->
+<section>
+  <div class="section-eyebrow" data-i18n="meth.eyebrow">Metodologia · A receita do experimento</div>
+  <h2 class="section-title" data-i18n-html="meth.title">Como rodar<br>um <span class="accent">experimento.</span></h2>
+
+  <div class="method-aforismo" data-i18n="meth.aforismo">Lista de ideias não é plano.</div>
+
+  <ol class="method-steps">
+    <li data-i18n-html="meth.s1"><strong>Hipótese.</strong> Formato fixo: <code>Se mudarmos X, Y vai melhorar porque Z.</code> Sem isso, não é experimento — é palpite.</li>
+    <li data-i18n-html="meth.s2"><strong>Priorização.</strong> ICE = Impact (1-10) + Confidence (1-10) + Ease (1-10). Score ≥ 21 entra na fila.</li>
+    <li data-i18n-html="meth.s3"><strong>Teste.</strong> Uma variável por vez. Sample size definido antes. Prazo curto (1-2 sprints). Holdout group sempre.</li>
+    <li data-i18n-html="meth.s4"><strong>Decisão.</strong> Critério acordado antes de começar. Significância estatística é mínimo, não opcional.</li>
+    <li data-i18n-html="meth.s5"><strong>Documentação.</strong> Postmortem público em até 5 dias. O que aprendeu vale mais do que o resultado.</li>
+  </ol>
+</section>
+
+<hr class="divider">
+
+<!-- WORKFLOW -->
+<section>
+  <div class="section-eyebrow" data-i18n="wf.eyebrow">Workflow · Da ideia ao scale</div>
+  <h2 class="section-title" data-i18n-html="wf.title">A jogada<br>em <span class="accent">5 movimentos.</span></h2>
+
+  <div class="workflow">
+    <div class="wf-step"><div class="wf-dot">1</div><h4 data-i18n="wf.s1.h">Ideia → Hipótese</h4><p data-i18n="wf.s1.p">Formato estruturado. Sem isso, fica palpite no Slack.</p></div>
+    <div class="wf-step"><div class="wf-dot">2</div><h4 data-i18n="wf.s2.h">ICE</h4><p data-i18n="wf.s2.p">Três votos. Cada hipótese pontua. Maior score primeiro.</p></div>
+    <div class="wf-step"><div class="wf-dot">3</div><h4 data-i18n="wf.s3.h">Experimento</h4><p data-i18n="wf.s3.p">Sample size definido. Uma variável. Prazo curto. Holdout.</p></div>
+    <div class="wf-step"><div class="wf-dot">4</div><h4 data-i18n="wf.s4.h">Decisão</h4><p data-i18n="wf.s4.p">Vai, não vai, ou itera. Critério acordado antes.</p></div>
+    <div class="wf-step"><div class="wf-dot">5</div><h4 data-i18n="wf.s5.h">Scale ou Mata</h4><p data-i18n="wf.s5.p">Sem meio termo. Postmortem em ambos os casos.</p></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DO / DON'T -->
+<section>
+  <div class="section-eyebrow" data-i18n="dd.eyebrow">As regras</div>
+  <h2 class="section-title" data-i18n-html="dd.title">Faça isso.<br><span class="accent">Não aquilo.</span></h2>
+
+  <div class="dd-grid">
+    <div class="dd-col dd-do">
+      <div class="dd-tag" data-i18n="dd.do">Do</div>
+      <ul data-i18n-html="dd.do.list">
+        <li>Hipótese antes do teste — sempre</li>
+        <li>Sample size pré-definido pra significância estatística</li>
+        <li>Holdout group em todo experimento sério</li>
+        <li>Postmortem público em até 5 dias do fim</li>
+        <li>Prazo curto: 1-2 sprints, máximo</li>
+        <li>Métrica primária acordada antes de começar</li>
+        <li>Decisor único nomeado — quem dá go/no-go</li>
+      </ul>
+    </div>
+    <div class="dd-col dd-dont">
+      <div class="dd-tag" data-i18n="dd.dont">Don't</div>
+      <ul data-i18n-html="dd.dont.list">
+        <li>Iniciar 5 testes simultâneos no mesmo funil</li>
+        <li>Decidir no meio do teste — "já tá bom" mata aprendizado</li>
+        <li>Confundir correlação com causa</li>
+        <li>Otimizar métrica de vaidade — impressões, likes, alcance</li>
+        <li>Ignorar significância estatística pra "ir mais rápido"</li>
+        <li>Trocar a métrica primária no meio do experimento</li>
+        <li>Escalar sem postmortem documentado</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- GLOSSÁRIO -->
+<section>
+  <div class="section-eyebrow" data-i18n="glos.eyebrow">Glossário · Referência rápida</div>
+  <h2 class="section-title" data-i18n-html="glos.title">Vocabulário<br>do <span class="accent">time.</span></h2>
+  <p class="section-intro" data-i18n="glos.intro">Os termos que aparecem nos calls. Quando não souber, volta aqui.</p>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="glossary-term">AAARRR</div><div class="glossary-def" data-i18n="glos.aaarrr">Pirate Funnel: Awareness, Acquisition, Activation, Retention, Revenue, Referral.</div></div>
+    <div class="glossary-item"><div class="glossary-term">AOV</div><div class="glossary-def" data-i18n="glos.aov">Average Order Value. Ticket médio por pedido.</div></div>
+    <div class="glossary-item"><div class="glossary-term">A/B Test</div><div class="glossary-def" data-i18n="glos.ab">Comparação controlada de duas versões. Uma variável, sample size definido.</div></div>
+    <div class="glossary-item"><div class="glossary-term">CAC</div><div class="glossary-def" data-i18n="glos.cac">Customer Acquisition Cost. Custo por cliente novo.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Churn</div><div class="glossary-def" data-i18n="glos.churn">% de clientes que não voltam no período.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Cohort</div><div class="glossary-def" data-i18n="glos.cohort">Grupo de clientes da mesma safra (ex: pacote Libertadores 2024).</div></div>
+    <div class="glossary-item"><div class="glossary-term">Conversion Rate</div><div class="glossary-def" data-i18n="glos.cr">% que completou a ação esperada.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Funnel</div><div class="glossary-def" data-i18n="glos.funnel">Sequência de etapas até a conversão. Cada passo perde gente.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Holdout</div><div class="glossary-def" data-i18n="glos.holdout">Grupo de controle que não recebe o tratamento. Base de comparação.</div></div>
+    <div class="glossary-item"><div class="glossary-term">ICE</div><div class="glossary-def" data-i18n="glos.ice">Impact + Confidence + Ease. Framework de priorização (1-10 cada).</div></div>
+    <div class="glossary-item"><div class="glossary-term">LTV</div><div class="glossary-def" data-i18n="glos.ltv">Lifetime Value. Receita projetada de um cliente ao longo do relacionamento.</div></div>
+    <div class="glossary-item"><div class="glossary-term">LTV:CAC</div><div class="glossary-def" data-i18n="glos.ltvcac">Razão entre valor e custo. Saúde da unidade econômica. Alvo ≥ 3.</div></div>
+    <div class="glossary-item"><div class="glossary-term">MQL</div><div class="glossary-def" data-i18n="glos.mql">Marketing Qualified Lead. Pronto pra fluxo de nurture.</div></div>
+    <div class="glossary-item"><div class="glossary-term">NPS</div><div class="glossary-def" data-i18n="glos.nps">Net Promoter Score. % promotores menos % detratores.</div></div>
+    <div class="glossary-item"><div class="glossary-term">North Star</div><div class="glossary-def" data-i18n="glos.ns">A métrica única que captura o valor entregue. Norte de todo o time.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Pirate Funnel</div><div class="glossary-def" data-i18n="glos.pirate">Apelido do AAARRR. Por causa do acrônimo "AAARRR".</div></div>
+    <div class="glossary-item"><div class="glossary-term">RICE</div><div class="glossary-def" data-i18n="glos.rice">Reach × Impact × Confidence ÷ Effort. Priorização com escopo.</div></div>
+    <div class="glossary-item"><div class="glossary-term">ROAS</div><div class="glossary-def" data-i18n="glos.roas">Return on Ad Spend. Receita sobre gasto em mídia.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Sample Size</div><div class="glossary-def" data-i18n="glos.sample">Número mínimo de observações para confiança estatística.</div></div>
+    <div class="glossary-item"><div class="glossary-term">SQL</div><div class="glossary-def" data-i18n="glos.sql">Sales Qualified Lead. Validado por vendas, pronto pro contato.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Significância</div><div class="glossary-def" data-i18n="glos.sig">Probabilidade de que o resultado não seja acaso. Mínimo 95%.</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+      <p data-i18n="footer.about">A única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col1">Sistema</h4>
+      <a href="../index.html#logos"        data-i18n="nav.logos">Logos</a>
+      <a href="../index.html#cores"        data-i18n="nav.colors">Cores</a>
+      <a href="../index.html#tipografia"   data-i18n="nav.typo">Tipografia</a>
+      <a href="../index.html#componentes"  data-i18n="nav.comp">Componentes</a>
+      <a href="../index.html#guidelines"   data-i18n="nav.guide">Guidelines</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col2">Playbook</h4>
+      <a href="#" data-i18n="footer.l1">Pilares</a>
+      <a href="#" data-i18n="footer.l2">Métricas</a>
+      <a href="#" data-i18n="footer.l3">Plataformas</a>
+      <a href="#" data-i18n="footer.l4">Workflow</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copy">© 2026 ABSOLUT Sport · Growth Playbook v1.0 · Abril 2026</span>
+    <span>
+      <span data-i18n="footer.coauth">Criado por Mauricio Lacerda × Rafa Rafa</span> ·
+      <a href="mailto:design@absolut-sport.com.br?subject=Growth%20Playbook%20%C2%B7%20Sugest%C3%A3o" style="color:var(--color-gold);text-decoration:none">design@absolut-sport.com.br</a>
+    </span>
+  </div>
+</footer>
+
+<!-- I18N DICTIONARY -->
+<script>
+window.I18N_DICT = {
+  pt: {
+    'nav.back':'← Voltar ao Hub',
+    'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'Growth',
+    'nav.logos':'Logos','nav.colors':'Cores','nav.typo':'Tipografia','nav.comp':'Componentes','nav.guide':'Guidelines',
+    'nav.credit.title':'Mauricio × Rafa · sugestões pra design@',
+    'hero.eyebrow':'Growth · Time interno · v1.0',
+    'hero.h1':'GROWTH NÃO É VIRALIDADE.<br><span class="accent">É SISTEMA.</span>',
+    'hero.sub':'Hipótese, teste, decisão. O time de Growth opera com método: cada experimento responde uma pergunta. Cada métrica conta uma história. Aqui mora o manual.',
+    'stat.s1':'Pilares · AAARRR','stat.s2':'Métricas centrais','stat.s3':'Plataformas','stat.s4':'Mercados servidos',
+    'pil.eyebrow':'Os 5 pilares · AAARRR',
+    'pil.title':'O funil em<br><span class="accent">5 etapas.</span>',
+    'pil.intro':'AAARRR é o "Pirate Funnel" do Dave McClure. Cada pilar tem uma métrica primária. Otimize um por vez.',
+    'pil.p1.name':'Aquisição','pil.p1.def':'Como pessoas chegam até a gente. Mídia, busca, indicação, parcerias.','pil.p1.metric':'Métrica · CAC',
+    'pil.p2.name':'Ativação','pil.p2.def':'Primeiro momento de valor. O cliente entendeu o que você vende.','pil.p2.metric':'Métrica · Activation rate',
+    'pil.p3.name':'Retenção','pil.p3.def':'Quem volta pro próximo evento. No nosso caso, ciclo longo: 1-2 anos.','pil.p3.metric':'Métrica · Cohort retention',
+    'pil.p4.name':'Receita','pil.p4.def':'Quanto cada cliente gera. Ticket médio + recorrência por evento.','pil.p4.metric':'Métrica · LTV / AOV',
+    'pil.p5.name':'Recomendação','pil.p5.def':'Quem traz outros. Indicação espontânea ou programa de referral.','pil.p5.metric':'Métrica · NPS / Referral rate',
+    'met.eyebrow':'Métricas que importam',
+    'met.title':'Quem não mede,<br><span class="accent">supõe.</span>',
+    'met.intro':'As 10 métricas que decidem onde investir e onde cortar. Cada uma com fórmula, função e benchmark de referência.',
+    'met.cac.n':'Customer Acquisition Cost','met.cac.w':'Quanto custa cada cliente novo. Compara contra LTV pra ver se vale.','met.cac.b':'Alvo · LTV:CAC ≥ 3:1',
+    'met.ltv.n':'Lifetime Value','met.ltv.w':'Quanto um cliente vai gerar de receita ao longo do relacionamento.','met.ltv.b':'Alvo · 3× CAC mínimo',
+    'met.roas.n':'Return on Ad Spend','met.roas.w':'Retorno por real investido em mídia paga. Curto prazo, contas brutas.','met.roas.b':'Alvo · ≥ 4:1 (varia por canal)',
+    'met.cr.n':'Conversion Rate','met.cr.w':'% de visitantes que viram cliente. Mede saúde do funil de aquisição.','met.cr.b':'Varia muito por categoria',
+    'met.aov.n':'Average Order Value','met.aov.w':'Ticket médio. Sobe via upsell, cross-sell, bundles.','met.aov.b':'Alvo · crescimento contínuo',
+    'met.churn.n':'Churn Rate','met.churn.w':'% que não volta. Inverso da retenção. Mede saúde do produto.','met.churn.b':'Quanto menor, melhor',
+    'met.coh.n':'Cohort Retention','met.coh.w':'Mostra se cada nova safra retém melhor que a anterior. Vetor real do produto.','met.coh.b':'Curva achatada = produto cresce',
+    'met.nps.n':'Net Promoter Score','met.nps.w':'Quão recomendável seu produto é. Leading indicator de referral.','met.nps.b':'Bom ≥ 50 · Excelente ≥ 70',
+    'met.mql.n':'Marketing Qualified Lead','met.mql.w':'Quem mostrou intenção. Pronto pra entrar no fluxo de nurture.','met.mql.b':'Conversão MQL→SQL ≥ 30%',
+    'met.sql.n':'Sales Qualified Lead','met.sql.w':'Pronto pra contato comercial. Vendas valida que vale o tempo.','met.sql.b':'Conversão SQL→cliente ≥ 20%',
+    'plat.eyebrow':'Plataformas · Onde Growth roda',
+    'plat.title':'Sete canais.<br><span class="accent">Funções diferentes.</span>',
+    'plat.intro':'Cada canal tem papel claro no funil. Não confunda função: paid social não fecha venda complexa, e WhatsApp não escala awareness.',
+    'plat.funnel.top':'Top do funil','plat.funnel.mid':'Mid do funil','plat.funnel.bot':'Bottom do funil',
+    'plat.p1.name':'Paid Social','plat.p1.m':'Meta, TikTok. Aquisição em massa, prospecção de audiência fria.',
+    'plat.p2.name':'Paid Search','plat.p2.m':'Google. Captura de demanda quente. Quem já está pesquisando o evento.',
+    'plat.p3.name':'Email','plat.p3.m':'Klaviyo / Mailchimp. Nurture, retenção, upsell para próxima edição.',
+    'plat.p4.name':'SEO / Conteúdo','plat.p4.m':'Demanda orgânica. Lento de construir, alto retorno composto no tempo.',
+    'plat.p5.name':'Influência · Parcerias','plat.p5.m':'Aquisição com confiança emprestada. Mede ROAS por criador, não por post.',
+    'plat.p6.name':'Referral','plat.p6.m':'Cliente traz cliente. CAC baixo, LTV alto, NPS como leading indicator.',
+    'plat.p7.name':'Direct Sales · WhatsApp','plat.p7.m':'Pacote alto, decisão complexa. Fechamento humano, suporte 24h.',
+    'meth.eyebrow':'Metodologia · A receita do experimento',
+    'meth.title':'Como rodar<br>um <span class="accent">experimento.</span>',
+    'meth.aforismo':'Lista de ideias não é plano.',
+    'meth.s1':'<strong>Hipótese.</strong> Formato fixo: <code>Se mudarmos X, Y vai melhorar porque Z.</code> Sem isso, não é experimento — é palpite.',
+    'meth.s2':'<strong>Priorização.</strong> ICE = Impact (1-10) + Confidence (1-10) + Ease (1-10). Score ≥ 21 entra na fila.',
+    'meth.s3':'<strong>Teste.</strong> Uma variável por vez. Sample size definido antes. Prazo curto (1-2 sprints). Holdout group sempre.',
+    'meth.s4':'<strong>Decisão.</strong> Critério acordado antes de começar. Significância estatística é mínimo, não opcional.',
+    'meth.s5':'<strong>Documentação.</strong> Postmortem público em até 5 dias. O que aprendeu vale mais do que o resultado.',
+    'wf.eyebrow':'Workflow · Da ideia ao scale',
+    'wf.title':'A jogada<br>em <span class="accent">5 movimentos.</span>',
+    'wf.s1.h':'Ideia → Hipótese','wf.s1.p':'Formato estruturado. Sem isso, fica palpite no Slack.',
+    'wf.s2.h':'ICE','wf.s2.p':'Três votos. Cada hipótese pontua. Maior score primeiro.',
+    'wf.s3.h':'Experimento','wf.s3.p':'Sample size definido. Uma variável. Prazo curto. Holdout.',
+    'wf.s4.h':'Decisão','wf.s4.p':'Vai, não vai, ou itera. Critério acordado antes.',
+    'wf.s5.h':'Scale ou Mata','wf.s5.p':'Sem meio termo. Postmortem em ambos os casos.',
+    'dd.eyebrow':'As regras',
+    'dd.title':'Faça isso.<br><span class="accent">Não aquilo.</span>',
+    'dd.do':'Do','dd.dont':'Don\'t',
+    'dd.do.list':'<li>Hipótese antes do teste — sempre</li><li>Sample size pré-definido pra significância estatística</li><li>Holdout group em todo experimento sério</li><li>Postmortem público em até 5 dias do fim</li><li>Prazo curto: 1-2 sprints, máximo</li><li>Métrica primária acordada antes de começar</li><li>Decisor único nomeado — quem dá go/no-go</li>',
+    'dd.dont.list':'<li>Iniciar 5 testes simultâneos no mesmo funil</li><li>Decidir no meio do teste — "já tá bom" mata aprendizado</li><li>Confundir correlação com causa</li><li>Otimizar métrica de vaidade — impressões, likes, alcance</li><li>Ignorar significância estatística pra "ir mais rápido"</li><li>Trocar a métrica primária no meio do experimento</li><li>Escalar sem postmortem documentado</li>',
+    'glos.eyebrow':'Glossário · Referência rápida',
+    'glos.title':'Vocabulário<br>do <span class="accent">time.</span>',
+    'glos.intro':'Os termos que aparecem nos calls. Quando não souber, volta aqui.',
+    'glos.aaarrr':'Pirate Funnel: Awareness, Acquisition, Activation, Retention, Revenue, Referral.',
+    'glos.aov':'Average Order Value. Ticket médio por pedido.',
+    'glos.ab':'Comparação controlada de duas versões. Uma variável, sample size definido.',
+    'glos.cac':'Customer Acquisition Cost. Custo por cliente novo.',
+    'glos.churn':'% de clientes que não voltam no período.',
+    'glos.cohort':'Grupo de clientes da mesma safra (ex: pacote Libertadores 2024).',
+    'glos.cr':'% que completou a ação esperada.',
+    'glos.funnel':'Sequência de etapas até a conversão. Cada passo perde gente.',
+    'glos.holdout':'Grupo de controle que não recebe o tratamento. Base de comparação.',
+    'glos.ice':'Impact + Confidence + Ease. Framework de priorização (1-10 cada).',
+    'glos.ltv':'Lifetime Value. Receita projetada de um cliente ao longo do relacionamento.',
+    'glos.ltvcac':'Razão entre valor e custo. Saúde da unidade econômica. Alvo ≥ 3.',
+    'glos.mql':'Marketing Qualified Lead. Pronto pra fluxo de nurture.',
+    'glos.nps':'Net Promoter Score. % promotores menos % detratores.',
+    'glos.ns':'A métrica única que captura o valor entregue. Norte de todo o time.',
+    'glos.pirate':'Apelido do AAARRR. Por causa do acrônimo "AAARRR".',
+    'glos.rice':'Reach × Impact × Confidence ÷ Effort. Priorização com escopo.',
+    'glos.roas':'Return on Ad Spend. Receita sobre gasto em mídia.',
+    'glos.sample':'Número mínimo de observações para confiança estatística.',
+    'glos.sql':'Sales Qualified Lead. Validado por vendas, pronto pro contato.',
+    'glos.sig':'Probabilidade de que o resultado não seja acaso. Mínimo 95%.',
+    'footer.about':'A única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™ e Sudamericana™.',
+    'footer.col1':'Sistema','footer.col2':'Playbook',
+    'footer.l1':'Pilares','footer.l2':'Métricas','footer.l3':'Plataformas','footer.l4':'Workflow',
+    'footer.copy':'© 2026 ABSOLUT Sport · Growth Playbook v1.0 · Abril 2026',
+    'footer.coauth':'Criado por Mauricio Lacerda × Rafa Rafa'
+  },
+  en: {
+    'nav.back':'← Back to Hub',
+    'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'Growth',
+    'nav.logos':'Logos','nav.colors':'Colors','nav.typo':'Typography','nav.comp':'Components','nav.guide':'Guidelines',
+    'nav.credit.title':'Mauricio × Rafa · suggestions to design@',
+    'hero.eyebrow':'Growth · Internal team · v1.0',
+    'hero.h1':'GROWTH IS NOT VIRALITY.<br><span class="accent">IT\'S A SYSTEM.</span>',
+    'hero.sub':'Hypothesis, test, decision. Growth runs on method: each experiment answers a question. Each metric tells a story. The manual lives here.',
+    'stat.s1':'Pillars · AAARRR','stat.s2':'Core metrics','stat.s3':'Platforms','stat.s4':'Markets served',
+    'pil.eyebrow':'The 5 pillars · AAARRR',
+    'pil.title':'The funnel in<br><span class="accent">5 stages.</span>',
+    'pil.intro':'AAARRR is Dave McClure\'s "Pirate Funnel". Each pillar has a primary metric. Optimize one at a time.',
+    'pil.p1.name':'Acquisition','pil.p1.def':'How people reach us. Media, search, referrals, partnerships.','pil.p1.metric':'Metric · CAC',
+    'pil.p2.name':'Activation','pil.p2.def':'First moment of value. The customer understood what you sell.','pil.p2.metric':'Metric · Activation rate',
+    'pil.p3.name':'Retention','pil.p3.def':'Who comes back for the next event. In our case, long cycle: 1-2 years.','pil.p3.metric':'Metric · Cohort retention',
+    'pil.p4.name':'Revenue','pil.p4.def':'How much each customer generates. AOV plus per-event recurrence.','pil.p4.metric':'Metric · LTV / AOV',
+    'pil.p5.name':'Referral','pil.p5.def':'Who brings others. Spontaneous referral or formal program.','pil.p5.metric':'Metric · NPS / Referral rate',
+    'met.eyebrow':'Metrics that matter',
+    'met.title':'If you don\'t measure,<br><span class="accent">you guess.</span>',
+    'met.intro':'The 10 metrics that decide where to invest and where to cut. Each one with formula, function and reference benchmark.',
+    'met.cac.n':'Customer Acquisition Cost','met.cac.w':'How much each new customer costs. Compare against LTV to see if it\'s worth it.','met.cac.b':'Target · LTV:CAC ≥ 3:1',
+    'met.ltv.n':'Lifetime Value','met.ltv.w':'How much revenue a customer will generate over the relationship.','met.ltv.b':'Target · 3× CAC minimum',
+    'met.roas.n':'Return on Ad Spend','met.roas.w':'Return per dollar invested in paid media. Short-term, gross math.','met.roas.b':'Target · ≥ 4:1 (varies by channel)',
+    'met.cr.n':'Conversion Rate','met.cr.w':'% of visitors who become customers. Measures acquisition funnel health.','met.cr.b':'Varies a lot by category',
+    'met.aov.n':'Average Order Value','met.aov.w':'Average ticket. Goes up via upsell, cross-sell, bundles.','met.aov.b':'Target · continuous growth',
+    'met.churn.n':'Churn Rate','met.churn.w':'% who don\'t come back. Inverse of retention. Measures product health.','met.churn.b':'The lower, the better',
+    'met.coh.n':'Cohort Retention','met.coh.w':'Shows if each new cohort retains better than the previous. Real product vector.','met.coh.b':'Flat curve = product is growing',
+    'met.nps.n':'Net Promoter Score','met.nps.w':'How recommendable your product is. Leading indicator for referral.','met.nps.b':'Good ≥ 50 · Excellent ≥ 70',
+    'met.mql.n':'Marketing Qualified Lead','met.mql.w':'Showed intent. Ready to enter the nurture flow.','met.mql.b':'MQL→SQL conversion ≥ 30%',
+    'met.sql.n':'Sales Qualified Lead','met.sql.w':'Ready for sales contact. Sales validated it\'s worth the time.','met.sql.b':'SQL→customer conversion ≥ 20%',
+    'plat.eyebrow':'Platforms · Where Growth runs',
+    'plat.title':'Seven channels.<br><span class="accent">Different functions.</span>',
+    'plat.intro':'Each channel has a clear role in the funnel. Don\'t confuse functions: paid social doesn\'t close complex sales, and WhatsApp doesn\'t scale awareness.',
+    'plat.funnel.top':'Top of funnel','plat.funnel.mid':'Mid funnel','plat.funnel.bot':'Bottom of funnel',
+    'plat.p1.name':'Paid Social','plat.p1.m':'Meta, TikTok. Mass acquisition, prospecting cold audiences.',
+    'plat.p2.name':'Paid Search','plat.p2.m':'Google. Captures hot demand. People already searching for the event.',
+    'plat.p3.name':'Email','plat.p3.m':'Klaviyo / Mailchimp. Nurture, retention, upsell to next edition.',
+    'plat.p4.name':'SEO / Content','plat.p4.m':'Organic demand. Slow to build, high compounding return over time.',
+    'plat.p5.name':'Influence · Partnerships','plat.p5.m':'Acquisition with borrowed trust. Measure ROAS per creator, not per post.',
+    'plat.p6.name':'Referral','plat.p6.m':'Customer brings customer. Low CAC, high LTV, NPS as leading indicator.',
+    'plat.p7.name':'Direct Sales · WhatsApp','plat.p7.m':'High-ticket package, complex decision. Human close, 24/7 support.',
+    'meth.eyebrow':'Methodology · The experiment recipe',
+    'meth.title':'How to run<br>an <span class="accent">experiment.</span>',
+    'meth.aforismo':'A list of ideas is not a plan.',
+    'meth.s1':'<strong>Hypothesis.</strong> Fixed format: <code>If we change X, Y will improve because Z.</code> Without that, it\'s not an experiment — it\'s a hunch.',
+    'meth.s2':'<strong>Prioritization.</strong> ICE = Impact (1-10) + Confidence (1-10) + Ease (1-10). Score ≥ 21 enters the queue.',
+    'meth.s3':'<strong>Test.</strong> One variable at a time. Sample size defined upfront. Short timeframe (1-2 sprints). Holdout group always.',
+    'meth.s4':'<strong>Decision.</strong> Criteria agreed before starting. Statistical significance is the minimum, not optional.',
+    'meth.s5':'<strong>Documentation.</strong> Public postmortem within 5 days. What you learned is worth more than the result.',
+    'wf.eyebrow':'Workflow · From idea to scale',
+    'wf.title':'The play<br>in <span class="accent">5 moves.</span>',
+    'wf.s1.h':'Idea → Hypothesis','wf.s1.p':'Structured format. Without it, it\'s a Slack hunch.',
+    'wf.s2.h':'ICE','wf.s2.p':'Three votes. Each hypothesis scores. Highest score first.',
+    'wf.s3.h':'Experiment','wf.s3.p':'Sample size defined. One variable. Short timeframe. Holdout.',
+    'wf.s4.h':'Decision','wf.s4.p':'Go, no-go, or iterate. Criteria agreed before.',
+    'wf.s5.h':'Scale or Kill','wf.s5.p':'No middle ground. Postmortem either way.',
+    'dd.eyebrow':'The rules',
+    'dd.title':'Do this.<br><span class="accent">Not that.</span>',
+    'dd.do':'Do','dd.dont':'Don\'t',
+    'dd.do.list':'<li>Hypothesis before the test — always</li><li>Pre-defined sample size for statistical significance</li><li>Holdout group in every serious experiment</li><li>Public postmortem within 5 days of the end</li><li>Short timeframe: 1-2 sprints, max</li><li>Primary metric agreed before starting</li><li>Single decision-maker named — who calls go/no-go</li>',
+    'dd.dont.list':'<li>Start 5 simultaneous tests on the same funnel</li><li>Decide mid-test — "good enough" kills learning</li><li>Confuse correlation with causation</li><li>Optimize vanity metrics — impressions, likes, reach</li><li>Ignore statistical significance to "go faster"</li><li>Change the primary metric mid-experiment</li><li>Scale without documented postmortem</li>',
+    'glos.eyebrow':'Glossary · Quick reference',
+    'glos.title':'Team<br><span class="accent">vocabulary.</span>',
+    'glos.intro':'The terms that show up in calls. When in doubt, come back here.',
+    'glos.aaarrr':'Pirate Funnel: Awareness, Acquisition, Activation, Retention, Revenue, Referral.',
+    'glos.aov':'Average Order Value. Average ticket per order.',
+    'glos.ab':'Controlled comparison of two versions. One variable, defined sample size.',
+    'glos.cac':'Customer Acquisition Cost. Cost per new customer.',
+    'glos.churn':'% of customers who don\'t come back in the period.',
+    'glos.cohort':'Group of customers from the same vintage (e.g., Libertadores 2024 package).',
+    'glos.cr':'% who completed the expected action.',
+    'glos.funnel':'Sequence of stages to conversion. Each step loses people.',
+    'glos.holdout':'Control group that doesn\'t receive the treatment. Comparison baseline.',
+    'glos.ice':'Impact + Confidence + Ease. Prioritization framework (1-10 each).',
+    'glos.ltv':'Lifetime Value. Projected revenue from a customer over the relationship.',
+    'glos.ltvcac':'Ratio between value and cost. Unit economic health. Target ≥ 3.',
+    'glos.mql':'Marketing Qualified Lead. Ready for the nurture flow.',
+    'glos.nps':'Net Promoter Score. % promoters minus % detractors.',
+    'glos.ns':'The single metric that captures delivered value. North star for the whole team.',
+    'glos.pirate':'Nickname for AAARRR. Because of the "AAARRR" acronym.',
+    'glos.rice':'Reach × Impact × Confidence ÷ Effort. Prioritization with scope.',
+    'glos.roas':'Return on Ad Spend. Revenue over media spend.',
+    'glos.sample':'Minimum number of observations for statistical confidence.',
+    'glos.sql':'Sales Qualified Lead. Validated by sales, ready for contact.',
+    'glos.sig':'Probability that the result is not chance. Minimum 95%.',
+    'footer.about':'The sole official travel package agency for the CONMEBOL Libertadores™ and Sudamericana™ Finals.',
+    'footer.col1':'System','footer.col2':'Playbook',
+    'footer.l1':'Pillars','footer.l2':'Metrics','footer.l3':'Platforms','footer.l4':'Workflow',
+    'footer.copy':'© 2026 ABSOLUT Sport · Growth Playbook v1.0 · April 2026',
+    'footer.coauth':'Created by Mauricio Lacerda × Rafa Rafa'
+  },
+  es: {
+    'nav.back':'← Volver al Hub',
+    'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'Growth',
+    'nav.logos':'Logos','nav.colors':'Colores','nav.typo':'Tipografía','nav.comp':'Componentes','nav.guide':'Guidelines',
+    'nav.credit.title':'Mauricio × Rafa · sugerencias a design@',
+    'hero.eyebrow':'Growth · Equipo interno · v1.0',
+    'hero.h1':'GROWTH NO ES VIRALIDAD.<br><span class="accent">ES SISTEMA.</span>',
+    'hero.sub':'Hipótesis, test, decisión. El equipo de Growth opera con método: cada experimento responde una pregunta. Cada métrica cuenta una historia. Acá vive el manual.',
+    'stat.s1':'Pilares · AAARRR','stat.s2':'Métricas centrales','stat.s3':'Plataformas','stat.s4':'Mercados servidos',
+    'pil.eyebrow':'Los 5 pilares · AAARRR',
+    'pil.title':'El funnel en<br><span class="accent">5 etapas.</span>',
+    'pil.intro':'AAARRR es el "Pirate Funnel" de Dave McClure. Cada pilar tiene una métrica primaria. Optimizá uno por vez.',
+    'pil.p1.name':'Adquisición','pil.p1.def':'Cómo llegan las personas. Medios, búsqueda, referencias, partnerships.','pil.p1.metric':'Métrica · CAC',
+    'pil.p2.name':'Activación','pil.p2.def':'Primer momento de valor. El cliente entendió lo que vendés.','pil.p2.metric':'Métrica · Activation rate',
+    'pil.p3.name':'Retención','pil.p3.def':'Quién vuelve al próximo evento. En nuestro caso, ciclo largo: 1-2 años.','pil.p3.metric':'Métrica · Cohort retention',
+    'pil.p4.name':'Ingreso','pil.p4.def':'Cuánto genera cada cliente. Ticket medio + recurrencia por evento.','pil.p4.metric':'Métrica · LTV / AOV',
+    'pil.p5.name':'Recomendación','pil.p5.def':'Quién trae a otros. Referencia espontánea o programa de referral.','pil.p5.metric':'Métrica · NPS / Referral rate',
+    'met.eyebrow':'Métricas que importan',
+    'met.title':'Quien no mide,<br><span class="accent">supone.</span>',
+    'met.intro':'Las 10 métricas que deciden dónde invertir y dónde cortar. Cada una con fórmula, función y benchmark de referencia.',
+    'met.cac.n':'Customer Acquisition Cost','met.cac.w':'Cuánto cuesta cada cliente nuevo. Comparar contra LTV para ver si vale.','met.cac.b':'Objetivo · LTV:CAC ≥ 3:1',
+    'met.ltv.n':'Lifetime Value','met.ltv.w':'Cuánto va a generar un cliente a lo largo de la relación.','met.ltv.b':'Objetivo · 3× CAC mínimo',
+    'met.roas.n':'Return on Ad Spend','met.roas.w':'Retorno por peso invertido en medios pagos. Corto plazo, cuentas brutas.','met.roas.b':'Objetivo · ≥ 4:1 (varía por canal)',
+    'met.cr.n':'Conversion Rate','met.cr.w':'% de visitantes que se vuelven clientes. Mide salud del funnel de adquisición.','met.cr.b':'Varía mucho por categoría',
+    'met.aov.n':'Average Order Value','met.aov.w':'Ticket medio. Sube vía upsell, cross-sell, bundles.','met.aov.b':'Objetivo · crecimiento continuo',
+    'met.churn.n':'Churn Rate','met.churn.w':'% que no vuelve. Inverso de la retención. Mide salud del producto.','met.churn.b':'Cuanto menor, mejor',
+    'met.coh.n':'Cohort Retention','met.coh.w':'Muestra si cada nueva cohorte retiene mejor que la anterior. Vector real del producto.','met.coh.b':'Curva achatada = producto crece',
+    'met.nps.n':'Net Promoter Score','met.nps.w':'Cuán recomendable es tu producto. Leading indicator de referral.','met.nps.b':'Bueno ≥ 50 · Excelente ≥ 70',
+    'met.mql.n':'Marketing Qualified Lead','met.mql.w':'Mostró intención. Listo para entrar al flujo de nurture.','met.mql.b':'Conversión MQL→SQL ≥ 30%',
+    'met.sql.n':'Sales Qualified Lead','met.sql.w':'Listo para contacto comercial. Ventas validó que vale el tiempo.','met.sql.b':'Conversión SQL→cliente ≥ 20%',
+    'plat.eyebrow':'Plataformas · Dónde corre Growth',
+    'plat.title':'Siete canales.<br><span class="accent">Funciones distintas.</span>',
+    'plat.intro':'Cada canal tiene un rol claro en el funnel. No confundas funciones: paid social no cierra venta compleja, y WhatsApp no escala awareness.',
+    'plat.funnel.top':'Top del funnel','plat.funnel.mid':'Mid del funnel','plat.funnel.bot':'Bottom del funnel',
+    'plat.p1.name':'Paid Social','plat.p1.m':'Meta, TikTok. Adquisición masiva, prospección de audiencia fría.',
+    'plat.p2.name':'Paid Search','plat.p2.m':'Google. Captura demanda caliente. Quien ya está buscando el evento.',
+    'plat.p3.name':'Email','plat.p3.m':'Klaviyo / Mailchimp. Nurture, retención, upsell para próxima edición.',
+    'plat.p4.name':'SEO / Contenido','plat.p4.m':'Demanda orgánica. Lento de construir, alto retorno compuesto en el tiempo.',
+    'plat.p5.name':'Influencia · Partnerships','plat.p5.m':'Adquisición con confianza prestada. Mide ROAS por creador, no por post.',
+    'plat.p6.name':'Referral','plat.p6.m':'Cliente trae cliente. CAC bajo, LTV alto, NPS como leading indicator.',
+    'plat.p7.name':'Direct Sales · WhatsApp','plat.p7.m':'Paquete alto, decisión compleja. Cierre humano, soporte 24h.',
+    'meth.eyebrow':'Metodología · La receta del experimento',
+    'meth.title':'Cómo correr<br>un <span class="accent">experimento.</span>',
+    'meth.aforismo':'Una lista de ideas no es un plan.',
+    'meth.s1':'<strong>Hipótesis.</strong> Formato fijo: <code>Si cambiamos X, Y va a mejorar porque Z.</code> Sin eso, no es experimento — es corazonada.',
+    'meth.s2':'<strong>Priorización.</strong> ICE = Impact (1-10) + Confidence (1-10) + Ease (1-10). Score ≥ 21 entra a la cola.',
+    'meth.s3':'<strong>Test.</strong> Una variable por vez. Sample size definido antes. Plazo corto (1-2 sprints). Holdout group siempre.',
+    'meth.s4':'<strong>Decisión.</strong> Criterio acordado antes de empezar. Significancia estadística es el mínimo, no opcional.',
+    'meth.s5':'<strong>Documentación.</strong> Postmortem público en hasta 5 días. Lo que aprendiste vale más que el resultado.',
+    'wf.eyebrow':'Workflow · De la idea al scale',
+    'wf.title':'La jugada<br>en <span class="accent">5 movimientos.</span>',
+    'wf.s1.h':'Idea → Hipótesis','wf.s1.p':'Formato estructurado. Sin eso, queda corazonada en Slack.',
+    'wf.s2.h':'ICE','wf.s2.p':'Tres votos. Cada hipótesis puntúa. Mayor score primero.',
+    'wf.s3.h':'Experimento','wf.s3.p':'Sample size definido. Una variable. Plazo corto. Holdout.',
+    'wf.s4.h':'Decisión','wf.s4.p':'Va, no va, o itera. Criterio acordado antes.',
+    'wf.s5.h':'Scale o Mata','wf.s5.p':'Sin medio término. Postmortem en ambos casos.',
+    'dd.eyebrow':'Las reglas',
+    'dd.title':'Hacé esto.<br><span class="accent">No aquello.</span>',
+    'dd.do':'Do','dd.dont':'Don\'t',
+    'dd.do.list':'<li>Hipótesis antes del test — siempre</li><li>Sample size pre-definido para significancia estadística</li><li>Holdout group en todo experimento serio</li><li>Postmortem público en hasta 5 días del fin</li><li>Plazo corto: 1-2 sprints, máximo</li><li>Métrica primaria acordada antes de empezar</li><li>Decisor único nombrado — quien da go/no-go</li>',
+    'dd.dont.list':'<li>Iniciar 5 tests simultáneos en el mismo funnel</li><li>Decidir en medio del test — "ya está bien" mata aprendizaje</li><li>Confundir correlación con causa</li><li>Optimizar métrica de vanidad — impresiones, likes, alcance</li><li>Ignorar significancia estadística para "ir más rápido"</li><li>Cambiar la métrica primaria en medio del experimento</li><li>Escalar sin postmortem documentado</li>',
+    'glos.eyebrow':'Glosario · Referencia rápida',
+    'glos.title':'Vocabulario<br>del <span class="accent">equipo.</span>',
+    'glos.intro':'Los términos que aparecen en los calls. Cuando no sepas, volvé acá.',
+    'glos.aaarrr':'Pirate Funnel: Awareness, Acquisition, Activation, Retention, Revenue, Referral.',
+    'glos.aov':'Average Order Value. Ticket medio por pedido.',
+    'glos.ab':'Comparación controlada de dos versiones. Una variable, sample size definido.',
+    'glos.cac':'Customer Acquisition Cost. Costo por cliente nuevo.',
+    'glos.churn':'% de clientes que no vuelven en el período.',
+    'glos.cohort':'Grupo de clientes de la misma cosecha (ej: paquete Libertadores 2024).',
+    'glos.cr':'% que completó la acción esperada.',
+    'glos.funnel':'Secuencia de etapas hasta la conversión. Cada paso pierde gente.',
+    'glos.holdout':'Grupo de control que no recibe el tratamiento. Base de comparación.',
+    'glos.ice':'Impact + Confidence + Ease. Framework de priorización (1-10 cada uno).',
+    'glos.ltv':'Lifetime Value. Ingreso proyectado de un cliente a lo largo de la relación.',
+    'glos.ltvcac':'Razón entre valor y costo. Salud de la unidad económica. Objetivo ≥ 3.',
+    'glos.mql':'Marketing Qualified Lead. Listo para flujo de nurture.',
+    'glos.nps':'Net Promoter Score. % promotores menos % detractores.',
+    'glos.ns':'La métrica única que captura el valor entregado. Norte de todo el equipo.',
+    'glos.pirate':'Apodo del AAARRR. Por el acrónimo "AAARRR".',
+    'glos.rice':'Reach × Impact × Confidence ÷ Effort. Priorización con escopo.',
+    'glos.roas':'Return on Ad Spend. Ingreso sobre gasto en medios.',
+    'glos.sample':'Número mínimo de observaciones para confianza estadística.',
+    'glos.sql':'Sales Qualified Lead. Validado por ventas, listo para el contacto.',
+    'glos.sig':'Probabilidad de que el resultado no sea azar. Mínimo 95%.',
+    'footer.about':'La única agencia oficial de paquetes para las Finales de la CONMEBOL Libertadores™ y Sudamericana™.',
+    'footer.col1':'Sistema','footer.col2':'Playbook',
+    'footer.l1':'Pilares','footer.l2':'Métricas','footer.l3':'Plataformas','footer.l4':'Workflow',
+    'footer.copy':'© 2026 ABSOLUT Sport · Growth Playbook v1.0 · Abril 2026',
+    'footer.coauth':'Creado por Mauricio Lacerda × Rafa Rafa'
+  },
+  de: {
+    'nav.back':'← Zurück zum Hub',
+    'bc.hub':'Design System','bc.playbooks':'Playbooks','bc.current':'Growth',
+    'nav.logos':'Logos','nav.colors':'Farben','nav.typo':'Typografie','nav.comp':'Komponenten','nav.guide':'Guidelines',
+    'nav.credit.title':'Mauricio × Rafa · Vorschläge an design@',
+    'hero.eyebrow':'Growth · Internes Team · v1.0',
+    'hero.h1':'GROWTH IST KEINE VIRALITÄT.<br><span class="accent">ES IST EIN SYSTEM.</span>',
+    'hero.sub':'Hypothese, Test, Entscheidung. Das Growth-Team arbeitet mit Methode: jedes Experiment beantwortet eine Frage. Jede Metrik erzählt eine Geschichte. Hier wohnt das Handbuch.',
+    'stat.s1':'Säulen · AAARRR','stat.s2':'Kern-Metriken','stat.s3':'Plattformen','stat.s4':'Bediente Märkte',
+    'pil.eyebrow':'Die 5 Säulen · AAARRR',
+    'pil.title':'Der Funnel in<br><span class="accent">5 Stufen.</span>',
+    'pil.intro':'AAARRR ist der "Pirate Funnel" von Dave McClure. Jede Säule hat eine primäre Metrik. Optimiere eine nach der anderen.',
+    'pil.p1.name':'Akquise','pil.p1.def':'Wie Menschen zu uns kommen. Medien, Suche, Empfehlung, Partnerschaften.','pil.p1.metric':'Metrik · CAC',
+    'pil.p2.name':'Aktivierung','pil.p2.def':'Erster Moment des Werts. Der Kunde hat verstanden, was du verkaufst.','pil.p2.metric':'Metrik · Activation rate',
+    'pil.p3.name':'Retention','pil.p3.def':'Wer kommt zum nächsten Event zurück. Bei uns langer Zyklus: 1-2 Jahre.','pil.p3.metric':'Metrik · Cohort retention',
+    'pil.p4.name':'Umsatz','pil.p4.def':'Wie viel jeder Kunde generiert. Durchschnittlicher Ticket plus Wiederkehr pro Event.','pil.p4.metric':'Metrik · LTV / AOV',
+    'pil.p5.name':'Empfehlung','pil.p5.def':'Wer andere bringt. Spontane Empfehlung oder Referral-Programm.','pil.p5.metric':'Metrik · NPS / Referral rate',
+    'met.eyebrow':'Metriken, die zählen',
+    'met.title':'Wer nicht misst,<br><span class="accent">vermutet.</span>',
+    'met.intro':'Die 10 Metriken, die entscheiden, wo investiert und wo geschnitten wird. Jede mit Formel, Funktion und Referenz-Benchmark.',
+    'met.cac.n':'Customer Acquisition Cost','met.cac.w':'Was jeder neue Kunde kostet. Vergleichen mit LTV, um zu sehen, ob es sich lohnt.','met.cac.b':'Ziel · LTV:CAC ≥ 3:1',
+    'met.ltv.n':'Lifetime Value','met.ltv.w':'Wie viel Umsatz ein Kunde über die Beziehung generieren wird.','met.ltv.b':'Ziel · 3× CAC Minimum',
+    'met.roas.n':'Return on Ad Spend','met.roas.w':'Rendite pro Euro in bezahlten Medien. Kurzfristig, brutto.','met.roas.b':'Ziel · ≥ 4:1 (variiert pro Kanal)',
+    'met.cr.n':'Conversion Rate','met.cr.w':'% der Besucher, die zu Kunden werden. Misst die Gesundheit des Akquise-Funnels.','met.cr.b':'Variiert stark nach Kategorie',
+    'met.aov.n':'Average Order Value','met.aov.w':'Durchschnittliches Ticket. Steigt durch Upsell, Cross-Sell, Bundles.','met.aov.b':'Ziel · kontinuierliches Wachstum',
+    'met.churn.n':'Churn Rate','met.churn.w':'% die nicht wiederkommen. Umkehr der Retention. Misst Produktgesundheit.','met.churn.b':'Je kleiner, desto besser',
+    'met.coh.n':'Cohort Retention','met.coh.w':'Zeigt, ob jede neue Kohorte besser hält als die vorherige. Echter Produktvektor.','met.coh.b':'Flache Kurve = Produkt wächst',
+    'met.nps.n':'Net Promoter Score','met.nps.w':'Wie empfehlenswert dein Produkt ist. Leading Indicator für Referral.','met.nps.b':'Gut ≥ 50 · Exzellent ≥ 70',
+    'met.mql.n':'Marketing Qualified Lead','met.mql.w':'Hat Absicht gezeigt. Bereit für den Nurture-Flow.','met.mql.b':'Konversion MQL→SQL ≥ 30%',
+    'met.sql.n':'Sales Qualified Lead','met.sql.w':'Bereit für Sales-Kontakt. Vertrieb hat validiert, dass es die Zeit wert ist.','met.sql.b':'Konversion SQL→Kunde ≥ 20%',
+    'plat.eyebrow':'Plattformen · Wo Growth läuft',
+    'plat.title':'Sieben Kanäle.<br><span class="accent">Verschiedene Funktionen.</span>',
+    'plat.intro':'Jeder Kanal hat eine klare Rolle im Funnel. Verwechsle die Funktionen nicht: Paid Social schließt keinen komplexen Verkauf ab, und WhatsApp skaliert keine Awareness.',
+    'plat.funnel.top':'Top des Funnels','plat.funnel.mid':'Mid Funnel','plat.funnel.bot':'Bottom des Funnels',
+    'plat.p1.name':'Paid Social','plat.p1.m':'Meta, TikTok. Massen-Akquise, Prospecting kalter Zielgruppen.',
+    'plat.p2.name':'Paid Search','plat.p2.m':'Google. Erfasst heiße Nachfrage. Wer schon nach dem Event sucht.',
+    'plat.p3.name':'Email','plat.p3.m':'Klaviyo / Mailchimp. Nurture, Retention, Upsell zur nächsten Edition.',
+    'plat.p4.name':'SEO / Content','plat.p4.m':'Organische Nachfrage. Langsam aufzubauen, hohe zinseszinsartige Rendite über die Zeit.',
+    'plat.p5.name':'Influence · Partnerschaften','plat.p5.m':'Akquise mit geliehenem Vertrauen. Miss ROAS pro Creator, nicht pro Post.',
+    'plat.p6.name':'Referral','plat.p6.m':'Kunde bringt Kunde. Niedriges CAC, hohes LTV, NPS als Leading Indicator.',
+    'plat.p7.name':'Direct Sales · WhatsApp','plat.p7.m':'Hochpreisiges Paket, komplexe Entscheidung. Menschlicher Abschluss, 24h Support.',
+    'meth.eyebrow':'Methodik · Das Experiment-Rezept',
+    'meth.title':'Wie man ein<br><span class="accent">Experiment fährt.</span>',
+    'meth.aforismo':'Eine Liste von Ideen ist kein Plan.',
+    'meth.s1':'<strong>Hypothese.</strong> Festes Format: <code>Wenn wir X ändern, wird Y besser, weil Z.</code> Ohne das ist es kein Experiment — es ist eine Vermutung.',
+    'meth.s2':'<strong>Priorisierung.</strong> ICE = Impact (1-10) + Confidence (1-10) + Ease (1-10). Score ≥ 21 kommt in die Queue.',
+    'meth.s3':'<strong>Test.</strong> Eine Variable nach der anderen. Sample Size vorher definiert. Kurze Laufzeit (1-2 Sprints). Holdout-Gruppe immer.',
+    'meth.s4':'<strong>Entscheidung.</strong> Kriterien vor dem Start vereinbart. Statistische Signifikanz ist das Minimum, nicht optional.',
+    'meth.s5':'<strong>Dokumentation.</strong> Öffentliches Postmortem innerhalb von 5 Tagen. Was du gelernt hast, ist mehr wert als das Ergebnis.',
+    'wf.eyebrow':'Workflow · Von der Idee zum Scale',
+    'wf.title':'Der Spielzug<br>in <span class="accent">5 Bewegungen.</span>',
+    'wf.s1.h':'Idee → Hypothese','wf.s1.p':'Strukturiertes Format. Ohne das ist es eine Slack-Vermutung.',
+    'wf.s2.h':'ICE','wf.s2.p':'Drei Stimmen. Jede Hypothese punktet. Höchster Score zuerst.',
+    'wf.s3.h':'Experiment','wf.s3.p':'Sample Size definiert. Eine Variable. Kurze Laufzeit. Holdout.',
+    'wf.s4.h':'Entscheidung','wf.s4.p':'Go, no-go, oder iterieren. Kriterien vorher vereinbart.',
+    'wf.s5.h':'Scale oder Kill','wf.s5.p':'Kein Mittelweg. Postmortem in beiden Fällen.',
+    'dd.eyebrow':'Die Regeln',
+    'dd.title':'Mach das.<br><span class="accent">Nicht jenes.</span>',
+    'dd.do':'Do','dd.dont':'Don\'t',
+    'dd.do.list':'<li>Hypothese vor dem Test — immer</li><li>Vordefinierte Sample Size für statistische Signifikanz</li><li>Holdout-Gruppe in jedem ernsten Experiment</li><li>Öffentliches Postmortem innerhalb von 5 Tagen nach Ende</li><li>Kurze Laufzeit: 1-2 Sprints, max</li><li>Primäre Metrik vor Start vereinbart</li><li>Einzelner Entscheider benannt — wer ruft go/no-go</li>',
+    'dd.dont.list':'<li>5 gleichzeitige Tests im selben Funnel starten</li><li>Mid-Test entscheiden — "gut genug" tötet Lernen</li><li>Korrelation mit Kausalität verwechseln</li><li>Vanity Metrics optimieren — Impressions, Likes, Reach</li><li>Statistische Signifikanz ignorieren, um "schneller zu sein"</li><li>Die primäre Metrik mid-Experiment ändern</li><li>Skalieren ohne dokumentiertes Postmortem</li>',
+    'glos.eyebrow':'Glossar · Schnelle Referenz',
+    'glos.title':'Team-<br><span class="accent">Vokabular.</span>',
+    'glos.intro':'Die Begriffe, die in Calls auftauchen. Wenn unklar, komm zurück.',
+    'glos.aaarrr':'Pirate Funnel: Awareness, Acquisition, Activation, Retention, Revenue, Referral.',
+    'glos.aov':'Average Order Value. Durchschnittliches Ticket pro Bestellung.',
+    'glos.ab':'Kontrollierter Vergleich von zwei Versionen. Eine Variable, definierte Sample Size.',
+    'glos.cac':'Customer Acquisition Cost. Kosten pro neuem Kunden.',
+    'glos.churn':'% Kunden, die im Zeitraum nicht wiederkommen.',
+    'glos.cohort':'Gruppe von Kunden derselben Kohorte (z.B. Libertadores 2024 Paket).',
+    'glos.cr':'% die die erwartete Aktion abgeschlossen haben.',
+    'glos.funnel':'Sequenz von Stufen bis zur Konversion. Jeder Schritt verliert Menschen.',
+    'glos.holdout':'Kontrollgruppe, die die Behandlung nicht erhält. Vergleichsbasis.',
+    'glos.ice':'Impact + Confidence + Ease. Priorisierungs-Framework (1-10 jeweils).',
+    'glos.ltv':'Lifetime Value. Projizierter Umsatz eines Kunden über die Beziehung.',
+    'glos.ltvcac':'Verhältnis zwischen Wert und Kosten. Unit-Economic-Gesundheit. Ziel ≥ 3.',
+    'glos.mql':'Marketing Qualified Lead. Bereit für den Nurture-Flow.',
+    'glos.nps':'Net Promoter Score. % Promoter minus % Detraktoren.',
+    'glos.ns':'Die einzige Metrik, die den gelieferten Wert erfasst. Nordstern für das ganze Team.',
+    'glos.pirate':'Spitzname für AAARRR. Wegen des "AAARRR"-Akronyms.',
+    'glos.rice':'Reach × Impact × Confidence ÷ Effort. Priorisierung mit Scope.',
+    'glos.roas':'Return on Ad Spend. Umsatz über Medienausgaben.',
+    'glos.sample':'Mindestanzahl an Beobachtungen für statistische Konfidenz.',
+    'glos.sql':'Sales Qualified Lead. Vom Vertrieb validiert, bereit für den Kontakt.',
+    'glos.sig':'Wahrscheinlichkeit, dass das Ergebnis kein Zufall ist. Minimum 95%.',
+    'footer.about':'Die einzige offizielle Reisepaket-Agentur für die Finals der CONMEBOL Libertadores™ und Sudamericana™.',
+    'footer.col1':'System','footer.col2':'Playbook',
+    'footer.l1':'Säulen','footer.l2':'Metriken','footer.l3':'Plattformen','footer.l4':'Workflow',
+    'footer.copy':'© 2026 ABSOLUT Sport · Growth Playbook v1.0 · April 2026',
+    'footer.coauth':'Erstellt von Mauricio Lacerda × Rafa Rafa'
+  }
+};
+</script>
+
+<!-- I18N TOGGLE -->
+<script src="../i18n.js"></script>
+
+<!-- ZERO-TO-O -->
+<script src="../zero-to-o.js"></script>
+
+</body>
+</html>

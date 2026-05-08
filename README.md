@@ -159,6 +159,7 @@ See `assets/` folder:
 | `index.html` | **Design System Hub** — página pública para a empresa toda. Logos, cores, tipografia, tokens, componentes, guidelines e devs. Publicar em subdomínio (ex: `design.absolut-sport.com.br`). |
 | `playbooks/ai-marketing.html` | **AI Marketing Playbook** — página filha do Hub, voltada ao time de marketing global. |
 | `playbooks/` | Pasta para playbooks aplicados (cada um é uma página filha do Hub). |
+| `email-command-center.html` | **Email Marketing · Command Center** — dashboard interno do projeto de email marketing. 10 abas (Visão Geral · Master Strategy · 6 silos · Tracking · Templates). Brandbook ABSOLUT aplicado: tokens, SoulCraft, Lucide. Ferramenta operacional do time de Growth. |
 | `README.md` | Este arquivo — visão da marca, fundamentos, índice. |
 | `colors_and_type.css` | CSS custom properties para todos os design tokens. **Importar nas páginas via `<link>`.** |
 | `zero-to-o.js` | Script que troca "0" por "O" maiúsculo em texto SoulCraft (assinatura da marca). Incluir em qualquer página com SoulCraft. |

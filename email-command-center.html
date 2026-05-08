@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Marketing · Command Center — ABSOLUT Sport</title>
+<meta name="description" content="Dashboard interno do projeto de Email Marketing ABSOLUT Sport. 6 silos de produto, framework de 3 tiers, agente Claude e tracking semanal.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Email Marketing Command Center — ABSOLUT Sport">
+<meta property="og:description" content="6 silos · 3 tiers · 40 docs · framework de email marketing operacional do time de Growth.">
+<meta property="og:url" content="https://mauricioslacerda-jpg.github.io/absolut-sport-design-system/email-command-center.html">
+<meta property="og:image" content="https://mauricioslacerda-jpg.github.io/absolut-sport-design-system/assets/rafa-rafa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  @font-face {
+    font-family: 'SoulCraft';
+    src: url('fonts/soulcraftgx.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+
+<link rel="stylesheet" href="colors_and_type.css">
+
+<style>
+/* ─── Cores semânticas do Command Center (mapeadas pra paleta brandbook) ── */
+:root {
+  --cmd-tier1: var(--color-blue-mid);
+  --cmd-tier1-bg: rgba(30,122,190,0.10);
+  --cmd-tier1-border: rgba(30,122,190,0.30);
+  --cmd-tier2: var(--color-warning);
+  --cmd-tier2-bg: rgba(245,158,11,0.10);
+  --cmd-tier2-border: rgba(245,158,11,0.30);
+  --cmd-tier3: var(--color-error);
+  --cmd-tier3-bg: rgba(227,0,27,0.10);
+  --cmd-tier3-border: rgba(227,0,27,0.30);
+  --cmd-strategy: var(--color-blue-highlight);
+  --cmd-strategy-bg: rgba(40,87,247,0.10);
+  --cmd-strategy-border: rgba(40,87,247,0.30);
+  --cmd-track: var(--color-success);
+  --cmd-track-bg: rgba(34,197,94,0.10);
+  --cmd-track-border: rgba(34,197,94,0.30);
+  --cmd-agent: var(--color-gold);
+  --cmd-agent-bg: rgba(201,168,76,0.10);
+  --cmd-agent-border: rgba(201,168,76,0.30);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV (glassmorphism padrão do design system) ──────────── */
+.nav {
+  position: sticky; top: 0; z-index: var(--z-sticky);
+  height: 68px; padding: 0 var(--space-12);
+  background: rgba(13, 13, 13, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 4px 32px rgba(0,0,0,0.3);
+}
+.nav-logo img { height: 32px; }
+.nav-breadcrumb {
+  display: flex; align-items: center; gap: var(--space-3);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-neutral-300);
+  font-weight: var(--weight-medium);
+}
+.nav-breadcrumb a { color: var(--color-neutral-300); transition: color var(--transition-fast); }
+.nav-breadcrumb a:hover { color: var(--color-blue-mid); }
+.nav-breadcrumb .sep { color: var(--color-neutral-600); }
+.nav-breadcrumb .current { color: var(--color-white); }
+
+.nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+.nav-credit {
+  display: inline-flex; align-items: center;
+  padding: 5px 10px;
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: var(--radius-pill);
+  background: rgba(201,168,76,0.08);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+.nav-credit:hover { background: rgba(201,168,76,0.18); border-color: var(--color-gold); }
+.nav-credit-mark {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-gold); white-space: nowrap;
+}
+.nav-back {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-white);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 18px; font-size: 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+.nav-back:hover { background: var(--color-blue); border-color: var(--color-blue); }
+
+/* ─── META BAR (versão + data) ─────────────────────────────── */
+.meta-bar {
+  background: var(--color-neutral-900);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: var(--space-3) var(--space-12);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-neutral-300);
+  letter-spacing: var(--tracking-wide);
+}
+.meta-bar strong { color: var(--color-gold); font-weight: 600; }
+.meta-bar .meta-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+}
+
+/* ─── TABS ─────────────────────────────────────────────────── */
+.cmd-tabs {
+  background: var(--color-neutral-900);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 0 var(--space-12);
+  display: flex; gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky; top: 68px; z-index: 99;
+}
+.cmd-tabs::-webkit-scrollbar { display: none; }
+.cmd-tab {
+  padding: 14px 20px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: var(--weight-bold);
+  color: var(--color-neutral-300);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  background: transparent;
+  border-left: none; border-right: none; border-top: none;
+}
+.cmd-tab:hover { color: var(--color-white); }
+.cmd-tab.active {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
+}
+
+/* ─── MAIN ─────────────────────────────────────────────────── */
+.cmd-main {
+  max-width: 1400px; margin: 0 auto;
+  padding: var(--space-12) var(--space-12);
+}
+.cmd-section { display: none; }
+.cmd-section.active { display: block; }
+.cmd-section-header { margin-bottom: var(--space-8); }
+.cmd-section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: var(--weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+  line-height: 0.95;
+}
+.cmd-section-header p {
+  font-size: var(--text-body);
+  color: var(--color-neutral-200);
+  line-height: var(--leading-relaxed);
+  max-width: 720px;
+}
+
+/* ─── FOLDER LINK (badge) ──────────────────────────────────── */
+.folder-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-gold);
+  padding: 5px 12px;
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: var(--radius-pill);
+  background: rgba(201,168,76,0.06);
+  transition: all var(--transition-fast);
+  letter-spacing: var(--tracking-wide);
+}
+.folder-link:hover {
+  border-color: var(--color-gold);
+  background: rgba(201,168,76,0.14);
+}
+.folder-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ─── GRIDS ────────────────────────────────────────────────── */
+.cmd-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+.cmd-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.cmd-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+
+/* ─── CARDS ────────────────────────────────────────────────── */
+.cmd-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  transition: border-color var(--transition-default);
+}
+.cmd-card:hover { border-color: rgba(201,168,76,0.4); }
+.cmd-card-label {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  color: var(--color-gold);
+}
+.cmd-card-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+  line-height: 1.15;
+}
+.cmd-card-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  margin-bottom: var(--space-4);
+  line-height: 1.55;
+}
+
+/* ─── DOC LIST (lista de documentos linkados) ─────────────── */
+.doc-list { display: flex; flex-direction: column; gap: var(--space-2); }
+.doc-item {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+.doc-item:hover {
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.03);
+}
+.doc-icon {
+  width: 32px; height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.doc-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.doc-info { flex: 1; min-width: 0; }
+.doc-name {
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--color-white);
+  display: block;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.doc-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+}
+.doc-arrow {
+  color: var(--color-neutral-300);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  flex-shrink: 0;
+}
+.doc-item:hover .doc-arrow { opacity: 1; }
+.doc-arrow svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* Variants por tier */
+.t-strategy .doc-icon { background: var(--cmd-strategy-bg); color: var(--cmd-strategy); }
+.t-strategy .doc-tag { color: var(--cmd-strategy); }
+.t-strategy .doc-item:hover { border-color: var(--cmd-strategy-border); }
+.t1 .doc-icon { background: var(--cmd-tier1-bg); color: var(--cmd-tier1); }
+.t1 .doc-tag { color: var(--cmd-tier1); }
+.t1 .doc-item:hover { border-color: var(--cmd-tier1-border); }
+.t2 .doc-icon { background: var(--cmd-tier2-bg); color: var(--cmd-tier2); }
+.t2 .doc-tag { color: var(--cmd-tier2); }
+.t2 .doc-item:hover { border-color: var(--cmd-tier2-border); }
+.t3 .doc-icon { background: var(--cmd-tier3-bg); color: var(--cmd-tier3); }
+.t3 .doc-tag { color: var(--cmd-tier3); }
+.t3 .doc-item:hover { border-color: var(--cmd-tier3-border); }
+.t-track .doc-icon { background: var(--cmd-track-bg); color: var(--cmd-track); }
+.t-track .doc-tag { color: var(--cmd-track); }
+.t-track .doc-item:hover { border-color: var(--cmd-track-border); }
+.t-agent .doc-icon { background: var(--cmd-agent-bg); color: var(--cmd-agent); }
+.t-agent .doc-tag { color: var(--cmd-agent); }
+.t-agent .doc-item:hover { border-color: var(--cmd-agent-border); }
+
+/* ─── TIER HEADERS ─────────────────────────────────────────── */
+.tier-header {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: var(--space-2);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+.tier-header svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+.th-1 { background: var(--cmd-tier1-bg); color: var(--cmd-tier1); border: 1px solid var(--cmd-tier1-border); }
+.th-2 { background: var(--cmd-tier2-bg); color: var(--cmd-tier2); border: 1px solid var(--cmd-tier2-border); }
+.th-3 { background: var(--cmd-tier3-bg); color: var(--cmd-tier3); border: 1px solid var(--cmd-tier3-border); }
+.th-flow { background: var(--cmd-strategy-bg); color: var(--cmd-strategy); border: 1px solid var(--cmd-strategy-border); }
+.tier-desc {
+  font-size: var(--text-caption);
+  color: var(--color-neutral-300);
+  margin-bottom: var(--space-3);
+  padding-left: 4px;
+}
+
+/* ─── SILO CARD ────────────────────────────────────────────── */
+.silo-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: var(--space-5);
+  transition: border-color var(--transition-default);
+}
+.silo-card:hover { border-color: rgba(201,168,76,0.4); }
+.silo-header {
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-4);
+}
+.silo-num {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 4px;
+}
+.silo-name {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  line-height: 1.1;
+}
+.silo-ticket {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-neutral-300);
+  margin-top: 4px;
+  letter-spacing: var(--tracking-wide);
+}
+.silo-body {
+  padding: var(--space-5) var(--space-6);
+  display: flex; flex-direction: column; gap: var(--space-5);
+}
+
+/* ─── OVERVIEW STATS ───────────────────────────────────────── */
+.overview-stat {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-align: center;
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: var(--weight-black);
+  color: var(--color-gold);
+  letter-spacing: -0.02em;
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-neutral-300);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* ─── LEGEND ───────────────────────────────────────────────── */
+.legend {
+  display: flex; gap: var(--space-6); flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+  padding: var(--space-5);
+  background: var(--color-neutral-900);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-md);
+}
+.legend-item {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-neutral-200);
+  letter-spacing: var(--tracking-wide);
+}
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── DIVIDER ──────────────────────────────────────────────── */
+.cmd-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin: var(--space-10) 0;
+}
+
+/* ─── KEY DOC (destaque com gold border) ───────────────────── */
+.key-doc {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.02) 100%);
+  border: 2px solid rgba(201,168,76,0.40);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex; align-items: center;
+  gap: var(--space-5);
+  transition: all var(--transition-default);
+  margin-bottom: var(--space-5);
+}
+.key-doc:hover {
+  border-color: var(--color-gold);
+  background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(201,168,76,0.04) 100%);
+  transform: translateY(-2px);
+}
+.key-doc-icon {
+  width: 48px; height: 48px;
+  background: rgba(201,168,76,0.14);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-gold);
+}
+.key-doc-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; }
+.key-doc-meta { flex: 1; }
+.key-doc-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-gold-light);
+  margin-bottom: 4px;
+}
+.key-doc-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  line-height: 1.5;
+}
+.key-doc-arrow {
+  color: var(--color-gold);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.key-doc-arrow svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ─── AGENT CARD ───────────────────────────────────────────── */
+.agent-card {
+  background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 100%);
+  border: 2px solid var(--cmd-agent-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  margin-bottom: var(--space-6);
+}
+.agent-header {
+  display: flex; align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.agent-icon {
+  width: 56px; height: 56px;
+  background: var(--cmd-agent-bg);
+  border: 1px solid var(--cmd-agent-border);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-gold);
+}
+.agent-icon svg { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 2; }
+.agent-meta { flex: 1; }
+.agent-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-gold-light);
+  line-height: 1.1;
+}
+.agent-sub {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  margin-top: 4px;
+}
+.agent-roles {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+.role-pill {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  background: var(--cmd-agent-bg);
+  color: var(--color-gold);
+  border: 1px solid var(--cmd-agent-border);
+}
+.agent-phases {
+  display: flex; flex-direction: column;
+  gap: var(--space-2);
+}
+.phase-step {
+  display: flex; gap: var(--space-3); align-items: flex-start;
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.07);
+  line-height: 1.5;
+}
+.phase-num {
+  font-family: var(--font-mono);
+  color: var(--color-gold);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* ─── TRACKING (acompanhamento) ────────────────────────────── */
+.tracking-banner {
+  background: var(--cmd-track-bg);
+  border: 2px solid var(--cmd-track-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  margin: var(--space-5) 0 var(--space-5);
+}
+.tracking-header {
+  display: flex; align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.tracking-icon {
+  width: 48px; height: 48px;
+  background: var(--cmd-track-bg);
+  border: 1px solid var(--cmd-track-border);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--cmd-track);
+}
+.tracking-icon svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+.tracking-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+}
+.tracking-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cmd-track);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  margin-top: 2px;
+}
+.tracking-text {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  line-height: 1.7;
+}
+.tracking-text strong { color: var(--cmd-track); font-weight: 600; }
+.metric-note {
+  background: var(--cmd-track-bg);
+  border: 1px solid var(--cmd-track-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  margin-top: var(--space-4);
+  line-height: 1.5;
+}
+.metric-note strong { color: var(--cmd-track); font-weight: 600; }
+
+/* ─── FLOW DIAGRAM (fluxo padrão por silo) ─────────────────── */
+.flow-card {
+  background: var(--cmd-strategy-bg);
+  border: 2px solid var(--cmd-strategy-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+.flow-card .cmd-card-label { color: var(--cmd-strategy); }
+.flow-text {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  line-height: 2;
+  margin-top: var(--space-3);
+}
+.flow-text .arr-strategy { color: var(--cmd-strategy); font-weight: 600; }
+.flow-text .arr-tier1 { color: var(--cmd-tier1); font-weight: 600; }
+.flow-text .arr-tier2 { color: var(--cmd-tier2); font-weight: 600; }
+.flow-text .arr-tier3 { color: var(--cmd-tier3); font-weight: 600; }
+.flow-text .badge-tier {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  letter-spacing: var(--tracking-wide);
+}
+.flow-text .badge-tier1 { background: var(--cmd-tier1-bg); color: var(--cmd-tier1); }
+.flow-text .badge-tier3 { background: var(--cmd-tier3-bg); color: var(--cmd-tier3); }
+.framework-pills {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--cmd-strategy-border);
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.framework-pill {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  background: var(--cmd-strategy-bg);
+  color: var(--cmd-strategy);
+  border: 1px solid var(--cmd-strategy-border);
+}
+
+/* ─── DS NOTE (no Templates tab) ──────────────────────────── */
+.ds-note {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  background: var(--cmd-agent-bg);
+  border: 1px solid var(--cmd-agent-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-body-sm);
+  color: var(--color-gold);
+  line-height: 1.6;
+}
+.ds-note strong { color: var(--color-gold-light); }
+.ds-note span.muted { color: var(--color-neutral-300); display: block; margin-top: 4px; }
+
+/* ─── PRINCÍPIO DE NEGOCIAÇÃO (3 cards no overview) ───────── */
+.tier-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+.tier-card.tier-1-bg { border-color: var(--cmd-tier1-border); background: linear-gradient(135deg, var(--cmd-tier1-bg), transparent); }
+.tier-card.tier-2-bg { border-color: var(--cmd-tier2-border); background: linear-gradient(135deg, var(--cmd-tier2-bg), transparent); }
+.tier-card.tier-3-bg { border-color: var(--cmd-tier3-border); background: linear-gradient(135deg, var(--cmd-tier3-bg), transparent); }
+.tier-card-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: var(--tracking-wider); text-transform: uppercase; margin-bottom: var(--space-3); }
+.tier-card.tier-1-bg .tier-card-label { color: var(--cmd-tier1); }
+.tier-card.tier-2-bg .tier-card-label { color: var(--cmd-tier2); }
+.tier-card.tier-3-bg .tier-card-label { color: var(--cmd-tier3); }
+.tier-card-title {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+}
+.tier-card-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  line-height: 1.55;
+}
+
+/* ─── FOLDER CARD (overview pasta listing) ─────────────────── */
+.folder-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  transition: all var(--transition-default);
+  display: flex; flex-direction: column;
+  gap: var(--space-2);
+}
+.folder-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateY(-2px);
+}
+.folder-card-num {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.folder-card-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.folder-card-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+
+/* ─── FOOTER (padrão design system) ────────────────────────── */
+.footer {
+  background: var(--color-black);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--space-10) var(--space-12) var(--space-6);
+  margin-top: var(--space-16);
+}
+.footer-grid {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-10);
+}
+.footer-brand img { height: 36px; margin-bottom: var(--space-4); }
+.footer-brand p {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-300);
+  max-width: 360px;
+  line-height: 1.6;
+}
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-neutral-300);
+  text-align: right;
+  line-height: 1.7;
+  letter-spacing: var(--tracking-wide);
+}
+.footer-meta a { color: var(--color-gold); }
+.footer-meta a:hover { color: var(--color-gold-light); }
+.footer-bottom {
+  max-width: 1400px; margin: var(--space-6) auto 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-neutral-400);
+  letter-spacing: var(--tracking-wide);
+}
+.footer-bottom a { color: var(--color-gold); }
+
+/* ─── REDUCED MOTION ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .cmd-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .cmd-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+  .nav { padding: 0 var(--space-6); }
+  .nav-breadcrumb { display: none; }
+  .nav-back { display: none; }
+  .meta-bar { padding: var(--space-3) var(--space-6); flex-direction: column; align-items: flex-start; gap: 6px; }
+  .cmd-tabs { padding: 0 var(--space-6); }
+  .cmd-main { padding: var(--space-8) var(--space-6); }
+  .footer { padding: var(--space-8) var(--space-6) var(--space-5); }
+  .footer-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .footer-meta { text-align: left; }
+  .footer-bottom { flex-direction: column; gap: var(--space-2); }
+  .cmd-grid-4, .cmd-grid-3, .cmd-grid-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <img src="assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+  </a>
+  <div class="nav-breadcrumb">
+    <a href="index.html">Design System</a>
+    <span class="sep">/</span>
+    <a href="index.html#playbooks">Playbooks</a>
+    <span class="sep">/</span>
+    <span class="current">Email Marketing · Command Center</span>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-back" href="index.html">← Voltar ao Hub</a>
+    <a class="nav-credit" href="mailto:design@absolut-sport.com.br?subject=Email%20Marketing%20Command%20Center%20%C2%B7%20Sugest%C3%A3o" title="Mauricio × Rafa · sugestões pra design@">
+      <span class="nav-credit-mark">MM × RR</span>
+    </a>
+  </div>
+</nav>
+
+<!-- META BAR -->
+<div class="meta-bar">
+  <div class="meta-title">Email Marketing · Command Center</div>
+  <div>Versão <strong>1.0</strong> · Fase 1 concluída · Atualizado 2026-05-07</div>
+</div>
+
+<!-- TABS -->
+<nav class="cmd-tabs">
+  <button class="cmd-tab active" onclick="showSection('overview')">Visão Geral</button>
+  <button class="cmd-tab" onclick="showSection('master')">Master Strategy</button>
+  <button class="cmd-tab" onclick="showSection('silo-sblxi')">Super Bowl LXI</button>
+  <button class="cmd-tab" onclick="showSection('silo-futebol')">Futebol</button>
+  <button class="cmd-tab" onclick="showSection('silo-f1')">Fórmula 1</button>
+  <button class="cmd-tab" onclick="showSection('silo-tenis')">Tênis</button>
+  <button class="cmd-tab" onclick="showSection('silo-pass')">ABSOLUT Pass</button>
+  <button class="cmd-tab" onclick="showSection('silo-cross')">Cross-sell</button>
+  <button class="cmd-tab" onclick="showSection('tracking')">Acompanhamento</button>
+  <button class="cmd-tab" onclick="showSection('assets')">Templates &amp; Agente</button>
+</nav>
+
+<main class="cmd-main">
+
+  <!-- ============ OVERVIEW ============ -->
+  <section id="overview" class="cmd-section active">
+    <div class="cmd-section-header">
+      <h2>Visão Geral do Projeto</h2>
+      <p>Estratégia de email marketing ABSOLUT Sport — 6 silos de produto, framework de 3 tiers de negociação com liderança.</p>
+    </div>
+
+    <a class="key-doc" href="https://docs.google.com/document/d/1J4mBcX6jPEj0z1eJiSKtMbXF08jQ4c1ShOdZPMMwP0c/edit" target="_blank">
+      <div class="key-doc-icon"><svg viewBox="0 0 24 24"><path d="M16 16.5 12 21l-4-4.5"/><path d="M12 21V11"/><path d="M3 7l3 3 3-3"/><path d="M6 10V3h12v7"/><path d="M21 7l-3 3-3-3"/></svg></div>
+      <div class="key-doc-meta">
+        <div class="key-doc-title">Mapa de Tiers — O que é Inegociável</div>
+        <div class="key-doc-desc">Documento estratégico central · Framework de negociação com liderança · 00_Master Strategy</div>
+      </div>
+      <div class="key-doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
+    </a>
+
+    <div class="cmd-grid-4" style="margin-bottom: var(--space-8);">
+      <div class="overview-stat"><span class="stat-value">6</span><span class="stat-label">Silos de produto</span></div>
+      <div class="overview-stat"><span class="stat-value">40</span><span class="stat-label">Docs no Drive</span></div>
+      <div class="overview-stat"><span class="stat-value">3</span><span class="stat-label">Tiers de negociação</span></div>
+      <div class="overview-stat"><span class="stat-value">4</span><span class="stat-label">Frameworks de copy</span></div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-strategy);"></div> Estratégia Master</div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-tier1);"></div> Tier 1 — Liderança entrega</div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-tier2);"></div> Tier 2 — Cedável</div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-tier3);"></div> Tier 3 — Só Mauricio</div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-track);"></div> Acompanhamento</div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-agent);"></div> Agente Claude / Assets</div>
+    </div>
+
+    <div class="cmd-divider"></div>
+
+    <div class="cmd-section-header">
+      <h2>Estrutura de Pastas</h2>
+      <p>Todas as pastas no Google Drive — clique para abrir.</p>
+    </div>
+
+    <div class="cmd-grid-3">
+      <a class="folder-card" href="https://drive.google.com/drive/folders/1oBqgxrdAJmH-8rum5gDi3eBQtG5jyWQ1" target="_blank">
+        <div class="folder-card-num" style="color: var(--cmd-strategy);">00 · Master Strategy</div>
+        <div class="folder-card-name">Base Estratégica</div>
+        <div class="folder-card-desc">Framework geral, personas, calendário, glossário RD Station, mapa de tiers.</div>
+        <span class="folder-link" style="pointer-events: none;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta</span>
+      </a>
+      <a class="folder-card" href="https://drive.google.com/drive/folders/1AOS12eyGzco6VHHwzlTP_ArO8af1bYuw" target="_blank">
+        <div class="folder-card-num" style="color: var(--cmd-agent);">01 · Silo</div>
+        <div class="folder-card-name">Super Bowl LXI</div>
+        <div class="folder-card-desc">Signature · Prestige · Pinnacle — $6k–$18k · B2C + B2B.</div>
+        <span class="folder-link" style="pointer-events: none;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta</span>
+      </a>
+      <a class="folder-card" href="https://drive.google.com/drive/folders/1mRqF1mG_0_A-m0ehlloB-jgVAFQw0UA7" target="_blank">
+        <div class="folder-card-num" style="color: var(--cmd-agent);">02 · Silo</div>
+        <div class="folder-card-name">Futebol</div>
+        <div class="folder-card-desc">Flamengo · Libertadores · Sul-americana — Premium Brasil.</div>
+        <span class="folder-link" style="pointer-events: none;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta</span>
+      </a>
+      <a class="folder-card" href="https://drive.google.com/drive/folders/1Cb-wIOk7AhT0GxjY1rLPgdIhLJHnW7Fj" target="_blank">
+        <div class="folder-card-num" style="color: var(--cmd-agent);">03 · Silo</div>
+        <div class="folder-card-name">Fórmula 1</div>
+        <div class="folder-card-desc">GP São Paulo — Interlagos — Premium Brasil.</div>
+        <span class="folder-link" style="pointer-events: none;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta</span>
+      </a>
+      <a class="folder-card" href="https://drive.google.com/drive/folders/1zWRMO_vokfbRV3ChUjppcs_KyEQMx7iX" target="_blank">
+        <div class="folder-card-num" style="color: var(--cmd-agent);">04 · Silo</div>
+        <div class="folder-card-name">Tênis</div>
+        <div class="folder-card-desc">NFTO Brasil — Nitto ATP — Nicho A/B.</div>
+        <span class="folder-link" style="pointer-events: none;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta</span>
+      </a>
+      <a class="folder-card" href="https://drive.google.com/drive/folders/12T9vFjJ6hxh3XmMVE9cy7TQ0L6aTdD7l" target="_blank">
+        <div class="folder-card-num" style="color: var(--cmd-agent);">05 · Silo</div>
+        <div class="folder-card-name">ABSOLUT Pass</div>
+        <div class="folder-card-desc">Assinatura recorrente · upgrades · pagamento anual.</div>
+        <span class="folder-link" style="pointer-events: none;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta</span>
+      </a>
+      <a class="folder-card" href="https://drive.google.com/drive/folders/1gLHrhA78Gg6ImJwfvveL4KsW2y_GvhSU" target="_blank">
+        <div class="folder-card-num" style="color: var(--cmd-agent);">06 · Silo</div>
+        <div class="folder-card-name">Cross-sell</div>
+        <div class="folder-card-desc">Comprou A → oferta B · sequências cross-silo · 100% Tier 3.</div>
+        <span class="folder-link" style="pointer-events: none;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta</span>
+      </a>
+      <a class="folder-card" href="https://drive.google.com/drive/folders/1apO8EmE-GeGpK_cqZOq995hDqjL8cS5f" target="_blank">
+        <div class="folder-card-num" style="color: var(--cmd-track);">07 · Tracking</div>
+        <div class="folder-card-name">Acompanhamento</div>
+        <div class="folder-card-desc">Comprometido × Entregue · gerido por Mauricio semanalmente.</div>
+        <span class="folder-link" style="pointer-events: none;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta</span>
+      </a>
+      <a class="folder-card" href="https://drive.google.com/drive/folders/1nn4COHyxTKqalMuEAukCginTMPgnHeoH" target="_blank">
+        <div class="folder-card-num" style="color: var(--cmd-agent);">08 · Assets</div>
+        <div class="folder-card-name">Templates &amp; Agente Claude</div>
+        <div class="folder-card-desc">Subject lines · CTAs · templates Halbert · Design System · System Prompt.</div>
+        <span class="folder-link" style="pointer-events: none;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta</span>
+      </a>
+    </div>
+
+    <div class="cmd-divider"></div>
+
+    <div class="cmd-section-header">
+      <h2>Princípio de Negociação</h2>
+    </div>
+
+    <div class="cmd-grid-3">
+      <div class="tier-card tier-1-bg">
+        <div class="tier-card-label">Tier 1 — Liderança entrega</div>
+        <div class="tier-card-title">Inegociável · Chão</div>
+        <div class="tier-card-desc">Automações básicas, boas-vindas, transacional, resend. Sem isso o programa não existe.</div>
+      </div>
+      <div class="tier-card tier-2-bg">
+        <div class="tier-card-label">Tier 2 — Cedável</div>
+        <div class="tier-card-title">Moeda de Troca</div>
+        <div class="tier-card-desc">Newsletters, recaps. Mauricio pode abrir mão para destravar o Tier 1.</div>
+      </div>
+      <div class="tier-card tier-3-bg">
+        <div class="tier-card-label">Tier 3 — Só Mauricio</div>
+        <div class="tier-card-title">Valor Insubstituível</div>
+        <div class="tier-card-desc">Copy Halbert, nutrição multi-email, upsells, win-backs, cross-silo. A liderança não consegue entregar.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MASTER STRATEGY ============ -->
+  <section id="master" class="cmd-section">
+    <div class="cmd-section-header">
+      <h2>00 — Master Strategy</h2>
+      <p>Base teórica e estratégica · Brunson + Hormozi + Halbert + Deiss.</p>
+    </div>
+
+    <a class="folder-link" href="https://drive.google.com/drive/folders/1oBqgxrdAJmH-8rum5gDi3eBQtG5jyWQ1" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;">
+      <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      Abrir pasta 00_Master Strategy ↗
+    </a>
+
+    <div class="cmd-grid-2" style="margin-top: var(--space-5);">
+      <div class="cmd-card">
+        <div class="cmd-card-label">Documentos Centrais</div>
+        <div class="doc-list">
+          <div class="t-strategy"><a class="doc-item" href="https://docs.google.com/document/d/1J4mBcX6jPEj0z1eJiSKtMbXF08jQ4c1ShOdZPMMwP0c/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M16 16.5 12 21l-4-4.5"/><path d="M12 21V11"/><path d="M3 7l3 3 3-3"/><path d="M6 10V3h12v7"/></svg></div><div class="doc-info"><span class="doc-name">Mapa de Tiers — O que é Inegociável</span><span class="doc-tag">Documento Chave · Negociação</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+          <div class="t-strategy"><a class="doc-item" href="https://docs.google.com/document/d/1KRNE8GSAZiAuPrz240F6f02kySpdusK0Gogj2SrJ08I/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="doc-info"><span class="doc-name">Framework Geral</span><span class="doc-tag">Brunson + Hormozi + Halbert + Deiss</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+          <div class="t-strategy"><a class="doc-item" href="https://docs.google.com/document/d/1aMkcfJ4D0M3dFWFh2ZsePfrm5-4RxanGmvbKise4Vy8/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="doc-info"><span class="doc-name">Buyer Personas por Silo</span><span class="doc-tag">ICPs · Motivações · Objeções</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+          <div class="t-strategy"><a class="doc-item" href="https://docs.google.com/document/d/1IeMnk5I1N9q-QjCb4KMoeEygafB1GgNjhZqPsW2bu70/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg></div><div class="doc-info"><span class="doc-name">Calendário Editorial Anual</span><span class="doc-tag">Eventos · Janelas · Frequência por silo</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+          <div class="t-strategy"><a class="doc-item" href="https://docs.google.com/document/d/1n2LLlmdIBYwgasiUi1Me5-K-7iK6injtjcqk7KD1h9c/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></div><div class="doc-info"><span class="doc-name">Glossário RD Station</span><span class="doc-tag">Campos · Tags · Lead Scoring · Métricas</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+        </div>
+      </div>
+
+      <div class="flow-card">
+        <div class="cmd-card-label">Fluxo Padrão por Silo</div>
+        <div class="flow-text">
+          Lead entra <span class="arr-strategy">→</span> Boas-vindas (CVJ Subscribe)<br>
+          Não abriu <span class="arr-tier1">→</span> Resend subject B <span class="badge-tier badge-tier1">Tier 1</span><br>
+          Abriu <span class="arr-strategy">→</span> Nutrição 3–5 emails (Halbert + Brunson MOFU)<br>
+          Clicou <span class="arr-strategy">→</span> Oferta stack completo (Hormozi Grand Slam)<br>
+          Comprou <span class="arr-strategy">→</span> Excite + Upsell <span class="badge-tier badge-tier3">Tier 3</span><br>
+          Não comprou em 14d <span class="arr-tier3">→</span> Win-back Halbert <span class="badge-tier badge-tier3">Tier 3</span><br>
+          Inativo 30d <span class="arr-tier2">→</span> Sunset ou oferta de saída digna
+        </div>
+        <div class="framework-pills">
+          <span class="framework-pill">Brunson · Value Ladder</span>
+          <span class="framework-pill">Hormozi · Offer Stack</span>
+          <span class="framework-pill">Halbert · Direct Response</span>
+          <span class="framework-pill">Deiss · CVJ 8 Estágios</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUPER BOWL LXI ============ -->
+  <section id="silo-sblxi" class="cmd-section">
+    <div class="cmd-section-header">
+      <h2>01 — Super Bowl LXI</h2>
+      <p>Signature · Prestige · Pinnacle · $6.000–$18.000 · B2C e B2B.</p>
+    </div>
+    <a class="folder-link" href="https://drive.google.com/drive/folders/1AOS12eyGzco6VHHwzlTP_ArO8af1bYuw" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
+
+    <div class="silo-card">
+      <div class="silo-header">
+        <div>
+          <div class="silo-num">Silo 01</div>
+          <div class="silo-name">Super Bowl LXI</div>
+          <div class="silo-ticket">Signature $6k · Prestige $12k · Pinnacle $18k</div>
+        </div>
+        <a class="folder-link" href="https://docs.google.com/document/d/1F3U8uiS6HTBBo-mjU87xMyIBRtkyoATEDSMAstgP9T8/edit" target="_blank">Estratégia ↗</a>
+      </div>
+      <div class="silo-body">
+        <div>
+          <div class="tier-header th-1"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 1 — Liderança entrega · Inegociável</div>
+          <div class="tier-desc">Automações básicas. Sem isso o programa não existe.</div>
+          <div class="doc-list t1"><a class="doc-item" href="https://docs.google.com/document/d/1vmBT4kucGdE__5bQJkZPkgMzOx2gTtyAJzuFc-gqeg8/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 1] Emails Inegociáveis</span><span class="doc-tag">Boas-vindas · Resend · Confirmação de compra</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+        </div>
+        <div>
+          <div class="tier-header th-2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 2 — Cedável</div>
+          <div class="doc-list t2"><a class="doc-item" href="https://docs.google.com/document/d/1ULD7Y5dAQ4ZQb8pgaSHKbkcOMEaSVTAxkKdv4vC0oMg/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 2] Emails Cedáveis</span><span class="doc-tag">Newsletter mensal</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+        </div>
+        <div>
+          <div class="tier-header th-3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 3 — Só Mauricio</div>
+          <div class="tier-desc">Copy Halbert, nutrição 5 emails, urgência, upsell hotel, win-back.</div>
+          <div class="doc-list t3"><a class="doc-item" href="https://docs.google.com/document/d/17-XUuLd6494fq8pSASXuSsfMpa6uoGYY8CHg6rE3bBs/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 3] Emails Só Mauricio</span><span class="doc-tag">Nutrição 5 emails · Urgência · Upsell hotel · Win-back 90d</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+        </div>
+        <div>
+          <div class="tier-header th-flow"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Fluxos RD Station</div>
+          <div class="doc-list t-strategy" style="margin-top: 6px;"><a class="doc-item" href="https://docs.google.com/document/d/15bm-aJ6917KdNW-QGW60yKa-4NAYz88q50hGdyMMz60/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div><div class="doc-info"><span class="doc-name">Mapa de Fluxos RD Station</span><span class="doc-tag">Triggers · Condições · Ações</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FUTEBOL ============ -->
+  <section id="silo-futebol" class="cmd-section">
+    <div class="cmd-section-header">
+      <h2>02 — Futebol</h2>
+      <p>Flamengo · Libertadores · Sul-americana · Premium Brasil.</p>
+    </div>
+    <a class="folder-link" href="https://drive.google.com/drive/folders/1mRqF1mG_0_A-m0ehlloB-jgVAFQw0UA7" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
+
+    <div class="silo-card">
+      <div class="silo-header">
+        <div>
+          <div class="silo-num">Silo 02</div>
+          <div class="silo-name">Futebol</div>
+          <div class="silo-ticket">Flamengo · Libertadores · Sul-americana</div>
+        </div>
+        <a class="folder-link" href="https://docs.google.com/document/d/13astLtbqAUvI59rv3rpxQzCxhahBZrFYwa7ktOYcCeA/edit" target="_blank">Estratégia ↗</a>
+      </div>
+      <div class="silo-body">
+        <div>
+          <div class="tier-header th-1"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 1</div>
+          <div class="doc-list t1"><a class="doc-item" href="https://docs.google.com/document/d/1CcazI1UxjvYGcanwHUejGak4RDziXDCslVDIop2Myg8/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 1] Emails Inegociáveis</span><span class="doc-tag">Boas-vindas · Resend · Confirmação</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+        </div>
+        <div>
+          <div class="tier-header th-2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 2</div>
+          <div class="doc-list t2"><a class="doc-item" href="https://docs.google.com/document/d/1u-ovnzAJBbWYvM28T2q1Z_eqdU1-i9K5cQifhqYWVCk/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 2] Emails Cedáveis</span><span class="doc-tag">Recap pós-jogo</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+        </div>
+        <div>
+          <div class="tier-header th-3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 3</div>
+          <div class="doc-list t3"><a class="doc-item" href="https://docs.google.com/document/d/1_1HP2O6_B-taHTZggekhWBcD6srNH7JcybTv5aEMJbs/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 3] Emails Só Mauricio</span><span class="doc-tag">Nutrição MOFU · Cross-sell SB LXI</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+        </div>
+        <div>
+          <div class="tier-header th-flow"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Fluxos</div>
+          <div class="doc-list t-strategy" style="margin-top: 6px;"><a class="doc-item" href="https://docs.google.com/document/d/14ICI5KQdB-YMtD1CeNRxFkRf4G2ycn3AWPriPUyJ-U8/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div><div class="doc-info"><span class="doc-name">Mapa de Fluxos RD Station</span><span class="doc-tag">A preencher com Victor</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FÓRMULA 1 ============ -->
+  <section id="silo-f1" class="cmd-section">
+    <div class="cmd-section-header">
+      <h2>03 — Fórmula 1</h2>
+      <p>GP São Paulo — Interlagos · Out/2026 · Premium Brasil.</p>
+    </div>
+    <a class="folder-link" href="https://drive.google.com/drive/folders/1Cb-wIOk7AhT0GxjY1rLPgdIhLJHnW7Fj" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
+
+    <div class="silo-card">
+      <div class="silo-header">
+        <div>
+          <div class="silo-num">Silo 03</div>
+          <div class="silo-name">Fórmula 1</div>
+          <div class="silo-ticket">GP São Paulo — Interlagos · Out/2026</div>
+        </div>
+        <a class="folder-link" href="https://docs.google.com/document/d/1-AA4OKH-fNJbsf-eiyPLdwkr7YpJEWS4wgXOdLNlvpk/edit" target="_blank">Estratégia ↗</a>
+      </div>
+      <div class="silo-body">
+        <div><div class="tier-header th-1"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 1</div><div class="doc-list t1"><a class="doc-item" href="https://docs.google.com/document/d/16m_x-4t5O79yjGShwv6D72cxOC6GozkmxXspEYG9uz0/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 1] Emails Inegociáveis</span><span class="doc-tag">Boas-vindas · Resend · Confirmação</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+        <div><div class="tier-header th-2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 2</div><div class="doc-list t2"><a class="doc-item" href="https://docs.google.com/document/d/1FKCS-LcBuPgAWGt3GI-Dl4wouik9QA4vd6xRYo8kU38/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 2] Emails Cedáveis</span><span class="doc-tag">Countdown GP</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+        <div><div class="tier-header th-3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 3</div><div class="doc-list t3"><a class="doc-item" href="https://docs.google.com/document/d/1r6SFOEzoDS4sW5e4ay6lv6ObRG45dQDYiBbE6vL0K8k/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 3] Emails Só Mauricio</span><span class="doc-tag">Nutrição MOFU · Oferta Hormozi · Cross-sell Pass</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+        <div><div class="tier-header th-flow"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Fluxos</div><div class="doc-list t-strategy" style="margin-top: 6px;"><a class="doc-item" href="https://docs.google.com/document/d/1ma9aK1vzC1UDsFDORCUic9bInv4DP9nizWc3s8xVqfM/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div><div class="doc-info"><span class="doc-name">Mapa de Fluxos RD Station</span><span class="doc-tag">A preencher com Victor</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TÊNIS ============ -->
+  <section id="silo-tenis" class="cmd-section">
+    <div class="cmd-section-header">
+      <h2>04 — Tênis</h2>
+      <p>NFTO Brasil — Nitto ATP · Nicho A/B.</p>
+    </div>
+    <a class="folder-link" href="https://drive.google.com/drive/folders/1zWRMO_vokfbRV3ChUjppcs_KyEQMx7iX" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
+
+    <div class="silo-card">
+      <div class="silo-header">
+        <div>
+          <div class="silo-num">Silo 04</div>
+          <div class="silo-name">Tênis NFTO Brasil</div>
+          <div class="silo-ticket">Nitto ATP · Nov/2026 · Nicho A/B</div>
+        </div>
+        <a class="folder-link" href="https://docs.google.com/document/d/1TAG9cVtp9JxjI_anCE_8jLUkK_1T2yoWjkCJgWjn8bU/edit" target="_blank">Estratégia ↗</a>
+      </div>
+      <div class="silo-body">
+        <div><div class="tier-header th-1"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 1</div><div class="doc-list t1"><a class="doc-item" href="https://docs.google.com/document/d/1J9GGVrK9CjiU66KX_aOgyU-XS2ItRHYeBpKkrKo8jMk/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 1] Emails Inegociáveis</span><span class="doc-tag">Boas-vindas · Resend · Confirmação</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+        <div><div class="tier-header th-2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 2</div><div class="doc-list t2"><a class="doc-item" href="https://docs.google.com/document/d/1RW_nFeuggYEcQ90PXL0xr2NF-hOsd-676YXjgUp9Vr8/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 2] Emails Cedáveis</span><span class="doc-tag">Conteúdo ATP</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+        <div><div class="tier-header th-3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 3</div><div class="doc-list t3"><a class="doc-item" href="https://docs.google.com/document/d/1pzBjmS6ZHGRVvYr-nIMVBgeu6iPXz9On90WleeqiSOA/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 3] Emails Só Mauricio</span><span class="doc-tag">Nutrição nicho A/B · Cross-sell</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+        <div><div class="tier-header th-flow"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Fluxos</div><div class="doc-list t-strategy" style="margin-top: 6px;"><a class="doc-item" href="https://docs.google.com/document/d/1eA3HFPoXhcXoSs7P408ruYAf0GwhyGBrSfTK9rrdw70/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div><div class="doc-info"><span class="doc-name">Mapa de Fluxos RD Station</span><span class="doc-tag">A preencher com Victor</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABSOLUT PASS ============ -->
+  <section id="silo-pass" class="cmd-section">
+    <div class="cmd-section-header">
+      <h2>05 — ABSOLUT Pass</h2>
+      <p>Assinatura recorrente · Upgrades · Churn prevention.</p>
+    </div>
+    <a class="folder-link" href="https://drive.google.com/drive/folders/12T9vFjJ6hxh3XmMVE9cy7TQ0L6aTdD7l" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
+
+    <div class="silo-card">
+      <div class="silo-header">
+        <div>
+          <div class="silo-num">Silo 05</div>
+          <div class="silo-name">ABSOLUT Pass</div>
+          <div class="silo-ticket">Recorrente · Sem Tier 2 · 100% Tier 1 ou Tier 3</div>
+        </div>
+        <a class="folder-link" href="https://docs.google.com/document/d/1boZ1_FCdzmcUrJlA6jghHDi6jp9pHLIZao7GpSSnCLM/edit" target="_blank">Estratégia ↗</a>
+      </div>
+      <div class="silo-body">
+        <div><div class="tier-header th-1"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 1</div><div class="doc-list t1"><a class="doc-item" href="https://docs.google.com/document/d/1e_bB4sfUIDYQfDragHTMDWr9yAmjJW2rgjlrRJr9rCI/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 1] Emails Inegociáveis</span><span class="doc-tag">Onboarding D+1 · Renovação 7d · Novidade</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+        <div><div class="tier-header th-3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 3</div><div class="doc-list t3"><a class="doc-item" href="https://docs.google.com/document/d/19dJDqTRmjxFr7bGhnqPOlipoKKCHxb4x7_jbofswzRo/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 3] Emails Só Mauricio</span><span class="doc-tag">Upsell anual · Churn prevention · Win-back · Upgrade stacking</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+        <div><div class="tier-header th-flow"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Fluxos</div><div class="doc-list t-strategy" style="margin-top: 6px;"><a class="doc-item" href="https://docs.google.com/document/d/1MJf2Wj5Z1JNTcduuZMhoE7GXpxXF6xiJpBTFeWuiFi4/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div><div class="doc-info"><span class="doc-name">Mapa de Fluxos RD Station</span><span class="doc-tag">A preencher com Victor</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CROSS-SELL ============ -->
+  <section id="silo-cross" class="cmd-section">
+    <div class="cmd-section-header">
+      <h2>06 — Cross-sell</h2>
+      <p>Comprou A → oferta B · Base interna · 100% Tier 3.</p>
+    </div>
+    <a class="folder-link" href="https://drive.google.com/drive/folders/1gLHrhA78Gg6ImJwfvveL4KsW2y_GvhSU" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
+
+    <div class="silo-card">
+      <div class="silo-header">
+        <div>
+          <div class="silo-num">Silo 06</div>
+          <div class="silo-name">Cross-sell</div>
+          <div class="silo-ticket">Base interna · Tag "comprou-[produto]" → sequência cross-silo</div>
+        </div>
+        <a class="folder-link" href="https://docs.google.com/document/d/10yIxFqYMc7dBBhBuIfSoh2WbVcuQuvTRmqk0cBUHDo8/edit" target="_blank">Estratégia ↗</a>
+      </div>
+      <div class="silo-body">
+        <div><div class="tier-header th-3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Tier 3 — 100% Só Mauricio</div><div class="doc-list t3"><a class="doc-item" href="https://docs.google.com/document/d/1E9iNhyXWC0sUX3zDAfvSiHQXSdRtBBmU6DV7r6wMm3Q/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="doc-info"><span class="doc-name">[Tier 3] Sequências Cross-silo</span><span class="doc-tag">Futebol→SB LXI · F1→Pass · Tênis→F1</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRACKING ============ -->
+  <section id="tracking" class="cmd-section">
+    <div class="cmd-section-header">
+      <h2>07 — Acompanhamento</h2>
+      <p>Dashboard de accountability · Gerido por Mauricio.</p>
+    </div>
+    <a class="folder-link" href="https://drive.google.com/drive/folders/1apO8EmE-GeGpK_cqZOq995hDqjL8cS5f" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
+
+    <div class="tracking-banner">
+      <div class="tracking-header">
+        <div class="tracking-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg></div>
+        <div>
+          <div class="tracking-title">Princípio do Dashboard</div>
+          <div class="tracking-note">MAURICIO GERENCIA · VICTOR OPERA · LIDERANÇA RESPONDE</div>
+        </div>
+      </div>
+      <div class="tracking-text">
+        Cada semana: <strong>X Tier 1 prometidos</strong> → <strong>Y entregues</strong> → <strong>Z% cumprimento</strong><br>
+        Esta evidência demonstra por que Mauricio é insubstituível nos Tier 3.
+      </div>
+    </div>
+
+    <div class="cmd-grid-2">
+      <div class="cmd-card">
+        <div class="cmd-card-label">Documentos de Tracking</div>
+        <div class="doc-list t-track">
+          <a class="doc-item" href="https://docs.google.com/document/d/1pPkvgaCQRyXSMlrde4j9MHxumXtVS276DnaVK8rtnKg/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg></div><div class="doc-info"><span class="doc-name">Status Geral — Semana 01</span><span class="doc-tag">Mauricio atualiza semanalmente</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+          <a class="doc-item" href="https://docs.google.com/document/d/1mk9kSx-L8ImTAjzRrbCU3j-X0fCh6pG5FqP9TmVgYIU/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M16 16.5 12 21l-4-4.5"/><path d="M12 21V11"/><path d="M3 7l3 3 3-3"/><path d="M6 10V3h12v7"/></svg></div><div class="doc-info"><span class="doc-name">Comprometido × Entregue</span><span class="doc-tag">Tier 1 — liderança prometeu vs. entregou</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+          <a class="doc-item" href="https://docs.google.com/document/d/1PYrgke6s6nfXcrSrTmg7Nsw_BcMRGmxw3nMC6jLBXDg/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div><div class="doc-info"><span class="doc-name">Entregue por Mauricio (Tier 3)</span><span class="doc-tag">Evidência do valor insubstituível</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+          <a class="doc-item" href="https://docs.google.com/document/d/1BS7iJbAmuUfO3bBlO8n6XVkAXHPHnWQ884MlGhhYDT0/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></div><div class="doc-info"><span class="doc-name">Próximos Passos — Victor</span><span class="doc-tag">Task list · RD Station · Pendências</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-card-label">Lógica de Accountability</div>
+        <div style="font-size: var(--text-body-sm); color: var(--color-neutral-200); line-height: 2; margin-top: var(--space-3);">
+          <span style="color: var(--cmd-tier1); font-weight: 600;">Tier 1 prometido</span> → antes da reunião<br>
+          <span style="color: var(--cmd-tier1); font-weight: 600;">Tier 1 entregue</span> → semana a semana<br>
+          <span style="color: var(--cmd-tier2); font-weight: 600;">Gap acumulado</span> → evidência da necessidade<br>
+          <span style="color: var(--cmd-tier3); font-weight: 600;">Tier 3 de Mauricio</span> → comparativo
+        </div>
+        <div class="metric-note"><strong>3–4 mãos:</strong> Mauricio (estratégia + T3) · Victor (RD Station + T1) · Agente Claude (copy) · Liderança (aprovação + T1).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ASSETS / AGENT ============ -->
+  <section id="assets" class="cmd-section">
+    <div class="cmd-section-header">
+      <h2>08 — Templates &amp; Agente Claude</h2>
+      <p>Biblioteca de assets · Design System ABSOLUT Sport · Agente Claude dedicado.</p>
+    </div>
+    <a class="folder-link" href="https://drive.google.com/drive/folders/1nn4COHyxTKqalMuEAukCginTMPgnHeoH" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
+
+    <div class="agent-card">
+      <div class="agent-header">
+        <div class="agent-icon"><svg viewBox="0 0 24 24"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg></div>
+        <div class="agent-meta">
+          <div class="agent-title">Agente Claude — ABSOLUT Sport Copywriter</div>
+          <div class="agent-sub">Redator oficial + guardião de copy · Claude.ai Projects</div>
+        </div>
+        <a class="folder-link" href="https://docs.google.com/document/d/1P6Gr1aM0iRH5ZpZY8dGn6kZLVq-u4EUTI67wN3TdcOU/edit" target="_blank" style="margin-left: auto;">System Prompt ↗</a>
+      </div>
+      <div class="agent-roles">
+        <span class="role-pill">Redator</span>
+        <span class="role-pill">Guardião de Copy</span>
+        <span class="role-pill">Co-estrategista</span>
+        <span class="role-pill">Memória da Marca</span>
+        <span class="role-pill">Brunson + Hormozi + Halbert + Deiss</span>
+      </div>
+      <div class="agent-phases">
+        <div class="phase-step"><span class="phase-num">1</span><span>Victor produz email (T1/T2) → submete ao agente para revisão.</span></div>
+        <div class="phase-step"><span class="phase-num">2</span><span>Agente avalia: hook, CTA, estrutura, aderência ao silo e frameworks.</span></div>
+        <div class="phase-step"><span class="phase-num">3</span><span>Mauricio aprova ou solicita nova rodada.</span></div>
+        <div class="phase-step"><span class="phase-num">4</span><span>Versão final → RD Station · Tier 3 produzido por Mauricio diretamente com o agente.</span></div>
+      </div>
+    </div>
+
+    <div class="cmd-grid-2">
+      <div class="cmd-card">
+        <div class="cmd-card-label">Bibliotecas de Copy</div>
+        <div class="doc-list t-agent">
+          <a class="doc-item" href="https://docs.google.com/document/d/1E7JMZw01UOnHLqkJZ6pBXliAsBVdM0AX1s5HPs1o3Tk/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div class="doc-info"><span class="doc-name">Biblioteca de Subject Lines por Tier</span><span class="doc-tag">Curiosidade · Urgência · Benefício · FOMO</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+          <a class="doc-item" href="https://docs.google.com/document/d/1WLVwaJVn5CdKKMlIpNFrCWcRduW5ffoCcvFw8XED0vk/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div class="doc-info"><span class="doc-name">Biblioteca de CTAs por Silo</span><span class="doc-tag">Botões · Frases de ação · Urgência</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+          <a class="doc-item" href="https://docs.google.com/document/d/1fByL_Hqb1qS9L6BNwzQFMCPuPB9VaXWhvbWbvIvkPN8/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><div class="doc-info"><span class="doc-name">Templates de Copy (Halbert Framework)</span><span class="doc-tag">Carta · Urgência · Win-back · Nutrição</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-card-label">Design System &amp; Assets</div>
+        <div class="doc-list t-agent">
+          <a class="doc-item" href="https://docs.google.com/document/d/1gveie1MMGacC9JG5idRj13KHqKAtwhODJgzydlXYi5g/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div><div class="doc-info"><span class="doc-name">Design System — Assets de Email</span><span class="doc-tag">Componentes · Header · CTA · Footer · Inscrição</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+          <a class="doc-item" href="https://docs.google.com/document/d/1P6Gr1aM0iRH5ZpZY8dGn6kZLVq-u4EUTI67wN3TdcOU/edit" target="_blank"><div class="doc-icon"><svg viewBox="0 0 24 24"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg></div><div class="doc-info"><span class="doc-name">Agente Claude — System Prompt</span><span class="doc-tag">Voz da marca · ICPs · Frameworks · Restrições</span></div><span class="doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+        </div>
+        <div class="ds-note">
+          <strong>Este HTML é um asset do Design System ABSOLUT Sport.</strong>
+          <span class="muted">Brandbook canônico aplicado: tokens, SoulCraft, Lucide. Quando o DS for formalizado, este documento vira referência canônica do projeto de Growth.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+      <p>Email Marketing Command Center · Dashboard interno do projeto de Growth · 6 silos de produto · Framework de 3 tiers de negociação com liderança.</p>
+    </div>
+    <div class="footer-meta">
+      <strong style="color: var(--color-gold);">ABSOLUT Sport — Email Marketing</strong><br>
+      Command Center v1.0 · Fase 1<br>
+      <a href="https://drive.google.com/drive/folders/1E4c2uOX2RIi4u5_u6BUHJvolRC9jHKUg" target="_blank">Pasta raiz no Drive ↗</a><br>
+      Keter · Garin Aleph · 2026-05-07<br>
+      9 pastas · 40 documentos
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ABSOLUT Sport · Email Marketing Command Center v1.0</span>
+    <span>
+      Criado por Mauricio Lacerda × Rafa Rafa ·
+      <a href="mailto:design@absolut-sport.com.br?subject=Email%20Command%20Center%20%C2%B7%20Sugest%C3%A3o">design@absolut-sport.com.br</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.cmd-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.cmd-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const tabs = ['overview','master','silo-sblxi','silo-futebol','silo-f1','silo-tenis','silo-pass','silo-cross','tracking','assets'];
+  document.querySelectorAll('.cmd-tab')[tabs.indexOf(id)].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

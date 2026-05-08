@@ -119,6 +119,26 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-back:hover { background: var(--color-blue); border-color: var(--color-blue); }
 
+/* ─── LANG TOGGLE (PT/EN/ES/DE) ────────────────────────────── */
+.lang-toggle {
+  display: inline-flex;
+  background: var(--color-neutral-900);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-pill);
+  padding: 3px; gap: 2px;
+}
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  padding: 5px 10px; border-radius: 100px;
+  background: transparent; color: var(--color-neutral-300);
+  border: none; cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.lang-btn:hover { color: var(--color-white); }
+.lang-btn.active { background: var(--color-blue); color: var(--color-white); }
+
 /* ─── META BAR (versão + data) ─────────────────────────────── */
 .meta-bar {
   background: var(--color-neutral-900);
@@ -822,14 +842,20 @@ a { color: inherit; text-decoration: none; }
     <img src="assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
   </a>
   <div class="nav-breadcrumb">
-    <a href="index.html">Design System</a>
+    <a href="index.html" data-i18n="nav.ds">Design System</a>
     <span class="sep">/</span>
-    <a href="index.html#playbooks">Playbooks</a>
+    <a href="index.html#playbooks" data-i18n="nav.playbooks">Playbooks</a>
     <span class="sep">/</span>
-    <span class="current">Email Marketing · Command Center</span>
+    <span class="current" data-i18n="nav.current">Email Marketing · Command Center</span>
   </div>
   <div class="nav-actions">
-    <a class="nav-back" href="index.html">← Voltar ao Hub</a>
+    <a class="nav-back" href="index.html" data-i18n="nav.back">← Voltar ao Hub</a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+      <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+      <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+      <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+    </div>
     <a class="nav-credit" href="mailto:design@absolut-sport.com.br?subject=Email%20Marketing%20Command%20Center%20%C2%B7%20Sugest%C3%A3o" title="Mauricio × Rafa · sugestões pra design@">
       <span class="nav-credit-mark">MM × RR</span>
     </a>
@@ -838,22 +864,22 @@ a { color: inherit; text-decoration: none; }
 
 <!-- META BAR -->
 <div class="meta-bar">
-  <div class="meta-title">Email Marketing · Command Center</div>
-  <div>Versão <strong>1.0</strong> · Fase 1 concluída · Atualizado 2026-05-07</div>
+  <div class="meta-title" data-i18n="meta.title">Email Marketing · Command Center</div>
+  <div data-i18n="meta.version" data-i18n-html="true">Versão <strong>1.0</strong> · Fase 1 concluída · Atualizado 2026-05-07</div>
 </div>
 
 <!-- TABS -->
 <nav class="cmd-tabs">
-  <button class="cmd-tab active" onclick="showSection('overview')">Visão Geral</button>
-  <button class="cmd-tab" onclick="showSection('master')">Master Strategy</button>
-  <button class="cmd-tab" onclick="showSection('silo-sblxi')">Super Bowl LXI</button>
-  <button class="cmd-tab" onclick="showSection('silo-futebol')">Futebol</button>
-  <button class="cmd-tab" onclick="showSection('silo-f1')">Fórmula 1</button>
-  <button class="cmd-tab" onclick="showSection('silo-tenis')">Tênis</button>
-  <button class="cmd-tab" onclick="showSection('silo-pass')">ABSOLUT Pass</button>
-  <button class="cmd-tab" onclick="showSection('silo-cross')">Cross-sell</button>
-  <button class="cmd-tab" onclick="showSection('tracking')">Acompanhamento</button>
-  <button class="cmd-tab" onclick="showSection('assets')">Templates &amp; Agente</button>
+  <button class="cmd-tab active" onclick="showSection('overview')" data-i18n="tab.overview">Visão Geral</button>
+  <button class="cmd-tab" onclick="showSection('master')" data-i18n="tab.master">Master Strategy</button>
+  <button class="cmd-tab" onclick="showSection('silo-sblxi')" data-i18n="tab.sblxi">Super Bowl LXI</button>
+  <button class="cmd-tab" onclick="showSection('silo-futebol')" data-i18n="tab.futebol">Futebol</button>
+  <button class="cmd-tab" onclick="showSection('silo-f1')" data-i18n="tab.f1">Fórmula 1</button>
+  <button class="cmd-tab" onclick="showSection('silo-tenis')" data-i18n="tab.tenis">Tênis</button>
+  <button class="cmd-tab" onclick="showSection('silo-pass')" data-i18n="tab.pass">ABSOLUT Pass</button>
+  <button class="cmd-tab" onclick="showSection('silo-cross')" data-i18n="tab.cross">Cross-sell</button>
+  <button class="cmd-tab" onclick="showSection('tracking')" data-i18n="tab.tracking">Acompanhamento</button>
+  <button class="cmd-tab" onclick="showSection('assets')" data-i18n="tab.assets">Templates &amp; Agente</button>
 </nav>
 
 <main class="cmd-main">
@@ -861,40 +887,40 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ OVERVIEW ============ -->
   <section id="overview" class="cmd-section active">
     <div class="cmd-section-header">
-      <h2>Visão Geral do Projeto</h2>
-      <p>Estratégia de email marketing ABSOLUT Sport — 6 silos de produto, framework de 3 tiers de negociação com liderança.</p>
+      <h2 data-i18n="ov.title">Visão Geral do Projeto</h2>
+      <p data-i18n="ov.intro">Estratégia de email marketing ABSOLUT Sport — 6 silos de produto, framework de 3 tiers de negociação com liderança.</p>
     </div>
 
     <a class="key-doc" href="https://docs.google.com/document/d/1J4mBcX6jPEj0z1eJiSKtMbXF08jQ4c1ShOdZPMMwP0c/edit" target="_blank">
       <div class="key-doc-icon"><svg viewBox="0 0 24 24"><path d="M16 16.5 12 21l-4-4.5"/><path d="M12 21V11"/><path d="M3 7l3 3 3-3"/><path d="M6 10V3h12v7"/><path d="M21 7l-3 3-3-3"/></svg></div>
       <div class="key-doc-meta">
-        <div class="key-doc-title">Mapa de Tiers — O que é Inegociável</div>
-        <div class="key-doc-desc">Documento estratégico central · Framework de negociação com liderança · 00_Master Strategy</div>
+        <div class="key-doc-title" data-i18n="ov.keydoc.title">Mapa de Tiers — O que é Inegociável</div>
+        <div class="key-doc-desc" data-i18n="ov.keydoc.desc">Documento estratégico central · Framework de negociação com liderança · 00_Master Strategy</div>
       </div>
       <div class="key-doc-arrow"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
     </a>
 
     <div class="cmd-grid-4" style="margin-bottom: var(--space-8);">
-      <div class="overview-stat"><span class="stat-value">6</span><span class="stat-label">Silos de produto</span></div>
-      <div class="overview-stat"><span class="stat-value">40</span><span class="stat-label">Docs no Drive</span></div>
-      <div class="overview-stat"><span class="stat-value">3</span><span class="stat-label">Tiers de negociação</span></div>
-      <div class="overview-stat"><span class="stat-value">4</span><span class="stat-label">Frameworks de copy</span></div>
+      <div class="overview-stat"><span class="stat-value">6</span><span class="stat-label" data-i18n="ov.stat.silos">Silos de produto</span></div>
+      <div class="overview-stat"><span class="stat-value">40</span><span class="stat-label" data-i18n="ov.stat.docs">Docs no Drive</span></div>
+      <div class="overview-stat"><span class="stat-value">3</span><span class="stat-label" data-i18n="ov.stat.tiers">Tiers de negociação</span></div>
+      <div class="overview-stat"><span class="stat-value">4</span><span class="stat-label" data-i18n="ov.stat.frameworks">Frameworks de copy</span></div>
     </div>
 
     <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-strategy);"></div> Estratégia Master</div>
-      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-tier1);"></div> Tier 1 — Liderança entrega</div>
-      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-tier2);"></div> Tier 2 — Cedável</div>
-      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-tier3);"></div> Tier 3 — Só Mauricio</div>
-      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-track);"></div> Acompanhamento</div>
-      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-agent);"></div> Agente Claude / Assets</div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-strategy);"></div> <span data-i18n="lg.master">Estratégia Master</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-tier1);"></div> <span data-i18n="lg.t1">Tier 1 — Liderança entrega</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-tier2);"></div> <span data-i18n="lg.t2">Tier 2 — Cedável</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-tier3);"></div> <span data-i18n="lg.t3">Tier 3 — Só Mauricio</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-track);"></div> <span data-i18n="lg.track">Acompanhamento</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--cmd-agent);"></div> <span data-i18n="lg.agent">Agente Claude / Assets</span></div>
     </div>
 
     <div class="cmd-divider"></div>
 
     <div class="cmd-section-header">
-      <h2>Estrutura de Pastas</h2>
-      <p>Todas as pastas no Google Drive — clique para abrir.</p>
+      <h2 data-i18n="ov.folders.title">Estrutura de Pastas</h2>
+      <p data-i18n="ov.folders.intro">Todas as pastas no Google Drive — clique para abrir.</p>
     </div>
 
     <div class="cmd-grid-3">
@@ -957,24 +983,24 @@ a { color: inherit; text-decoration: none; }
     <div class="cmd-divider"></div>
 
     <div class="cmd-section-header">
-      <h2>Princípio de Negociação</h2>
+      <h2 data-i18n="ov.principle.title">Princípio de Negociação</h2>
     </div>
 
     <div class="cmd-grid-3">
       <div class="tier-card tier-1-bg">
-        <div class="tier-card-label">Tier 1 — Liderança entrega</div>
-        <div class="tier-card-title">Inegociável · Chão</div>
-        <div class="tier-card-desc">Automações básicas, boas-vindas, transacional, resend. Sem isso o programa não existe.</div>
+        <div class="tier-card-label" data-i18n="lg.t1">Tier 1 — Liderança entrega</div>
+        <div class="tier-card-title" data-i18n="ov.tc1.title">Inegociável · Chão</div>
+        <div class="tier-card-desc" data-i18n="ov.tc1.desc">Automações básicas, boas-vindas, transacional, resend. Sem isso o programa não existe.</div>
       </div>
       <div class="tier-card tier-2-bg">
-        <div class="tier-card-label">Tier 2 — Cedável</div>
-        <div class="tier-card-title">Moeda de Troca</div>
-        <div class="tier-card-desc">Newsletters, recaps. Mauricio pode abrir mão para destravar o Tier 1.</div>
+        <div class="tier-card-label" data-i18n="lg.t2">Tier 2 — Cedável</div>
+        <div class="tier-card-title" data-i18n="ov.tc2.title">Moeda de Troca</div>
+        <div class="tier-card-desc" data-i18n="ov.tc2.desc">Newsletters, recaps. Mauricio pode abrir mão para destravar o Tier 1.</div>
       </div>
       <div class="tier-card tier-3-bg">
-        <div class="tier-card-label">Tier 3 — Só Mauricio</div>
-        <div class="tier-card-title">Valor Insubstituível</div>
-        <div class="tier-card-desc">Copy Halbert, nutrição multi-email, upsells, win-backs, cross-silo. A liderança não consegue entregar.</div>
+        <div class="tier-card-label" data-i18n="lg.t3">Tier 3 — Só Mauricio</div>
+        <div class="tier-card-title" data-i18n="ov.tc3.title">Valor Insubstituível</div>
+        <div class="tier-card-desc" data-i18n="ov.tc3.desc">Copy Halbert, nutrição multi-email, upsells, win-backs, cross-silo. A liderança não consegue entregar.</div>
       </div>
     </div>
   </section>
@@ -982,8 +1008,8 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ MASTER STRATEGY ============ -->
   <section id="master" class="cmd-section">
     <div class="cmd-section-header">
-      <h2>00 — Master Strategy</h2>
-      <p>Base teórica e estratégica · Brunson + Hormozi + Halbert + Deiss.</p>
+      <h2 data-i18n="ms.title">00 — Master Strategy</h2>
+      <p data-i18n="ms.intro">Base teórica e estratégica · Brunson + Hormozi + Halbert + Deiss.</p>
     </div>
 
     <a class="folder-link" href="https://drive.google.com/drive/folders/1oBqgxrdAJmH-8rum5gDi3eBQtG5jyWQ1" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;">
@@ -1027,8 +1053,8 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ SUPER BOWL LXI ============ -->
   <section id="silo-sblxi" class="cmd-section">
     <div class="cmd-section-header">
-      <h2>01 — Super Bowl LXI</h2>
-      <p>Signature · Prestige · Pinnacle · $6.000–$18.000 · B2C e B2B.</p>
+      <h2 data-i18n="sb.title">01 — Super Bowl LXI</h2>
+      <p data-i18n="sb.intro">Signature · Prestige · Pinnacle · $6.000–$18.000 · B2C e B2B.</p>
     </div>
     <a class="folder-link" href="https://drive.google.com/drive/folders/1AOS12eyGzco6VHHwzlTP_ArO8af1bYuw" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
 
@@ -1067,8 +1093,8 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ FUTEBOL ============ -->
   <section id="silo-futebol" class="cmd-section">
     <div class="cmd-section-header">
-      <h2>02 — Futebol</h2>
-      <p>Flamengo · Libertadores · Sul-americana · Premium Brasil.</p>
+      <h2 data-i18n="ft.title">02 — Futebol</h2>
+      <p data-i18n="ft.intro">Flamengo · Libertadores · Sul-americana · Premium Brasil.</p>
     </div>
     <a class="folder-link" href="https://drive.google.com/drive/folders/1mRqF1mG_0_A-m0ehlloB-jgVAFQw0UA7" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
 
@@ -1105,8 +1131,8 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ FÓRMULA 1 ============ -->
   <section id="silo-f1" class="cmd-section">
     <div class="cmd-section-header">
-      <h2>03 — Fórmula 1</h2>
-      <p>GP São Paulo — Interlagos · Out/2026 · Premium Brasil.</p>
+      <h2 data-i18n="f1.title">03 — Fórmula 1</h2>
+      <p data-i18n="f1.intro">GP São Paulo — Interlagos · Out/2026 · Premium Brasil.</p>
     </div>
     <a class="folder-link" href="https://drive.google.com/drive/folders/1Cb-wIOk7AhT0GxjY1rLPgdIhLJHnW7Fj" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
 
@@ -1131,8 +1157,8 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ TÊNIS ============ -->
   <section id="silo-tenis" class="cmd-section">
     <div class="cmd-section-header">
-      <h2>04 — Tênis</h2>
-      <p>NFTO Brasil — Nitto ATP · Nicho A/B.</p>
+      <h2 data-i18n="tn.title">04 — Tênis</h2>
+      <p data-i18n="tn.intro">NFTO Brasil — Nitto ATP · Nicho A/B.</p>
     </div>
     <a class="folder-link" href="https://drive.google.com/drive/folders/1zWRMO_vokfbRV3ChUjppcs_KyEQMx7iX" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
 
@@ -1157,8 +1183,8 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ ABSOLUT PASS ============ -->
   <section id="silo-pass" class="cmd-section">
     <div class="cmd-section-header">
-      <h2>05 — ABSOLUT Pass</h2>
-      <p>Assinatura recorrente · Upgrades · Churn prevention.</p>
+      <h2 data-i18n="ps.title">05 — ABSOLUT Pass</h2>
+      <p data-i18n="ps.intro">Assinatura recorrente · Upgrades · Churn prevention.</p>
     </div>
     <a class="folder-link" href="https://drive.google.com/drive/folders/12T9vFjJ6hxh3XmMVE9cy7TQ0L6aTdD7l" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
 
@@ -1182,8 +1208,8 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ CROSS-SELL ============ -->
   <section id="silo-cross" class="cmd-section">
     <div class="cmd-section-header">
-      <h2>06 — Cross-sell</h2>
-      <p>Comprou A → oferta B · Base interna · 100% Tier 3.</p>
+      <h2 data-i18n="cs.title">06 — Cross-sell</h2>
+      <p data-i18n="cs.intro">Comprou A → oferta B · Base interna · 100% Tier 3.</p>
     </div>
     <a class="folder-link" href="https://drive.google.com/drive/folders/1gLHrhA78Gg6ImJwfvveL4KsW2y_GvhSU" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
 
@@ -1205,8 +1231,8 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ TRACKING ============ -->
   <section id="tracking" class="cmd-section">
     <div class="cmd-section-header">
-      <h2>07 — Acompanhamento</h2>
-      <p>Dashboard de accountability · Gerido por Mauricio.</p>
+      <h2 data-i18n="tk.title">07 — Acompanhamento</h2>
+      <p data-i18n="tk.intro">Dashboard de accountability · Gerido por Mauricio.</p>
     </div>
     <a class="folder-link" href="https://drive.google.com/drive/folders/1apO8EmE-GeGpK_cqZOq995hDqjL8cS5f" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
 
@@ -1250,8 +1276,8 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ ASSETS / AGENT ============ -->
   <section id="assets" class="cmd-section">
     <div class="cmd-section-header">
-      <h2>08 — Templates &amp; Agente Claude</h2>
-      <p>Biblioteca de assets · Design System ABSOLUT Sport · Agente Claude dedicado.</p>
+      <h2 data-i18n="ag.title">08 — Templates &amp; Agente Claude</h2>
+      <p data-i18n="ag.intro">Biblioteca de assets · Design System ABSOLUT Sport · Agente Claude dedicado.</p>
     </div>
     <a class="folder-link" href="https://drive.google.com/drive/folders/1nn4COHyxTKqalMuEAukCginTMPgnHeoH" target="_blank" style="margin-bottom: var(--space-6); display: inline-flex;"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Abrir pasta ↗</a>
 
@@ -1320,13 +1346,263 @@ a { color: inherit; text-decoration: none; }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 ABSOLUT Sport · Email Marketing Command Center v1.0</span>
-    <span>
+    <span data-i18n="ft.copy">© 2026 ABSOLUT Sport · Email Marketing Command Center v1.0</span>
+    <span data-i18n="ft.coauth" data-i18n-html="true">
       Criado por Mauricio Lacerda × Rafa Rafa ·
       <a href="mailto:design@absolut-sport.com.br?subject=Email%20Command%20Center%20%C2%B7%20Sugest%C3%A3o">design@absolut-sport.com.br</a>
     </span>
   </div>
 </footer>
+
+<script>
+window.I18N_DICT = {
+  pt: {
+    "nav.ds": "Design System",
+    "nav.playbooks": "Playbooks",
+    "nav.current": "Email Marketing · Command Center",
+    "nav.back": "← Voltar ao Hub",
+    "meta.title": "Email Marketing · Command Center",
+    "meta.version": "Versão <strong>1.0</strong> · Fase 1 concluída · Atualizado 2026-05-07",
+    "tab.overview": "Visão Geral",
+    "tab.master": "Master Strategy",
+    "tab.sblxi": "Super Bowl LXI",
+    "tab.futebol": "Futebol",
+    "tab.f1": "Fórmula 1",
+    "tab.tenis": "Tênis",
+    "tab.pass": "ABSOLUT Pass",
+    "tab.cross": "Cross-sell",
+    "tab.tracking": "Acompanhamento",
+    "tab.assets": "Templates & Agente",
+    "ov.title": "Visão Geral do Projeto",
+    "ov.intro": "Estratégia de email marketing ABSOLUT Sport — 6 silos de produto, framework de 3 tiers de negociação com liderança.",
+    "ov.keydoc.title": "Mapa de Tiers — O que é Inegociável",
+    "ov.keydoc.desc": "Documento estratégico central · Framework de negociação com liderança · 00_Master Strategy",
+    "ov.stat.silos": "Silos de produto",
+    "ov.stat.docs": "Docs no Drive",
+    "ov.stat.tiers": "Tiers de negociação",
+    "ov.stat.frameworks": "Frameworks de copy",
+    "lg.master": "Estratégia Master",
+    "lg.t1": "Tier 1 — Liderança entrega",
+    "lg.t2": "Tier 2 — Cedável",
+    "lg.t3": "Tier 3 — Só Mauricio",
+    "lg.track": "Acompanhamento",
+    "lg.agent": "Agente Claude / Assets",
+    "ov.folders.title": "Estrutura de Pastas",
+    "ov.folders.intro": "Todas as pastas no Google Drive — clique para abrir.",
+    "ov.principle.title": "Princípio de Negociação",
+    "ov.tc1.title": "Inegociável · Chão",
+    "ov.tc1.desc": "Automações básicas, boas-vindas, transacional, resend. Sem isso o programa não existe.",
+    "ov.tc2.title": "Moeda de Troca",
+    "ov.tc2.desc": "Newsletters, recaps. Mauricio pode abrir mão para destravar o Tier 1.",
+    "ov.tc3.title": "Valor Insubstituível",
+    "ov.tc3.desc": "Copy Halbert, nutrição multi-email, upsells, win-backs, cross-silo. A liderança não consegue entregar.",
+    "ms.title": "00 — Master Strategy",
+    "ms.intro": "Base teórica e estratégica · Brunson + Hormozi + Halbert + Deiss.",
+    "sb.title": "01 — Super Bowl LXI",
+    "sb.intro": "Signature · Prestige · Pinnacle · $6.000–$18.000 · B2C e B2B.",
+    "ft.title": "02 — Futebol",
+    "ft.intro": "Flamengo · Libertadores · Sul-americana · Premium Brasil.",
+    "f1.title": "03 — Fórmula 1",
+    "f1.intro": "GP São Paulo — Interlagos · Out/2026 · Premium Brasil.",
+    "tn.title": "04 — Tênis",
+    "tn.intro": "NFTO Brasil — Nitto ATP · Nicho A/B.",
+    "ps.title": "05 — ABSOLUT Pass",
+    "ps.intro": "Assinatura recorrente · Upgrades · Churn prevention.",
+    "cs.title": "06 — Cross-sell",
+    "cs.intro": "Comprou A → oferta B · Base interna · 100% Tier 3.",
+    "tk.title": "07 — Acompanhamento",
+    "tk.intro": "Dashboard de accountability · Gerido por Mauricio.",
+    "ag.title": "08 — Templates & Agente Claude",
+    "ag.intro": "Biblioteca de assets · Design System ABSOLUT Sport · Agente Claude dedicado.",
+    "ft.copy": "© 2026 ABSOLUT Sport · Email Marketing Command Center v1.0",
+    "ft.coauth": "Criado por Mauricio Lacerda × Rafa Rafa · <a href=\"mailto:design@absolut-sport.com.br?subject=Email%20Command%20Center%20%C2%B7%20Sugest%C3%A3o\">design@absolut-sport.com.br</a>"
+  },
+  en: {
+    "nav.ds": "Design System",
+    "nav.playbooks": "Playbooks",
+    "nav.current": "Email Marketing · Command Center",
+    "nav.back": "← Back to Hub",
+    "meta.title": "Email Marketing · Command Center",
+    "meta.version": "Version <strong>1.0</strong> · Phase 1 complete · Updated 2026-05-07",
+    "tab.overview": "Overview",
+    "tab.master": "Master Strategy",
+    "tab.sblxi": "Super Bowl LXI",
+    "tab.futebol": "Football",
+    "tab.f1": "Formula 1",
+    "tab.tenis": "Tennis",
+    "tab.pass": "ABSOLUT Pass",
+    "tab.cross": "Cross-sell",
+    "tab.tracking": "Tracking",
+    "tab.assets": "Templates & Agent",
+    "ov.title": "Project Overview",
+    "ov.intro": "ABSOLUT Sport email marketing strategy — 6 product silos, 3-tier framework for negotiating with leadership.",
+    "ov.keydoc.title": "Tier Map — What's Non-negotiable",
+    "ov.keydoc.desc": "Central strategic doc · Negotiation framework with leadership · 00_Master Strategy",
+    "ov.stat.silos": "Product silos",
+    "ov.stat.docs": "Drive docs",
+    "ov.stat.tiers": "Negotiation tiers",
+    "ov.stat.frameworks": "Copy frameworks",
+    "lg.master": "Master Strategy",
+    "lg.t1": "Tier 1 — Leadership delivers",
+    "lg.t2": "Tier 2 — Negotiable",
+    "lg.t3": "Tier 3 — Mauricio only",
+    "lg.track": "Tracking",
+    "lg.agent": "Claude Agent / Assets",
+    "ov.folders.title": "Folder Structure",
+    "ov.folders.intro": "All folders in Google Drive — click to open.",
+    "ov.principle.title": "Negotiation Principle",
+    "ov.tc1.title": "Non-negotiable · Floor",
+    "ov.tc1.desc": "Basic automations, welcome, transactional, resend. Without these the program doesn't exist.",
+    "ov.tc2.title": "Bargaining Chip",
+    "ov.tc2.desc": "Newsletters, recaps. Mauricio can give these up to unlock Tier 1.",
+    "ov.tc3.title": "Irreplaceable Value",
+    "ov.tc3.desc": "Halbert copy, multi-email nurture, upsells, win-backs, cross-silo. Leadership can't deliver this.",
+    "ms.title": "00 — Master Strategy",
+    "ms.intro": "Theoretical and strategic base · Brunson + Hormozi + Halbert + Deiss.",
+    "sb.title": "01 — Super Bowl LXI",
+    "sb.intro": "Signature · Prestige · Pinnacle · $6,000–$18,000 · B2C and B2B.",
+    "ft.title": "02 — Football",
+    "ft.intro": "Flamengo · Libertadores · Sul-americana · Premium Brazil.",
+    "f1.title": "03 — Formula 1",
+    "f1.intro": "São Paulo GP — Interlagos · Oct/2026 · Premium Brazil.",
+    "tn.title": "04 — Tennis",
+    "tn.intro": "NFTO Brazil — Nitto ATP · A/B niche.",
+    "ps.title": "05 — ABSOLUT Pass",
+    "ps.intro": "Recurring subscription · Upgrades · Churn prevention.",
+    "cs.title": "06 — Cross-sell",
+    "cs.intro": "Bought A → offer B · Internal base · 100% Tier 3.",
+    "tk.title": "07 — Tracking",
+    "tk.intro": "Accountability dashboard · Managed by Mauricio.",
+    "ag.title": "08 — Templates & Claude Agent",
+    "ag.intro": "Asset library · ABSOLUT Sport Design System · Dedicated Claude Agent.",
+    "ft.copy": "© 2026 ABSOLUT Sport · Email Marketing Command Center v1.0",
+    "ft.coauth": "Built by Mauricio Lacerda × Rafa Rafa · <a href=\"mailto:design@absolut-sport.com.br?subject=Email%20Command%20Center%20%C2%B7%20Suggestion\">design@absolut-sport.com.br</a>"
+  },
+  es: {
+    "nav.ds": "Design System",
+    "nav.playbooks": "Playbooks",
+    "nav.current": "Email Marketing · Command Center",
+    "nav.back": "← Volver al Hub",
+    "meta.title": "Email Marketing · Command Center",
+    "meta.version": "Versión <strong>1.0</strong> · Fase 1 finalizada · Actualizado 2026-05-07",
+    "tab.overview": "Visión General",
+    "tab.master": "Master Strategy",
+    "tab.sblxi": "Super Bowl LXI",
+    "tab.futebol": "Fútbol",
+    "tab.f1": "Fórmula 1",
+    "tab.tenis": "Tenis",
+    "tab.pass": "ABSOLUT Pass",
+    "tab.cross": "Cross-sell",
+    "tab.tracking": "Seguimiento",
+    "tab.assets": "Templates & Agente",
+    "ov.title": "Visión General del Proyecto",
+    "ov.intro": "Estrategia de email marketing ABSOLUT Sport — 6 silos de producto, framework de 3 tiers de negociación con liderazgo.",
+    "ov.keydoc.title": "Mapa de Tiers — Lo Innegociable",
+    "ov.keydoc.desc": "Documento estratégico central · Framework de negociación con liderazgo · 00_Master Strategy",
+    "ov.stat.silos": "Silos de producto",
+    "ov.stat.docs": "Docs en Drive",
+    "ov.stat.tiers": "Tiers de negociación",
+    "ov.stat.frameworks": "Frameworks de copy",
+    "lg.master": "Estrategia Master",
+    "lg.t1": "Tier 1 — Liderazgo entrega",
+    "lg.t2": "Tier 2 — Cedible",
+    "lg.t3": "Tier 3 — Solo Mauricio",
+    "lg.track": "Seguimiento",
+    "lg.agent": "Agente Claude / Assets",
+    "ov.folders.title": "Estructura de Carpetas",
+    "ov.folders.intro": "Todas las carpetas en Google Drive — clic para abrir.",
+    "ov.principle.title": "Principio de Negociación",
+    "ov.tc1.title": "Innegociable · Piso",
+    "ov.tc1.desc": "Automatizaciones básicas, bienvenida, transaccional, resend. Sin esto el programa no existe.",
+    "ov.tc2.title": "Moneda de Cambio",
+    "ov.tc2.desc": "Newsletters, recaps. Mauricio puede ceder esto para destrabar el Tier 1.",
+    "ov.tc3.title": "Valor Insustituible",
+    "ov.tc3.desc": "Copy Halbert, nutrición multi-email, upsells, win-backs, cross-silo. El liderazgo no consigue entregar.",
+    "ms.title": "00 — Master Strategy",
+    "ms.intro": "Base teórica y estratégica · Brunson + Hormozi + Halbert + Deiss.",
+    "sb.title": "01 — Super Bowl LXI",
+    "sb.intro": "Signature · Prestige · Pinnacle · $6.000–$18.000 · B2C y B2B.",
+    "ft.title": "02 — Fútbol",
+    "ft.intro": "Flamengo · Libertadores · Sudamericana · Premium Brasil.",
+    "f1.title": "03 — Fórmula 1",
+    "f1.intro": "GP São Paulo — Interlagos · Oct/2026 · Premium Brasil.",
+    "tn.title": "04 — Tenis",
+    "tn.intro": "NFTO Brasil — Nitto ATP · Nicho A/B.",
+    "ps.title": "05 — ABSOLUT Pass",
+    "ps.intro": "Suscripción recurrente · Upgrades · Prevención de churn.",
+    "cs.title": "06 — Cross-sell",
+    "cs.intro": "Compró A → oferta B · Base interna · 100% Tier 3.",
+    "tk.title": "07 — Seguimiento",
+    "tk.intro": "Dashboard de accountability · Gestionado por Mauricio.",
+    "ag.title": "08 — Templates & Agente Claude",
+    "ag.intro": "Biblioteca de assets · Design System ABSOLUT Sport · Agente Claude dedicado.",
+    "ft.copy": "© 2026 ABSOLUT Sport · Email Marketing Command Center v1.0",
+    "ft.coauth": "Creado por Mauricio Lacerda × Rafa Rafa · <a href=\"mailto:design@absolut-sport.com.br?subject=Email%20Command%20Center%20%C2%B7%20Sugerencia\">design@absolut-sport.com.br</a>"
+  },
+  de: {
+    "nav.ds": "Design System",
+    "nav.playbooks": "Playbooks",
+    "nav.current": "Email Marketing · Command Center",
+    "nav.back": "← Zurück zum Hub",
+    "meta.title": "Email Marketing · Command Center",
+    "meta.version": "Version <strong>1.0</strong> · Phase 1 abgeschlossen · Aktualisiert 2026-05-07",
+    "tab.overview": "Übersicht",
+    "tab.master": "Master Strategy",
+    "tab.sblxi": "Super Bowl LXI",
+    "tab.futebol": "Fußball",
+    "tab.f1": "Formel 1",
+    "tab.tenis": "Tennis",
+    "tab.pass": "ABSOLUT Pass",
+    "tab.cross": "Cross-Sell",
+    "tab.tracking": "Tracking",
+    "tab.assets": "Templates & Agent",
+    "ov.title": "Projektübersicht",
+    "ov.intro": "ABSOLUT Sport Email-Marketing-Strategie — 6 Produkt-Silos, 3-Tier-Framework für die Verhandlung mit der Leitung.",
+    "ov.keydoc.title": "Tier-Karte — Was nicht verhandelbar ist",
+    "ov.keydoc.desc": "Zentrales Strategiedokument · Verhandlungs-Framework mit der Leitung · 00_Master Strategy",
+    "ov.stat.silos": "Produkt-Silos",
+    "ov.stat.docs": "Drive-Dokumente",
+    "ov.stat.tiers": "Verhandlungs-Tiers",
+    "ov.stat.frameworks": "Copy-Frameworks",
+    "lg.master": "Master-Strategie",
+    "lg.t1": "Tier 1 — Leitung liefert",
+    "lg.t2": "Tier 2 — Verhandelbar",
+    "lg.t3": "Tier 3 — Nur Mauricio",
+    "lg.track": "Tracking",
+    "lg.agent": "Claude Agent / Assets",
+    "ov.folders.title": "Ordnerstruktur",
+    "ov.folders.intro": "Alle Ordner in Google Drive — zum Öffnen klicken.",
+    "ov.principle.title": "Verhandlungsprinzip",
+    "ov.tc1.title": "Nicht verhandelbar · Basis",
+    "ov.tc1.desc": "Basis-Automationen, Welcome, Transaktional, Resend. Ohne das gibt es kein Programm.",
+    "ov.tc2.title": "Verhandlungsmasse",
+    "ov.tc2.desc": "Newsletter, Recaps. Mauricio kann darauf verzichten, um Tier 1 freizuschalten.",
+    "ov.tc3.title": "Unersetzbarer Wert",
+    "ov.tc3.desc": "Halbert-Copy, Multi-Email-Nurture, Upsells, Win-backs, Cross-Silo. Die Leitung kann das nicht liefern.",
+    "ms.title": "00 — Master Strategy",
+    "ms.intro": "Theoretische und strategische Basis · Brunson + Hormozi + Halbert + Deiss.",
+    "sb.title": "01 — Super Bowl LXI",
+    "sb.intro": "Signature · Prestige · Pinnacle · $6.000–$18.000 · B2C und B2B.",
+    "ft.title": "02 — Fußball",
+    "ft.intro": "Flamengo · Libertadores · Sul-americana · Premium Brasilien.",
+    "f1.title": "03 — Formel 1",
+    "f1.intro": "GP São Paulo — Interlagos · Okt/2026 · Premium Brasilien.",
+    "tn.title": "04 — Tennis",
+    "tn.intro": "NFTO Brasilien — Nitto ATP · A/B-Nische.",
+    "ps.title": "05 — ABSOLUT Pass",
+    "ps.intro": "Wiederkehrendes Abo · Upgrades · Churn-Prävention.",
+    "cs.title": "06 — Cross-Sell",
+    "cs.intro": "Hat A gekauft → Angebot B · Interne Basis · 100% Tier 3.",
+    "tk.title": "07 — Tracking",
+    "tk.intro": "Accountability-Dashboard · Von Mauricio betreut.",
+    "ag.title": "08 — Templates & Claude Agent",
+    "ag.intro": "Asset-Bibliothek · ABSOLUT Sport Design System · Eigener Claude-Agent.",
+    "ft.copy": "© 2026 ABSOLUT Sport · Email Marketing Command Center v1.0",
+    "ft.coauth": "Erstellt von Mauricio Lacerda × Rafa Rafa · <a href=\"mailto:design@absolut-sport.com.br?subject=Email%20Command%20Center%20%C2%B7%20Vorschlag\">design@absolut-sport.com.br</a>"
+  }
+};
+</script>
+<script src="i18n.js"></script>
 
 <script>
 function showSection(id) {

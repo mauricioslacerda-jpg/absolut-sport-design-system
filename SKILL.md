@@ -162,7 +162,7 @@ Método replicável documentado em `I18N_METHOD.md`. Padrões de marcação:
 3 playbooks ativos no Hub:
 
 1. **AI Marketing** (`playbooks/ai-marketing.html`) — Como o time de marketing global usa AI no dia a dia. Use cases, regras, workflow e ferramentas.
-2. **Enterprise AI Guide** (`higgsfield-ai-guide.html`) — Contas, segurança, boas práticas e arsenal de IA para times.
+2. **Enterprise AI Guide** (`playbooks/enterprise-ai.html`) — Contas, segurança, boas práticas e arsenal de IA para times.
 3. **Growth** (`playbooks/growth.html`) — Pilares (AAARRR), métricas, plataformas, metodologia, workflow, do/don't, glossário. Filosofia: "Alavancagem iterativa".
 
 Cada playbook herda nav + footer + CSS do design system. Não criar playbook do zero — espelhar a estrutura desses 3.

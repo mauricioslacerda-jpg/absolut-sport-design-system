@@ -169,7 +169,50 @@ See `assets/` folder:
 | `assets/rafa-rafa.png` | Cartaz do banner "Pergunte pro Rafa" no rodapé do Hub. Também usado como `og:image` em todas as páginas. |
 | `assets/mauricio.jpg` | _TODO_: foto do Mauricio Lacerda. Reservada para uso planejado (banner de coautoria, perfil de coordenação, ou expansão do banner Rafa Rafa pra dupla). Mantida no repo até a decisão de uso. |
 | `ui_kits/website/` | UI kit React para absolut-sport.com.br. |
-| `SKILL.md` | Descritor de agent skill. |
+| `SKILL.md` | **Brandbook Skill (Claude)** — spec completa do brandbook em formato Claude skill. Carrega regras de cor, tipografia, ícones (Lucide), motion, voz Mauricio, i18n, playbooks aplicados, anti-padrões e contato. Veja seção "Skill Claude" abaixo pra ativar localmente. |
+| `I18N_METHOD.md` | Método replicável de tradução (i18n.js + dicionário inline). Pra usar o mesmo padrão em outros projetos. |
+
+---
+
+## SKILL CLAUDE · BRANDBOOK
+
+`SKILL.md` é o canon do brandbook em formato Claude skill. Quando ativada, carrega contexto completo: cores, tipografia, logos, regras de iconografia (Lucide), motion, voz Mauricio, i18n nos 4 idiomas, playbooks aplicados e anti-padrões.
+
+### Pra que serve
+
+Qualquer Claude (Code, Desktop, API) com a skill ativada vai gerar artefatos visuais e textuais já alinhados ao brandbook ABSOLUT Sport — sem precisar repetir as regras a cada conversa. Cobre:
+
+- Landing pages, e-mails, decks, social media
+- Copy em PT/EN/ES/DE com voz Mauricio
+- HTML production-ready com tokens e componentes do design system
+- Prompts pra ferramentas AI (Midjourney, ChatGPT, etc.) já formatados com contexto da marca
+
+### Ativar localmente (Claude Code)
+
+Copiar a pasta inteira pro diretório de skills do Claude Code:
+
+```powershell
+$src = "G:\Meu Drive\ABSOLUT Sport Design System"
+$dest = "$env:USERPROFILE\.claude\skills\absolut-sport-design"
+if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }
+Copy-Item -Path $src -Destination $dest -Recurse
+```
+
+A skill é descoberta automaticamente via `SKILL.md`. Ativar via `/skills` no Claude Code, ou invocar diretamente em conversa quando precisar.
+
+### Atualizar a skill
+
+Mudou alguma coisa no design system (token novo, aforismo novo, anti-padrão a documentar)? Edite o `SKILL.md` na raiz do projeto. Re-rode o `Copy-Item` acima pra propagar.
+
+Quando o subdomínio `design.absolut-sport.com.br` estiver no ar, a skill vai poder ser instalada via download direto do `SKILL.md` + arquivos referenciados.
+
+### Triggers de uso (quando a skill se ativa)
+
+A `description` no frontmatter inclui keywords que disparam a skill quando relevante:
+- "ABSOLUT Sport", "CONMEBOL Libertadores", "Sudamericana"
+- "landing page", "email template", "deck", "social media", "voucher"
+- "marketing copy", "brand colors", "logo"
+- "Mauricio", "Rafa Rafa", "design@absolut-sport.com.br"
 
 ---
 

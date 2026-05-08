@@ -230,6 +230,96 @@ section {
   margin: 0 auto;
 }
 
+/* ─── PHILOSOPHY (alavancagem iterativa) ─────────────────── */
+.philo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  position: relative;
+  margin-bottom: var(--space-8);
+}
+.philo-grid::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: calc(12.5% + 24px);
+  right: calc(12.5% + 24px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-blue), var(--color-gold));
+  opacity: 0.4;
+  z-index: 0;
+}
+.philo-card {
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  position: relative;
+  z-index: 1;
+  transition: all var(--transition-default);
+}
+.philo-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201,168,76,0.5);
+}
+.philo-num {
+  width: 40px; height: 40px;
+  background: var(--color-black);
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: var(--space-4);
+}
+.philo-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+  line-height: 1.05;
+}
+.philo-def {
+  font-size: var(--text-body-sm);
+  color: var(--color-neutral-200);
+  line-height: 1.55;
+}
+.philo-afor {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 32px);
+  font-weight: var(--weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--color-gold);
+  text-align: center;
+  padding: var(--space-10) var(--space-6);
+  background: var(--color-neutral-900);
+  border: 2px solid rgba(201,168,76,0.3);
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+}
+.philo-afor::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.meth-bridge {
+  font-size: var(--text-body);
+  color: var(--color-neutral-200);
+  font-style: italic;
+  margin-bottom: var(--space-6);
+  padding-left: var(--space-4);
+  border-left: 2px solid rgba(201,168,76,0.4);
+}
+
 /* ─── PILLARS (AAARRR) ────────────────────────────────────── */
 .pillars-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-3); }
 .pillar-card {
@@ -944,6 +1034,36 @@ section {
     <div class="glossary-item"><div class="glossary-term">Significância</div><div class="glossary-def" data-i18n="glos.sig">Probabilidade de que o resultado não seja acaso. Mínimo 95%.</div></div>
   </div>
 </section>
+
+<!-- APROFUNDAMENTO ── Email Marketing -->
+<section>
+  <div class="section-eyebrow">Aprofundamento · Canais táticos</div>
+  <h2 class="section-title">Email como<br><span class="accent">máquina de receita.</span></h2>
+  <p class="section-intro">O email marketing da ABSOLUT Sport tem seu próprio playbook — 5 categorias esportivas, 3 tiers de execução, automações RD Station e o Agente Claude dedicado.</p>
+
+  <a href="growth-email.html" style="
+    display: flex; align-items: stretch; gap: 0;
+    background: #141414; border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px; overflow: hidden; text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+    max-width: 560px;
+  " onmouseover="this.style.borderColor='rgba(201,168,76,0.6)';this.style.transform='translateY(-2px)'"
+     onmouseout="this.style.borderColor='rgba(201,168,76,0.25)';this.style.transform='none'">
+    <div style="
+      width: 120px; flex-shrink: 0;
+      background: linear-gradient(135deg, #0a1520 0%, #155F97 50%, #C9A84C 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px;
+    ">✉</div>
+    <div style="padding: 20px 24px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C9A84C;margin-bottom:6px;">Growth · Email Marketing</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:#fff;margin-bottom:8px;">Email Growth Playbook</div>
+      <div style="font-size:13px;color:#999;line-height:1.5;">5 categorias · 3 tiers · automações RD Station · Farol de Aprovação. A estratégia completa de email da ABSOLUT Sport.</div>
+    </div>
+  </a>
+</section>
+
+<hr class="divider">
 
 <!-- FOOTER -->
 <footer class="footer">

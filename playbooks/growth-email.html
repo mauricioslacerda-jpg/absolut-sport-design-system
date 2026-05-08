@@ -5,82 +5,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Email Growth Playbook — ABSOLUT Sport</title>
   <link rel="stylesheet" href="../colors_and_type.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'SoulCraft';
-      src: url('../fonts/soulcraftgx.ttf') format('truetype');
-      font-weight: 100 900;
-      font-style: normal;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0D0D0D;
-      --bg-card: #141414;
-      --bg-card-hover: #1a1a1a;
-      --white: #FFFFFF;
-      --gold: #C9A84C;
-      --gold-light: #E8C96A;
-      --blue: #155F97;
-      --blue-mid: #1E7ABE;
-      --blue-bright: #3B82F6;
-      --green: #22C55E;
-      --green-light: #7EE787;
-      --red: #E3001B;
-      --neutral-200: #E8E8E8;
-      --neutral-400: #999999;
-      --neutral-600: #555555;
-      --neutral-700: #333333;
-      --neutral-800: #1F1F1F;
-      --neutral-900: #141414;
-      --border: rgba(255,255,255,0.08);
-      --border-gold: rgba(201,168,76,0.3);
-      --radius: 8px;
-      --radius-lg: 16px;
-    }
-
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: 'Barlow', sans-serif;
-      font-weight: 400;
-      line-height: 1.6;
+      background: var(--color-black);
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      line-height: var(--leading-relaxed);
       -webkit-font-smoothing: antialiased;
     }
 
     /* ── NAV ── */
     .nav {
-      position: sticky; top: 0; z-index: 100;
+      position: sticky; top: 0; z-index: var(--z-sticky);
+      height: 68px; padding: 0 var(--space-12);
+      background: rgba(13, 13, 13, 0.45);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 56px;
-      background: rgba(13,13,13,0.95);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 4px 32px rgba(0,0,0,0.3);
     }
-    .nav-left { display: flex; align-items: center; gap: 16px; }
-    .nav-logo img { height: 24px; }
-    .nav-sep { width: 1px; height: 20px; background: var(--border); }
-    .nav-breadcrumb { font-family: 'Barlow', sans-serif; font-size: 13px; color: var(--neutral-400); }
-    .nav-breadcrumb span { color: var(--white); }
-    .nav-back {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
-      font-size: 13px; font-weight: 600; letter-spacing: 0.05em;
-      color: var(--neutral-400); text-decoration: none;
+    .nav-logo img { height: 32px; }
+    .nav-breadcrumb {
+      display: flex; align-items: center; gap: var(--space-3);
+      font-size: var(--text-caption);
+      letter-spacing: var(--tracking-wide);
       text-transform: uppercase;
+      color: var(--color-neutral-300);
+      font-weight: var(--weight-medium);
     }
-    .nav-back:hover { color: var(--gold); }
+    .nav-breadcrumb a { color: var(--color-neutral-300); transition: color var(--transition-fast); text-decoration: none; }
+    .nav-breadcrumb a:hover { color: var(--color-blue-mid); }
+    .nav-breadcrumb .sep { color: var(--color-neutral-600); }
+    .nav-breadcrumb .current { color: var(--color-white); }
+    .nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .nav-credit {
+      display: inline-flex; align-items: center;
+      padding: 5px 10px;
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius-pill);
+      background: rgba(201,168,76,0.08);
+      transition: all var(--transition-fast);
+      text-decoration: none;
+    }
+    .nav-credit:hover { background: rgba(201,168,76,0.18); border-color: var(--color-gold); }
+    .nav-credit-mark {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: var(--tracking-wide);
+      color: var(--color-gold); white-space: nowrap;
+    }
+    .lang-toggle {
+      display: inline-flex;
+      background: var(--color-neutral-900);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-pill);
+      padding: 3px; gap: 2px;
+    }
+    .lang-btn {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: var(--tracking-wide);
+      padding: 5px 10px; border-radius: 100px;
+      background: transparent; color: var(--color-neutral-300);
+      border: none; cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .lang-btn:hover { color: var(--color-white); }
+    .lang-btn.active { background: var(--color-blue); color: var(--color-white); }
+    .nav-back {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-white);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 8px 18px; font-size: 12px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+      text-decoration: none;
+    }
+    .nav-back:hover { background: var(--color-blue); border-color: var(--color-blue); }
 
     /* ── HERO ── */
     .hero {
       position: relative; overflow: hidden;
-      padding: 100px 40px 80px;
-      border-bottom: 1px solid var(--border);
+      padding: var(--space-20) var(--space-20) var(--space-16);
+      border-bottom: 1px solid var(--border-subtle);
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -90,28 +104,28 @@
     .hero-grid {
       position: absolute; inset: 0; opacity: 0.04;
       background-image:
-        linear-gradient(var(--white) 1px, transparent 1px),
-        linear-gradient(90deg, var(--white) 1px, transparent 1px);
+        linear-gradient(var(--color-white) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-white) 1px, transparent 1px);
       background-size: 40px 40px;
     }
     .hero-inner { position: relative; max-width: 900px; }
     .hero-eyebrow {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--gold);
+      text-transform: uppercase; color: var(--color-gold);
       margin-bottom: 20px;
     }
     .hero h1 {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: clamp(48px, 7vw, 88px);
       font-weight: 900; line-height: 0.95;
       text-transform: uppercase; letter-spacing: -0.02em;
       margin-bottom: 24px;
     }
-    .hero h1 .accent { color: var(--gold); }
-    .hero h1 .accent-blue { color: var(--blue-mid); }
+    .hero h1 .accent { color: var(--color-gold); }
+    .hero h1 .accent-blue { color: var(--color-blue-mid); }
     .hero-sub {
-      font-size: 18px; font-weight: 400; color: var(--neutral-200);
+      font-size: 18px; font-weight: 400; color: var(--color-neutral-100);
       max-width: 560px; line-height: 1.5;
     }
     .hero-cta {
@@ -119,57 +133,57 @@
     }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; border-radius: var(--radius);
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      padding: 12px 24px; border-radius: var(--radius-md);
+      font-family: var(--font-display);
       font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; text-decoration: none;
       cursor: pointer; border: none; transition: all 0.2s;
     }
-    .btn-gold { background: var(--gold); color: #000; }
-    .btn-gold:hover { background: var(--gold-light); }
-    .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-gold { background: var(--color-gold); color: #000; }
+    .btn-gold:hover { background: var(--color-gold-light); }
+    .btn-outline { background: transparent; color: var(--color-white); border: 1px solid var(--border-subtle); }
+    .btn-outline:hover { border-color: var(--color-gold); color: var(--color-gold); }
 
     /* ── STAT STRIP ── */
     .statstrip {
       display: grid; grid-template-columns: repeat(6, 1fr);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-subtle);
     }
     .statstrip-cell {
       padding: 28px 24px;
-      border-right: 1px solid var(--border);
+      border-right: 1px solid var(--border-subtle);
     }
     .statstrip-cell:last-child { border-right: none; }
     .statstrip-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 32px; font-weight: 500; color: var(--gold);
+      font-family: var(--font-mono);
+      font-size: 32px; font-weight: 500; color: var(--color-gold);
       line-height: 1;
     }
     .statstrip-label {
-      font-family: 'Barlow', sans-serif;
-      font-size: 12px; color: var(--neutral-400);
+      font-family: var(--font-body);
+      font-size: 12px; color: var(--color-neutral-300);
       margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em;
     }
 
     /* ── SECTIONS ── */
-    section { border-bottom: 1px solid var(--border); }
-    .section-inner { padding: 72px 40px; max-width: 1200px; margin: 0 auto; }
+    section { border-bottom: 1px solid var(--border-subtle); }
+    .section-inner { padding: var(--space-16) var(--space-20); max-width: 1200px; margin: 0 auto; }
     .section-eyebrow {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold);
+      text-transform: uppercase; color: var(--color-gold);
       margin-bottom: 12px;
     }
     .section-title {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: clamp(36px, 5vw, 56px);
       font-weight: 900; text-transform: uppercase;
       line-height: 0.95; letter-spacing: -0.01em;
       margin-bottom: 20px;
     }
-    .section-title .accent { color: var(--gold); }
+    .section-title .accent { color: var(--color-gold); }
     .section-intro {
-      font-size: 16px; color: var(--neutral-200);
+      font-size: 16px; color: var(--color-neutral-100);
       max-width: 620px; margin-bottom: 48px; line-height: 1.6;
     }
 
@@ -181,28 +195,28 @@
     .fund-bullets { display: flex; flex-direction: column; gap: 16px; }
     .fund-bullet {
       display: flex; gap: 14px; align-items: flex-start;
-      padding: 16px; background: var(--bg-card);
-      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 16px; background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
     }
     .fund-bullet-icon {
       width: 28px; height: 28px; flex-shrink: 0;
-      background: var(--gold); border-radius: 50%;
+      background: var(--color-gold); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 12px; font-weight: 500; color: #000;
     }
-    .fund-bullet-text { font-size: 14px; color: var(--neutral-200); line-height: 1.5; }
-    .fund-bullet-text strong { color: var(--white); }
+    .fund-bullet-text { font-size: 14px; color: var(--color-neutral-100); line-height: 1.5; }
+    .fund-bullet-text strong { color: var(--color-white); }
 
     .fund-extended {
-      background: var(--bg-card); border: 1px solid var(--border-gold);
-      border-radius: var(--radius-lg); overflow: hidden;
+      background: var(--color-neutral-900); border: 1px solid var(--border-gold);
+      border-radius: var(--radius-xl); overflow: hidden;
     }
     .fund-extended summary {
       padding: 20px 24px;
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 16px; font-weight: 700; letter-spacing: 0.05em;
-      text-transform: uppercase; color: var(--gold);
+      text-transform: uppercase; color: var(--color-gold);
       cursor: pointer; list-style: none;
       display: flex; align-items: center; justify-content: space-between;
       user-select: none;
@@ -215,37 +229,37 @@
     .fund-extended-body { padding: 0 24px 24px; }
     .fund-author {
       margin-bottom: 20px; padding: 16px;
-      border-left: 3px solid var(--gold);
+      border-left: 3px solid var(--color-gold);
       background: rgba(201,168,76,0.05);
-      border-radius: 0 var(--radius) var(--radius) 0;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
     }
     .fund-author-name {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+      text-transform: uppercase; color: var(--color-gold); margin-bottom: 6px;
     }
-    .fund-author-text { font-size: 14px; color: var(--neutral-200); line-height: 1.5; }
+    .fund-author-text { font-size: 14px; color: var(--color-neutral-100); line-height: 1.5; }
 
     /* ── FAQ ── */
     .faq-list { display: flex; flex-direction: column; gap: 8px; }
     .faq-item {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
+      background: var(--color-neutral-900); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); overflow: hidden;
     }
     .faq-item summary {
       padding: 16px 20px; cursor: pointer; list-style: none;
-      font-family: 'Barlow', sans-serif; font-size: 15px;
-      font-weight: 600; color: var(--white);
+      font-family: var(--font-body); font-size: 15px;
+      font-weight: 600; color: var(--color-white);
       display: flex; align-items: center; justify-content: space-between;
       user-select: none;
     }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '↓'; color: var(--gold); transition: transform 0.2s; }
+    .faq-item summary::after { content: '↓'; color: var(--color-gold); transition: transform 0.2s; }
     .faq-item[open] summary::after { transform: rotate(180deg); }
     .faq-item[open] { border-color: var(--border-gold); }
     .faq-answer {
       padding: 0 20px 16px;
-      font-size: 14px; color: var(--neutral-200); line-height: 1.6;
+      font-size: 14px; color: var(--color-neutral-100); line-height: 1.6;
     }
 
     /* ── PÚBLICOS ── */
@@ -253,8 +267,8 @@
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
     }
     .publico-card {
-      border-radius: var(--radius-lg); overflow: hidden;
-      border: 1px solid var(--border); background: var(--bg-card);
+      border-radius: var(--radius-xl); overflow: hidden;
+      border: 1px solid var(--border-subtle); background: var(--color-neutral-900);
     }
     .publico-card[open] { border-color: var(--border-gold); }
     .publico-summary {
@@ -264,177 +278,177 @@
     }
     .publico-summary::-webkit-details-marker { display: none; }
     .publico-tag {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 10px; font-weight: 500;
       letter-spacing: 0.12em; text-transform: uppercase;
       padding: 4px 10px; border-radius: 20px;
-      background: rgba(201,168,76,0.15); color: var(--gold);
+      background: rgba(201,168,76,0.15); color: var(--color-gold);
       flex-shrink: 0;
     }
     .publico-info { flex: 1; }
     .publico-name {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 24px; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.02em; color: var(--white); margin-bottom: 4px;
+      letter-spacing: 0.02em; color: var(--color-white); margin-bottom: 4px;
     }
-    .publico-tagline { font-size: 13px; color: var(--neutral-400); }
+    .publico-tagline { font-size: 13px; color: var(--color-neutral-300); }
     .publico-chevron {
-      font-size: 20px; color: var(--gold); transition: transform 0.3s;
+      font-size: 20px; color: var(--color-gold); transition: transform 0.3s;
       flex-shrink: 0;
     }
     .publico-card[open] .publico-chevron { transform: rotate(180deg); }
     .publico-body { padding: 0 28px 28px; }
     .publico-section-label {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--neutral-400);
+      text-transform: uppercase; color: var(--color-neutral-300);
       margin: 20px 0 10px;
     }
     .publico-section-label:first-child { margin-top: 0; }
     .publico-def {
-      font-size: 15px; color: var(--neutral-200); line-height: 1.6;
+      font-size: 15px; color: var(--color-neutral-100); line-height: 1.6;
       padding: 14px; background: rgba(255,255,255,0.03);
-      border-radius: var(--radius); border-left: 3px solid var(--gold);
+      border-radius: var(--radius-md); border-left: 3px solid var(--color-gold);
     }
     .publico-examples { display: flex; flex-direction: column; gap: 6px; }
     .publico-example {
-      font-size: 13px; color: var(--neutral-200);
-      padding: 8px 12px; background: var(--neutral-800);
+      font-size: 13px; color: var(--color-neutral-100);
+      padding: 8px 12px; background: var(--color-neutral-800);
       border-radius: 6px; display: flex; gap: 8px;
     }
-    .publico-example::before { content: '›'; color: var(--gold); flex-shrink: 0; }
+    .publico-example::before { content: '›'; color: var(--color-gold); flex-shrink: 0; }
     .publico-geo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .publico-geo-card {
-      padding: 14px; background: var(--neutral-800);
-      border-radius: var(--radius);
+      padding: 14px; background: var(--color-neutral-800);
+      border-radius: var(--radius-md);
     }
     .publico-geo-label {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; margin-bottom: 8px;
     }
-    .publico-geo-label.br { color: var(--green); }
-    .publico-geo-label.int { color: var(--blue-mid); }
-    .publico-geo-text { font-size: 13px; color: var(--neutral-200); line-height: 1.5; }
+    .publico-geo-label.br { color: var(--color-success); }
+    .publico-geo-label.int { color: var(--color-blue-mid); }
+    .publico-geo-text { font-size: 13px; color: var(--color-neutral-100); line-height: 1.5; }
     .publico-com { display: flex; flex-direction: column; gap: 8px; }
     .publico-com-item {
       font-size: 13px; padding: 10px 14px;
-      background: var(--neutral-800); border-radius: 6px;
+      background: var(--color-neutral-800); border-radius: 6px;
       display: flex; gap: 10px; align-items: center;
       justify-content: space-between;
     }
     .publico-com-text { display: flex; gap: 10px; align-items: flex-start; flex: 1; }
-    .publico-com-item .do { color: var(--green); flex-shrink: 0; font-weight: 700; }
-    .publico-com-item .dont { color: var(--red); flex-shrink: 0; font-weight: 700; }
+    .publico-com-item .do { color: var(--color-success); flex-shrink: 0; font-weight: 700; }
+    .publico-com-item .dont { color: var(--color-error); flex-shrink: 0; font-weight: 700; }
     .publico-email-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .publico-email-tag {
       font-size: 12px; padding: 6px 12px; border-radius: 20px;
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-weight: 600;
+      font-family: var(--font-display); font-weight: 600;
       letter-spacing: 0.05em; text-transform: uppercase;
     }
-    .tag-yes { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
-    .tag-no  { background: rgba(227,0,27,0.1);  color: var(--red);   border: 1px solid rgba(227,0,27,0.2); }
+    .tag-yes { background: rgba(34,197,94,0.15); color: var(--color-success); border: 1px solid rgba(34,197,94,0.3); }
+    .tag-no  { background: rgba(227,0,27,0.1);  color: var(--color-error);   border: 1px solid rgba(227,0,27,0.2); }
 
     /* ── SILOS ── */
     .silos-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
     }
     .silo-card {
-      padding: 24px; background: var(--bg-card);
-      border: 1px solid var(--border); border-radius: var(--radius-lg);
-      text-decoration: none; color: var(--white);
+      padding: 24px; background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-xl);
+      text-decoration: none; color: var(--color-white);
       transition: all 0.2s; display: flex; flex-direction: column; gap: 12px;
     }
-    .silo-card:hover { border-color: var(--gold); background: var(--bg-card-hover); transform: translateY(-2px); }
+    .silo-card:hover { border-color: var(--color-gold); background: var(--color-neutral-800); transform: translateY(-2px); }
     .silo-number {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--neutral-400); letter-spacing: 0.1em;
+      font-family: var(--font-mono);
+      font-size: 11px; color: var(--color-neutral-300); letter-spacing: 0.1em;
     }
     .silo-name {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 22px; font-weight: 800; text-transform: uppercase;
       letter-spacing: 0.02em; line-height: 1.1;
     }
-    .silo-desc { font-size: 13px; color: var(--neutral-400); line-height: 1.4; flex: 1; }
+    .silo-desc { font-size: 13px; color: var(--color-neutral-300); line-height: 1.4; flex: 1; }
     .silo-ticket {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px; font-weight: 500; color: var(--gold);
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 500; color: var(--color-gold);
     }
     .silo-badge {
       display: inline-block; padding: 3px 10px; border-radius: 20px;
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .badge-sbx { background: rgba(21,95,151,0.2); color: var(--blue-mid); }
-    .badge-br  { background: rgba(34,197,94,0.12); color: var(--green); }
-    .badge-rec { background: rgba(201,168,76,0.15); color: var(--gold); }
+    .badge-sbx { background: rgba(21,95,151,0.2); color: var(--color-blue-mid); }
+    .badge-br  { background: rgba(34,197,94,0.12); color: var(--color-success); }
+    .badge-rec { background: rgba(201,168,76,0.15); color: var(--color-gold); }
 
     /* ── FRAMEWORKS ── */
     .frameworks-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
     }
     .framework-card {
-      padding: 28px 24px; background: var(--bg-card);
-      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 28px 24px; background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-xl);
     }
     .framework-initial {
-      font-family: 'SoulCraft', sans-serif;
-      font-size: 56px; line-height: 1; color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 56px; line-height: 1; color: var(--color-gold);
       margin-bottom: 16px; opacity: 0.8;
     }
     .framework-author {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 16px; font-weight: 800; text-transform: uppercase;
       letter-spacing: 0.05em; margin-bottom: 4px;
     }
     .framework-concept {
-      font-size: 12px; color: var(--gold);
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 12px; color: var(--color-gold);
+      font-family: var(--font-display);
       font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
       margin-bottom: 16px;
     }
     .framework-use {
-      font-size: 14px; color: var(--neutral-200); line-height: 1.6;
+      font-size: 14px; color: var(--color-neutral-100); line-height: 1.6;
     }
     .framework-tier {
-      margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
-      font-size: 12px; color: var(--neutral-400);
+      margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);
+      font-size: 12px; color: var(--color-neutral-300);
     }
-    .framework-tier strong { color: var(--gold); }
+    .framework-tier strong { color: var(--color-gold); }
 
     /* ── TIERS ── */
     .tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .tier-card {
-      padding: 28px; background: var(--bg-card);
-      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 28px; background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-xl);
     }
-    .tier-1 { border-top: 3px solid var(--blue-mid); }
-    .tier-2 { border-top: 3px solid var(--neutral-600); }
-    .tier-3 { border-top: 3px solid var(--gold); }
+    .tier-1 { border-top: 3px solid var(--color-blue-mid); }
+    .tier-2 { border-top: 3px solid var(--color-neutral-500); }
+    .tier-3 { border-top: 3px solid var(--color-gold); }
     .tier-label {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
       text-transform: uppercase; margin-bottom: 8px;
     }
-    .tier-1 .tier-label { color: var(--blue-mid); }
-    .tier-2 .tier-label { color: var(--neutral-400); }
-    .tier-3 .tier-label { color: var(--gold); }
+    .tier-1 .tier-label { color: var(--color-blue-mid); }
+    .tier-2 .tier-label { color: var(--color-neutral-300); }
+    .tier-3 .tier-label { color: var(--color-gold); }
     .tier-title {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 22px; font-weight: 800; text-transform: uppercase;
       margin-bottom: 6px;
     }
     .tier-owner {
-      font-size: 13px; color: var(--neutral-400); margin-bottom: 20px;
+      font-size: 13px; color: var(--color-neutral-300); margin-bottom: 20px;
     }
     .tier-emails { display: flex; flex-direction: column; gap: 8px; }
     .tier-email {
-      padding: 10px 14px; background: var(--neutral-800);
-      border-radius: 6px; font-size: 13px; color: var(--neutral-200);
+      padding: 10px 14px; background: var(--color-neutral-800);
+      border-radius: 6px; font-size: 13px; color: var(--color-neutral-100);
     }
     .tier-email-type {
-      font-size: 11px; color: var(--neutral-400);
+      font-size: 11px; color: var(--color-neutral-300);
       margin-top: 2px; font-style: italic;
     }
 
@@ -445,52 +459,52 @@
     }
     .workflow-table th {
       padding: 12px 16px; text-align: left;
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--neutral-400);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-card);
+      text-transform: uppercase; color: var(--color-neutral-300);
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--color-neutral-900);
     }
     .workflow-table td {
-      padding: 14px 16px; border-bottom: 1px solid var(--border);
-      vertical-align: middle; color: var(--neutral-200);
+      padding: 14px 16px; border-bottom: 1px solid var(--border-subtle);
+      vertical-align: middle; color: var(--color-neutral-100);
     }
     .workflow-table tr:hover td { background: rgba(255,255,255,0.02); }
-    .wf-event { font-weight: 500; color: var(--white); }
-    .wf-trigger { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue-mid); }
-    .wf-action { color: var(--neutral-200); }
+    .wf-event { font-weight: 500; color: var(--color-white); }
+    .wf-trigger { font-family: var(--font-mono); font-size: 12px; color: var(--color-blue-mid); }
+    .wf-action { color: var(--color-neutral-100); }
     .tier-badge {
       display: inline-block; padding: 3px 10px; border-radius: 20px;
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
       text-transform: uppercase;
     }
-    .t1 { background: rgba(30,122,190,0.15); color: var(--blue-mid); }
-    .t2 { background: rgba(255,255,255,0.08); color: var(--neutral-400); }
-    .t3 { background: rgba(201,168,76,0.15); color: var(--gold); }
+    .t1 { background: rgba(30,122,190,0.15); color: var(--color-blue-mid); }
+    .t2 { background: rgba(255,255,255,0.08); color: var(--color-neutral-300); }
+    .t3 { background: rgba(201,168,76,0.15); color: var(--color-gold); }
 
     /* ── AGENTE CLAUDE ── */
     .agente-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
     .agente-info {
-      padding: 32px; background: var(--bg-card);
-      border: 1px solid var(--border-gold); border-radius: var(--radius-lg);
+      padding: 32px; background: var(--color-neutral-900);
+      border: 1px solid var(--border-gold); border-radius: var(--radius-xl);
     }
     .agente-role-list { display: flex; flex-direction: column; gap: 10px; }
     .agente-role {
       display: flex; gap: 12px; align-items: flex-start;
       padding: 12px; background: rgba(255,255,255,0.03);
-      border-radius: var(--radius);
+      border-radius: var(--radius-md);
     }
     .agente-role-icon { font-size: 18px; flex-shrink: 0; }
     .agente-role-title {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 14px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.05em; color: var(--gold);
+      letter-spacing: 0.05em; color: var(--color-gold);
     }
-    .agente-role-desc { font-size: 13px; color: var(--neutral-200); margin-top: 2px; }
+    .agente-role-desc { font-size: 13px; color: var(--color-neutral-100); margin-top: 2px; }
     .agente-cycle {
-      padding: 32px; background: var(--bg-card);
-      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 32px; background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-xl);
     }
     .cycle-steps { display: flex; flex-direction: column; gap: 12px; }
     .cycle-step {
@@ -498,39 +512,39 @@
     }
     .cycle-num {
       width: 28px; height: 28px; flex-shrink: 0;
-      background: var(--gold); border-radius: 50%;
+      background: var(--color-gold); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 12px; font-weight: 500; color: #000;
     }
-    .cycle-text { font-size: 14px; color: var(--neutral-200); line-height: 1.5; padding-top: 4px; }
-    .cycle-text strong { color: var(--white); }
+    .cycle-text { font-size: 14px; color: var(--color-neutral-100); line-height: 1.5; padding-top: 4px; }
+    .cycle-text strong { color: var(--color-white); }
 
     /* ── DO/DON'T ── */
     .dd-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .dd-item {
-      padding: 16px; border-radius: var(--radius);
+      padding: 16px; border-radius: var(--radius-md);
       display: flex; gap: 12px; align-items: flex-start;
     }
     .dd-do { background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2); }
     .dd-dont { background: rgba(227,0,27,0.06); border: 1px solid rgba(227,0,27,0.15); }
     .dd-icon { font-size: 18px; flex-shrink: 0; }
-    .dd-text { font-size: 14px; color: var(--neutral-200); line-height: 1.4; }
+    .dd-text { font-size: 14px; color: var(--color-neutral-100); line-height: 1.4; }
 
     /* ── GLOSSÁRIO ── */
     .glossary-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
     }
     .glossary-item {
-      padding: 20px; background: var(--bg-card);
-      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px; background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
     }
     .glossary-term {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px; font-weight: 500; color: var(--gold);
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 500; color: var(--color-gold);
       margin-bottom: 6px;
     }
-    .glossary-def { font-size: 13px; color: var(--neutral-200); line-height: 1.5; }
+    .glossary-def { font-size: 13px; color: var(--color-neutral-100); line-height: 1.5; }
 
     /* ── FOOTER ── */
     .footer {
@@ -540,18 +554,18 @@
     .footer-brand img { height: 20px; opacity: 0.5; }
     .footer-links { display: flex; gap: 24px; }
     .footer-links a {
-      font-size: 12px; color: var(--neutral-400); text-decoration: none;
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-weight: 600;
+      font-size: 12px; color: var(--color-neutral-300); text-decoration: none;
+      font-family: var(--font-display); font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
     }
-    .footer-links a:hover { color: var(--gold); }
-    .footer-copy { font-size: 12px; color: var(--neutral-600); }
+    .footer-links a:hover { color: var(--color-gold); }
+    .footer-copy { font-size: 12px; color: var(--color-neutral-500); }
 
     /* ── FAROL DE APROVAÇÃO ── */
     .farol {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 3px 10px; border-radius: 20px;
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; flex-shrink: 0;
     }
@@ -562,7 +576,7 @@
       position: fixed; bottom: 24px; right: 24px; z-index: 200;
       background: #141414; border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px; padding: 12px 16px;
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-size: 12px;
+      font-family: var(--font-display); font-size: 12px;
       color: #999; letter-spacing: 0.05em; text-transform: uppercase;
       display: flex; flex-direction: column; gap: 8px;
       backdrop-filter: blur(12px); box-shadow: 0 4px 24px rgba(0,0,0,0.4);
@@ -573,11 +587,11 @@
     .dot-verde   { background: #22C55E; box-shadow: 0 0 6px rgba(34,197,94,0.5); }
     .dot-amarelo { background: #EAB308; box-shadow: 0 0 6px rgba(234,179,8,0.5); }
     .dot-vermelho{ background: #E3001B; box-shadow: 0 0 6px rgba(227,0,27,0.5); }
-    .farol-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .farol-section { background: var(--color-neutral-900); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
     .farol-colors { display: flex; gap: 16px; margin: 24px 0; flex-wrap: wrap; }
     .farol-color-card {
       flex: 1; min-width: 200px; padding: 20px;
-      border-radius: var(--radius-lg); border: 1px solid;
+      border-radius: var(--radius-xl); border: 1px solid;
     }
     .farol-color-card.verde  { background: rgba(34,197,94,0.06);  border-color: rgba(34,197,94,0.2); }
     .farol-color-card.amarelo{ background: rgba(234,179,8,0.06);  border-color: rgba(234,179,8,0.2); }
@@ -586,43 +600,43 @@
       width: 16px; height: 16px; border-radius: 50%; margin-bottom: 12px;
     }
     .farol-color-name {
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-family: var(--font-display);
       font-size: 16px; font-weight: 800; text-transform: uppercase;
       letter-spacing: 0.08em; margin-bottom: 4px;
     }
     .verde .farol-color-name { color: #22C55E; }
     .amarelo .farol-color-name { color: #EAB308; }
     .vermelho .farol-color-name { color: #E3001B; }
-    .farol-color-meaning { font-size: 13px; color: var(--neutral-200); line-height: 1.4; }
-    .farol-color-owner { font-size: 12px; color: var(--neutral-400); margin-top: 6px; font-style: italic; }
+    .farol-color-meaning { font-size: 13px; color: var(--color-neutral-100); line-height: 1.4; }
+    .farol-color-owner { font-size: 12px; color: var(--color-neutral-300); margin-top: 6px; font-style: italic; }
     .farol-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 24px; }
     .farol-table th {
       padding: 10px 14px; text-align: left;
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-size: 11px;
+      font-family: var(--font-display); font-size: 11px;
       font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--neutral-400); border-bottom: 1px solid var(--border);
+      color: var(--color-neutral-300); border-bottom: 1px solid var(--border-subtle);
       background: rgba(255,255,255,0.03);
     }
     .farol-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
     .farol-table tr:hover td { background: rgba(255,255,255,0.02); }
-    .farol-context { font-size: 13px; color: var(--neutral-200); }
+    .farol-context { font-size: 13px; color: var(--color-neutral-100); }
     .farol-gadget-note {
       margin-top: 24px; padding: 14px 18px;
-      border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius);
-      font-size: 12px; color: var(--neutral-400);
+      border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius-md);
+      font-size: 12px; color: var(--color-neutral-300);
     }
     /* ── SILOS (hierarquia pai/filho) ── */
     .silo-sub-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
     .silo-sub {
       padding: 3px 10px; border-radius: 20px;
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
-      font-size: 11px; color: var(--neutral-200);
+      font-family: var(--font-display);
+      font-size: 11px; color: var(--color-neutral-100);
       letter-spacing: 0.04em;
     }
-    .silo-sub-highlight { background: rgba(201,168,76,0.12); color: var(--gold); border-color: rgba(201,168,76,0.3); }
+    .silo-sub-highlight { background: rgba(201,168,76,0.12); color: var(--color-gold); border-color: rgba(201,168,76,0.3); }
     .silo-future { opacity: 0.5; cursor: default; pointer-events: none; }
-    .silo-future:hover { transform: none; border-color: var(--border); }
+    .silo-future:hover { transform: none; border-color: var(--border-subtle); }
     .tier-email { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
     .tier-email-left { flex: 1; }
     .dd-item { justify-content: space-between; }
@@ -656,12 +670,30 @@
 
 <!-- ── NAV ── -->
 <nav class="nav">
-  <div class="nav-left">
-    <a href="../index.html"><img src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport" class="nav-logo"></a>
-    <div class="nav-sep"></div>
-    <span class="nav-breadcrumb">Design System → Playbooks → <span>Email Growth</span></span>
+  <a class="nav-logo" href="../index.html">
+    <img src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+  </a>
+  <div class="nav-breadcrumb">
+    <a href="../index.html">Design System</a>
+    <span class="sep">/</span>
+    <a href="../index.html#playbooks">Playbooks</a>
+    <span class="sep">/</span>
+    <a href="growth.html">Growth</a>
+    <span class="sep">/</span>
+    <span class="current">Email</span>
   </div>
-  <a href="../index.html#playbooks" class="nav-back">← Playbooks</a>
+  <div class="nav-actions">
+    <a class="nav-back" href="growth.html">← Growth</a>
+    <a class="nav-credit" href="mailto:design@absolut-sport.com.br?subject=Email%20Growth%20Playbook%20·%20Sugestão" title="Mauricio · sugestões">
+      <span class="nav-credit-mark">MM</span>
+    </a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+      <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+      <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+      <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+    </div>
+  </div>
 </nav>
 
 <!-- ── HERO ── -->
@@ -669,9 +701,9 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Email Marketing · ABSOLUT Sport · Growth Playbook</div>
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">Email Marketing · ABSOLUT Sport · Growth Playbook</div>
     <h1>Email não é<br><span class="accent">Newsletter.</span><br><span class="accent-blue">É Receita.</span></h1>
-    <p class="hero-sub">5 categorias. 3 tiers. Uma estratégia construída para converter leads em compradores de experiências premium — do Super Bowl LXI à Copa do Mundo.</p>
+    <p class="hero-sub" data-i18n="hero.sub">5 categorias. 3 tiers. Uma estratégia construída para converter leads em compradores de experiências premium — do Super Bowl LXI à Copa do Mundo.</p>
     <div class="hero-cta">
       <a href="https://drive.google.com/file/d/1TO5I3W76UNQRC8Y-islRFkRJDvrZA5Ut/view" target="_blank" class="btn btn-gold">Abrir Command Center</a>
       <a href="https://drive.google.com/drive/folders/1E4c2uOX2RIi4u5_u6BUHJvolRC9jHKUg" target="_blank" class="btn btn-outline">Pasta no Drive</a>
@@ -683,36 +715,36 @@
 <div class="statstrip">
   <div class="statstrip-cell">
     <div class="statstrip-num">5</div>
-    <div class="statstrip-label">Categorias esportivas</div>
+    <div class="statstrip-label" data-i18n="stat.s1">Categorias esportivas</div>
   </div>
   <div class="statstrip-cell">
     <div class="statstrip-num">3</div>
-    <div class="statstrip-label">Tiers de execução</div>
+    <div class="statstrip-label" data-i18n="stat.s2">Tiers de execução</div>
   </div>
   <div class="statstrip-cell">
     <div class="statstrip-num">4</div>
-    <div class="statstrip-label">Públicos mapeados</div>
+    <div class="statstrip-label" data-i18n="stat.s3">Públicos mapeados</div>
   </div>
   <div class="statstrip-cell">
     <div class="statstrip-num">4</div>
-    <div class="statstrip-label">Frameworks ativos</div>
+    <div class="statstrip-label" data-i18n="stat.s4">Frameworks ativos</div>
   </div>
   <div class="statstrip-cell">
     <div class="statstrip-num">T3</div>
-    <div class="statstrip-label">Só Mauricio entrega</div>
+    <div class="statstrip-label" data-i18n="stat.s5">Só Mauricio entrega</div>
   </div>
   <div class="statstrip-cell">
     <div class="statstrip-num">1</div>
-    <div class="statstrip-label">Agente Claude dedicado</div>
+    <div class="statstrip-label" data-i18n="stat.s6">Agente Claude dedicado</div>
   </div>
 </div>
 
 <!-- ── FAROL DE APROVAÇÃO ── -->
 <section id="farol" class="farol-section">
   <div class="section-inner">
-    <div class="section-eyebrow">Farol de Aprovação · Sistema de comunicação</div>
-    <h2 class="section-title">Verde segue.<br><span class="accent">Amarelo espera.</span> <span style="color:#E3001B">Vermelho para.</span></h2>
-    <p class="section-intro">Classificação universal de toda comunicação da ABSOLUT Sport — não só emails. Elimina ambiguidade sobre o que pode seguir, o que precisa de aprovação e o que nunca deve ser publicado.</p>
+    <div class="section-eyebrow" data-i18n="farol.eyebrow">Farol de Aprovação · Sistema de comunicação</div>
+    <h2 class="section-title" data-i18n="farol.title">Verde segue.<br><span class="accent">Amarelo espera.</span> <span style="color:#E3001B">Vermelho para.</span></h2>
+    <p class="section-intro" data-i18n="farol.intro">Classificação universal de toda comunicação da ABSOLUT Sport — não só emails. Elimina ambiguidade sobre o que pode seguir, o que precisa de aprovação e o que nunca deve ser publicado.</p>
 
     <div class="farol-colors">
       <div class="farol-color-card verde">
@@ -747,21 +779,21 @@
       </thead>
       <tbody>
         <tr>
-          <td class="farol-context"><strong>Emails Tier 1</strong><br><span style="color:var(--neutral-400);font-size:12px">Boas-vindas, resend, confirmação, onboarding, lembrete</span></td>
+          <td class="farol-context"><strong>Emails Tier 1</strong><br><span style="color:var(--color-neutral-300);font-size:12px">Boas-vindas, resend, confirmação, onboarding, lembrete</span></td>
           <td class="farol-context">Template aprovado, automação básica</td>
           <td><span class="farol farol-verde">Verde</span></td>
           <td class="farol-context">Editar copy do template sem aprovação</td>
           <td><span class="farol farol-amarelo">Amarelo</span></td>
         </tr>
         <tr>
-          <td class="farol-context"><strong>Emails Tier 2</strong><br><span style="color:var(--neutral-400);font-size:12px">Newsletter, anúncio, pesquisa, educativo</span></td>
+          <td class="farol-context"><strong>Emails Tier 2</strong><br><span style="color:var(--color-neutral-300);font-size:12px">Newsletter, anúncio, pesquisa, educativo</span></td>
           <td class="farol-context">Seguindo briefing de silo aprovado</td>
           <td><span class="farol farol-amarelo">Amarelo</span></td>
           <td class="farol-context">Publicar sem revisão de Mauricio</td>
           <td><span class="farol farol-vermelho">Vermelho</span></td>
         </tr>
         <tr>
-          <td class="farol-context"><strong>Emails Tier 3</strong><br><span style="color:var(--neutral-400);font-size:12px">Sequência MOFU, urgência, win-back, upsell, churn</span></td>
+          <td class="farol-context"><strong>Emails Tier 3</strong><br><span style="color:var(--color-neutral-300);font-size:12px">Sequência MOFU, urgência, win-back, upsell, churn</span></td>
           <td class="farol-context">Mauricio escreve e aprova</td>
           <td><span class="farol farol-amarelo">Amarelo</span></td>
           <td class="farol-context">Victor ou liderança tentam escrever Tier 3</td>
@@ -821,9 +853,9 @@
 <!-- ── FUNDAMENTOS ── -->
 <section id="fundamentos">
   <div class="section-inner">
-    <div class="section-eyebrow">Fundamentos · Por que chegamos aqui</div>
-    <h2 class="section-title">A estratégia<br><span class="accent">não nasceu do nada.</span></h2>
-    <p class="section-intro">Antes de destrinchar cada silo e cada email, você precisa entender o raciocínio. Por que esses autores. Por que esse framework de 3 tiers. Por que email, e não outra coisa.</p>
+    <div class="section-eyebrow" data-i18n="fund.eyebrow">Fundamentos · Por que chegamos aqui</div>
+    <h2 class="section-title" data-i18n="fund.title">A estratégia<br><span class="accent">não nasceu do nada.</span></h2>
+    <p class="section-intro" data-i18n="fund.intro">Antes de destrinchar cada silo e cada email, você precisa entender o raciocínio. Por que esses autores. Por que esse framework de 3 tiers. Por que email, e não outra coisa.</p>
 
     <div class="fundamentos-grid">
       <!-- ESQUERDA: bullets -->
@@ -870,8 +902,8 @@
             <div class="fund-author-name">Ryan Deiss — Customer Value Journey</div>
             <div class="fund-author-text">Deiss mapeou a jornada do cliente em 8 etapas: Aware → Engage → Subscribe → Convert → Excite → Ascend → Advocate → Promote. Cada silo da ABSOLUT Sport tem leads em estágios diferentes desta jornada. Os emails precisam ser calibrados para o estágio certo — não mandar email de oferta para quem ainda está na etapa "Aware".</div>
           </div>
-          <div class="fund-author" style="border-left-color: var(--blue-mid);">
-            <div class="fund-author-name" style="color: var(--blue-mid);">Por que 3 Tiers — A lógica de proteção</div>
+          <div class="fund-author" style="border-left-color: var(--color-blue-mid);">
+            <div class="fund-author-name" style="color: var(--color-blue-mid);">Por que 3 Tiers — A lógica de proteção</div>
             <div class="fund-author-text">Se você projeta 100 emails e a liderança entrega 30, o que acontece com os 70 restantes? Sem classificação, perdemos os emails mais críticos junto com os secundários. O framework 3-tier garante que os Tier 1 (mínimo viável) sempre existam, os Tier 2 funcionem como moeda de troca na negociação, e os Tier 3 — os que exigem estratégia real — fiquem com quem tem capacidade de executá-los.</div>
           </div>
         </div>
@@ -908,9 +940,9 @@
 <!-- ── PÚBLICOS ── -->
 <section id="publicos">
   <div class="section-inner">
-    <div class="section-eyebrow">Públicos · Inteligência de audiência</div>
-    <h2 class="section-title">Quem compra<br><span class="accent">experiências premium?</span></h2>
-    <p class="section-intro">Antes de escrever um único email, você precisa saber com quem está falando. Cada público pensa, decide e responde de forma diferente. Clique para expandir.</p>
+    <div class="section-eyebrow" data-i18n="pub.eyebrow">Públicos · Inteligência de audiência</div>
+    <h2 class="section-title" data-i18n="pub.title">Quem compra<br><span class="accent">experiências premium?</span></h2>
+    <p class="section-intro" data-i18n="pub.intro">Antes de escrever um único email, você precisa saber com quem está falando. Cada público pensa, decide e responde de forma diferente. Clique para expandir.</p>
 
     <div class="publicos-grid">
 
@@ -1139,9 +1171,9 @@
 <!-- ── SILOS ── -->
 <section id="silos">
   <div class="section-inner">
-    <div class="section-eyebrow">Silos de produto · 5 categorias · múltiplos sub-silos</div>
-    <h2 class="section-title">Onde o email<br><span class="accent">gera receita.</span></h2>
-    <p class="section-intro">Cada categoria agrupa sub-silos com sua própria estratégia de email, ICP dominante e automações no RD Station. Clique para acessar a pasta no Drive.</p>
+    <div class="section-eyebrow" data-i18n="silos.eyebrow">Silos de produto · 5 categorias · múltiplos sub-silos</div>
+    <h2 class="section-title" data-i18n="silos.title">Onde o email<br><span class="accent">gera receita.</span></h2>
+    <p class="section-intro" data-i18n="silos.intro">Cada categoria agrupa sub-silos com sua própria estratégia de email, ICP dominante e automações no RD Station. Clique para acessar a pasta no Drive.</p>
 
     <div class="silos-grid">
 
@@ -1207,7 +1239,7 @@
         <div class="silo-sub-tags">
           <span class="silo-sub">Em mapeamento</span>
         </div>
-        <span class="silo-badge" style="background:rgba(255,255,255,0.05);color:var(--neutral-400);border-color:transparent">Fase 2</span>
+        <span class="silo-badge" style="background:rgba(255,255,255,0.05);color:var(--color-neutral-300);border-color:transparent">Fase 2</span>
       </div>
 
       <!-- ABSOLUT Pass -->
@@ -1235,9 +1267,9 @@
 <!-- ── FRAMEWORKS ── -->
 <section id="frameworks">
   <div class="section-inner">
-    <div class="section-eyebrow">Frameworks · Arquitetura de copy</div>
-    <h2 class="section-title">Os 4 autores<br><span class="accent">por trás da estratégia.</span></h2>
-    <p class="section-intro">Cada framework resolve uma camada do problema. Juntos, cobrem desde a arquitetura do funil até a palavra que fecha a venda.</p>
+    <div class="section-eyebrow" data-i18n="fw.eyebrow">Frameworks · Arquitetura de copy</div>
+    <h2 class="section-title" data-i18n="fw.title">Os 4 autores<br><span class="accent">por trás da estratégia.</span></h2>
+    <p class="section-intro" data-i18n="fw.intro">Cada framework resolve uma camada do problema. Juntos, cobrem desde a arquitetura do funil até a palavra que fecha a venda.</p>
 
     <div class="frameworks-grid">
       <div class="framework-card">
@@ -1275,9 +1307,9 @@
 <!-- ── TIERS ── -->
 <section id="tiers">
   <div class="section-inner">
-    <div class="section-eyebrow">Tiers · Framework de negociação</div>
-    <h2 class="section-title">Quem entrega<br><span class="accent">cada email.</span></h2>
-    <p class="section-intro">O princípio: se projetamos 100 emails, a liderança entrega 30. O framework 3-tier garante que os 30 certos sejam entregues — e que o estrategista seja insubstituível.</p>
+    <div class="section-eyebrow" data-i18n="tiers.eyebrow">Tiers · Framework de negociação</div>
+    <h2 class="section-title" data-i18n="tiers.title">Quem entrega<br><span class="accent">cada email.</span></h2>
+    <p class="section-intro" data-i18n="tiers.intro">O princípio: se projetamos 100 emails, a liderança entrega 30. O framework 3-tier garante que os 30 certos sejam entregues — e que o estrategista seja insubstituível.</p>
 
     <div class="tiers-grid">
       <div class="tier-card tier-1">
@@ -1370,9 +1402,9 @@
 <!-- ── WORKFLOW RD STATION ── -->
 <section id="workflow">
   <div class="section-inner">
-    <div class="section-eyebrow">Workflow · Automações RD Station</div>
-    <h2 class="section-title">Comportamento<br><span class="accent">dispara email.</span></h2>
-    <p class="section-intro">Cada ação — ou inação — do lead aciona um fluxo no RD Station. Essa é a lógica que Victor implementa. Para cada silo, a mesma matriz se repete.</p>
+    <div class="section-eyebrow" data-i18n="wf.eyebrow">Workflow · Automações RD Station</div>
+    <h2 class="section-title" data-i18n="wf.title">Comportamento<br><span class="accent">dispara email.</span></h2>
+    <p class="section-intro" data-i18n="wf.intro">Cada ação — ou inação — do lead aciona um fluxo no RD Station. Essa é a lógica que Victor implementa. Para cada silo, a mesma matriz se repete.</p>
 
     <table class="workflow-table">
       <thead>
@@ -1446,9 +1478,9 @@
 <!-- ── AGENTE CLAUDE ── -->
 <section id="agente">
   <div class="section-inner">
-    <div class="section-eyebrow">Agente Claude · Redator dedicado ABSOLUT Sport</div>
-    <h2 class="section-title">O guardião<br><span class="accent">do copy.</span></h2>
-    <p class="section-intro">Não é um prompt para preencher tabela. É um agente configurado com a voz da marca, os 4 frameworks e a inteligência de cada silo — pronto para gerar e revisar copy em ciclo com Victor e Mauricio.</p>
+    <div class="section-eyebrow" data-i18n="agente.eyebrow">Agente Claude · Redator dedicado ABSOLUT Sport</div>
+    <h2 class="section-title" data-i18n="agente.title">O guardião<br><span class="accent">do copy.</span></h2>
+    <p class="section-intro" data-i18n="agente.intro">Não é um prompt para preencher tabela. É um agente configurado com a voz da marca, os 4 frameworks e a inteligência de cada silo — pronto para gerar e revisar copy em ciclo com Victor e Mauricio.</p>
 
     <div class="agente-grid">
       <div class="agente-info">
@@ -1506,8 +1538,8 @@
           </div>
         </div>
         <div style="margin-top: 28px; padding: 16px; background: rgba(201,168,76,0.08); border-radius: 8px; border: 1px solid var(--border-gold);">
-          <div style="font-size: 12px; color: var(--neutral-400); margin-bottom: 4px; font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">System Prompt inclui</div>
-          <div style="font-size: 13px; color: var(--neutral-200);">Voz da marca ABSOLUT Sport · ICPs por silo · Frameworks Brunson/Hormozi/Halbert/Deiss · Restrições editoriais · Acesso ao Drive por silo</div>
+          <div style="font-size: 12px; color: var(--color-neutral-300); margin-bottom: 4px; font-family: var(--font-display); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">System Prompt inclui</div>
+          <div style="font-size: 13px; color: var(--color-neutral-100);">Voz da marca ABSOLUT Sport · ICPs por silo · Frameworks Brunson/Hormozi/Halbert/Deiss · Restrições editoriais · Acesso ao Drive por silo</div>
         </div>
       </div>
     </div>
@@ -1517,9 +1549,9 @@
 <!-- ── DO/DON'T ── -->
 <section id="guidelines">
   <div class="section-inner">
-    <div class="section-eyebrow">Guidelines · Boas práticas</div>
-    <h2 class="section-title">O que fazer.<br><span class="accent">O que evitar.</span></h2>
-    <p class="section-intro">Princípios de email marketing aplicados à realidade da ABSOLUT Sport — para quem escreve, revisa ou aprova.</p>
+    <div class="section-eyebrow" data-i18n="guide.eyebrow">Guidelines · Boas práticas</div>
+    <h2 class="section-title" data-i18n="guide.title">O que fazer.<br><span class="accent">O que evitar.</span></h2>
+    <p class="section-intro" data-i18n="guide.intro">Princípios de email marketing aplicados à realidade da ABSOLUT Sport — para quem escreve, revisa ou aprova.</p>
 
     <div class="dd-grid">
       <div class="dd-item dd-do">
@@ -1569,9 +1601,9 @@
 <!-- ── GLOSSÁRIO ── -->
 <section id="glossario">
   <div class="section-inner">
-    <div class="section-eyebrow">Glossário · Termos do RD Station e da estratégia</div>
-    <h2 class="section-title">O vocabulário<br><span class="accent">do time.</span></h2>
-    <p class="section-intro">Para quem está chegando agora no projeto — os termos que aparecem nos documentos e nas reuniões com Victor.</p>
+    <div class="section-eyebrow" data-i18n="glos.eyebrow">Glossário · Termos do RD Station e da estratégia</div>
+    <h2 class="section-title" data-i18n="glos.title">O vocabulário<br><span class="accent">do time.</span></h2>
+    <p class="section-intro" data-i18n="glos.intro">Para quem está chegando agora no projeto — os termos que aparecem nos documentos e nas reuniões com Victor.</p>
 
     <div class="glossary-grid">
       <div class="glossary-item">
@@ -1638,7 +1670,176 @@
     <a href="https://drive.google.com/file/d/1TO5I3W76UNQRC8Y-islRFkRJDvrZA5Ut/view" target="_blank">Command Center</a>
   </div>
   <div class="footer-copy">ABSOLUT Sport Design System · Growth · Email Marketing</div>
+  <div style="grid-column: 1/-1; padding-top: var(--space-5); margin-top: var(--space-5); border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-3); font-family: var(--font-mono); font-size: 11px; color: var(--color-neutral-400); letter-spacing: var(--tracking-wide);">
+    <span>© 2026 ABSOLUT Sport · Email Growth Playbook v1.0</span>
+    <span>Criado por Mauricio Lacerda × Rafa Rafa · <a href="mailto:design@absolut-sport.com.br?subject=Email%20Growth%20Playbook%20%C2%B7%20Sugest%C3%A3o" style="color: var(--color-gold); text-decoration: none;">design@absolut-sport.com.br</a></span>
+  </div>
 </footer>
+
+<script>
+window.I18N_DICT = {
+  pt: {
+    'hero.eyebrow': 'Email Marketing · ABSOLUT Sport · Growth Playbook',
+    'hero.sub': '5 categorias. 3 tiers. Uma estratégia construída para converter leads em compradores de experiências premium — do Super Bowl LXI à Copa do Mundo.',
+    'stat.s1': 'Categorias esportivas',
+    'stat.s2': 'Tiers de execução',
+    'stat.s3': 'Públicos mapeados',
+    'stat.s4': 'Frameworks ativos',
+    'stat.s5': 'Só Mauricio entrega',
+    'stat.s6': 'Agente Claude dedicado',
+    'farol.eyebrow': 'Farol de Aprovação · Sistema de comunicação',
+    'farol.title': 'Verde segue. Amarelo espera. Vermelho para.',
+    'farol.intro': 'Classificação universal de toda comunicação da ABSOLUT Sport — não só emails. Elimina ambiguidade sobre o que pode seguir, o que precisa de aprovação e o que nunca deve ser publicado.',
+    'fund.eyebrow': 'Fundamentos · Por que chegamos aqui',
+    'fund.title': 'A estratégia não nasceu do nada.',
+    'fund.intro': 'Antes de destrinchar cada silo e cada email, você precisa entender o raciocínio. Por que esses autores. Por que esse framework de 3 tiers. Por que email, e não outra coisa.',
+    'pub.eyebrow': 'Públicos · Inteligência de audiência',
+    'pub.title': 'Quem compra experiências premium?',
+    'pub.intro': 'Antes de escrever um único email, você precisa saber com quem está falando. Cada público pensa, decide e responde de forma diferente. Clique para expandir.',
+    'silos.eyebrow': 'Silos de produto · 5 categorias · múltiplos sub-silos',
+    'silos.title': 'Onde o email gera receita.',
+    'silos.intro': 'Cada categoria agrupa sub-silos com sua própria estratégia de email, ICP dominante e automações no RD Station. Clique para acessar a pasta no Drive.',
+    'fw.eyebrow': 'Frameworks · Arquitetura de copy',
+    'fw.title': 'Os 4 autores por trás da estratégia.',
+    'fw.intro': 'Cada framework resolve uma camada do problema. Juntos, cobrem desde a arquitetura do funil até a palavra que fecha a venda.',
+    'tiers.eyebrow': 'Tiers · Framework de negociação',
+    'tiers.title': 'Quem entrega cada email.',
+    'tiers.intro': 'O princípio: se projetamos 100 emails, a liderança entrega 30. O framework 3-tier garante que os 30 certos sejam entregues — e que o estrategista seja insubstituível.',
+    'wf.eyebrow': 'Workflow · Automações RD Station',
+    'wf.title': 'Comportamento dispara email.',
+    'wf.intro': 'Cada ação — ou inação — do lead aciona um fluxo no RD Station. Essa é a lógica que Victor implementa. Para cada silo, a mesma matriz se repete.',
+    'agente.eyebrow': 'Agente Claude · Redator dedicado ABSOLUT Sport',
+    'agente.title': 'O guardião do copy.',
+    'agente.intro': 'Não é um prompt para preencher tabela. É um agente configurado com a voz da marca, os 4 frameworks e a inteligência de cada silo — pronto para gerar e revisar copy em ciclo com Victor e Mauricio.',
+    'guide.eyebrow': 'Guidelines · Boas práticas',
+    'guide.title': 'O que fazer. O que evitar.',
+    'guide.intro': 'Princípios de email marketing aplicados à realidade da ABSOLUT Sport — para quem escreve, revisa ou aprova.',
+    'glos.eyebrow': 'Glossário · Termos do RD Station e da estratégia',
+    'glos.title': 'O vocabulário do time.',
+    'glos.intro': 'Para quem está chegando agora no projeto — os termos que aparecem nos documentos e nas reuniões com Victor.'
+  },
+  en: {
+    'hero.eyebrow': 'Email Marketing · ABSOLUT Sport · Growth Playbook',
+    'hero.sub': '5 categories. 3 tiers. A strategy built to convert leads into buyers of premium experiences — from Super Bowl LXI to the World Cup.',
+    'stat.s1': 'Sport categories',
+    'stat.s2': 'Execution tiers',
+    'stat.s3': 'Mapped audiences',
+    'stat.s4': 'Active frameworks',
+    'stat.s5': 'Mauricio only',
+    'stat.s6': 'Dedicated Claude Agent',
+    'farol.eyebrow': 'Approval Beacon · Communication system',
+    'farol.title': 'Green goes. Yellow waits. Red stops.',
+    'farol.intro': 'Universal classification for all ABSOLUT Sport communications — not just emails. Eliminates ambiguity about what can proceed, what needs approval, and what must never be published.',
+    'fund.eyebrow': 'Foundations · Why we got here',
+    'fund.title': 'The strategy did not appear from nowhere.',
+    'fund.intro': 'Before breaking down each silo and each email, you need to understand the reasoning. Why these authors. Why this 3-tier framework. Why email, and not something else.',
+    'pub.eyebrow': 'Audiences · Audience intelligence',
+    'pub.title': 'Who buys premium experiences?',
+    'pub.intro': 'Before writing a single email, you need to know who you are talking to. Each audience thinks, decides and responds differently. Click to expand.',
+    'silos.eyebrow': 'Product silos · 5 categories · multiple sub-silos',
+    'silos.title': 'Where email generates revenue.',
+    'silos.intro': 'Each category groups sub-silos with their own email strategy, dominant ICP, and automations in RD Station. Click to access the Drive folder.',
+    'fw.eyebrow': 'Frameworks · Copy architecture',
+    'fw.title': 'The 4 authors behind the strategy.',
+    'fw.intro': 'Each framework solves one layer of the problem. Together they cover everything from funnel architecture to the word that closes the sale.',
+    'tiers.eyebrow': 'Tiers · Negotiation framework',
+    'tiers.title': 'Who delivers each email.',
+    'tiers.intro': 'The principle: if we plan 100 emails, leadership delivers 30. The 3-tier framework ensures the right 30 are delivered — and that the strategist is irreplaceable.',
+    'wf.eyebrow': 'Workflow · RD Station automations',
+    'wf.title': 'Behavior triggers email.',
+    'wf.intro': 'Every action — or inaction — by the lead triggers a flow in RD Station. This is the logic Victor implements. For each silo, the same matrix repeats.',
+    'agente.eyebrow': 'Claude Agent · Dedicated ABSOLUT Sport copywriter',
+    'agente.title': 'The guardian of copy.',
+    'agente.intro': 'Not a prompt to fill a table. An agent configured with the brand voice, the 4 frameworks, and the intelligence of each silo — ready to generate and review copy in a cycle with Victor and Mauricio.',
+    'guide.eyebrow': 'Guidelines · Best practices',
+    'guide.title': 'What to do. What to avoid.',
+    'guide.intro': 'Email marketing principles applied to the reality of ABSOLUT Sport — for those who write, review, or approve.',
+    'glos.eyebrow': 'Glossary · RD Station and strategy terms',
+    'glos.title': 'The team vocabulary.',
+    'glos.intro': 'For those just joining the project — the terms that appear in documents and meetings with Victor.'
+  },
+  es: {
+    'hero.eyebrow': 'Email Marketing · ABSOLUT Sport · Growth Playbook',
+    'hero.sub': '5 categorías. 3 tiers. Una estrategia construida para convertir leads en compradores de experiencias premium — del Super Bowl LXI al Mundial.',
+    'stat.s1': 'Categorías deportivas',
+    'stat.s2': 'Tiers de ejecución',
+    'stat.s3': 'Públicos mapeados',
+    'stat.s4': 'Frameworks activos',
+    'stat.s5': 'Solo Mauricio entrega',
+    'stat.s6': 'Agente Claude dedicado',
+    'farol.eyebrow': 'Faro de Aprobación · Sistema de comunicación',
+    'farol.title': 'Verde sigue. Amarillo espera. Rojo para.',
+    'farol.intro': 'Clasificación universal de toda comunicación de ABSOLUT Sport — no solo emails. Elimina la ambigüedad sobre lo que puede seguir, lo que necesita aprobación y lo que nunca debe publicarse.',
+    'fund.eyebrow': 'Fundamentos · Por qué llegamos acá',
+    'fund.title': 'La estrategia no nació de la nada.',
+    'fund.intro': 'Antes de desmenuzar cada silo y cada email, necesitás entender el razonamiento. Por qué esos autores. Por qué este framework de 3 tiers. Por qué email, y no otra cosa.',
+    'pub.eyebrow': 'Públicos · Inteligencia de audiencia',
+    'pub.title': '¿Quién compra experiencias premium?',
+    'pub.intro': 'Antes de escribir un solo email, necesitás saber con quién estás hablando. Cada público piensa, decide y responde de forma distinta. Hacé click para expandir.',
+    'silos.eyebrow': 'Silos de producto · 5 categorías · múltiples sub-silos',
+    'silos.title': 'Donde el email genera ingresos.',
+    'silos.intro': 'Cada categoría agrupa sub-silos con su propia estrategia de email, ICP dominante y automatizaciones en RD Station. Hacé click para acceder a la carpeta del Drive.',
+    'fw.eyebrow': 'Frameworks · Arquitectura de copy',
+    'fw.title': 'Los 4 autores detrás de la estrategia.',
+    'fw.intro': 'Cada framework resuelve una capa del problema. Juntos cubren desde la arquitectura del funnel hasta la palabra que cierra la venta.',
+    'tiers.eyebrow': 'Tiers · Framework de negociación',
+    'tiers.title': 'Quién entrega cada email.',
+    'tiers.intro': 'El principio: si proyectamos 100 emails, el liderazgo entrega 30. El framework de 3 tiers garantiza que los 30 correctos sean entregados — y que el estratega sea irreemplazable.',
+    'wf.eyebrow': 'Workflow · Automatizaciones RD Station',
+    'wf.title': 'El comportamiento dispara el email.',
+    'wf.intro': 'Cada acción — o inacción — del lead activa un flujo en RD Station. Esa es la lógica que Victor implementa. Para cada silo, la misma matriz se repite.',
+    'agente.eyebrow': 'Agente Claude · Redactor dedicado ABSOLUT Sport',
+    'agente.title': 'El guardián del copy.',
+    'agente.intro': 'No es un prompt para llenar tabla. Es un agente configurado con la voz de la marca, los 4 frameworks y la inteligencia de cada silo — listo para generar y revisar copy en ciclo con Victor y Mauricio.',
+    'guide.eyebrow': 'Guidelines · Buenas prácticas',
+    'guide.title': 'Qué hacer. Qué evitar.',
+    'guide.intro': 'Principios de email marketing aplicados a la realidad de ABSOLUT Sport — para quien escribe, revisa o aprueba.',
+    'glos.eyebrow': 'Glosario · Términos del RD Station y de la estrategia',
+    'glos.title': 'El vocabulario del equipo.',
+    'glos.intro': 'Para quien recién se suma al proyecto — los términos que aparecen en los documentos y en las reuniones con Victor.'
+  },
+  de: {
+    'hero.eyebrow': 'Email Marketing · ABSOLUT Sport · Growth Playbook',
+    'hero.sub': '5 Kategorien. 3 Tiers. Eine Strategie gebaut, um Leads in Käufer von Premium-Erlebnissen zu verwandeln — vom Super Bowl LXI bis zur Weltmeisterschaft.',
+    'stat.s1': 'Sport-Kategorien',
+    'stat.s2': 'Ausführungs-Tiers',
+    'stat.s3': 'Erfasste Zielgruppen',
+    'stat.s4': 'Aktive Frameworks',
+    'stat.s5': 'Nur Mauricio liefert',
+    'stat.s6': 'Dedizierter Claude-Agent',
+    'farol.eyebrow': 'Ampel · Kommunikationssystem',
+    'farol.title': 'Grün fährt. Gelb wartet. Rot stoppt.',
+    'farol.intro': 'Universelle Klassifikation für jede ABSOLUT-Sport-Kommunikation — nicht nur E-Mails. Beseitigt Ambiguität: was darf raus, was braucht Freigabe, was darf nie veröffentlicht werden.',
+    'fund.eyebrow': 'Fundamente · Warum wir hier sind',
+    'fund.title': 'Die Strategie ist nicht aus dem Nichts entstanden.',
+    'fund.intro': 'Bevor du jeden Silo und jede E-Mail aufbrichst, musst du das Denken verstehen. Warum diese Autoren. Warum dieses 3-Tier-Framework. Warum E-Mail, und nicht etwas anderes.',
+    'pub.eyebrow': 'Zielgruppen · Audience Intelligence',
+    'pub.title': 'Wer kauft Premium-Erlebnisse?',
+    'pub.intro': 'Bevor du eine einzige E-Mail schreibst, musst du wissen, mit wem du sprichst. Jede Zielgruppe denkt, entscheidet und reagiert anders. Klick zum Aufklappen.',
+    'silos.eyebrow': 'Produkt-Silos · 5 Kategorien · mehrere Sub-Silos',
+    'silos.title': 'Wo E-Mail Umsatz generiert.',
+    'silos.intro': 'Jede Kategorie gruppiert Sub-Silos mit eigener E-Mail-Strategie, dominantem ICP und Automatisierungen in RD Station. Klick zum Drive-Ordner.',
+    'fw.eyebrow': 'Frameworks · Copy-Architektur',
+    'fw.title': 'Die 4 Autoren hinter der Strategie.',
+    'fw.intro': 'Jedes Framework löst eine Ebene des Problems. Zusammen decken sie alles ab — vom Funnel-Aufbau bis zum Wort, das den Verkauf abschließt.',
+    'tiers.eyebrow': 'Tiers · Verhandlungs-Framework',
+    'tiers.title': 'Wer liefert welche E-Mail.',
+    'tiers.intro': 'Das Prinzip: planen wir 100 E-Mails, liefert das Leadership 30. Das 3-Tier-Framework sorgt dafür, dass die richtigen 30 geliefert werden — und der Stratege unersetzlich bleibt.',
+    'wf.eyebrow': 'Workflow · RD-Station-Automatisierungen',
+    'wf.title': 'Verhalten löst E-Mail aus.',
+    'wf.intro': 'Jede Aktion — oder Untätigkeit — des Leads triggert einen Flow in RD Station. Das ist die Logik, die Victor implementiert. Pro Silo wiederholt sich dieselbe Matrix.',
+    'agente.eyebrow': 'Claude-Agent · Dedizierter ABSOLUT-Sport-Texter',
+    'agente.title': 'Der Wächter des Copys.',
+    'agente.intro': 'Kein Prompt zum Tabelle-Füllen. Ein Agent mit Markenstimme, den 4 Frameworks und der Intelligenz jedes Silos — bereit, Copy zu generieren und zu prüfen, im Zyklus mit Victor und Mauricio.',
+    'guide.eyebrow': 'Guidelines · Best Practices',
+    'guide.title': 'Was tun. Was vermeiden.',
+    'guide.intro': 'E-Mail-Marketing-Prinzipien, angewandt auf die Realität von ABSOLUT Sport — für alle, die schreiben, prüfen oder freigeben.',
+    'glos.eyebrow': 'Glossar · Begriffe aus RD Station und Strategie',
+    'glos.title': 'Das Team-Vokabular.',
+    'glos.intro': 'Für alle, die gerade neu ins Projekt kommen — die Begriffe, die in Dokumenten und Meetings mit Victor auftauchen.'
+  }
+};
+</script>
 
 <script src="../i18n.js" onerror="void(0)"></script>
 <script src="../zero-to-o.js" onerror="void(0)"></script>

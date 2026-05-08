@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Growth Playbook — ABSOLUT Sport</title>
+  <link rel="stylesheet" href="../colors_and_type.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'SoulCraft';
+      src: url('../fonts/soulcraftgx.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D0D0D;
+      --bg-card: #141414;
+      --bg-card-hover: #1a1a1a;
+      --white: #FFFFFF;
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --blue: #155F97;
+      --blue-mid: #1E7ABE;
+      --blue-bright: #3B82F6;
+      --green: #22C55E;
+      --green-light: #7EE787;
+      --red: #E3001B;
+      --neutral-200: #E8E8E8;
+      --neutral-400: #999999;
+      --neutral-600: #555555;
+      --neutral-700: #333333;
+      --neutral-800: #1F1F1F;
+      --neutral-900: #141414;
+      --border: rgba(255,255,255,0.08);
+      --border-gold: rgba(201,168,76,0.3);
+      --radius: 8px;
+      --radius-lg: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 56px;
+      background: rgba(13,13,13,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .nav-left { display: flex; align-items: center; gap: 16px; }
+    .nav-logo img { height: 24px; }
+    .nav-sep { width: 1px; height: 20px; background: var(--border); }
+    .nav-breadcrumb { font-family: 'Barlow', sans-serif; font-size: 13px; color: var(--neutral-400); }
+    .nav-breadcrumb span { color: var(--white); }
+    .nav-back {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.05em;
+      color: var(--neutral-400); text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 100px 40px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(21,95,151,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 50%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image:
+        linear-gradient(var(--white) 1px, transparent 1px),
+        linear-gradient(90deg, var(--white) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-inner { position: relative; max-width: 900px; }
+    .hero-eyebrow {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 900; line-height: 0.95;
+      text-transform: uppercase; letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .accent { color: var(--gold); }
+    .hero h1 .accent-blue { color: var(--blue-mid); }
+    .hero-sub {
+      font-size: 18px; font-weight: 400; color: var(--neutral-200);
+      max-width: 560px; line-height: 1.5;
+    }
+    .hero-cta {
+      margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: var(--radius);
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      cursor: pointer; border: none; transition: all 0.2s;
+    }
+    .btn-gold { background: var(--gold); color: #000; }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── STAT STRIP ── */
+    .statstrip {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+    .statstrip-cell {
+      padding: 28px 24px;
+      border-right: 1px solid var(--border);
+    }
+    .statstrip-cell:last-child { border-right: none; }
+    .statstrip-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px; font-weight: 500; color: var(--gold);
+      line-height: 1;
+    }
+    .statstrip-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px; color: var(--neutral-400);
+      margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    /* ── SECTIONS ── */
+    section { border-bottom: 1px solid var(--border); }
+    .section-inner { padding: 72px 40px; max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 900; text-transform: uppercase;
+      line-height: 0.95; letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    .section-title .accent { color: var(--gold); }
+    .section-intro {
+      font-size: 16px; color: var(--neutral-200);
+      max-width: 620px; margin-bottom: 48px; line-height: 1.6;
+    }
+
+    /* ── FUNDAMENTOS ── */
+    .fundamentos-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+      margin-bottom: 48px;
+    }
+    .fund-bullets { display: flex; flex-direction: column; gap: 16px; }
+    .fund-bullet {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius);
+    }
+    .fund-bullet-icon {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 500; color: #000;
+    }
+    .fund-bullet-text { font-size: 14px; color: var(--neutral-200); line-height: 1.5; }
+    .fund-bullet-text strong { color: var(--white); }
+
+    .fund-extended {
+      background: var(--bg-card); border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg); overflow: hidden;
+    }
+    .fund-extended summary {
+      padding: 20px 24px;
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--gold);
+      cursor: pointer; list-style: none;
+      display: flex; align-items: center; justify-content: space-between;
+      user-select: none;
+    }
+    .fund-extended summary::-webkit-details-marker { display: none; }
+    .fund-extended summary::after {
+      content: '+'; font-size: 20px; transition: transform 0.2s;
+    }
+    .fund-extended[open] summary::after { transform: rotate(45deg); }
+    .fund-extended-body { padding: 0 24px 24px; }
+    .fund-author {
+      margin-bottom: 20px; padding: 16px;
+      border-left: 3px solid var(--gold);
+      background: rgba(201,168,76,0.05);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .fund-author-name {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .fund-author-text { font-size: 14px; color: var(--neutral-200); line-height: 1.5; }
+
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 16px 20px; cursor: pointer; list-style: none;
+      font-family: 'Barlow', sans-serif; font-size: 15px;
+      font-weight: 600; color: var(--white);
+      display: flex; align-items: center; justify-content: space-between;
+      user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '↓'; color: var(--gold); transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(180deg); }
+    .faq-item[open] { border-color: var(--border-gold); }
+    .faq-answer {
+      padding: 0 20px 16px;
+      font-size: 14px; color: var(--neutral-200); line-height: 1.6;
+    }
+
+    /* ── PÚBLICOS ── */
+    .publicos-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    .publico-card {
+      border-radius: var(--radius-lg); overflow: hidden;
+      border: 1px solid var(--border); background: var(--bg-card);
+    }
+    .publico-card[open] { border-color: var(--border-gold); }
+    .publico-summary {
+      list-style: none; cursor: pointer; user-select: none;
+      padding: 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .publico-summary::-webkit-details-marker { display: none; }
+    .publico-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px;
+      background: rgba(201,168,76,0.15); color: var(--gold);
+      flex-shrink: 0;
+    }
+    .publico-info { flex: 1; }
+    .publico-name {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 24px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--white); margin-bottom: 4px;
+    }
+    .publico-tagline { font-size: 13px; color: var(--neutral-400); }
+    .publico-chevron {
+      font-size: 20px; color: var(--gold); transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .publico-card[open] .publico-chevron { transform: rotate(180deg); }
+    .publico-body { padding: 0 28px 28px; }
+    .publico-section-label {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--neutral-400);
+      margin: 20px 0 10px;
+    }
+    .publico-section-label:first-child { margin-top: 0; }
+    .publico-def {
+      font-size: 15px; color: var(--neutral-200); line-height: 1.6;
+      padding: 14px; background: rgba(255,255,255,0.03);
+      border-radius: var(--radius); border-left: 3px solid var(--gold);
+    }
+    .publico-examples { display: flex; flex-direction: column; gap: 6px; }
+    .publico-example {
+      font-size: 13px; color: var(--neutral-200);
+      padding: 8px 12px; background: var(--neutral-800);
+      border-radius: 6px; display: flex; gap: 8px;
+    }
+    .publico-example::before { content: '›'; color: var(--gold); flex-shrink: 0; }
+    .publico-geo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .publico-geo-card {
+      padding: 14px; background: var(--neutral-800);
+      border-radius: var(--radius);
+    }
+    .publico-geo-label {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .publico-geo-label.br { color: var(--green); }
+    .publico-geo-label.int { color: var(--blue-mid); }
+    .publico-geo-text { font-size: 13px; color: var(--neutral-200); line-height: 1.5; }
+    .publico-com { display: flex; flex-direction: column; gap: 8px; }
+    .publico-com-item {
+      font-size: 13px; padding: 10px 14px;
+      background: var(--neutral-800); border-radius: 6px;
+      display: flex; gap: 10px; align-items: center;
+      justify-content: space-between;
+    }
+    .publico-com-text { display: flex; gap: 10px; align-items: flex-start; flex: 1; }
+    .publico-com-item .do { color: var(--green); flex-shrink: 0; font-weight: 700; }
+    .publico-com-item .dont { color: var(--red); flex-shrink: 0; font-weight: 700; }
+    .publico-email-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .publico-email-tag {
+      font-size: 12px; padding: 6px 12px; border-radius: 20px;
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .tag-yes { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+    .tag-no  { background: rgba(227,0,27,0.1);  color: var(--red);   border: 1px solid rgba(227,0,27,0.2); }
+
+    /* ── SILOS ── */
+    .silos-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .silo-card {
+      padding: 24px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      text-decoration: none; color: var(--white);
+      transition: all 0.2s; display: flex; flex-direction: column; gap: 12px;
+    }
+    .silo-card:hover { border-color: var(--gold); background: var(--bg-card-hover); transform: translateY(-2px); }
+    .silo-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--neutral-400); letter-spacing: 0.1em;
+    }
+    .silo-name {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 22px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.02em; line-height: 1.1;
+    }
+    .silo-desc { font-size: 13px; color: var(--neutral-400); line-height: 1.4; flex: 1; }
+    .silo-ticket {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px; font-weight: 500; color: var(--gold);
+    }
+    .silo-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .badge-sbx { background: rgba(21,95,151,0.2); color: var(--blue-mid); }
+    .badge-br  { background: rgba(34,197,94,0.12); color: var(--green); }
+    .badge-rec { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+    /* ── FRAMEWORKS ── */
+    .frameworks-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .framework-card {
+      padding: 28px 24px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+    }
+    .framework-initial {
+      font-family: 'SoulCraft', sans-serif;
+      font-size: 56px; line-height: 1; color: var(--gold);
+      margin-bottom: 16px; opacity: 0.8;
+    }
+    .framework-author {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 16px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.05em; margin-bottom: 4px;
+    }
+    .framework-concept {
+      font-size: 12px; color: var(--gold);
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .framework-use {
+      font-size: 14px; color: var(--neutral-200); line-height: 1.6;
+    }
+    .framework-tier {
+      margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--neutral-400);
+    }
+    .framework-tier strong { color: var(--gold); }
+
+    /* ── TIERS ── */
+    .tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .tier-card {
+      padding: 28px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+    }
+    .tier-1 { border-top: 3px solid var(--blue-mid); }
+    .tier-2 { border-top: 3px solid var(--neutral-600); }
+    .tier-3 { border-top: 3px solid var(--gold); }
+    .tier-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .tier-1 .tier-label { color: var(--blue-mid); }
+    .tier-2 .tier-label { color: var(--neutral-400); }
+    .tier-3 .tier-label { color: var(--gold); }
+    .tier-title {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 22px; font-weight: 800; text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .tier-owner {
+      font-size: 13px; color: var(--neutral-400); margin-bottom: 20px;
+    }
+    .tier-emails { display: flex; flex-direction: column; gap: 8px; }
+    .tier-email {
+      padding: 10px 14px; background: var(--neutral-800);
+      border-radius: 6px; font-size: 13px; color: var(--neutral-200);
+    }
+    .tier-email-type {
+      font-size: 11px; color: var(--neutral-400);
+      margin-top: 2px; font-style: italic;
+    }
+
+    /* ── WORKFLOW ── */
+    .workflow-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 14px;
+    }
+    .workflow-table th {
+      padding: 12px 16px; text-align: left;
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--neutral-400);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .workflow-table td {
+      padding: 14px 16px; border-bottom: 1px solid var(--border);
+      vertical-align: middle; color: var(--neutral-200);
+    }
+    .workflow-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .wf-event { font-weight: 500; color: var(--white); }
+    .wf-trigger { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue-mid); }
+    .wf-action { color: var(--neutral-200); }
+    .tier-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .t1 { background: rgba(30,122,190,0.15); color: var(--blue-mid); }
+    .t2 { background: rgba(255,255,255,0.08); color: var(--neutral-400); }
+    .t3 { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+    /* ── AGENTE CLAUDE ── */
+    .agente-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .agente-info {
+      padding: 32px; background: var(--bg-card);
+      border: 1px solid var(--border-gold); border-radius: var(--radius-lg);
+    }
+    .agente-role-list { display: flex; flex-direction: column; gap: 10px; }
+    .agente-role {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 12px; background: rgba(255,255,255,0.03);
+      border-radius: var(--radius);
+    }
+    .agente-role-icon { font-size: 18px; flex-shrink: 0; }
+    .agente-role-title {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 14px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--gold);
+    }
+    .agente-role-desc { font-size: 13px; color: var(--neutral-200); margin-top: 2px; }
+    .agente-cycle {
+      padding: 32px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+    }
+    .cycle-steps { display: flex; flex-direction: column; gap: 12px; }
+    .cycle-step {
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .cycle-num {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 500; color: #000;
+    }
+    .cycle-text { font-size: 14px; color: var(--neutral-200); line-height: 1.5; padding-top: 4px; }
+    .cycle-text strong { color: var(--white); }
+
+    /* ── DO/DON'T ── */
+    .dd-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .dd-item {
+      padding: 16px; border-radius: var(--radius);
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .dd-do { background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2); }
+    .dd-dont { background: rgba(227,0,27,0.06); border: 1px solid rgba(227,0,27,0.15); }
+    .dd-icon { font-size: 18px; flex-shrink: 0; }
+    .dd-text { font-size: 14px; color: var(--neutral-200); line-height: 1.4; }
+
+    /* ── GLOSSÁRIO ── */
+    .glossary-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .glossary-item {
+      padding: 20px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius);
+    }
+    .glossary-term {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 500; color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .glossary-def { font-size: 13px; color: var(--neutral-200); line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 48px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-brand img { height: 20px; opacity: 0.5; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 12px; color: var(--neutral-400); text-decoration: none;
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 12px; color: var(--neutral-600); }
+
+    /* ── FAROL DE APROVAÇÃO ── */
+    .farol {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 3px 10px; border-radius: 20px;
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; flex-shrink: 0;
+    }
+    .farol-verde  { background: rgba(34,197,94,0.15);  color: #22C55E; border: 1px solid rgba(34,197,94,0.3); }
+    .farol-amarelo{ background: rgba(234,179,8,0.15);  color: #EAB308; border: 1px solid rgba(234,179,8,0.3); }
+    .farol-vermelho{ background: rgba(227,0,27,0.12);  color: #E3001B; border: 1px solid rgba(227,0,27,0.25); }
+    .farol-widget {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      background: #141414; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 12px 16px;
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-size: 12px;
+      color: #999; letter-spacing: 0.05em; text-transform: uppercase;
+      display: flex; flex-direction: column; gap: 8px;
+      backdrop-filter: blur(12px); box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    .farol-widget-title { font-size: 10px; color: #555; margin-bottom: 2px; letter-spacing: 0.12em; }
+    .farol-widget-item { display: flex; align-items: center; gap: 8px; font-size: 11px; }
+    .farol-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-verde   { background: #22C55E; box-shadow: 0 0 6px rgba(34,197,94,0.5); }
+    .dot-amarelo { background: #EAB308; box-shadow: 0 0 6px rgba(234,179,8,0.5); }
+    .dot-vermelho{ background: #E3001B; box-shadow: 0 0 6px rgba(227,0,27,0.5); }
+    .farol-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .farol-colors { display: flex; gap: 16px; margin: 24px 0; flex-wrap: wrap; }
+    .farol-color-card {
+      flex: 1; min-width: 200px; padding: 20px;
+      border-radius: var(--radius-lg); border: 1px solid;
+    }
+    .farol-color-card.verde  { background: rgba(34,197,94,0.06);  border-color: rgba(34,197,94,0.2); }
+    .farol-color-card.amarelo{ background: rgba(234,179,8,0.06);  border-color: rgba(234,179,8,0.2); }
+    .farol-color-card.vermelho{ background: rgba(227,0,27,0.05); border-color: rgba(227,0,27,0.15); }
+    .farol-color-dot {
+      width: 16px; height: 16px; border-radius: 50%; margin-bottom: 12px;
+    }
+    .farol-color-name {
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 16px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .verde .farol-color-name { color: #22C55E; }
+    .amarelo .farol-color-name { color: #EAB308; }
+    .vermelho .farol-color-name { color: #E3001B; }
+    .farol-color-meaning { font-size: 13px; color: var(--neutral-200); line-height: 1.4; }
+    .farol-color-owner { font-size: 12px; color: var(--neutral-400); margin-top: 6px; font-style: italic; }
+    .farol-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 24px; }
+    .farol-table th {
+      padding: 10px 14px; text-align: left;
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-size: 11px;
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--neutral-400); border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+    .farol-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+    .farol-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .farol-context { font-size: 13px; color: var(--neutral-200); }
+    .farol-gadget-note {
+      margin-top: 24px; padding: 14px 18px;
+      border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius);
+      font-size: 12px; color: var(--neutral-400);
+    }
+    /* ── SILOS (hierarquia pai/filho) ── */
+    .silo-sub-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+    .silo-sub {
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif;
+      font-size: 11px; color: var(--neutral-200);
+      letter-spacing: 0.04em;
+    }
+    .silo-sub-highlight { background: rgba(201,168,76,0.12); color: var(--gold); border-color: rgba(201,168,76,0.3); }
+    .silo-future { opacity: 0.5; cursor: default; pointer-events: none; }
+    .silo-future:hover { transform: none; border-color: var(--border); }
+    .tier-email { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .tier-email-left { flex: 1; }
+    .dd-item { justify-content: space-between; }
+    .dd-item-left { flex: 1; display: flex; gap: 12px; align-items: flex-start; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .statstrip { grid-template-columns: repeat(3, 1fr); }
+      .statstrip-cell:nth-child(3) { border-right: none; }
+      .fundamentos-grid { grid-template-columns: 1fr; }
+      .publicos-grid { grid-template-columns: 1fr; }
+      .silos-grid { grid-template-columns: repeat(2, 1fr); }
+      .frameworks-grid { grid-template-columns: repeat(2, 1fr); }
+      .tiers-grid { grid-template-columns: 1fr; }
+      .agente-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav { padding: 0 20px; }
+      .hero { padding: 60px 20px 48px; }
+      .section-inner { padding: 48px 20px; }
+    }
+    @media (max-width: 600px) {
+      .frameworks-grid { grid-template-columns: 1fr; }
+      .silos-grid { grid-template-columns: 1fr; }
+      .dd-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr; }
+      .publico-geo { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="../index.html"><img src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport" class="nav-logo"></a>
+    <div class="nav-sep"></div>
+    <span class="nav-breadcrumb">Design System → Playbooks → <span>Email Growth</span></span>
+  </div>
+  <a href="../index.html#playbooks" class="nav-back">← Playbooks</a>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Email Marketing · ABSOLUT Sport · Growth Playbook</div>
+    <h1>Email não é<br><span class="accent">Newsletter.</span><br><span class="accent-blue">É Receita.</span></h1>
+    <p class="hero-sub">5 categorias. 3 tiers. Uma estratégia construída para converter leads em compradores de experiências premium — do Super Bowl LXI à Copa do Mundo.</p>
+    <div class="hero-cta">
+      <a href="https://drive.google.com/file/d/1TO5I3W76UNQRC8Y-islRFkRJDvrZA5Ut/view" target="_blank" class="btn btn-gold">Abrir Command Center</a>
+      <a href="https://drive.google.com/drive/folders/1E4c2uOX2RIi4u5_u6BUHJvolRC9jHKUg" target="_blank" class="btn btn-outline">Pasta no Drive</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── STAT STRIP ── -->
+<div class="statstrip">
+  <div class="statstrip-cell">
+    <div class="statstrip-num">5</div>
+    <div class="statstrip-label">Categorias esportivas</div>
+  </div>
+  <div class="statstrip-cell">
+    <div class="statstrip-num">3</div>
+    <div class="statstrip-label">Tiers de execução</div>
+  </div>
+  <div class="statstrip-cell">
+    <div class="statstrip-num">4</div>
+    <div class="statstrip-label">Públicos mapeados</div>
+  </div>
+  <div class="statstrip-cell">
+    <div class="statstrip-num">4</div>
+    <div class="statstrip-label">Frameworks ativos</div>
+  </div>
+  <div class="statstrip-cell">
+    <div class="statstrip-num">T3</div>
+    <div class="statstrip-label">Só Mauricio entrega</div>
+  </div>
+  <div class="statstrip-cell">
+    <div class="statstrip-num">1</div>
+    <div class="statstrip-label">Agente Claude dedicado</div>
+  </div>
+</div>
+
+<!-- ── FAROL DE APROVAÇÃO ── -->
+<section id="farol" class="farol-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Farol de Aprovação · Sistema de comunicação</div>
+    <h2 class="section-title">Verde segue.<br><span class="accent">Amarelo espera.</span> <span style="color:#E3001B">Vermelho para.</span></h2>
+    <p class="section-intro">Classificação universal de toda comunicação da ABSOLUT Sport — não só emails. Elimina ambiguidade sobre o que pode seguir, o que precisa de aprovação e o que nunca deve ser publicado.</p>
+
+    <div class="farol-colors">
+      <div class="farol-color-card verde">
+        <div class="farol-color-dot dot-verde"></div>
+        <div class="farol-color-name">Verde</div>
+        <div class="farol-color-meaning">Pode seguir. Template aprovado, padrão da marca. Não precisa de revisão adicional antes de publicar.</div>
+        <div class="farol-color-owner">Victor / Liderança executa diretamente</div>
+      </div>
+      <div class="farol-color-card amarelo">
+        <div class="farol-color-dot dot-amarelo"></div>
+        <div class="farol-color-name">Amarelo</div>
+        <div class="farol-color-meaning">Precisa de aprovação antes de publicar. Mauricio revisa e assina. Só vai para o RD Station depois da aprovação.</div>
+        <div class="farol-color-owner">Mauricio assina — obrigatório</div>
+      </div>
+      <div class="farol-color-card vermelho">
+        <div class="farol-color-dot dot-vermelho"></div>
+        <div class="farol-color-name">Vermelho</div>
+        <div class="farol-color-meaning">Nunca usar. Se apareceu assim, para tudo. Representa práticas que prejudicam a marca, a entregabilidade ou a confiança do cliente.</div>
+        <div class="farol-color-owner">Ninguém — nem com aprovação</div>
+      </div>
+    </div>
+
+    <table class="farol-table">
+      <thead>
+        <tr>
+          <th>Tipo de comunicação</th>
+          <th>O que funciona</th>
+          <th>Farol</th>
+          <th>O que evitar</th>
+          <th>Farol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="farol-context"><strong>Emails Tier 1</strong><br><span style="color:var(--neutral-400);font-size:12px">Boas-vindas, resend, confirmação, onboarding, lembrete</span></td>
+          <td class="farol-context">Template aprovado, automação básica</td>
+          <td><span class="farol farol-verde">Verde</span></td>
+          <td class="farol-context">Editar copy do template sem aprovação</td>
+          <td><span class="farol farol-amarelo">Amarelo</span></td>
+        </tr>
+        <tr>
+          <td class="farol-context"><strong>Emails Tier 2</strong><br><span style="color:var(--neutral-400);font-size:12px">Newsletter, anúncio, pesquisa, educativo</span></td>
+          <td class="farol-context">Seguindo briefing de silo aprovado</td>
+          <td><span class="farol farol-amarelo">Amarelo</span></td>
+          <td class="farol-context">Publicar sem revisão de Mauricio</td>
+          <td><span class="farol farol-vermelho">Vermelho</span></td>
+        </tr>
+        <tr>
+          <td class="farol-context"><strong>Emails Tier 3</strong><br><span style="color:var(--neutral-400);font-size:12px">Sequência MOFU, urgência, win-back, upsell, churn</span></td>
+          <td class="farol-context">Mauricio escreve e aprova</td>
+          <td><span class="farol farol-amarelo">Amarelo</span></td>
+          <td class="farol-context">Victor ou liderança tentam escrever Tier 3</td>
+          <td><span class="farol farol-vermelho">Vermelho</span></td>
+        </tr>
+        <tr>
+          <td class="farol-context"><strong>B2C</strong></td>
+          <td class="farol-context">Storytelling, urgência real, prova social</td>
+          <td><span class="farol farol-verde">Verde</span></td>
+          <td class="farol-context">ROI/networking como argumento, jargão corporativo</td>
+          <td><span class="farol farol-vermelho">Vermelho</span></td>
+        </tr>
+        <tr>
+          <td class="farol-context"><strong>B2B</strong></td>
+          <td class="farol-context">Case, proposta estruturada, ROI claro</td>
+          <td><span class="farol farol-verde">Verde</span></td>
+          <td class="farol-context">Urgência agressiva, linguagem emocional excessiva</td>
+          <td><span class="farol farol-vermelho">Vermelho</span></td>
+        </tr>
+        <tr>
+          <td class="farol-context"><strong>B2B2C</strong></td>
+          <td class="farol-context">Parceria, co-branding, visão do consumidor final</td>
+          <td><span class="farol farol-amarelo">Amarelo</span></td>
+          <td class="farol-context">Abordagem transacional com parceiro estratégico</td>
+          <td><span class="farol farol-vermelho">Vermelho</span></td>
+        </tr>
+        <tr>
+          <td class="farol-context"><strong>HNWI</strong></td>
+          <td class="farol-context">Acesso antecipado, curadoria pessoal, exclusividade real</td>
+          <td><span class="farol farol-amarelo">Amarelo</span></td>
+          <td class="farol-context">Urgência de escassez falsa, preço no subject, newsletter genérica</td>
+          <td><span class="farol farol-vermelho">Vermelho</span></td>
+        </tr>
+        <tr>
+          <td class="farol-context"><strong>Práticas gerais</strong></td>
+          <td class="farol-context">Subject com urgência real, personalização, 1 CTA, segmentação</td>
+          <td><span class="farol farol-verde">Verde</span></td>
+          <td class="farol-context">Subject genérico, email para toda base, urgência falsa, múltiplos CTAs</td>
+          <td><span class="farol farol-vermelho">Vermelho</span></td>
+        </tr>
+        <tr>
+          <td class="farol-context"><strong>Copy nova</strong></td>
+          <td class="farol-context">Novos ângulos, novos hooks — mesmo que bons</td>
+          <td><span class="farol farol-amarelo">Amarelo</span></td>
+          <td class="farol-context">Publicar copy nova sem Mauricio revisar</td>
+          <td><span class="farol farol-vermelho">Vermelho</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="farol-gadget-note">
+      🔮 <strong>Gadget futuro:</strong> O Farol está planejado como um componente interativo no ABSOLUT Sport Design System — onde cada ponto do playbook terá seu badge de aprovação clicável com contexto expandido. Por ora, o widget flutuante (canto inferior direito) serve como protótipo de referência rápida.
+    </div>
+  </div>
+</section>
+
+<!-- ── FUNDAMENTOS ── -->
+<section id="fundamentos">
+  <div class="section-inner">
+    <div class="section-eyebrow">Fundamentos · Por que chegamos aqui</div>
+    <h2 class="section-title">A estratégia<br><span class="accent">não nasceu do nada.</span></h2>
+    <p class="section-intro">Antes de destrinchar cada silo e cada email, você precisa entender o raciocínio. Por que esses autores. Por que esse framework de 3 tiers. Por que email, e não outra coisa.</p>
+
+    <div class="fundamentos-grid">
+      <!-- ESQUERDA: bullets -->
+      <div class="fund-bullets">
+        <div class="fund-bullet">
+          <div class="fund-bullet-icon">01</div>
+          <div class="fund-bullet-text"><strong>Email tem o maior ROI do marketing digital.</strong> Média de R$38 de retorno para cada R$1 investido — mais do que ads pagos, social ou SEO.</div>
+        </div>
+        <div class="fund-bullet">
+          <div class="fund-bullet-icon">02</div>
+          <div class="fund-bullet-text"><strong>Experiências premium não se vendem com push.</strong> Pacotes de R$30k+ exigem narrativa, confiança e múltiplos pontos de contato — exatamente o que uma sequência de emails constrói.</div>
+        </div>
+        <div class="fund-bullet">
+          <div class="fund-bullet-icon">03</div>
+          <div class="fund-bullet-text"><strong>O framework 3-tier existe por uma razão prática:</strong> a liderança nunca executa 100% do que está planejado. Classificar protege o essencial e cria evidência para o valor insubstituível do estrategista.</div>
+        </div>
+        <div class="fund-bullet">
+          <div class="fund-bullet-icon">04</div>
+          <div class="fund-bullet-text"><strong>Os 4 autores cobrem camadas complementares:</strong> Brunson (funil), Hormozi (oferta), Halbert (copy), Deiss (jornada). Nenhum substitui o outro.</div>
+        </div>
+        <div class="fund-bullet">
+          <div class="fund-bullet-icon">05</div>
+          <div class="fund-bullet-text"><strong>RD Station foi a plataforma escolhida</strong> porque o Victor já opera nela e a base de contatos da ABSOLUT Sport já está lá — migrar seria perder inteligência acumulada.</div>
+        </div>
+      </div>
+
+      <!-- DIREITA: Ler mais colapsável -->
+      <details class="fund-extended">
+        <summary>Ler mais — O raciocínio estratégico completo</summary>
+        <div class="fund-extended-body">
+          <div class="fund-author">
+            <div class="fund-author-name">Russell Brunson — Value Ladder</div>
+            <div class="fund-author-text">Brunson ensina que toda estratégia de marketing começa com um Value Ladder: uma escada de valor onde o cliente entra num nível baixo e vai subindo. Na ABSOLUT Sport, isso se traduz em: lead frio → newsletter → Futebol básico → pacote premium → Super Bowl → HNWI personalizado. Cada email tem uma função nessa escada.</div>
+          </div>
+          <div class="fund-author">
+            <div class="fund-author-name">Alex Hormozi — Grand Slam Offer</div>
+            <div class="fund-author-text">Hormozi ensina a empilhar valor até a oferta parecer irrecusável: "O que você pode adicionar que torna o NÃO impossível?" Para pacotes de experiência, isso significa incluir hotel, transfer, acesso VIP e garantia de experiência. Os emails de BOFU usam essa lógica para apresentar o pacote completo — nunca só o ingresso.</div>
+          </div>
+          <div class="fund-author">
+            <div class="fund-author-name">Gary Halbert — Resposta Direta</div>
+            <div class="fund-author-text">Halbert, o "príncipe da copy", ensina que todo email precisa de uma razão imperiosa para ser aberto, lido e agido agora. Seu princípio central: o leitor está perguntando "o que tem pra mim?" desde a primeira linha. Os emails Tier 3 desta estratégia são escritos com esse princípio — hook irresistível, história que prende, oferta clara, urgência real.</div>
+          </div>
+          <div class="fund-author">
+            <div class="fund-author-name">Ryan Deiss — Customer Value Journey</div>
+            <div class="fund-author-text">Deiss mapeou a jornada do cliente em 8 etapas: Aware → Engage → Subscribe → Convert → Excite → Ascend → Advocate → Promote. Cada silo da ABSOLUT Sport tem leads em estágios diferentes desta jornada. Os emails precisam ser calibrados para o estágio certo — não mandar email de oferta para quem ainda está na etapa "Aware".</div>
+          </div>
+          <div class="fund-author" style="border-left-color: var(--blue-mid);">
+            <div class="fund-author-name" style="color: var(--blue-mid);">Por que 3 Tiers — A lógica de proteção</div>
+            <div class="fund-author-text">Se você projeta 100 emails e a liderança entrega 30, o que acontece com os 70 restantes? Sem classificação, perdemos os emails mais críticos junto com os secundários. O framework 3-tier garante que os Tier 1 (mínimo viável) sempre existam, os Tier 2 funcionem como moeda de troca na negociação, e os Tier 3 — os que exigem estratégia real — fiquem com quem tem capacidade de executá-los.</div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-eyebrow" style="margin-top: 48px;">FAQ · Perguntas frequentes</div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Por que RD Station e não HubSpot, Mailchimp ou ActiveCampaign?</summary>
+        <div class="faq-answer">O Victor já opera no RD Station e a base de contatos da ABSOLUT Sport está lá. Migrar significa reconfigurar fluxos, reimportar listas, reaprender a plataforma e — o mais crítico — perder o histórico de comportamento dos leads (quem abriu o quê, quando, quantas vezes). Esse histórico é inteligência comercial. RD Station também é líder no mercado brasileiro e tem suporte local, o que importa quando algo vai errado antes de um evento.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Preciso dos 4 frameworks ou posso usar só um?</summary>
+        <div class="faq-answer">Cada framework resolve uma camada diferente do problema. Brunson resolve a arquitetura do funil (quem entra onde). Hormozi resolve a irresistibilidade da oferta (por que comprar). Halbert resolve o copy (como escrever de forma que o leitor aja). Deiss resolve a jornada (em que estágio o lead está e o que precisa ouvir agora). Usar só um é como construir uma casa com só um tipo de ferramenta — tecnicamente possível, mas muito mais difícil e com resultado inferior.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Quantos emails vou precisar escrever no total?</summary>
+        <div class="faq-answer">A estratégia completa mapeia entre 8 a 12 emails por silo, multiplicado pelos 6 silos, dá entre 48 e 72 emails. Mas os Tier 1 (que a liderança entrega) são os mais simples e automatizáveis — boas-vindas, confirmação de compra, lembretes. Os Tier 3, que requerem copy estratégico, representam cerca de 40–50% do total — e são esses que fazem a diferença em receita.</div>
+      </details>
+      <details class="faq-item">
+        <summary>O que é exatamente o Agente Claude e como funciona na prática?</summary>
+        <div class="faq-answer">O Agente Claude ABSOLUT Sport é um projeto configurado no Claude.ai com um system prompt que contém: a voz da marca, os ICPs por silo, os 4 frameworks ativos e as restrições editoriais. Na prática: o Victor escreve um email (Tier 1/2), submete para o agente que avalia hook, CTA e aderência ao silo, Mauricio aprova ou solicita revisão, e a versão final vai para o RD Station. O agente também pode gerar emails Tier 3 do zero quando acionado com o briefing do silo.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Como funciona o tracking e quem é responsável pelo quê?</summary>
+        <div class="faq-answer">Victor opera no RD Station (execução técnica dos fluxos). Mauricio gerencia a pasta 07_Acompanhamento no Drive (tracking semanal: o que a liderança prometeu vs. o que foi entregue). A cada semana, o documento "Comprometido × Entregue" registra a taxa de cumprimento da liderança nos Tier 1 — essa evidência é o argumento para manter os Tier 3 exclusivamente com Mauricio.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── PÚBLICOS ── -->
+<section id="publicos">
+  <div class="section-inner">
+    <div class="section-eyebrow">Públicos · Inteligência de audiência</div>
+    <h2 class="section-title">Quem compra<br><span class="accent">experiências premium?</span></h2>
+    <p class="section-intro">Antes de escrever um único email, você precisa saber com quem está falando. Cada público pensa, decide e responde de forma diferente. Clique para expandir.</p>
+
+    <div class="publicos-grid">
+
+      <!-- B2C -->
+      <details class="publico-card">
+        <summary class="publico-summary">
+          <span class="publico-tag">B2C</span>
+          <div class="publico-info">
+            <div class="publico-name">Business to Consumer</div>
+            <div class="publico-tagline">Indivíduo comprando para si — emoção, memória, identidade</div>
+          </div>
+          <span class="publico-chevron">↓</span>
+        </summary>
+        <div class="publico-body">
+          <div class="publico-section-label">Quem é esse público</div>
+          <div class="publico-def">Pessoa física que compra o pacote para ela mesma ou para presentear alguém próximo. A decisão de compra é emocional — mas precisa ser justificada racionalmente para si mesmo ou para o cônjuge. O ticket é pessoal, não empresarial.</div>
+
+          <div class="publico-section-label">Exemplos concretos</div>
+          <div class="publico-examples">
+            <div class="publico-example">Torcedor fanático do Flamengo que quer ver o time na Libertadores ao vivo</div>
+            <div class="publico-example">Casal que quer viver o GP Interlagos como experiência de vida única</div>
+            <div class="publico-example">Jovem executivo (28–38) comprando seu primeiro Super Bowl como conquista pessoal</div>
+            <div class="publico-example">Pai presenteando filho com pacote de tênis no NFTO Brasil</div>
+          </div>
+
+          <div class="publico-section-label">Comportamento geográfico</div>
+          <div class="publico-geo">
+            <div class="publico-geo-card">
+              <div class="publico-geo-label br">🇧🇷 No Brasil</div>
+              <div class="publico-geo-text">Decide devagar, pesquisa muito, confia em indicação. Preço é sensível — mas aceita pagar mais se sentir exclusividade real. WhatsApp é canal de fechamento. Parcelamento é decisivo.</div>
+            </div>
+            <div class="publico-geo-card">
+              <div class="publico-geo-label int">🌎 Internacional</div>
+              <div class="publico-geo-text">Decide mais rápido se a experiência parecer única. Acostumado com hospitality de alto nível — o padrão de comparação é alto. Email funciona bem, mas precisa de prova social e fotos reais do produto.</div>
+            </div>
+          </div>
+
+          <div class="publico-section-label">Como nos comunicamos</div>
+          <div class="publico-com">
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Storytelling de experiência — "imagine você lá"</div><span class="farol farol-verde">Verde</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Urgência real baseada em disponibilidade limitada</div><span class="farol farol-verde">Verde</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Fotos e vídeos de edições anteriores como prova</div><span class="farol farol-verde">Verde</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="dont">✗</span> Não usar jargão corporativo — falar como pessoa</div><span class="farol farol-vermelho">Vermelho</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="dont">✗</span> Não focar em ROI ou networking — é sobre emoção</div><span class="farol farol-vermelho">Vermelho</span></div>
+          </div>
+
+          <div class="publico-section-label">Emails que funcionam</div>
+          <div class="publico-email-tags">
+            <span class="publico-email-tag tag-yes">Storytelling ✓</span>
+            <span class="publico-email-tag tag-yes">Urgência real ✓</span>
+            <span class="publico-email-tag tag-yes">Prova social ✓</span>
+            <span class="publico-email-tag tag-no">ROI / Networking ✗</span>
+            <span class="publico-email-tag tag-no">Linguagem técnica ✗</span>
+          </div>
+        </div>
+      </details>
+
+      <!-- B2B -->
+      <details class="publico-card">
+        <summary class="publico-summary">
+          <span class="publico-tag">B2B</span>
+          <div class="publico-info">
+            <div class="publico-name">Business to Business</div>
+            <div class="publico-tagline">Empresa comprando para uso corporativo — ROI, relações, benefício</div>
+          </div>
+          <span class="publico-chevron">↓</span>
+        </summary>
+        <div class="publico-body">
+          <div class="publico-section-label">Quem é esse público</div>
+          <div class="publico-def">Empresa que compra pacotes de experiência esportiva como investimento em relacionamento: hospitality para clientes, benefício para executivos, premiação de equipe ou ferramenta de negociação. A decisão é racional — precisa ser justificada como investimento, não como gasto.</div>
+
+          <div class="publico-section-label">Exemplos concretos</div>
+          <div class="publico-examples">
+            <div class="publico-example">Banco comprando camarote no Maracanã para fechar relação com cliente corporativo</div>
+            <div class="publico-example">Construtora usando GP Interlagos como hospitality para potenciais investidores</div>
+            <div class="publico-example">Empresa de tecnologia comprando pacotes SB LXI como benefício anual para C-level</div>
+            <div class="publico-example">Seguradora usando experiência de tênis como premiação de corretores top</div>
+          </div>
+
+          <div class="publico-section-label">Comportamento geográfico</div>
+          <div class="publico-geo">
+            <div class="publico-geo-card">
+              <div class="publico-geo-label br">🇧🇷 No Brasil</div>
+              <div class="publico-geo-text">Decisão passa por aprovação financeira e muitas vezes por RH ou Diretoria. Nota fiscal é obrigatória. Relacionamento pessoal com o vendedor é fundamental — a venda começa no WhatsApp, não no email.</div>
+            </div>
+            <div class="publico-geo-card">
+              <div class="publico-geo-label int">🌎 Internacional</div>
+              <div class="publico-geo-text">Processo de compra mais estruturado — pedido de proposta formal, PO, procurement. Email funciona bem como canal inicial. Comparação com outros fornecedores de hospitality (IMG, On Location) é comum.</div>
+            </div>
+          </div>
+
+          <div class="publico-section-label">Como nos comunicamos</div>
+          <div class="publico-com">
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Falar em ROI: "o que seus clientes vão lembrar"</div><span class="farol farol-verde">Verde</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Case de empresas similares que já compraram</div><span class="farol farol-verde">Verde</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Proposta clara com o que está incluído no pacote</div><span class="farol farol-verde">Verde</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="dont">✗</span> Não usar linguagem emocional demais — parece não-profissional</div><span class="farol farol-vermelho">Vermelho</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="dont">✗</span> Não pressionar por urgência — tem processo de aprovação</div><span class="farol farol-vermelho">Vermelho</span></div>
+          </div>
+
+          <div class="publico-section-label">Emails que funcionam</div>
+          <div class="publico-email-tags">
+            <span class="publico-email-tag tag-yes">Case / Prova ✓</span>
+            <span class="publico-email-tag tag-yes">Proposta estruturada ✓</span>
+            <span class="publico-email-tag tag-yes">ROI claro ✓</span>
+            <span class="publico-email-tag tag-no">Urgência agressiva ✗</span>
+            <span class="publico-email-tag tag-no">Linguagem muito emocional ✗</span>
+          </div>
+        </div>
+      </details>
+
+      <!-- B2B2C -->
+      <details class="publico-card">
+        <summary class="publico-summary">
+          <span class="publico-tag">B2B2C</span>
+          <div class="publico-info">
+            <div class="publico-name">Business to Business to Consumer</div>
+            <div class="publico-tagline">Empresa comprando para distribuir ao seu consumidor final</div>
+          </div>
+          <span class="publico-chevron">↓</span>
+        </summary>
+        <div class="publico-body">
+          <div class="publico-section-label">Quem é esse público</div>
+          <div class="publico-def">Empresa que compra os pacotes não para uso próprio, mas para distribuir como produto, benefício ou premiação para seu próprio público-alvo. A ABSOLUT Sport é fornecedora de experiências que essa empresa vai apresentar como seu próprio produto ou vantagem competitiva.</div>
+
+          <div class="publico-section-label">Exemplos concretos</div>
+          <div class="publico-examples">
+            <div class="publico-example">Patrocinador oficial que recebe cota de ingressos para distribuir entre convidados VIP e ganhadores de campanha</div>
+            <div class="publico-example">Operadora de cartão de crédito que vende a experiência como resgate de pontos para portadores premium</div>
+            <div class="publico-example">Marca de bebidas usando pacotes do Super Bowl como premiação de campanha promocional</div>
+            <div class="publico-example">Seguradora de saúde oferecendo experiência esportiva como benefício de plano corporativo</div>
+          </div>
+
+          <div class="publico-section-label">Comportamento geográfico</div>
+          <div class="publico-geo">
+            <div class="publico-geo-card">
+              <div class="publico-geo-label br">🇧🇷 No Brasil</div>
+              <div class="publico-geo-text">Compra em volume e com antecedência. Contrato formal, NF, SLA de entrega. Quer exclusividade de categoria (ex: único banco parceiro). Alinhamento com área de marketing e jurídico é obrigatório.</div>
+            </div>
+            <div class="publico-geo-card">
+              <div class="publico-geo-label int">🌎 Internacional</div>
+              <div class="publico-geo-text">Perfil de parceria estratégica de longo prazo. Interessado em co-branding e visibilidade. Processo similar ao B2B mas com camada adicional de aprovação de marketing e brand guidelines.</div>
+            </div>
+          </div>
+
+          <div class="publico-section-label">Como nos comunicamos</div>
+          <div class="publico-com">
+            <div class="publico-com-item"><span class="do">✓</span> Posicionar como parceria, não só compra</div>
+            <div class="publico-com-item"><span class="do">✓</span> Destacar o que o consumidor final vai sentir com a experiência</div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Oferecer customização: naming, branding, comunicação conjunta</div><span class="farol farol-amarelo">Amarelo</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="dont">✗</span> Não tratar como cliente transacional — é parceiro estratégico</div><span class="farol farol-vermelho">Vermelho</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="dont">✗</span> Não negligenciar o pós-venda — a experiência do consumidor final reflete na parceria</div><span class="farol farol-vermelho">Vermelho</span></div>
+          </div>
+
+          <div class="publico-section-label">Emails que funcionam</div>
+          <div class="publico-email-tags">
+            <span class="publico-email-tag tag-yes">Parceria / Co-branding ✓</span>
+            <span class="publico-email-tag tag-yes">Volume + exclusividade ✓</span>
+            <span class="publico-email-tag tag-yes">Visão do consumidor final ✓</span>
+            <span class="publico-email-tag tag-no">Abordagem transacional ✗</span>
+          </div>
+        </div>
+      </details>
+
+      <!-- HNWI -->
+      <details class="publico-card">
+        <summary class="publico-summary">
+          <span class="publico-tag">HNWI</span>
+          <div class="publico-info">
+            <div class="publico-name">High Net Worth Individual</div>
+            <div class="publico-tagline">Indivíduo de altíssima renda — exclusividade real, curadoria, acesso</div>
+          </div>
+          <span class="publico-chevron">↓</span>
+        </summary>
+        <div class="publico-body">
+          <div class="publico-section-label">Quem é esse público (em linguagem simples)</div>
+          <div class="publico-def">HNWI — High Net Worth Individual — é uma pessoa física com patrimônio acima de USD 1 milhão em ativos investidos. No Brasil, isso equivale a um empresário consolidado, herdeiro, executivo C-level sênior ou profissional liberal de alto sucesso. Não é necessariamente famoso — mas tem dinheiro para gastar sem precisar justificar para ninguém.</div>
+
+          <div class="publico-section-label">Exemplos concretos</div>
+          <div class="publico-examples">
+            <div class="publico-example">Empresário do agronegócio do Centro-Oeste, 45–60 anos, quer experiências que o filho nunca vai esquecer</div>
+            <div class="publico-example">Sócio de fundo de private equity em São Paulo, acostumado com hospitality de alto nível em eventos internacionais</div>
+            <div class="publico-example">CEO de empresa familiar de segunda geração, usa experiências como forma de networking estratégico</div>
+            <div class="publico-example">Family office nos EUA com origem latina — quer manter conexão com o Brasil via eventos culturais e esportivos</div>
+            <div class="publico-example">Médico especialista com consultório próprio em SP/RJ, ticket médio de viagem acima de R$50k</div>
+          </div>
+
+          <div class="publico-section-label">Comportamento geográfico</div>
+          <div class="publico-geo">
+            <div class="publico-geo-card">
+              <div class="publico-geo-label br">🇧🇷 No Brasil</div>
+              <div class="publico-geo-text">Compra por indicação e por relacionamento. Não pesquisa no Google — é indicado por alguém de confiança. Preço não é o obstáculo, mas percepção de exclusividade é decisiva. Quer sentir que não é "mais um cliente".</div>
+            </div>
+            <div class="publico-geo-card">
+              <div class="publico-geo-label int">🌎 Internacional</div>
+              <div class="publico-geo-text">Acostumado com padrão de serviço de hospitality world-class (IMG, American Express Centurion). A comparação é com o que o mundo oferece de melhor. Quer acesso que dinheiro sozinho não compra.</div>
+            </div>
+          </div>
+
+          <div class="publico-section-label">Como nos comunicamos</div>
+          <div class="publico-com">
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Exclusividade real — não percebida. "Apenas 12 lugares" precisa ser verdade</div><span class="farol farol-amarelo">Amarelo</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Acesso antecipado antes de qualquer anúncio público</div><span class="farol farol-amarelo">Amarelo</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="do">✓</span> Curadoria pessoal — email assinado por pessoa real, não por "Equipe ABSOLUT"</div><span class="farol farol-amarelo">Amarelo</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="dont">✗</span> Nunca usar urgência de escassez falsa — detecta na hora</div><span class="farol farol-vermelho">Vermelho</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="dont">✗</span> Nunca falar em preço no assunto do email — é vulgar</div><span class="farol farol-vermelho">Vermelho</span></div>
+            <div class="publico-com-item"><div class="publico-com-text"><span class="dont">✗</span> Nunca massificar — se parece newsletter, vai para o lixo</div><span class="farol farol-vermelho">Vermelho</span></div>
+          </div>
+
+          <div class="publico-section-label">Emails que funcionam</div>
+          <div class="publico-email-tags">
+            <span class="publico-email-tag tag-yes">Acesso antecipado ✓</span>
+            <span class="publico-email-tag tag-yes">Curadoria pessoal ✓</span>
+            <span class="publico-email-tag tag-yes">Exclusividade real ✓</span>
+            <span class="publico-email-tag tag-no">Urgência de escassez falsa ✗</span>
+            <span class="publico-email-tag tag-no">Preço no assunto ✗</span>
+            <span class="publico-email-tag tag-no">Aparência de newsletter ✗</span>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SILOS ── -->
+<section id="silos">
+  <div class="section-inner">
+    <div class="section-eyebrow">Silos de produto · 5 categorias · múltiplos sub-silos</div>
+    <h2 class="section-title">Onde o email<br><span class="accent">gera receita.</span></h2>
+    <p class="section-intro">Cada categoria agrupa sub-silos com sua própria estratégia de email, ICP dominante e automações no RD Station. Clique para acessar a pasta no Drive.</p>
+
+    <div class="silos-grid">
+
+      <!-- Futebol -->
+      <a class="silo-card" href="https://drive.google.com/drive/folders/1mRqF1mG_0_A-m0ehlloB-jgVAFQw0UA7" target="_blank">
+        <div class="silo-number">Cat. 01</div>
+        <div class="silo-name">Futebol</div>
+        <div class="silo-desc">A maior base de fãs B2C do Brasil. 5 sub-silos cobrindo o calendário completo — do campeonato nacional à Copa do Mundo.</div>
+        <div class="silo-sub-tags">
+          <span class="silo-sub">Futebol Brasileiro</span>
+          <span class="silo-sub">Seleção Brasileira</span>
+          <span class="silo-sub">Copa do Mundo</span>
+          <span class="silo-sub">Futebol Sul-Americano</span>
+          <span class="silo-sub">Futebol Europeu</span>
+        </div>
+        <span class="silo-badge badge-br">Nacional · B2C dominante</span>
+      </a>
+
+      <!-- American Sports -->
+      <a class="silo-card" href="https://drive.google.com/drive/folders/1AOS12eyGzco6VHHwzlTP_ArO8af1bYuw" target="_blank">
+        <div class="silo-number">Cat. 02</div>
+        <div class="silo-name">American Sports</div>
+        <div class="silo-desc">NFL e Golfe — os esportes americanos de maior prestígio e maior ticket. Super Bowl LXI é o produto anchor da ABSOLUT Sport.</div>
+        <div class="silo-sub-tags">
+          <span class="silo-sub">Futebol Americano / NFL</span>
+          <span class="silo-sub silo-sub-highlight">Super Bowl LXI ↗</span>
+          <span class="silo-sub">Golfe · Masters · PGA Tour</span>
+        </div>
+        <div class="silo-ticket">$6k – $18k (SB LXI)</div>
+        <span class="silo-badge badge-sbx">Internacional · EUA</span>
+      </a>
+
+      <!-- Motor Sports -->
+      <a class="silo-card" href="https://drive.google.com/drive/folders/1Cb-wIOk7AhT0GxjY1rLPgdIhLJHnW7Fj" target="_blank">
+        <div class="silo-number">Cat. 03</div>
+        <div class="silo-name">Motor Sports</div>
+        <div class="silo-desc">GP São Paulo — Interlagos. Público AB premium com forte componente B2B. Experiência de 3 dias com hospitality corporativo.</div>
+        <div class="silo-sub-tags">
+          <span class="silo-sub">Fórmula 1 · GP Interlagos</span>
+        </div>
+        <div class="silo-ticket">Premium BR</div>
+        <span class="silo-badge badge-br">B2B · Hospitality</span>
+      </a>
+
+      <!-- Tênis -->
+      <a class="silo-card" href="https://drive.google.com/drive/folders/1zWRMO_vokfbRV3ChUjppcs_KyEQMx7iX" target="_blank">
+        <div class="silo-number">Cat. 04</div>
+        <div class="silo-name">Tênis</div>
+        <div class="silo-desc">NFTO Brasil (Nitto ATP). Nicho AB de alto engajamento — menor volume, maior qualidade de lead. HNWI tem presença relevante.</div>
+        <div class="silo-sub-tags">
+          <span class="silo-sub">ATP Brasil · NFTO</span>
+          <span class="silo-sub">ITF · outros torneios</span>
+        </div>
+        <div class="silo-ticket">Nicho AB</div>
+        <span class="silo-badge badge-br">HNWI · Nicho premium</span>
+      </a>
+
+      <!-- Esportes Olímpicos — futuro -->
+      <div class="silo-card silo-future">
+        <div class="silo-number">Cat. 05</div>
+        <div class="silo-name">Esportes Olímpicos</div>
+        <div class="silo-desc">Expansão futura — Olimpíadas, vôlei, atletismo e outros esportes olímpicos com audiência premium.</div>
+        <div class="silo-sub-tags">
+          <span class="silo-sub">Em mapeamento</span>
+        </div>
+        <span class="silo-badge" style="background:rgba(255,255,255,0.05);color:var(--neutral-400);border-color:transparent">Fase 2</span>
+      </div>
+
+      <!-- ABSOLUT Pass -->
+      <a class="silo-card" href="https://drive.google.com/drive/folders/12T9vFjJ6hxh3XmMVE9cy7TQ0L6aTdD7l" target="_blank">
+        <div class="silo-number">Prog. 01</div>
+        <div class="silo-name">ABSOLUT Pass</div>
+        <div class="silo-desc">Assinatura recorrente com upgrades, renovações e pagamento parcelado. O silo de maior valor vitalício por cliente — retenção é tudo.</div>
+        <div class="silo-ticket">Recorrente</div>
+        <span class="silo-badge badge-rec">Recorrente · LTV</span>
+      </a>
+
+      <!-- Cross-sell -->
+      <a class="silo-card" href="https://drive.google.com/drive/folders/1gLHrhA78Gg6ImJwfvveL4KsW2y_GvhSU" target="_blank">
+        <div class="silo-number">Prog. 02</div>
+        <div class="silo-name">Cross-sell</div>
+        <div class="silo-desc">Comprou produto A → recebe oferta de produto B. A inteligência de cross-silo é o que transforma o cliente de um evento em cliente recorrente.</div>
+        <div class="silo-ticket">Base interna</div>
+        <span class="silo-badge badge-rec">Retenção · Upsell</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FRAMEWORKS ── -->
+<section id="frameworks">
+  <div class="section-inner">
+    <div class="section-eyebrow">Frameworks · Arquitetura de copy</div>
+    <h2 class="section-title">Os 4 autores<br><span class="accent">por trás da estratégia.</span></h2>
+    <p class="section-intro">Cada framework resolve uma camada do problema. Juntos, cobrem desde a arquitetura do funil até a palavra que fecha a venda.</p>
+
+    <div class="frameworks-grid">
+      <div class="framework-card">
+        <div class="framework-initial">B</div>
+        <div class="framework-author">Russell Brunson</div>
+        <div class="framework-concept">Value Ladder · Funis de vendas</div>
+        <div class="framework-use">Arquitetura do funil: como o lead entra no silo mais acessível e vai sendo guiado para o produto de maior ticket. Cada silo tem uma escada de valor — o email é o trilho que move o lead de degrau em degrau.</div>
+        <div class="framework-tier">Aplicado em: <strong>sequências de nutrição, upsell, onboarding</strong></div>
+      </div>
+      <div class="framework-card">
+        <div class="framework-initial">H</div>
+        <div class="framework-author">Alex Hormozi</div>
+        <div class="framework-concept">Grand Slam Offer · Irresistibilidade</div>
+        <div class="framework-use">Como empilhar valor até o NÃO parecer impossível. Para a ABSOLUT Sport: ingresso + hotel + transfer + acesso VIP + experiência curada. Os emails de BOFU constroem essa oferta peça por peça antes de revelar o preço.</div>
+        <div class="framework-tier">Aplicado em: <strong>emails de oferta, BOFU, upsell de pacote completo</strong></div>
+      </div>
+      <div class="framework-card">
+        <div class="framework-initial">H</div>
+        <div class="framework-author">Gary Halbert</div>
+        <div class="framework-concept">Resposta Direta · Boron Letters</div>
+        <div class="framework-use">O copy que faz o leitor parar o que está fazendo e ler. Halbert ensina: hook irresistível, história que prende, oferta clara, call to action urgente. Os emails Tier 3 são escritos com essa disciplina — cada linha existe para fazer o leitor ler a próxima.</div>
+        <div class="framework-tier">Aplicado em: <strong>Tier 3 — cartas de vendas, win-back, urgência final</strong></div>
+      </div>
+      <div class="framework-card">
+        <div class="framework-initial">D</div>
+        <div class="framework-author">Ryan Deiss</div>
+        <div class="framework-concept">Customer Value Journey · 8 estágios</div>
+        <div class="framework-use">Aware → Engage → Subscribe → Convert → Excite → Ascend → Advocate → Promote. Cada email precisa ser calibrado para o estágio do lead. Mandar email de oferta para quem está em "Aware" é desperdício — e irrita o lead.</div>
+        <div class="framework-tier">Aplicado em: <strong>segmentação por estágio, automações comportamentais</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TIERS ── -->
+<section id="tiers">
+  <div class="section-inner">
+    <div class="section-eyebrow">Tiers · Framework de negociação</div>
+    <h2 class="section-title">Quem entrega<br><span class="accent">cada email.</span></h2>
+    <p class="section-intro">O princípio: se projetamos 100 emails, a liderança entrega 30. O framework 3-tier garante que os 30 certos sejam entregues — e que o estrategista seja insubstituível.</p>
+
+    <div class="tiers-grid">
+      <div class="tier-card tier-1">
+        <div class="tier-label">Tier 1 · Inegociável</div>
+        <div class="tier-title">Liderança entrega</div>
+        <div class="tier-owner">Mínimo viável. Se isso não existir, o programa não existe.</div>
+        <div class="tier-emails">
+          <div class="tier-email">
+            <div class="tier-email-left">Email de boas-vindas (lead entrou)<div class="tier-email-type">Trigger automático — D+0</div></div>
+            <span class="farol farol-verde">Verde</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Resend com subject alternativo<div class="tier-email-type">Não abriu em 72h → automação simples</div></div>
+            <span class="farol farol-verde">Verde</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Confirmação de compra<div class="tier-email-type">Transacional — obrigatório</div></div>
+            <span class="farol farol-verde">Verde</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Onboarding novo assinante ABSOLUT Pass<div class="tier-email-type">Trigger D+1 — retenção inicial</div></div>
+            <span class="farol farol-verde">Verde</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Lembrete de renovação (7 dias antes)<div class="tier-email-type">Automação de datas</div></div>
+            <span class="farol farol-verde">Verde</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-card tier-2">
+        <div class="tier-label">Tier 2 · Cedável</div>
+        <div class="tier-title">Posso abrir mão</div>
+        <div class="tier-owner">Agrega valor mas pode ser negociado. Moeda de troca.</div>
+        <div class="tier-emails">
+          <div class="tier-email">
+            <div class="tier-email-left">Newsletter mensal de atualização<div class="tier-email-type">Conteúdo recorrente — postergável</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Anúncio de novidades de produto<div class="tier-email-type">Informativo — sem urgência comercial direta</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Email de pesquisa de satisfação pós-evento<div class="tier-email-type">NPS / feedback — útil mas não crítico</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Conteúdo educativo sobre o evento<div class="tier-email-type">TOFU / engajamento — fase 2</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-card tier-3">
+        <div class="tier-label">Tier 3 · Inegociável</div>
+        <div class="tier-title">Só Mauricio entrega</div>
+        <div class="tier-owner">Requer estratégia avançada e copy nível Halbert. Aqui está o valor insubstituível.</div>
+        <div class="tier-emails">
+          <div class="tier-email">
+            <div class="tier-email-left">Sequência de nutrição 5 emails (MOFU)<div class="tier-email-type">Copy + estratégia Brunson/Deiss</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Email de urgência final (últimas vagas)<div class="tier-email-type">Copy Halbert — fecha vendas</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Win-back de lead frio (90 dias inativo)<div class="tier-email-type">Copy Halbert — reativação</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Upsell de hotel / pacote completo pós-compra<div class="tier-email-type">Grand Slam Offer — Hormozi</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Cross-sell entre silos<div class="tier-email-type">Inteligência de base — só Mauricio tem a visão</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+          <div class="tier-email">
+            <div class="tier-email-left">Churn prevention ABSOLUT Pass (3 emails)<div class="tier-email-type">Sequência de retenção — alta complexidade</div></div>
+            <span class="farol farol-amarelo">Amarelo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORKFLOW RD STATION ── -->
+<section id="workflow">
+  <div class="section-inner">
+    <div class="section-eyebrow">Workflow · Automações RD Station</div>
+    <h2 class="section-title">Comportamento<br><span class="accent">dispara email.</span></h2>
+    <p class="section-intro">Cada ação — ou inação — do lead aciona um fluxo no RD Station. Essa é a lógica que Victor implementa. Para cada silo, a mesma matriz se repete.</p>
+
+    <table class="workflow-table">
+      <thead>
+        <tr>
+          <th>Evento</th>
+          <th>Trigger no RD Station</th>
+          <th>Ação / Email</th>
+          <th>Tier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="wf-event">Lead entra no silo</span></td>
+          <td><span class="wf-trigger">Tag / formulário preenchido</span></td>
+          <td class="wf-action">Inicia sequência de boas-vindas</td>
+          <td><span class="tier-badge t1">Tier 1</span></td>
+        </tr>
+        <tr>
+          <td><span class="wf-event">Abriu o email</span></td>
+          <td><span class="wf-trigger">opened = true</span></td>
+          <td class="wf-action">Acelera para MOFU — próximo email da sequência</td>
+          <td><span class="tier-badge t1">Tier 1</span></td>
+        </tr>
+        <tr>
+          <td><span class="wf-event">Não abriu em 72h</span></td>
+          <td><span class="wf-trigger">opened = false + 72h</span></td>
+          <td class="wf-action">Resend com subject alternativo</td>
+          <td><span class="tier-badge t1">Tier 1</span></td>
+        </tr>
+        <tr>
+          <td><span class="wf-event">Clicou em link</span></td>
+          <td><span class="wf-trigger">clicked = true</span></td>
+          <td class="wf-action">Move para BOFU — email de oferta direta</td>
+          <td><span class="tier-badge t1">Tier 1</span></td>
+        </tr>
+        <tr>
+          <td><span class="wf-event">Converteu (comprou)</span></td>
+          <td><span class="wf-trigger">oportunidade ganha</span></td>
+          <td class="wf-action">Onboarding (T1) + upsell hotel/pacote (T3)</td>
+          <td><span class="tier-badge t1">Tier 1</span> + <span class="tier-badge t3">Tier 3</span></td>
+        </tr>
+        <tr>
+          <td><span class="wf-event">Não converteu em 14 dias</span></td>
+          <td><span class="wf-trigger">no action + 14 dias</span></td>
+          <td class="wf-action">Sequência de reativação — story + nova oferta</td>
+          <td><span class="tier-badge t3">Tier 3</span></td>
+        </tr>
+        <tr>
+          <td><span class="wf-event">Inativo 30 dias</span></td>
+          <td><span class="wf-trigger">no open + no click + 30 dias</span></td>
+          <td class="wf-action">Win-back (Halbert) ou sunset sequence</td>
+          <td><span class="tier-badge t3">Tier 3</span></td>
+        </tr>
+        <tr>
+          <td><span class="wf-event">Comprou produto A</span></td>
+          <td><span class="wf-trigger">tag "comprou-[produto]"</span></td>
+          <td class="wf-action">Cross-sell Silo 06 — oferta de produto B</td>
+          <td><span class="tier-badge t3">Tier 3</span></td>
+        </tr>
+        <tr>
+          <td><span class="wf-event">Risco de cancelamento (Pass)</span></td>
+          <td><span class="wf-trigger">score de churn elevado</span></td>
+          <td class="wf-action">Sequência 3 emails de churn prevention</td>
+          <td><span class="tier-badge t3">Tier 3</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── AGENTE CLAUDE ── -->
+<section id="agente">
+  <div class="section-inner">
+    <div class="section-eyebrow">Agente Claude · Redator dedicado ABSOLUT Sport</div>
+    <h2 class="section-title">O guardião<br><span class="accent">do copy.</span></h2>
+    <p class="section-intro">Não é um prompt para preencher tabela. É um agente configurado com a voz da marca, os 4 frameworks e a inteligência de cada silo — pronto para gerar e revisar copy em ciclo com Victor e Mauricio.</p>
+
+    <div class="agente-grid">
+      <div class="agente-info">
+        <div class="section-eyebrow" style="margin-bottom: 20px;">O que o agente faz</div>
+        <div class="agente-role-list">
+          <div class="agente-role">
+            <div class="agente-role-icon">✍️</div>
+            <div>
+              <div class="agente-role-title">Redator</div>
+              <div class="agente-role-desc">Gera copy de email com hooks, CTAs, narrativa, objeções e urgência — nível Halbert/Brunson.</div>
+            </div>
+          </div>
+          <div class="agente-role">
+            <div class="agente-role-icon">🛡️</div>
+            <div>
+              <div class="agente-role-title">Guardião de copy</div>
+              <div class="agente-role-desc">Avalia rascunhos do Victor e da liderança — eleva para o padrão da marca antes de ir para o RD Station.</div>
+            </div>
+          </div>
+          <div class="agente-role">
+            <div class="agente-role-icon">🧠</div>
+            <div>
+              <div class="agente-role-title">Co-estrategista</div>
+              <div class="agente-role-desc">Ciclos de revisão com Victor + Mauricio. Conhece todos os 6 silos, ICPs, objections por público.</div>
+            </div>
+          </div>
+          <div class="agente-role">
+            <div class="agente-role-icon">📚</div>
+            <div>
+              <div class="agente-role-title">Memória da marca</div>
+              <div class="agente-role-desc">Acessa os documentos do Google Drive por silo. Mantém consistência de voz entre campanhas.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="agente-cycle">
+        <div class="section-eyebrow" style="margin-bottom: 20px;">Ciclo de revisão — 4 mãos</div>
+        <div class="cycle-steps">
+          <div class="cycle-step">
+            <div class="cycle-num">1</div>
+            <div class="cycle-text"><strong>Victor</strong> produz email (Tier 1 ou 2) → submete para o Agente Claude</div>
+          </div>
+          <div class="cycle-step">
+            <div class="cycle-num">2</div>
+            <div class="cycle-text"><strong>Agente Claude</strong> avalia: hook, CTA, estrutura, aderência ao silo e ao público</div>
+          </div>
+          <div class="cycle-step">
+            <div class="cycle-num">3</div>
+            <div class="cycle-text"><strong>Mauricio</strong> aprova ou solicita nova rodada de revisão</div>
+          </div>
+          <div class="cycle-step">
+            <div class="cycle-num">4</div>
+            <div class="cycle-text">Versão final vai para o <strong>RD Station</strong> — Victor configura e ativa o fluxo</div>
+          </div>
+        </div>
+        <div style="margin-top: 28px; padding: 16px; background: rgba(201,168,76,0.08); border-radius: 8px; border: 1px solid var(--border-gold);">
+          <div style="font-size: 12px; color: var(--neutral-400); margin-bottom: 4px; font-family: 'SoulCraft', 'Barlow Condensed', 'Anton', sans-serif; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">System Prompt inclui</div>
+          <div style="font-size: 13px; color: var(--neutral-200);">Voz da marca ABSOLUT Sport · ICPs por silo · Frameworks Brunson/Hormozi/Halbert/Deiss · Restrições editoriais · Acesso ao Drive por silo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DO/DON'T ── -->
+<section id="guidelines">
+  <div class="section-inner">
+    <div class="section-eyebrow">Guidelines · Boas práticas</div>
+    <h2 class="section-title">O que fazer.<br><span class="accent">O que evitar.</span></h2>
+    <p class="section-intro">Princípios de email marketing aplicados à realidade da ABSOLUT Sport — para quem escreve, revisa ou aprova.</p>
+
+    <div class="dd-grid">
+      <div class="dd-item dd-do">
+        <div class="dd-item-left"><span class="dd-icon">✓</span><div class="dd-text"><strong>Subject line com curiosidade ou urgência real.</strong> "Última chance: 3 lugares Pinnacle disponíveis" funciona porque é verdade.</div></div>
+        <span class="farol farol-verde">Verde</span>
+      </div>
+      <div class="dd-item dd-dont">
+        <div class="dd-item-left"><span class="dd-icon">✗</span><div class="dd-text"><strong>Subject lines genéricos tipo "Novidades ABSOLUT Sport".</strong> Taxa de abertura cai para 5% ou menos. Cada subject precisa de um ângulo específico.</div></div>
+        <span class="farol farol-vermelho">Vermelho</span>
+      </div>
+      <div class="dd-item dd-do">
+        <div class="dd-item-left"><span class="dd-icon">✓</span><div class="dd-text"><strong>Personalização com o nome do lead e o silo específico.</strong> "João, seu lugar no Super Bowl LXI" converte mais que qualquer mensagem genérica.</div></div>
+        <span class="farol farol-verde">Verde</span>
+      </div>
+      <div class="dd-item dd-dont">
+        <div class="dd-item-left"><span class="dd-icon">✗</span><div class="dd-text"><strong>Falar de todos os silos no mesmo email.</strong> Confunde o leitor e dilui a mensagem. Um email = um silo = um CTA.</div></div>
+        <span class="farol farol-vermelho">Vermelho</span>
+      </div>
+      <div class="dd-item dd-do">
+        <div class="dd-item-left"><span class="dd-icon">✓</span><div class="dd-text"><strong>Segmentar por comportamento antes de enviar.</strong> Lead que abriu 3 emails mas não converteu recebe sequência diferente de quem nunca abriu.</div></div>
+        <span class="farol farol-verde">Verde</span>
+      </div>
+      <div class="dd-item dd-dont">
+        <div class="dd-item-left"><span class="dd-icon">✗</span><div class="dd-text"><strong>Enviar o mesmo email para toda a base.</strong> Destrói a entregabilidade, gera unsubscribes e não converte. Segmentação é inegociável.</div></div>
+        <span class="farol farol-vermelho">Vermelho</span>
+      </div>
+      <div class="dd-item dd-do">
+        <div class="dd-item-left"><span class="dd-icon">✓</span><div class="dd-text"><strong>Um único CTA por email.</strong> Qual é a ação que você quer que a pessoa tome? Apenas essa. Mais de um CTA divide a atenção e reduz cliques.</div></div>
+        <span class="farol farol-verde">Verde</span>
+      </div>
+      <div class="dd-item dd-dont">
+        <div class="dd-item-left"><span class="dd-icon">✗</span><div class="dd-text"><strong>Urgência falsa.</strong> "Últimas 2 vagas" quando ainda tem 50 disponíveis. O lead percebe na próxima semana quando o email se repete — e perde a confiança para sempre.</div></div>
+        <span class="farol farol-vermelho">Vermelho</span>
+      </div>
+      <div class="dd-item dd-do">
+        <div class="dd-item-left"><span class="dd-icon">✓</span><div class="dd-text"><strong>Testar subject lines antes de escalar.</strong> Enviar para 10–15% da lista com dois subjects diferentes, esperar 4h, enviar o vencedor para o restante.</div></div>
+        <span class="farol farol-verde">Verde</span>
+      </div>
+      <div class="dd-item dd-dont">
+        <div class="dd-item-left"><span class="dd-icon">✗</span><div class="dd-text"><strong>Enviar sem revisar em mobile.</strong> 60–70% dos emails são abertos no celular. Se o layout quebra no iPhone, o email falhou antes de começar.</div></div>
+        <span class="farol farol-vermelho">Vermelho</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GLOSSÁRIO ── -->
+<section id="glossario">
+  <div class="section-inner">
+    <div class="section-eyebrow">Glossário · Termos do RD Station e da estratégia</div>
+    <h2 class="section-title">O vocabulário<br><span class="accent">do time.</span></h2>
+    <p class="section-intro">Para quem está chegando agora no projeto — os termos que aparecem nos documentos e nas reuniões com Victor.</p>
+
+    <div class="glossary-grid">
+      <div class="glossary-item">
+        <div class="glossary-term">Silo</div>
+        <div class="glossary-def">Uma linha de produto ou evento com sua própria estratégia de email, lista de leads e automações. Ex: Silo Super Bowl LXI tem leads, emails e fluxos separados do Silo Futebol.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Tier</div>
+        <div class="glossary-def">Classificação de quem é responsável por criar e entregar o email. Tier 1 = liderança, Tier 2 = cedável, Tier 3 = exclusivo Mauricio.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Lead scoring</div>
+        <div class="glossary-def">Pontuação atribuída a cada lead com base em seu comportamento (abriu? clicou? visitou a página de vendas?). Lead com score alto vai para fluxo de BOFU.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">TOFU / MOFU / BOFU</div>
+        <div class="glossary-def">Top / Middle / Bottom of Funnel. TOFU = lead frio, ainda descobrindo. MOFU = lead engajado, considerando. BOFU = lead quente, pronto para comprar.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Trigger</div>
+        <div class="glossary-def">Evento que dispara um fluxo de automação no RD Station. Ex: "lead preencheu formulário" → trigger → inicia sequência de boas-vindas.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Open rate</div>
+        <div class="glossary-def">Taxa de abertura — % dos leads que abriram o email. Benchmark de mercado: 20–25%. Acima de 30% é excelente. Abaixo de 15% indica problema de subject line ou de lista fria.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Click-through rate (CTR)</div>
+        <div class="glossary-def">% dos que abriram o email e clicaram em algum link. Benchmark: 2–5%. É o indicador de relevância do conteúdo e clareza do CTA.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Win-back</div>
+        <div class="glossary-def">Sequência de emails para leads inativos (30–90 dias sem abrir). O objetivo é reativar o interesse — ou confirmar que o lead está morto e pode ser removido da lista.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Churn prevention</div>
+        <div class="glossary-def">Sequência específica do Silo ABSOLUT Pass para assinantes com risco de cancelamento. Identifica o momento de risco e envia 3 emails com retenção antes que o cancelamento aconteça.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">SPF / DKIM / DMARC</div>
+        <div class="glossary-def">Protocolos de autenticação de email que garantem entregabilidade. Sem eles, os emails vão para spam. Victor configura no RD Station — é infraestrutura, não marketing.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Preheader</div>
+        <div class="glossary-def">O texto que aparece logo depois do subject na caixa de entrada (antes de abrir o email). É o segundo ponto de contato com o leitor — deve complementar o subject, nunca repetir.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Value Ladder</div>
+        <div class="glossary-def">Conceito de Brunson: escada de valor onde o cliente começa no produto mais barato/acessível e vai sendo guiado para produtos de maior valor. Cada silo tem sua escada.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-brand">
+    <img src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport">
+  </div>
+  <div class="footer-links">
+    <a href="../index.html">Design System</a>
+    <a href="../playbooks/growth.html">Growth Playbook</a>
+    <a href="https://drive.google.com/drive/folders/1E4c2uOX2RIi4u5_u6BUHJvolRC9jHKUg" target="_blank">Drive</a>
+    <a href="https://drive.google.com/file/d/1TO5I3W76UNQRC8Y-islRFkRJDvrZA5Ut/view" target="_blank">Command Center</a>
+  </div>
+  <div class="footer-copy">ABSOLUT Sport Design System · Growth · Email Marketing</div>
+</footer>
+
+<script src="../i18n.js" onerror="void(0)"></script>
+<script src="../zero-to-o.js" onerror="void(0)"></script>
+
+<!-- ── FAROL WIDGET (protótipo gadget DS) ── -->
+<div class="farol-widget">
+  <div class="farol-widget-title">Farol de Aprovação</div>
+  <div class="farol-widget-item"><div class="farol-dot dot-verde"></div><span>Verde — pode seguir</span></div>
+  <div class="farol-widget-item"><div class="farol-dot dot-amarelo"></div><span>Amarelo — aprovar 1º</span></div>
+  <div class="farol-widget-item"><div class="farol-dot dot-vermelho"></div><span>Vermelho — nunca</span></div>
+  <div style="margin-top:4px;font-size:9px;color:#444;letter-spacing:0.08em">Beta · Gadget futuro DS</div>
+</div>
+
+</body>
+</html>

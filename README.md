@@ -82,13 +82,18 @@
 - Usage: "ABSOLUT Sport" — never just "Absolut"
 
 ### Typography
-- **Display / Headlines:** Barlow Condensed (Bold/ExtraBold) — tall, athletic, high-impact
-  - Fallback: Bebas Neue, Anton
-  - Google Fonts: https://fonts.google.com/specimen/Barlow+Condensed
+- **Display / Headlines:** SoulCraft GX (variable, weight 900 para impacto máximo) — tipografia primária da marca, alta voltagem
+  - Fonte local: `fonts/soulcraftgx.ttf` (incluída no `absolut-brand-kit.zip`)
+  - Fallback: Barlow Condensed, sans-serif
+  - Assinatura: incluir `zero-to-o.js` em qualquer página com SoulCraft (troca "0" por "O" maiúsculo — `+5oo`, `1oK`, `12o×`)
 - **Body / UI:** Barlow (Regular/Medium/SemiBold) — clean, readable, modern
   - Fallback: DM Sans, Inter
-  - Google Fonts: https://fonts.google.com/specimen/Barlow
+  - Google Fonts (gratuito, livre): https://fonts.google.com/specimen/Barlow
+  - Display fallback (gratuito): https://fonts.google.com/specimen/Barlow+Condensed
 - **Mono / Data:** JetBrains Mono — for prices, codes, stats
+  - Google Fonts (gratuito): https://fonts.google.com/specimen/JetBrains+Mono
+
+> **Acesso às fontes:** SoulCraft GX está empacotada no `assets/absolut-brand-kit.zip` (download via Hub). Barlow e JetBrains Mono são gratuitas no Google Fonts — qualquer pessoa com acesso ao Hub pode baixá-las nos links acima.
 
 ### Backgrounds & Imagery
 - **Full-bleed photography** is a core visual tool — stadium crowds, aerial shots, dramatic night games

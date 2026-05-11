@@ -4,6 +4,21 @@ Ideias e iniciativas pendentes. Cada item: responsável, autor da ideia, status,
 
 ---
 
+## Substituir selo MIT no Enterprise AI Playbook
+
+- **ID:** BL-004
+- **Autor:** Mauricio Lacerda
+- **Registrado em:** 2026-05-11
+- **Status:** Pendente — execução manual por Mauricio
+
+### Resumo
+Substituir o asset do selo MIT em `playbooks/enterprise-ai.html:888` (atualmente `../assets/mit-seal.svg`) por um novo logo MIT a ser curado por Mauricio.
+
+### Contexto
+Em 11/05/2026 surgiu um PNG (`assets/download.png`, 4.9KB, logo MIT raster) candidato à substituição. Foi descartado pra Mauricio fazer a curadoria do asset definitivo (formato, qualidade, fonte oficial). O PNG foi deletado no toalette do dia.
+
+---
+
 ## Acesso restrito + versões pocket por audiência
 
 - **ID:** BL-001

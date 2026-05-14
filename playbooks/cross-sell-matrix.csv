@@ -1,0 +1,170 @@
+origem,destino,score,nota
+nfl,nfl,-,mesma modalidade — usar win-back e nao cross-sell
+nfl,nba,A,publico americano AB+ premium sobreposto
+nfl,golf,A,publico HNWI internacional sobreposto
+nfl,libertadores,M,publico B2C esporte ao vivo mas pais diferente
+nfl,sudamericana,B,publico nao se sobrepoe
+nfl,recopa,B,publico nao se sobrepoe
+nfl,flamengo,B,publico B2C nacional vs internacional
+nfl,copa-do-mundo,A,evento global pico esportivo
+nfl,f1,A,publico HNWI/B2B sobreposto fortemente
+nfl,motogp,M,publico esportivo internacional parcial
+nfl,olimpicos,B,modalidade muito diferente
+nfl,grand-slams,A,publico HNWI internacional + prestigio
+nfl,nfto,M,publico HNWI BR menor afinidade direta
+nba,nfl,A,publico americano AB+ premium sobreposto
+nba,nba,-,mesma modalidade — usar win-back
+nba,golf,M,publico HNWI parcial
+nba,libertadores,M,publico esportivo internacional
+nba,sudamericana,B,baixa sobreposicao
+nba,recopa,B,baixa sobreposicao
+nba,flamengo,B,publico nacional vs internacional
+nba,copa-do-mundo,A,evento global
+nba,f1,A,publico HNWI sobreposto
+nba,motogp,B,baixa sobreposicao
+nba,olimpicos,B,baixa sobreposicao
+nba,grand-slams,A,publico HNWI internacional
+nba,nfto,M,publico HNWI BR
+golf,nfl,M,parcial via Super Bowl evento
+golf,nba,M,publico HNWI parcial
+golf,golf,-,mesma modalidade
+golf,libertadores,B,publico muito diferente
+golf,sudamericana,B,publico muito diferente
+golf,recopa,B,publico muito diferente
+golf,flamengo,B,publico muito diferente
+golf,copa-do-mundo,M,publico HNWI parcial
+golf,f1,A,publico HNWI internacional + prestigio sobreposto
+golf,motogp,B,baixa sobreposicao
+golf,olimpicos,B,baixa sobreposicao
+golf,grand-slams,A,publico HNWI internacional + prestigio
+golf,nfto,A,mesmo publico HNWI nicho premium
+libertadores,nfl,M,publico esportivo parcial
+libertadores,nba,M,publico esportivo parcial
+libertadores,golf,B,publico muito diferente
+libertadores,libertadores,-,mesma modalidade
+libertadores,sudamericana,A,mesmo torneio sul-americano calendario aderente
+libertadores,recopa,A,mesmo torneio sul-americano
+libertadores,flamengo,A,clubes brasileiros na competicao
+libertadores,copa-do-mundo,A,publico B2C futebol nacional
+libertadores,f1,M,publico AB premium BR sobreposto
+libertadores,motogp,B,baixa sobreposicao
+libertadores,olimpicos,B,baixa sobreposicao
+libertadores,grand-slams,M,publico AB BR parcial
+libertadores,nfto,M,publico AB BR parcial
+sudamericana,nfl,B,baixa sobreposicao
+sudamericana,nba,B,baixa sobreposicao
+sudamericana,golf,B,baixa sobreposicao
+sudamericana,libertadores,A,torneio premium upgrade natural
+sudamericana,sudamericana,-,mesma modalidade
+sudamericana,recopa,A,mesmo cluster CONMEBOL
+sudamericana,flamengo,M,clubes brasileiros parcial
+sudamericana,copa-do-mundo,A,publico B2C futebol
+sudamericana,f1,B,publico diferente
+sudamericana,motogp,B,baixa sobreposicao
+sudamericana,olimpicos,B,baixa sobreposicao
+sudamericana,grand-slams,B,publico diferente
+sudamericana,nfto,M,publico BR esportivo parcial
+recopa,nfl,B,baixa sobreposicao
+recopa,nba,B,baixa sobreposicao
+recopa,golf,B,baixa sobreposicao
+recopa,libertadores,A,upgrade natural CONMEBOL
+recopa,sudamericana,A,mesmo cluster CONMEBOL
+recopa,recopa,-,mesma modalidade
+recopa,flamengo,M,clubes brasileiros parcial
+recopa,copa-do-mundo,A,publico B2C futebol
+recopa,f1,B,publico diferente
+recopa,motogp,B,baixa sobreposicao
+recopa,olimpicos,B,baixa sobreposicao
+recopa,grand-slams,B,publico diferente
+recopa,nfto,M,publico BR esportivo parcial
+flamengo,nfl,B,publico nacional vs internacional
+flamengo,nba,M,publico esportivo parcial
+flamengo,golf,B,publico muito diferente
+flamengo,libertadores,A,Flamengo participa direto
+flamengo,sudamericana,M,Flamengo as vezes participa
+flamengo,recopa,M,Flamengo as vezes participa
+flamengo,flamengo,-,mesma modalidade
+flamengo,copa-do-mundo,A,fa de futebol BR
+flamengo,f1,M,publico AB BR sobreposto
+flamengo,motogp,B,baixa sobreposicao
+flamengo,olimpicos,B,baixa sobreposicao
+flamengo,grand-slams,M,publico AB BR parcial
+flamengo,nfto,M,publico AB BR parcial
+copa-do-mundo,nfl,A,evento global pico esportivo
+copa-do-mundo,nba,A,publico esporte global
+copa-do-mundo,golf,M,publico HNWI parcial
+copa-do-mundo,libertadores,A,fa de futebol direto
+copa-do-mundo,sudamericana,A,fa de futebol
+copa-do-mundo,recopa,A,fa de futebol
+copa-do-mundo,flamengo,A,fa de futebol BR
+copa-do-mundo,copa-do-mundo,-,mesma modalidade
+copa-do-mundo,f1,A,publico esporte global premium
+copa-do-mundo,motogp,M,publico esportivo internacional parcial
+copa-do-mundo,olimpicos,M,publico de eventos globais parcial
+copa-do-mundo,grand-slams,A,publico HNWI internacional
+copa-do-mundo,nfto,M,publico AB BR parcial
+f1,nfl,A,publico HNWI/B2B sobreposto fortemente
+f1,nba,A,publico HNWI sobreposto
+f1,golf,A,publico HNWI internacional
+f1,libertadores,M,publico AB premium BR sobreposto
+f1,sudamericana,B,publico diferente
+f1,recopa,B,publico diferente
+f1,flamengo,M,publico AB BR sobreposto
+f1,copa-do-mundo,A,publico esporte global premium
+f1,f1,-,mesma modalidade — usar para cross entre F1 SP e F1 Global
+f1,motogp,A,motorsport irmao — afinidade muito alta
+f1,olimpicos,B,baixa sobreposicao
+f1,grand-slams,A,publico HNWI internacional + prestigio
+f1,nfto,A,publico AB BR sobreposto
+motogp,nfl,B,baixa sobreposicao
+motogp,nba,B,baixa sobreposicao
+motogp,golf,B,baixa sobreposicao
+motogp,libertadores,B,baixa sobreposicao
+motogp,sudamericana,B,baixa sobreposicao
+motogp,recopa,B,baixa sobreposicao
+motogp,flamengo,B,baixa sobreposicao
+motogp,copa-do-mundo,M,publico esportivo internacional parcial
+motogp,f1,A,motorsport irmao
+motogp,motogp,-,mesma modalidade
+motogp,olimpicos,B,baixa sobreposicao
+motogp,grand-slams,M,publico AB internacional parcial
+motogp,nfto,M,publico AB BR parcial
+olimpicos,nfl,B,baixa sobreposicao
+olimpicos,nba,B,baixa sobreposicao
+olimpicos,golf,B,baixa sobreposicao
+olimpicos,libertadores,B,baixa sobreposicao
+olimpicos,sudamericana,B,baixa sobreposicao
+olimpicos,recopa,B,baixa sobreposicao
+olimpicos,flamengo,B,baixa sobreposicao
+olimpicos,copa-do-mundo,M,publico de eventos globais parcial
+olimpicos,f1,B,baixa sobreposicao
+olimpicos,motogp,B,baixa sobreposicao
+olimpicos,olimpicos,-,mesma modalidade
+olimpicos,grand-slams,M,publico AB internacional parcial
+olimpicos,nfto,M,publico AB BR parcial
+grand-slams,nfl,A,publico HNWI internacional + prestigio
+grand-slams,nba,A,publico HNWI internacional
+grand-slams,golf,A,publico HNWI internacional + prestigio
+grand-slams,libertadores,M,publico AB BR parcial
+grand-slams,sudamericana,B,publico diferente
+grand-slams,recopa,B,publico diferente
+grand-slams,flamengo,M,publico AB BR parcial
+grand-slams,copa-do-mundo,A,publico HNWI internacional
+grand-slams,f1,A,publico HNWI internacional + prestigio
+grand-slams,motogp,M,publico AB internacional parcial
+grand-slams,olimpicos,M,publico AB internacional parcial
+grand-slams,grand-slams,-,mesma modalidade — cross entre Wimbledon/RG/AO/US Open
+grand-slams,nfto,A,upgrade natural NFTO -> Grand Slam
+nfto,nfl,M,publico HNWI BR menor afinidade direta
+nfto,nba,M,publico HNWI BR
+nfto,golf,A,mesmo publico HNWI nicho premium
+nfto,libertadores,M,publico BR esportivo parcial
+nfto,sudamericana,M,publico BR esportivo parcial
+nfto,recopa,M,publico BR esportivo parcial
+nfto,flamengo,M,publico AB BR parcial
+nfto,copa-do-mundo,M,publico AB BR parcial
+nfto,f1,A,publico AB BR sobreposto
+nfto,motogp,M,publico AB BR parcial
+nfto,olimpicos,M,publico AB BR parcial
+nfto,grand-slams,A,upgrade natural
+nfto,nfto,-,mesma modalidade

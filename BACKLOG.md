@@ -120,3 +120,47 @@ Duas melhorias de UX no Hub:
 4. Replicar pattern em todas as páginas-filhas
 
 ---
+
+## Migrar Email Command Center para taxonomia 7 silos + 2 programas (3 níveis)
+
+- **ID:** BL-005
+- **Autor:** Mauricio Lacerda
+- **Registrado em:** 2026-05-14
+- **Status:** Pendente — aguardando piloto cross-sell SB→F1 SP estabilizar
+
+### Resumo
+O `email-command-center.html` foi construído sob a taxonomia legada de **6 silos** (Super Bowl LXI · Futebol · F1 · Tênis · ABSOLUT Pass · Cross-sell). A nova taxonomia canônica é **7 silos + 2 programas em 3 níveis** (silo → sub-silo → evento), definida em `playbooks/cross-sell-taxonomy.md` e já refletida em `playbooks/growth-email.html`.
+
+### Escopo da migração
+1. **Renomear/criar abas** — substituir as 6 abas atuais por:
+   - American Sports (NFL · NBA · Golf)
+   - Futebol (Libertadores · Sudamericana · Recopa · Flamengo · Copa do Mundo · Brasileiro · Europeu)
+   - Automobilismo (F1 SP · F1 Global · MotoGP Goiânia · MotoGP Global)
+   - Esportes Olímpicos (Atletismo · Canoagem · Ginástica · Vôlei · Handball — Fase 2)
+   - Tênis (Grand Slams · NFTO)
+   - Promocionais ASB
+   - Oportunidades de calendário
+   - ABSOLUT Pass (programa)
+   - Cross-sell (programa)
+2. **Adicionar drill-down sub-silo → evento** dentro de cada aba de silo (hoje só tem 1 nível).
+3. **Integrar matriz de afinidade** da `cross-sell-taxonomy.md` como aba ou widget visual.
+4. **Sincronizar i18n** PT/EN/ES/DE (4 idiomas, paridade com `growth-email.html`).
+5. **Atualizar stat "6 silos" → "7 silos + 2 programas"** em todos os pontos da UI (já feito nos pontos mais visíveis em 2026-05-14, mas os 6 cards `silo-card` legados continuam em produção).
+
+### Por que não foi feito ainda
+- A reestruturação é UI-pesada (cerca de 500 linhas de HTML/CSS afetadas) e exige decisão visual sobre drill-down (acordeão, sub-abas, modal).
+- Faz mais sentido esperar o piloto cross-sell SB→F1 SP rodar (fev–nov 2026) e validar a matriz antes de cristalizar a UI.
+- Em 2026-05-14 foi feita atualização superficial: meta tags, intro, stat numérico — mas as 6 abas e 6 cards continuam estruturalmente legados.
+
+### Pontos a resolver antes de implementar
+- Visualização do drill-down sub-silo → evento (acordeão? tabs aninhadas? modal?)
+- Como mostrar a matriz de afinidade 13×13 sub-silos numa UI legível em mobile
+- Sincronização com `silos.csv` / `cross-sell-matrix.csv` (planejados na taxonomia §6) — deve ler dinamicamente ou ser estático?
+- Migração das URLs/anchors existentes (`#silo-sblxi`, `#silo-futebol`…) sem quebrar bookmarks externos
+
+### Próximos passos (quando arrancar)
+1. Prototipar drill-down sub-silo em uma aba (sugestão: começar por Automobilismo, que tem mais sub-silos e expõe o problema)
+2. Definir esquema visual da matriz de afinidade
+3. Reescrever as 9 seções (7 silos + 2 programas) seguindo o template novo
+4. Atualizar tabs + i18n + analytics events
+5. Manter redirecionamento dos anchors antigos por 1 ciclo (até 2026-12)

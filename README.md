@@ -164,7 +164,12 @@ See `assets/` folder:
 | `index.html` | **Design System Hub** — página pública para a empresa toda. Logos, cores, tipografia, tokens, componentes, guidelines e devs. Publicar em subdomínio (ex: `design.absolut-sport.com.br`). |
 | `playbooks/ai-marketing.html` | **AI Marketing Playbook** — página filha do Hub, voltada ao time de marketing global. |
 | `playbooks/` | Pasta para playbooks aplicados (cada um é uma página filha do Hub). |
-| `email-command-center.html` | **Email Marketing · Command Center** — dashboard interno do projeto de email marketing. 10 abas (Visão Geral · Master Strategy · 6 silos · Tracking · Templates). Brandbook ABSOLUT aplicado: tokens, SoulCraft, Lucide. Ferramenta operacional do time de Growth. |
+| `email-command-center.html` | **Email Marketing · Command Center** — dashboard interno do projeto de email marketing. 10 abas (Visão Geral · Master Strategy · 6 silos legados · Tracking · Templates). ⚠ Em migração para nova taxonomia (7 silos + 2 programas, 3 níveis silo/sub-silo/evento) — ver `playbooks/cross-sell-taxonomy.md` e `playbooks/growth-email.html`. Brandbook ABSOLUT aplicado: tokens, SoulCraft, Lucide. Ferramenta operacional do time de Growth. |
+| `playbooks/cross-sell-taxonomy.md` | **Cross-Sell Taxonomy · CANÔNICO** — modelo canônico de taxonomia em 3 níveis (silo → sub-silo → evento), matriz de afinidade entre sub-silos, regras de gatilho para automação RD Station. Versão 1.0 · maio/2026. |
+| `playbooks/cross-sell-matrix.csv` | **Matriz de afinidade · 169 pares** — origem/destino/score em formato long. Pronto pra Victor importar no RD Station. Acompanha o canônico. |
+| `playbooks/taxonomy-takeaway.md` | **Takeaway 1 página · Para Daniel + stakeholders** — explicação sem jargão da nova taxonomia: o que mudou, por que mudou, o que não mudou. Leitura de 3 minutos. |
+| `playbooks/taxonomy-quick-reference.md` | **Quick Reference · Para Jack, Rachella, Victor, Wictor** — cartão de bolso: os 3 níveis, os 7 silos, as 8 perguntas antes de escrever email, matriz cross-sell condensada, frontmatter padrão. Imprime e cola na mesa. |
+| `playbooks/taxonomy-folder-template.md` | **Template de pastas · Para Wictor + Drive** — estrutura física completa do Drive seguindo a taxonomia. Inclui checklists para criar novo evento, sub-silo ou silo. Princípios não-negociáveis. |
 | `README.md` | Este arquivo — visão da marca, fundamentos, índice. |
 | `colors_and_type.css` | CSS custom properties para todos os design tokens. **Importar nas páginas via `<link>`.** |
 | `zero-to-o.js` | Script que troca "0" por "O" maiúsculo em texto SoulCraft (assinatura da marca). Incluir em qualquer página com SoulCraft. |

@@ -1,0 +1,497 @@
+{
+  "meta": {
+    "version": "v2-2026-06-02",
+    "source": "https://docs.google.com/spreadsheets/d/1UAjsxfeR_23Cl-wNtztzw4QkP1RxoBkk4rrDFFojiyc/edit#gid=1469143387",
+    "generated_at": "2026-06-10T17:07:01",
+    "total_messages": 35,
+    "total_variables": 13,
+    "categories_order": [
+      "Abertura",
+      "Produto & Pacotes",
+      "Tickets",
+      "Vôos",
+      "Hospedagem",
+      "Transporte",
+      "Documentação",
+      "Pagamento",
+      "Políticas",
+      "Pós-venda",
+      "Handoff & Atendimento",
+      "Encerramento & Re-engajamento",
+      "Eventos / Jogos Flamengo",
+      "Compliance Flamengo/Maracanã",
+      "Descritivo de pacote",
+      "Checkout"
+    ]
+  },
+  "messages": [
+    {
+      "id": "A01",
+      "category": "Abertura",
+      "shortcut": "/boasvindas",
+      "variables": [
+        "nome",
+        "atendente",
+        "parceiro",
+        "evento",
+        "cidade",
+        "data",
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A01.text",
+        "trigger": "lib.msg.A01.trigger",
+        "observation": "lib.msg.A01.observation"
+      }
+    },
+    {
+      "id": "A02",
+      "category": "Produto & Pacotes",
+      "shortcut": "/pacotes",
+      "variables": [
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A02.text",
+        "trigger": "lib.msg.A02.trigger",
+        "observation": "lib.msg.A02.observation"
+      }
+    },
+    {
+      "id": "A03",
+      "category": "Produto & Pacotes",
+      "shortcut": "/preco",
+      "variables": [
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A03.text",
+        "trigger": "lib.msg.A03.trigger",
+        "observation": "lib.msg.A03.observation"
+      }
+    },
+    {
+      "id": "A04",
+      "category": "Produto & Pacotes",
+      "shortcut": "/desconto",
+      "variables": [
+        "nome",
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A04.text",
+        "trigger": "lib.msg.A04.trigger",
+        "observation": "lib.msg.A04.observation"
+      }
+    },
+    {
+      "id": "A05",
+      "category": "Produto & Pacotes",
+      "shortcut": "/defesapreco",
+      "variables": [
+        "parceiro"
+      ],
+      "i18n": {
+        "text": "lib.msg.A05.text",
+        "trigger": "lib.msg.A05.trigger",
+        "observation": "lib.msg.A05.observation"
+      }
+    },
+    {
+      "id": "A06",
+      "category": "Tickets",
+      "shortcut": "/cat3",
+      "variables": [
+        "parceiro",
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A06.text",
+        "trigger": "lib.msg.A06.trigger",
+        "observation": "lib.msg.A06.observation"
+      }
+    },
+    {
+      "id": "A07",
+      "category": "Tickets",
+      "shortcut": "/cat1cat2",
+      "variables": [
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A07.text",
+        "trigger": "lib.msg.A07.trigger",
+        "observation": "lib.msg.A07.observation"
+      }
+    },
+    {
+      "id": "A08",
+      "category": "Tickets",
+      "shortcut": "/hospitality",
+      "variables": [
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A08.text",
+        "trigger": "lib.msg.A08.trigger",
+        "observation": "lib.msg.A08.observation"
+      }
+    },
+    {
+      "id": "A09",
+      "category": "Tickets",
+      "shortcut": "/camarote",
+      "variables": [
+        "nome",
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A09.text",
+        "trigger": "lib.msg.A09.trigger",
+        "observation": "lib.msg.A09.observation"
+      }
+    },
+    {
+      "id": "A10",
+      "category": "Tickets",
+      "shortcut": "/meiaentrada",
+      "variables": [
+        "parceiro"
+      ],
+      "i18n": {
+        "text": "lib.msg.A10.text",
+        "trigger": "lib.msg.A10.trigger",
+        "observation": "lib.msg.A10.observation"
+      }
+    },
+    {
+      "id": "A11",
+      "category": "Vôos",
+      "shortcut": "/voos",
+      "variables": [
+        "nome",
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A11.text",
+        "trigger": "lib.msg.A11.trigger",
+        "observation": "lib.msg.A11.observation"
+      }
+    },
+    {
+      "id": "A12",
+      "category": "Vôos",
+      "shortcut": "/voo\\_personalizar",
+      "variables": [
+        "nome",
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A12.text",
+        "trigger": "lib.msg.A12.trigger",
+        "observation": "lib.msg.A12.observation"
+      }
+    },
+    {
+      "id": "A13",
+      "category": "Vôos",
+      "shortcut": "/so\\_aereo",
+      "variables": [
+        "nome",
+        "parceiro",
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A13.text",
+        "trigger": "lib.msg.A13.trigger",
+        "observation": "lib.msg.A13.observation"
+      }
+    },
+    {
+      "id": "A14",
+      "category": "Hospedagem",
+      "shortcut": "/trp",
+      "variables": [
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A14.text",
+        "trigger": "lib.msg.A14.trigger",
+        "observation": "lib.msg.A14.observation"
+      }
+    },
+    {
+      "id": "A15",
+      "category": "Hospedagem",
+      "shortcut": "/noites\\_extra",
+      "variables": [
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A15.text",
+        "trigger": "lib.msg.A15.trigger",
+        "observation": "lib.msg.A15.observation"
+      }
+    },
+    {
+      "id": "A16",
+      "category": "Transporte",
+      "shortcut": "/transfer",
+      "variables": [
+        "nome",
+        "cidade"
+      ],
+      "i18n": {
+        "text": "lib.msg.A16.text",
+        "trigger": "lib.msg.A16.trigger",
+        "observation": "lib.msg.A16.observation"
+      }
+    },
+    {
+      "id": "A17",
+      "category": "Documentação",
+      "shortcut": "/documentos",
+      "variables": [
+        "doc"
+      ],
+      "i18n": {
+        "text": "lib.msg.A17.text",
+        "trigger": "lib.msg.A17.trigger",
+        "observation": "lib.msg.A17.observation"
+      }
+    },
+    {
+      "id": "A18",
+      "category": "Documentação",
+      "shortcut": "/info\\_pacote",
+      "variables": [],
+      "i18n": {
+        "text": "lib.msg.A18.text",
+        "trigger": "lib.msg.A18.trigger",
+        "observation": "lib.msg.A18.observation"
+      }
+    },
+    {
+      "id": "A19",
+      "category": "Pagamento",
+      "shortcut": "/pagamento",
+      "variables": [
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A19.text",
+        "trigger": "lib.msg.A19.trigger",
+        "observation": "lib.msg.A19.observation"
+      }
+    },
+    {
+      "id": "A20",
+      "category": "Políticas",
+      "shortcut": "/cancelamento",
+      "variables": [],
+      "i18n": {
+        "text": "lib.msg.A20.text",
+        "trigger": "lib.msg.A20.trigger",
+        "observation": "lib.msg.A20.observation"
+      }
+    },
+    {
+      "id": "A21",
+      "category": "Políticas",
+      "shortcut": "/mudanca\\_sede",
+      "variables": [
+        "parceiro",
+        "cidade"
+      ],
+      "i18n": {
+        "text": "lib.msg.A21.text",
+        "trigger": "lib.msg.A21.trigger",
+        "observation": "lib.msg.A21.observation"
+      }
+    },
+    {
+      "id": "A22",
+      "category": "Pós-venda",
+      "shortcut": "/pos\\_venda",
+      "variables": [
+        "nome"
+      ],
+      "i18n": {
+        "text": "lib.msg.A22.text",
+        "trigger": "lib.msg.A22.trigger",
+        "observation": "lib.msg.A22.observation"
+      }
+    },
+    {
+      "id": "A23",
+      "category": "Pós-venda",
+      "shortcut": "/confirmacoes",
+      "variables": [
+        "nome"
+      ],
+      "i18n": {
+        "text": "lib.msg.A23.text",
+        "trigger": "lib.msg.A23.trigger",
+        "observation": "lib.msg.A23.observation"
+      }
+    },
+    {
+      "id": "A24",
+      "category": "Handoff & Atendimento",
+      "shortcut": "/falar\\_humano",
+      "variables": [
+        "nome",
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A24.text",
+        "trigger": "lib.msg.A24.trigger",
+        "observation": "lib.msg.A24.observation"
+      }
+    },
+    {
+      "id": "A25",
+      "category": "Handoff & Atendimento",
+      "shortcut": "/floodado",
+      "variables": [],
+      "i18n": {
+        "text": "lib.msg.A25.text",
+        "trigger": "lib.msg.A25.trigger",
+        "observation": "lib.msg.A25.observation"
+      }
+    },
+    {
+      "id": "A26",
+      "category": "Handoff & Atendimento",
+      "shortcut": "/ganhar\\_tempo",
+      "variables": [
+        "nome"
+      ],
+      "i18n": {
+        "text": "lib.msg.A26.text",
+        "trigger": "lib.msg.A26.trigger",
+        "observation": "lib.msg.A26.observation"
+      }
+    },
+    {
+      "id": "A27",
+      "category": "Encerramento & Re-engajamento",
+      "shortcut": "/agradece\\_consulta",
+      "variables": [
+        "nome"
+      ],
+      "i18n": {
+        "text": "lib.msg.A27.text",
+        "trigger": "lib.msg.A27.trigger",
+        "observation": "lib.msg.A27.observation"
+      }
+    },
+    {
+      "id": "A28",
+      "category": "Encerramento & Re-engajamento",
+      "shortcut": "/ghosting",
+      "variables": [
+        "cidade"
+      ],
+      "i18n": {
+        "text": "lib.msg.A28.text",
+        "trigger": "lib.msg.A28.trigger",
+        "observation": "lib.msg.A28.observation"
+      }
+    },
+    {
+      "id": "A29",
+      "category": "Encerramento & Re-engajamento",
+      "shortcut": "/desculpas\\_torcida",
+      "variables": [
+        "nome"
+      ],
+      "i18n": {
+        "text": "lib.msg.A29.text",
+        "trigger": "lib.msg.A29.trigger",
+        "observation": "lib.msg.A29.observation"
+      }
+    },
+    {
+      "id": "A30",
+      "category": "Abertura",
+      "shortcut": "/saudacao\\_aby",
+      "variables": [
+        "parceiro"
+      ],
+      "i18n": {
+        "text": "lib.msg.A30.text",
+        "trigger": "lib.msg.A30.trigger",
+        "observation": "lib.msg.A30.observation"
+      }
+    },
+    {
+      "id": "A31",
+      "category": "Eventos / Jogos Flamengo",
+      "shortcut": "/jogos\\_flamengo\\_intro",
+      "variables": [
+        "estadio",
+        "torcida"
+      ],
+      "i18n": {
+        "text": "lib.msg.A31.text",
+        "trigger": "lib.msg.A31.trigger",
+        "observation": "lib.msg.A31.observation"
+      }
+    },
+    {
+      "id": "A32",
+      "category": "Compliance Flamengo/Maracanã",
+      "shortcut": "/disclaimer\\_flamengo\\_maracana",
+      "variables": [
+        "estadio",
+        "clube",
+        "estadio"
+      ],
+      "i18n": {
+        "text": "lib.msg.A32.text",
+        "trigger": "lib.msg.A32.trigger",
+        "observation": "lib.msg.A32.observation"
+      }
+    },
+    {
+      "id": "A33",
+      "category": "Descritivo de pacote",
+      "shortcut": "/pacote\\_maracana\\_mais",
+      "variables": [
+        "estadio",
+        "valor"
+      ],
+      "i18n": {
+        "text": "lib.msg.A33.text",
+        "trigger": "lib.msg.A33.trigger",
+        "observation": "lib.msg.A33.observation"
+      }
+    },
+    {
+      "id": "A34",
+      "category": "Checkout",
+      "shortcut": "/comprar\\_agora\\_enxugado",
+      "variables": [
+        "estadio",
+        "url"
+      ],
+      "i18n": {
+        "text": "lib.msg.A34.text",
+        "trigger": "lib.msg.A34.trigger",
+        "observation": "lib.msg.A34.observation"
+      }
+    },
+    {
+      "id": "A35",
+      "category": "Pós-venda",
+      "shortcut": "/deu\\_certo\\_confirmacao",
+      "variables": [],
+      "i18n": {
+        "text": "lib.msg.A35.text",
+        "trigger": "lib.msg.A35.trigger",
+        "observation": "lib.msg.A35.observation"
+      }
+    }
+  ]
+}

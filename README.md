@@ -170,6 +170,8 @@ See `assets/` folder:
 | `playbooks/taxonomy-takeaway.md` | **Takeaway 1 página · Para Daniel + stakeholders** — explicação sem jargão da nova taxonomia: o que mudou, por que mudou, o que não mudou. Leitura de 3 minutos. |
 | `playbooks/taxonomy-quick-reference.md` | **Quick Reference · Para Jack, Rachella, Victor, Wictor** — cartão de bolso: os 3 níveis, os 7 silos, as 8 perguntas antes de escrever email, matriz cross-sell condensada, frontmatter padrão. Imprime e cola na mesa. |
 | `playbooks/taxonomy-folder-template.md` | **Template de pastas · Para Wictor + Drive** — estrutura física completa do Drive seguindo a taxonomia. Inclui checklists para criar novo evento, sub-silo ou silo. Princípios não-negociáveis. |
+| `playbooks/copy-library.html` | **Copy Library · Aby — Biblioteca de Respostas Rápidas** — 35 mensagens em 13 categorias com sistema de variáveis para reuso por evento. Filtro por categoria, busca, copy-to-clipboard, i18n PT/EN/ES/DE. Página viva alimentada por JSONs gerados via `playbooks/copy-library/extract.py`. Fonte: planilha canônica (gid 1469143387). |
+| `playbooks/copy-library/` | Dados estruturados e script gerador: `extract.py` (interpretador da planilha), `input.tsv` (fonte), `messages.json` + `variables.json` (dados), `i18n-{pt,en,es,de}.json` (dicionários). Ver `playbooks/copy-library/README.md`. |
 | `README.md` | Este arquivo — visão da marca, fundamentos, índice. |
 | `colors_and_type.css` | CSS custom properties para todos os design tokens. **Importar nas páginas via `<link>`.** |
 | `zero-to-o.js` | Script que troca "0" por "O" maiúsculo em texto SoulCraft (assinatura da marca). Incluir em qualquer página com SoulCraft. |

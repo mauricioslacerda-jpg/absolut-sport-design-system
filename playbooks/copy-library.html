@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copy Library · Aby — ABSOLUT Sport</title>
+  <meta name="description" content="Biblioteca de respostas rápidas da Aby — 35 mensagens em 13 categorias, com sistema de variáveis para reuso por evento. PT/EN/ES/DE.">
+  <link rel="stylesheet" href="../colors_and_type.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--color-black);
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      line-height: var(--leading-relaxed);
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: var(--z-sticky);
+      height: 68px; padding: 0 var(--space-12);
+      background: rgba(13, 13, 13, 0.45);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(24px) saturate(160%);
+    }
+    .nav-logo img { height: 32px; }
+    .nav-breadcrumb {
+      display: flex; align-items: center; gap: var(--space-3);
+      font-size: var(--text-caption);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-neutral-300);
+      font-weight: var(--weight-medium);
+    }
+    .nav-breadcrumb a { color: var(--color-neutral-300); text-decoration: none; }
+    .nav-breadcrumb a:hover { color: var(--color-blue-mid); }
+    .nav-breadcrumb .sep { color: var(--color-neutral-600); }
+    .nav-breadcrumb .current { color: var(--color-white); }
+    .nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .lang-toggle {
+      display: inline-flex;
+      background: var(--color-neutral-900);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-pill);
+      padding: 3px; gap: 2px;
+    }
+    .lang-btn {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: var(--tracking-wide);
+      padding: 5px 10px; border-radius: 100px;
+      background: transparent; color: var(--color-neutral-300);
+      border: none; cursor: pointer;
+    }
+    .lang-btn:hover { color: var(--color-white); }
+    .lang-btn.active { background: var(--color-blue); color: var(--color-white); }
+    .nav-back {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-white);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 8px 18px; font-size: 12px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+    }
+    .nav-back:hover { background: var(--color-blue); border-color: var(--color-blue); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: var(--space-16) var(--space-12) var(--space-12);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-3);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: var(--weight-black);
+      font-size: clamp(36px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin: 0 0 var(--space-4);
+    }
+    .hero h1 .accent { color: var(--color-gold); }
+    .hero-sub {
+      font-size: var(--text-lg);
+      color: var(--color-neutral-300);
+      max-width: 760px;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: var(--space-6);
+      margin-top: var(--space-8);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-neutral-300);
+    }
+    .hero-meta span strong { color: var(--color-gold); }
+
+    /* ── CONTROLS ── */
+    .controls {
+      position: sticky; top: 68px; z-index: 50;
+      padding: var(--space-6) var(--space-12);
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex; flex-wrap: wrap; gap: var(--space-4);
+      align-items: center;
+    }
+    .search-input {
+      flex: 1; min-width: 240px; max-width: 480px;
+      background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 10px 18px;
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 14px;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--color-blue-mid);
+    }
+    .cat-filter {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .cat-btn {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: var(--tracking-wide);
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle);
+      color: var(--color-neutral-300);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .cat-btn:hover { color: var(--color-white); border-color: var(--color-blue-mid); }
+    .cat-btn.active {
+      background: var(--color-gold);
+      color: var(--color-black);
+      border-color: var(--color-gold);
+    }
+
+    /* ── GRID ── */
+    .grid {
+      padding: var(--space-10) var(--space-12);
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: var(--space-5);
+    }
+    .card {
+      background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      display: flex; flex-direction: column;
+      transition: border-color var(--transition-fast);
+    }
+    .card:hover { border-color: var(--color-gold); }
+    .card-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: var(--space-3);
+    }
+    .card-id {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: var(--tracking-wider);
+      color: var(--color-gold);
+    }
+    .card-cat {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-neutral-300);
+      background: rgba(255,255,255,0.04);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .card-shortcut {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--color-blue-mid);
+      margin-bottom: var(--space-2);
+    }
+    .card-trigger {
+      font-size: 13px;
+      color: var(--color-neutral-300);
+      margin-bottom: var(--space-4);
+    }
+    .card-text {
+      background: var(--color-black);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: var(--space-4);
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--color-white);
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin-bottom: var(--space-4);
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    .card-text .var {
+      background: rgba(201,168,76,0.12);
+      color: var(--color-gold);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .card-vars {
+      display: flex; flex-wrap: wrap; gap: 4px;
+      margin-bottom: var(--space-3);
+    }
+    .card-vars-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-neutral-300);
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    .card-var {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-gold);
+      background: rgba(201,168,76,0.08);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .card-obs {
+      font-size: 12px;
+      color: var(--color-neutral-300);
+      font-style: italic;
+      margin-bottom: var(--space-4);
+      padding-left: var(--space-3);
+      border-left: 2px solid var(--color-neutral-700);
+    }
+    .card-obs:empty { display: none; }
+    .card-actions {
+      margin-top: auto;
+      display: flex; gap: var(--space-2);
+    }
+    .btn-copy {
+      flex: 1;
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      font-size: 12px;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      background: var(--color-blue);
+      color: var(--color-white);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .btn-copy:hover { background: var(--color-blue-mid); }
+    .btn-copy.copied { background: var(--color-success); }
+
+    /* ── VARIABLES TABLE ── */
+    .section {
+      padding: var(--space-12);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .section h2 {
+      font-family: var(--font-display);
+      font-weight: var(--weight-black);
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin: 0 0 var(--space-6);
+    }
+    .section h2 .accent { color: var(--color-gold); }
+    .var-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .var-table th {
+      text-align: left;
+      padding: 12px 16px;
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-neutral-300);
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--color-neutral-900);
+    }
+    .var-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--color-white);
+    }
+    .var-table .var-name {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--color-gold);
+    }
+    .var-table .var-ex {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-neutral-300);
+    }
+
+    /* ── GOVERNANCE ── */
+    .gov-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-5);
+    }
+    .gov-card {
+      background: var(--color-neutral-900);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+    }
+    .gov-card h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin: 0 0 var(--space-3);
+    }
+    .gov-card p {
+      font-size: 13px;
+      color: var(--color-neutral-100);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: var(--space-8) var(--space-12);
+      border-top: 1px solid var(--border-subtle);
+      font-size: 12px;
+      color: var(--color-neutral-300);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-4);
+    }
+    .footer a { color: var(--color-gold); text-decoration: none; }
+
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; padding: var(--space-6); }
+      .hero, .section, .controls, .footer { padding-left: var(--space-6); padding-right: var(--space-6); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="../index.html" class="nav-logo"><img src="../assets/absolut-mark.svg" alt="ABSOLUT" onerror="this.style.display='none'"></a>
+  <div class="nav-breadcrumb">
+    <a href="../index.html">Hub</a>
+    <span class="sep">·</span>
+    <a href="../index.html#playbooks">Playbooks</a>
+    <span class="sep">·</span>
+    <span class="current">Copy Library</span>
+  </div>
+  <div class="nav-actions">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+    </div>
+    <a href="../index.html" class="nav-back">← Hub</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow" data-i18n="hero.eyebrow">Copy Library · Aby · Quick Replies</div>
+  <h1 data-i18n-html="hero.title">Biblioteca de Respostas <span class="accent">Aby</span></h1>
+  <p class="hero-sub" data-i18n="hero.sub">35 mensagens em 13 categorias. Copie, cole, ajuste as variáveis.</p>
+  <div class="hero-meta">
+    <span><strong id="meta-msg-count">35</strong> mensagens</span>
+    <span><strong id="meta-var-count">13</strong> variáveis</span>
+    <span><strong id="meta-version">v2-2026-06-02</strong></span>
+    <span><a href="https://docs.google.com/spreadsheets/d/1UAjsxfeR_23Cl-wNtztzw4QkP1RxoBkk4rrDFFojiyc/edit#gid=1469143387" target="_blank" style="color:var(--color-gold)">Planilha-fonte ↗</a></span>
+  </div>
+</header>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <input type="search" class="search-input" id="search" placeholder="Buscar por gatilho, atalho ou texto..." data-i18n-attr="placeholder|filter.search.placeholder">
+  <div class="cat-filter" id="cat-filter"></div>
+</div>
+
+<!-- GRID -->
+<main class="grid" id="grid"></main>
+
+<!-- VARIABLES -->
+<section class="section">
+  <h2 data-i18n-html="section.variables">Dicionário de <span class="accent">variáveis</span></h2>
+  <table class="var-table">
+    <thead>
+      <tr>
+        <th data-i18n="var.name">Variável</th>
+        <th data-i18n="var.meaning">Significado</th>
+        <th data-i18n="var.example">Exemplo (Libertadores 2026)</th>
+      </tr>
+    </thead>
+    <tbody id="var-table-body"></tbody>
+  </table>
+</section>
+
+<!-- GOVERNANCE -->
+<section class="section">
+  <h2 data-i18n-html="section.governance">Governança</h2>
+  <div class="gov-grid">
+    <div class="gov-card">
+      <h3 data-i18n="gov.contract.title">Texto contratual</h3>
+      <p data-i18n="gov.contract.body">A mensagem <strong>A20 (Política de cancelamento)</strong> é texto contratual. Não alterar sem revisão jurídica.</p>
+    </div>
+    <div class="gov-card">
+      <h3 data-i18n="gov.inventory.title">Inventário</h3>
+      <p data-i18n="gov.inventory.body">As mensagens de inventário (voos, hotel, camarote) assumem "esgotado". Revisar a cada evento conforme estoque real.</p>
+    </div>
+    <div class="gov-card">
+      <h3 data-i18n="gov.aby.title">Ligação com a Aby</h3>
+      <p data-i18n="gov.aby.body">A24, A25, A26 e A28 correspondem aos itens 01/03, 31, 04 e 32 da auditoria do bot. Esta copy é a fonte canônica.</p>
+    </div>
+    <div class="gov-card">
+      <h3 data-i18n="gov.reuse.title">Reuso por evento</h3>
+      <p data-i18n="gov.reuse.body">Para um novo evento, basta reescrever o dicionário de variáveis. A copy serve a qualquer evento.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>ABSOLUT Sport · Design System · Copy Library v2</span>
+  <span>Gerado por <code>extract.py</code> a partir da planilha canônica</span>
+</footer>
+
+<script>
+const STATE = {
+  lang: 'pt',
+  messages: [],
+  variables: [],
+  meta: {},
+  i18n: {},
+  filter: { cat: 'all', query: '' },
+};
+
+async function loadAll() {
+  const base = './copy-library';
+  const [msgs, vars, ptDict, enDict, esDict, deDict] = await Promise.all([
+    fetch(`${base}/messages.json`).then(r => r.json()),
+    fetch(`${base}/variables.json`).then(r => r.json()),
+    fetch(`${base}/i18n-pt.json`).then(r => r.json()),
+    fetch(`${base}/i18n-en.json`).then(r => r.json()),
+    fetch(`${base}/i18n-es.json`).then(r => r.json()),
+    fetch(`${base}/i18n-de.json`).then(r => r.json()),
+  ]);
+  STATE.messages = msgs.messages;
+  STATE.variables = vars.variables;
+  STATE.meta = msgs.meta;
+  STATE.i18n = { pt: ptDict, en: enDict, es: esDict, de: deDict };
+
+  document.getElementById('meta-msg-count').textContent = msgs.meta.total_messages;
+  document.getElementById('meta-var-count').textContent = msgs.meta.total_variables;
+  document.getElementById('meta-version').textContent = msgs.meta.version;
+
+  renderCatFilter();
+  render();
+  applyI18n();
+}
+
+function t(key) {
+  const dict = STATE.i18n[STATE.lang] || {};
+  const fallback = STATE.i18n.pt || {};
+  return dict[key] || fallback[key] || key;
+}
+
+function applyI18n() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    // Mantém o <span class="accent"> do título caso a tradução o use
+    const translated = t(key);
+    // Para hero.title e section.variables, preserva markup do accent
+    if (key === 'hero.title' || key === 'section.variables' || key === 'section.governance') {
+      el.innerHTML = el.innerHTML; // já vem com markup do HTML; usa fallback como label
+      // Atualiza só se houver tradução real (não TODO)
+      if (!translated.startsWith('[TODO')) {
+        el.innerHTML = translated.replace(/\b(Aby|variáveis|variables|Governance|Governança|Variablen|Variables)\b/g,
+          '<span class="accent">$1</span>');
+      }
+    } else {
+      el.innerHTML = translated;
+    }
+  });
+  document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+    const [attr, key] = el.dataset.i18nAttr.split('|');
+    el.setAttribute(attr, t(key));
+  });
+}
+
+function renderCatFilter() {
+  const container = document.getElementById('cat-filter');
+  const cats = STATE.meta.categories_order.filter(c =>
+    STATE.messages.some(m => m.category === c)
+  );
+  const allBtn = `<button class="cat-btn active" data-cat="all" data-i18n="filter.all">Todas</button>`;
+  const catBtns = cats.map(c => {
+    const slug = c.toLowerCase().replace(/ /g, '_').replace(/&/g, 'and').replace(/\//g, '_').replace(/[^\w]/g, '_');
+    return `<button class="cat-btn" data-cat="${c}" data-i18n="lib.cat.${slug}">${c}</button>`;
+  }).join('');
+  container.innerHTML = allBtn + catBtns;
+
+  container.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      STATE.filter.cat = btn.dataset.cat;
+      render();
+    });
+  });
+}
+
+function escapeHtml(s) {
+  return (s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+function highlightVars(text) {
+  return escapeHtml(text).replace(/\{([\w_]+)\}/g, '<span class="var">{$1}</span>');
+}
+
+function matches(m, query) {
+  if (!query) return true;
+  const q = query.toLowerCase();
+  const text = t(`lib.msg.${m.id}.text`).toLowerCase();
+  const trig = t(`lib.msg.${m.id}.trigger`).toLowerCase();
+  return m.id.toLowerCase().includes(q) ||
+         m.shortcut.toLowerCase().includes(q) ||
+         text.includes(q) ||
+         trig.includes(q);
+}
+
+function render() {
+  const grid = document.getElementById('grid');
+  const { cat, query } = STATE.filter;
+  const filtered = STATE.messages.filter(m =>
+    (cat === 'all' || m.category === cat) && matches(m, query)
+  );
+
+  grid.innerHTML = filtered.map(m => {
+    const text = t(`lib.msg.${m.id}.text`);
+    const trigger = t(`lib.msg.${m.id}.trigger`);
+    const obs = t(`lib.msg.${m.id}.observation`);
+    const varTags = (m.variables || []).map(v => `<span class="card-var">{${v}}</span>`).join('');
+    return `
+      <article class="card" data-id="${m.id}">
+        <div class="card-head">
+          <span class="card-id">${m.id}</span>
+          <span class="card-cat">${escapeHtml(m.category)}</span>
+        </div>
+        <div class="card-shortcut">${escapeHtml(m.shortcut)}</div>
+        <div class="card-trigger">${escapeHtml(trigger)}</div>
+        <div class="card-text">${highlightVars(text)}</div>
+        ${varTags ? `
+          <div class="card-vars">
+            <span class="card-vars-label" data-i18n="card.variables">${t('card.variables')}</span>
+            ${varTags}
+          </div>` : ''}
+        ${obs && obs !== '(nenhuma)' && !obs.startsWith('[TODO') ? `<div class="card-obs">${escapeHtml(obs)}</div>` : ''}
+        <div class="card-actions">
+          <button class="btn-copy" data-text="${escapeHtml(text).replace(/"/g, '&quot;')}">${t('card.copy')}</button>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  // Render variables table
+  const tbody = document.getElementById('var-table-body');
+  tbody.innerHTML = STATE.variables.map(v => `
+    <tr>
+      <td class="var-name">{${v.name}}</td>
+      <td>${escapeHtml(t(`lib.var.${v.name}.meaning`))}</td>
+      <td class="var-ex">${escapeHtml(t(`lib.var.${v.name}.example`))}</td>
+    </tr>
+  `).join('');
+
+  // Wire copy buttons
+  grid.querySelectorAll('.btn-copy').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.text);
+        const originalText = btn.textContent;
+        btn.textContent = t('card.copied');
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = t('card.copy');
+          btn.classList.remove('copied');
+        }, 1400);
+      } catch (e) {
+        console.error('Clipboard failed', e);
+      }
+    });
+  });
+}
+
+// Search
+document.getElementById('search').addEventListener('input', (e) => {
+  STATE.filter.query = e.target.value;
+  render();
+});
+
+// Lang toggle
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    STATE.lang = btn.dataset.lang;
+    document.documentElement.lang = btn.dataset.lang === 'pt' ? 'pt-BR' : btn.dataset.lang;
+    applyI18n();
+    render();
+  });
+});
+
+loadAll().catch(e => {
+  console.error('Falha ao carregar dados:', e);
+  document.getElementById('grid').innerHTML =
+    `<div style="padding:40px;text-align:center;color:var(--color-neutral-300)">
+       Falha ao carregar a biblioteca. Rode <code>python extract.py</code> primeiro.<br>
+       <small>${e.message}</small>
+     </div>`;
+});
+</script>
+
+</body>
+</html>

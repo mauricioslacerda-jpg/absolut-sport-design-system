@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "version": "v2-2026-06-02",
+    "source": "https://docs.google.com/spreadsheets/d/1UAjsxfeR_23Cl-wNtztzw4QkP1RxoBkk4rrDFFojiyc/edit#gid=1469143387",
+    "generated_at": "2026-06-10T17:07:01",
+    "total_messages": 35,
+    "total_variables": 13,
+    "categories_order": [
+      "Abertura",
+      "Produto & Pacotes",
+      "Tickets",
+      "Vôos",
+      "Hospedagem",
+      "Transporte",
+      "Documentação",
+      "Pagamento",
+      "Políticas",
+      "Pós-venda",
+      "Handoff & Atendimento",
+      "Encerramento & Re-engajamento",
+      "Eventos / Jogos Flamengo",
+      "Compliance Flamengo/Maracanã",
+      "Descritivo de pacote",
+      "Checkout"
+    ]
+  },
+  "variables": [
+    {
+      "name": "nome",
+      "i18n": {
+        "meaning": "lib.var.nome.meaning",
+        "example": "lib.var.nome.example"
+      }
+    },
+    {
+      "name": "atendente",
+      "i18n": {
+        "meaning": "lib.var.atendente.meaning",
+        "example": "lib.var.atendente.example"
+      }
+    },
+    {
+      "name": "parceiro",
+      "i18n": {
+        "meaning": "lib.var.parceiro.meaning",
+        "example": "lib.var.parceiro.example"
+      }
+    },
+    {
+      "name": "evento",
+      "i18n": {
+        "meaning": "lib.var.evento.meaning",
+        "example": "lib.var.evento.example"
+      }
+    },
+    {
+      "name": "cidade",
+      "i18n": {
+        "meaning": "lib.var.cidade.meaning",
+        "example": "lib.var.cidade.example"
+      }
+    },
+    {
+      "name": "data",
+      "i18n": {
+        "meaning": "lib.var.data.meaning",
+        "example": "lib.var.data.example"
+      }
+    },
+    {
+      "name": "url",
+      "i18n": {
+        "meaning": "lib.var.url.meaning",
+        "example": "lib.var.url.example"
+      }
+    },
+    {
+      "name": "origem_aereo",
+      "i18n": {
+        "meaning": "lib.var.origem_aereo.meaning",
+        "example": "lib.var.origem_aereo.example"
+      }
+    },
+    {
+      "name": "pais_prep",
+      "i18n": {
+        "meaning": "lib.var.pais_prep.meaning",
+        "example": "lib.var.pais_prep.example"
+      }
+    },
+    {
+      "name": "doc",
+      "i18n": {
+        "meaning": "lib.var.doc.meaning",
+        "example": "lib.var.doc.example"
+      }
+    },
+    {
+      "name": "app_transporte",
+      "i18n": {
+        "meaning": "lib.var.app_transporte.meaning",
+        "example": "lib.var.app_transporte.example"
+      }
+    },
+    {
+      "name": "torcida_alvo",
+      "i18n": {
+        "meaning": "lib.var.torcida_alvo.meaning",
+        "example": "lib.var.torcida_alvo.example"
+      }
+    },
+    {
+      "name": "torcida_real",
+      "i18n": {
+        "meaning": "lib.var.torcida_real.meaning",
+        "example": "lib.var.torcida_real.example"
+      }
+    }
+  ]
+}

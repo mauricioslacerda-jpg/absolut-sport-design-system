@@ -1,0 +1,268 @@
+{
+  "msg": {
+    "A01": {
+      "text": "lib.msg.A01.text",
+      "trigger": "lib.msg.A01.trigger",
+      "observation": "lib.msg.A01.observation"
+    },
+    "A02": {
+      "text": "lib.msg.A02.text",
+      "trigger": "lib.msg.A02.trigger",
+      "observation": "lib.msg.A02.observation"
+    },
+    "A03": {
+      "text": "lib.msg.A03.text",
+      "trigger": "lib.msg.A03.trigger",
+      "observation": "lib.msg.A03.observation"
+    },
+    "A04": {
+      "text": "lib.msg.A04.text",
+      "trigger": "lib.msg.A04.trigger",
+      "observation": "lib.msg.A04.observation"
+    },
+    "A05": {
+      "text": "lib.msg.A05.text",
+      "trigger": "lib.msg.A05.trigger",
+      "observation": "lib.msg.A05.observation"
+    },
+    "A06": {
+      "text": "lib.msg.A06.text",
+      "trigger": "lib.msg.A06.trigger",
+      "observation": "lib.msg.A06.observation"
+    },
+    "A07": {
+      "text": "lib.msg.A07.text",
+      "trigger": "lib.msg.A07.trigger",
+      "observation": "lib.msg.A07.observation"
+    },
+    "A08": {
+      "text": "lib.msg.A08.text",
+      "trigger": "lib.msg.A08.trigger",
+      "observation": "lib.msg.A08.observation"
+    },
+    "A09": {
+      "text": "lib.msg.A09.text",
+      "trigger": "lib.msg.A09.trigger",
+      "observation": "lib.msg.A09.observation"
+    },
+    "A10": {
+      "text": "lib.msg.A10.text",
+      "trigger": "lib.msg.A10.trigger",
+      "observation": "lib.msg.A10.observation"
+    },
+    "A11": {
+      "text": "lib.msg.A11.text",
+      "trigger": "lib.msg.A11.trigger",
+      "observation": "lib.msg.A11.observation"
+    },
+    "A12": {
+      "text": "lib.msg.A12.text",
+      "trigger": "lib.msg.A12.trigger",
+      "observation": "lib.msg.A12.observation"
+    },
+    "A13": {
+      "text": "lib.msg.A13.text",
+      "trigger": "lib.msg.A13.trigger",
+      "observation": "lib.msg.A13.observation"
+    },
+    "A14": {
+      "text": "lib.msg.A14.text",
+      "trigger": "lib.msg.A14.trigger",
+      "observation": "lib.msg.A14.observation"
+    },
+    "A15": {
+      "text": "lib.msg.A15.text",
+      "trigger": "lib.msg.A15.trigger",
+      "observation": "lib.msg.A15.observation"
+    },
+    "A16": {
+      "text": "lib.msg.A16.text",
+      "trigger": "lib.msg.A16.trigger",
+      "observation": "lib.msg.A16.observation"
+    },
+    "A17": {
+      "text": "lib.msg.A17.text",
+      "trigger": "lib.msg.A17.trigger",
+      "observation": "lib.msg.A17.observation"
+    },
+    "A18": {
+      "text": "lib.msg.A18.text",
+      "trigger": "lib.msg.A18.trigger",
+      "observation": "lib.msg.A18.observation"
+    },
+    "A19": {
+      "text": "lib.msg.A19.text",
+      "trigger": "lib.msg.A19.trigger",
+      "observation": "lib.msg.A19.observation"
+    },
+    "A20": {
+      "text": "lib.msg.A20.text",
+      "trigger": "lib.msg.A20.trigger",
+      "observation": "lib.msg.A20.observation"
+    },
+    "A21": {
+      "text": "lib.msg.A21.text",
+      "trigger": "lib.msg.A21.trigger",
+      "observation": "lib.msg.A21.observation"
+    },
+    "A22": {
+      "text": "lib.msg.A22.text",
+      "trigger": "lib.msg.A22.trigger",
+      "observation": "lib.msg.A22.observation"
+    },
+    "A23": {
+      "text": "lib.msg.A23.text",
+      "trigger": "lib.msg.A23.trigger",
+      "observation": "lib.msg.A23.observation"
+    },
+    "A24": {
+      "text": "lib.msg.A24.text",
+      "trigger": "lib.msg.A24.trigger",
+      "observation": "lib.msg.A24.observation"
+    },
+    "A25": {
+      "text": "lib.msg.A25.text",
+      "trigger": "lib.msg.A25.trigger",
+      "observation": "lib.msg.A25.observation"
+    },
+    "A26": {
+      "text": "lib.msg.A26.text",
+      "trigger": "lib.msg.A26.trigger",
+      "observation": "lib.msg.A26.observation"
+    },
+    "A27": {
+      "text": "lib.msg.A27.text",
+      "trigger": "lib.msg.A27.trigger",
+      "observation": "lib.msg.A27.observation"
+    },
+    "A28": {
+      "text": "lib.msg.A28.text",
+      "trigger": "lib.msg.A28.trigger",
+      "observation": "lib.msg.A28.observation"
+    },
+    "A29": {
+      "text": "lib.msg.A29.text",
+      "trigger": "lib.msg.A29.trigger",
+      "observation": "lib.msg.A29.observation"
+    },
+    "A30": {
+      "text": "lib.msg.A30.text",
+      "trigger": "lib.msg.A30.trigger",
+      "observation": "lib.msg.A30.observation"
+    },
+    "A31": {
+      "text": "lib.msg.A31.text",
+      "trigger": "lib.msg.A31.trigger",
+      "observation": "lib.msg.A31.observation"
+    },
+    "A32": {
+      "text": "lib.msg.A32.text",
+      "trigger": "lib.msg.A32.trigger",
+      "observation": "lib.msg.A32.observation"
+    },
+    "A33": {
+      "text": "lib.msg.A33.text",
+      "trigger": "lib.msg.A33.trigger",
+      "observation": "lib.msg.A33.observation"
+    },
+    "A34": {
+      "text": "lib.msg.A34.text",
+      "trigger": "lib.msg.A34.trigger",
+      "observation": "lib.msg.A34.observation"
+    },
+    "A35": {
+      "text": "lib.msg.A35.text",
+      "trigger": "lib.msg.A35.trigger",
+      "observation": "lib.msg.A35.observation"
+    }
+  },
+  "var": {
+    "nome": {
+      "meaning": "lib.var.nome.meaning",
+      "example": "lib.var.nome.example"
+    },
+    "atendente": {
+      "meaning": "lib.var.atendente.meaning",
+      "example": "lib.var.atendente.example"
+    },
+    "parceiro": {
+      "meaning": "lib.var.parceiro.meaning",
+      "example": "lib.var.parceiro.example"
+    },
+    "evento": {
+      "meaning": "lib.var.evento.meaning",
+      "example": "lib.var.evento.example"
+    },
+    "cidade": {
+      "meaning": "lib.var.cidade.meaning",
+      "example": "lib.var.cidade.example"
+    },
+    "data": {
+      "meaning": "lib.var.data.meaning",
+      "example": "lib.var.data.example"
+    },
+    "url": {
+      "meaning": "lib.var.url.meaning",
+      "example": "lib.var.url.example"
+    },
+    "origem_aereo": {
+      "meaning": "lib.var.origem_aereo.meaning",
+      "example": "lib.var.origem_aereo.example"
+    },
+    "pais_prep": {
+      "meaning": "lib.var.pais_prep.meaning",
+      "example": "lib.var.pais_prep.example"
+    },
+    "doc": {
+      "meaning": "lib.var.doc.meaning",
+      "example": "lib.var.doc.example"
+    },
+    "app_transporte": {
+      "meaning": "lib.var.app_transporte.meaning",
+      "example": "lib.var.app_transporte.example"
+    },
+    "torcida_alvo": {
+      "meaning": "lib.var.torcida_alvo.meaning",
+      "example": "lib.var.torcida_alvo.example"
+    },
+    "torcida_real": {
+      "meaning": "lib.var.torcida_real.meaning",
+      "example": "lib.var.torcida_real.example"
+    }
+  },
+  "cat": {
+    "Abertura": "lib.cat.abertura",
+    "Produto & Pacotes": "lib.cat.produto_and_pacotes",
+    "Tickets": "lib.cat.tickets",
+    "Vôos": "lib.cat.vôos",
+    "Hospedagem": "lib.cat.hospedagem",
+    "Transporte": "lib.cat.transporte",
+    "Documentação": "lib.cat.documentação",
+    "Pagamento": "lib.cat.pagamento",
+    "Políticas": "lib.cat.políticas",
+    "Pós-venda": "lib.cat.pós_venda",
+    "Handoff & Atendimento": "lib.cat.handoff_and_atendimento",
+    "Encerramento & Re-engajamento": "lib.cat.encerramento_and_re_engajamento",
+    "Eventos / Jogos Flamengo": "lib.cat.eventos___jogos_flamengo",
+    "Compliance Flamengo/Maracanã": "lib.cat.compliance_flamengo_maracanã",
+    "Descritivo de pacote": "lib.cat.descritivo_de_pacote",
+    "Checkout": "lib.cat.checkout"
+  },
+  "ui": {
+    "hero.title": "Biblioteca de Respostas — Aby",
+    "hero.sub": "35 mensagens em 13 categorias. Copie, cole, ajuste as variáveis.",
+    "filter.all": "Todas",
+    "filter.search.placeholder": "Buscar por gatilho, atalho ou texto...",
+    "card.shortcut": "Atalho",
+    "card.trigger": "Gatilho",
+    "card.variables": "Variáveis",
+    "card.observation": "Observação",
+    "card.copy": "Copiar",
+    "card.copied": "Copiado!",
+    "section.variables": "Dicionário de variáveis",
+    "section.governance": "Governança",
+    "var.name": "Variável",
+    "var.meaning": "Significado",
+    "var.example": "Exemplo (Libertadores 2026)"
+  }
+}

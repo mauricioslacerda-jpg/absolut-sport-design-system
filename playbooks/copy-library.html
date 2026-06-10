@@ -465,13 +465,20 @@ const STATE = {
 
 async function loadAll() {
   const base = './copy-library';
+  // Cache busting: força revalidação no CDN + bypass do cache do navegador.
+  // Necessário porque os JSONs mudam a cada `python extract.py` e o GitHub Pages
+  // cacheia por 10min por default; sem isto, traduções/correções demoram até
+  // 10min para aparecer ao usuário.
+  const v = Date.now();
+  const noCache = { cache: 'no-store' };
+  const url = (file) => `${base}/${file}?v=${v}`;
   const [msgs, vars, ptDict, enDict, esDict, deDict] = await Promise.all([
-    fetch(`${base}/messages.json`).then(r => r.json()),
-    fetch(`${base}/variables.json`).then(r => r.json()),
-    fetch(`${base}/i18n-pt.json`).then(r => r.json()),
-    fetch(`${base}/i18n-en.json`).then(r => r.json()),
-    fetch(`${base}/i18n-es.json`).then(r => r.json()),
-    fetch(`${base}/i18n-de.json`).then(r => r.json()),
+    fetch(url('messages.json'), noCache).then(r => r.json()),
+    fetch(url('variables.json'), noCache).then(r => r.json()),
+    fetch(url('i18n-pt.json'), noCache).then(r => r.json()),
+    fetch(url('i18n-en.json'), noCache).then(r => r.json()),
+    fetch(url('i18n-es.json'), noCache).then(r => r.json()),
+    fetch(url('i18n-de.json'), noCache).then(r => r.json()),
   ]);
   STATE.messages = msgs.messages;
   STATE.variables = vars.variables;

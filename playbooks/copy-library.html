@@ -519,6 +519,17 @@ function applyI18n() {
   });
 }
 
+// Slugify ASCII-only, espelha extract.py slugify_cat()
+// Algoritmo: NFD + strip diacríticos + lowercase + [^a-z0-9]→'_' + colapsa + trim
+function slugifyCat(name) {
+  return name
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
 function renderCatFilter() {
   const container = document.getElementById('cat-filter');
   const cats = STATE.meta.categories_order.filter(c =>
@@ -526,7 +537,7 @@ function renderCatFilter() {
   );
   const allBtn = `<button class="cat-btn active" data-cat="all" data-i18n="filter.all">Todas</button>`;
   const catBtns = cats.map(c => {
-    const slug = c.toLowerCase().replace(/ /g, '_').replace(/&/g, 'and').replace(/\//g, '_').replace(/[^\w]/g, '_');
+    const slug = slugifyCat(c);
     return `<button class="cat-btn" data-cat="${c}" data-i18n="lib.cat.${slug}">${c}</button>`;
   }).join('');
   container.innerHTML = allBtn + catBtns;

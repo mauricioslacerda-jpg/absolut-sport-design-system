@@ -31,8 +31,25 @@ import argparse
 import json
 import re
 import sys
+import unicodedata
 from datetime import date, datetime
 from pathlib import Path
+
+
+def slugify_cat(name: str) -> str:
+    """Slug ASCII-only, determinístico, idêntico em Python e JS.
+
+    Algoritmo (replicar em JS):
+      1. NFKD-normaliza e remove diacríticos
+      2. lowercase
+      3. troca tudo que não é [a-z0-9] por '_'
+      4. colapsa '_' repetidos e trim
+    """
+    nfkd = unicodedata.normalize("NFKD", name)
+    ascii_str = "".join(c for c in nfkd if not unicodedata.combining(c))
+    ascii_str = ascii_str.lower()
+    ascii_str = re.sub(r"[^a-z0-9]+", "_", ascii_str)
+    return ascii_str.strip("_")
 
 HERE = Path(__file__).parent
 SHEET_ID = "1UAjsxfeR_23Cl-wNtztzw4QkP1RxoBkk4rrDFFojiyc"
@@ -191,9 +208,7 @@ def build_i18n_keys(messages: list[dict], variables: list[dict]) -> dict:
             "example": f"lib.var.{v['name']}.example",
         }
     for cat in CATEGORIES_ORDER:
-        slug = cat.lower().replace(" ", "_").replace("&", "and").replace("/", "_")
-        slug = re.sub(r"[^\w]", "_", slug)
-        keys["cat"][cat] = f"lib.cat.{slug}"
+        keys["cat"][cat] = f"lib.cat.{slugify_cat(cat)}"
     return keys
 
 
@@ -208,10 +223,29 @@ def build_i18n_pt(messages: list[dict], variables: list[dict], keys: dict) -> di
         out[f"lib.var.{v['name']}.meaning"] = v["meaning_pt"]
         out[f"lib.var.{v['name']}.example"] = v["example_pt"]
     for cat in CATEGORIES_ORDER:
-        slug = cat.lower().replace(" ", "_").replace("&", "and").replace("/", "_")
-        slug = re.sub(r"[^\w]", "_", slug)
-        out[f"lib.cat.{slug}"] = cat
+        out[f"lib.cat.{slugify_cat(cat)}"] = cat
     return out
+
+
+# Tradução canônica das categorias (UI das chips/filter)
+CAT_TRANSLATIONS = {
+    "Abertura":                        {"en": "Opening",                      "es": "Apertura",                       "de": "Eröffnung"},
+    "Produto & Pacotes":               {"en": "Product & Packages",           "es": "Producto y Paquetes",            "de": "Produkt & Pakete"},
+    "Tickets":                         {"en": "Tickets",                      "es": "Entradas",                       "de": "Tickets"},
+    "Vôos":                            {"en": "Flights",                      "es": "Vuelos",                         "de": "Flüge"},
+    "Hospedagem":                      {"en": "Accommodation",                "es": "Hospedaje",                      "de": "Unterkunft"},
+    "Transporte":                      {"en": "Transport",                    "es": "Transporte",                     "de": "Transport"},
+    "Documentação":                    {"en": "Documentation",                "es": "Documentación",                  "de": "Dokumentation"},
+    "Pagamento":                       {"en": "Payment",                      "es": "Pago",                           "de": "Zahlung"},
+    "Políticas":                       {"en": "Policies",                     "es": "Políticas",                      "de": "Richtlinien"},
+    "Pós-venda":                       {"en": "After-Sales",                  "es": "Posventa",                       "de": "Nach dem Kauf"},
+    "Handoff & Atendimento":           {"en": "Handoff & Support",            "es": "Handoff y Atención",             "de": "Übergabe & Support"},
+    "Encerramento & Re-engajamento":   {"en": "Closing & Re-engagement",      "es": "Cierre y Reactivación",          "de": "Abschluss & Reaktivierung"},
+    "Eventos / Jogos Flamengo":        {"en": "Flamengo Events",              "es": "Eventos Flamengo",               "de": "Flamengo-Spiele"},
+    "Compliance Flamengo/Maracanã":    {"en": "Flamengo/Maracanã Compliance", "es": "Compliance Flamengo/Maracaná",   "de": "Flamengo/Maracanã Compliance"},
+    "Descritivo de pacote":            {"en": "Package Description",          "es": "Descripción de paquete",         "de": "Paketbeschreibung"},
+    "Checkout":                        {"en": "Checkout",                     "es": "Checkout",                       "de": "Checkout"},
+}
 
 
 def build_i18n_stub(pt: dict, lang: str) -> dict:
@@ -275,14 +309,16 @@ def build_i18n_stub(pt: dict, lang: str) -> dict:
         },
     }
     out = dict(base_ui[lang])
-    # Conteúdo de mensagens/variáveis/categorias: TODO
+    # Categorias: traduzir via mapa canônico
+    # Mensagens / variáveis: stub [TODO LANG] (exige revisão nativa)
     for key in pt:
-        if key.startswith("lib.msg.") or key.startswith("lib.var.") or key.startswith("lib.cat."):
-            # Mantém categorias intactas (são nomes próprios curtos)
-            if key.startswith("lib.cat."):
-                out[key] = pt[key]  # categoria pode ficar em PT até tradução nativa
-            else:
-                out[key] = f"[TODO {lang.upper()}] {pt[key]}"
+        if key.startswith("lib.cat."):
+            # Encontra o PT-name e traduz
+            pt_name = pt[key]
+            translated = CAT_TRANSLATIONS.get(pt_name, {}).get(lang)
+            out[key] = translated if translated else pt_name
+        elif key.startswith("lib.msg.") or key.startswith("lib.var."):
+            out[key] = f"[TODO {lang.upper()}] {pt[key]}"
     return out
 
 

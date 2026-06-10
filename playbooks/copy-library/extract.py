@@ -32,7 +32,7 @@ import json
 import re
 import sys
 import unicodedata
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 
 
@@ -227,6 +227,104 @@ def build_i18n_pt(messages: list[dict], variables: list[dict], keys: dict) -> di
     return out
 
 
+# Tradução canônica das 13 variáveis (dicionário)
+# meaning: tradução funcional obrigatória
+# example: traduzido onde fizer sentido (frases descritivas);
+#          mantido em PT para nomes próprios e valores literais
+VAR_TRANSLATIONS = {
+    "nome": {
+        "meaning": {"en": "Customer/fan name",
+                    "es": "Nombre del cliente/hincha",
+                    "de": "Name des Kunden/Fans"},
+        "example": {"en": "João", "es": "João", "de": "João"},
+    },
+    "atendente": {
+        "meaning": {"en": "Attendant / campaign persona name",
+                    "es": "Nombre del atendente / persona de la campaña",
+                    "de": "Name des Beraters / der Kampagnen-Persona"},
+        "example": {"en": "Thadeu", "es": "Thadeu", "de": "Thadeu"},
+    },
+    "parceiro": {
+        "meaning": {"en": "Official rights-holding entity",
+                    "es": "Entidad oficial titular de los derechos",
+                    "de": "Offizielle Rechteinhaberin"},
+        "example": {"en": "CONMEBOL", "es": "CONMEBOL", "de": "CONMEBOL"},
+    },
+    "evento": {
+        "meaning": {"en": "Event name (as told to the customer)",
+                    "es": "Nombre del evento (tal como se le dice al cliente)",
+                    "de": "Eventname (wie dem Kunden mitgeteilt)"},
+        "example": {"en": "the Glória Eterna grand final",
+                    "es": "la gran final de la Glória Eterna",
+                    "de": "das große Finale der Glória Eterna"},
+    },
+    "cidade": {
+        "meaning": {"en": "Host city of the event",
+                    "es": "Ciudad-sede del evento",
+                    "de": "Austragungsort des Events"},
+        "example": {"en": "Lima", "es": "Lima", "de": "Lima"},
+    },
+    "data": {
+        "meaning": {"en": "Event date (day or full date)",
+                    "es": "Fecha del evento (día o fecha completa)",
+                    "de": "Eventdatum (Tag oder Volldatum)"},
+        "example": {"en": "29", "es": "29", "de": "29"},
+    },
+    "url": {
+        "meaning": {"en": "Event e-commerce link",
+                    "es": "Enlace del e-commerce del evento",
+                    "de": "E-Commerce-Link des Events"},
+        "example": {"en": "absolutsport.com.br/palmeiraslibertadores",
+                    "es": "absolutsport.com.br/palmeiraslibertadores",
+                    "de": "absolutsport.com.br/palmeiraslibertadores"},
+    },
+    "origem_aereo": {
+        "meaning": {"en": "Available flight departure cities",
+                    "es": "Plazas de salida del vuelo disponible",
+                    "de": "Verfügbare Flug-Abflugorte"},
+        "example": {"en": "São Paulo and Rio de Janeiro",
+                    "es": "São Paulo y Río de Janeiro",
+                    "de": "São Paulo und Rio de Janeiro"},
+    },
+    "pais_prep": {
+        "meaning": {"en": "Destination country with preposition",
+                    "es": "País-destino con preposición",
+                    "de": "Zielland mit Präposition"},
+        "example": {"en": "in Peru", "es": "en Perú", "de": "in Peru"},
+    },
+    "doc": {
+        "meaning": {"en": "Documents accepted for entry",
+                    "es": "Documentos aceptados para la entrada",
+                    "de": "Für die Einreise akzeptierte Dokumente"},
+        "example": {"en": "ID or Passport",
+                    "es": "Cédula o Pasaporte",
+                    "de": "Personalausweis oder Reisepass"},
+    },
+    "app_transporte": {
+        "meaning": {"en": "Recommended ride-hailing app at the destination",
+                    "es": "App de transporte recomendada en el destino",
+                    "de": "Empfohlene Transport-App am Reiseziel"},
+        "example": {"en": "Uber", "es": "Uber", "de": "Uber"},
+    },
+    "torcida_alvo": {
+        "meaning": {"en": "Target fanbase of the acquisition campaign",
+                    "es": "Hinchada objetivo de la campaña de captación",
+                    "de": "Ziel-Fangruppe der Akquisekampagne"},
+        "example": {"en": "Palmeiras fans",
+                    "es": "hinchas palmeirenses",
+                    "de": "Palmeiras-Fans"},
+    },
+    "torcida_real": {
+        "meaning": {"en": "Customer's actual fanbase (record correction)",
+                    "es": "Hinchada real del cliente (corrección de registro)",
+                    "de": "Tatsächliche Fangruppe des Kunden (Datensatz-Korrektur)"},
+        "example": {"en": "Flamengo fan",
+                    "es": "hincha flamenguista",
+                    "de": "Flamengo-Fan"},
+    },
+}
+
+
 # Tradução canônica das categorias (UI das chips/filter)
 CAT_TRANSLATIONS = {
     "Abertura":                        {"en": "Opening",                      "es": "Apertura",                       "de": "Eröffnung"},
@@ -309,15 +407,25 @@ def build_i18n_stub(pt: dict, lang: str) -> dict:
         },
     }
     out = dict(base_ui[lang])
-    # Categorias: traduzir via mapa canônico
-    # Mensagens / variáveis: stub [TODO LANG] (exige revisão nativa)
+    # Categorias: traduzir via CAT_TRANSLATIONS
+    # Variáveis: traduzir via VAR_TRANSLATIONS (meaning + example)
+    # Mensagens: stub [TODO LANG] (exigem revisão nativa por causa do tom de voz)
     for key in pt:
         if key.startswith("lib.cat."):
-            # Encontra o PT-name e traduz
             pt_name = pt[key]
             translated = CAT_TRANSLATIONS.get(pt_name, {}).get(lang)
             out[key] = translated if translated else pt_name
-        elif key.startswith("lib.msg.") or key.startswith("lib.var."):
+        elif key.startswith("lib.var."):
+            # chave no formato lib.var.{name}.{meaning|example}
+            parts = key.split(".")
+            if len(parts) >= 4:
+                var_name = parts[2]
+                field = parts[3]  # 'meaning' ou 'example'
+                tr = VAR_TRANSLATIONS.get(var_name, {}).get(field, {}).get(lang)
+                out[key] = tr if tr else pt[key]
+            else:
+                out[key] = pt[key]
+        elif key.startswith("lib.msg."):
             out[key] = f"[TODO {lang.upper()}] {pt[key]}"
     return out
 

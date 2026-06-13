@@ -1,213 +1,235 @@
-# Brand Guide Overhaul — Brief de Hand-off
+# Saucier — Brand Guide Brief
 
-> Documento de transferência. Use como prompt inicial / contexto na pasta correta.
-> Captura: o que foi acordado, o que existe hoje no artefato, e o plano de ataque.
-
----
-
-## ⚠ AVISO — ALVO ERRADO
-
-A sessão original aconteceu no repo `absolut-sport-design-system`, mas o usuário identificou depois que **a marca de fato é provavelmente Saucier** (ou marca relacionada), não ABSOLUT Sport. O artifact original (`https://claude.ai/public/artifacts/cf69da67-4c83-43fe-8a52-c501f805ca76`) não pôde ser lido por bloqueio do Claude.ai a fetchers externos.
-
-**O que continua válido (metodologia reusável em qualquer marca):**
-- Seção **2** (Tradução do DNA Rapanui — narrativa em vez de estética)
-- Seção **4** (Plano de estrutura chaptered — 7 capítulos + apêndice)
-- Seção **5** (Conceito de "Brand in Use" com 3 mockups aplicados — adaptar contexto)
-- Seção **7** (Próximos passos: começar por um capítulo de prova antes de aplicar no todo)
-
-**O que descartar (ABSOLUT-específico):**
-- Seção **3** (Estado atual do index.html — refere ao Hub ABSOLUT)
-- Seção **6** (Anatomia do Logo — específico do "A" monolítico da ABSOLUT)
-- Toda menção a CONMEBOL, Libertadores, Sudamericana, SoulCraft GX, Rafa Rafa, Mauricio×Rafa, escritórios Rio/Frankfurt/LA/BA
-- Mockups específicos: voucher Libertadores, foto de estádio, paleta azul institucional
-
-**Ação ao abrir a pasta correta:**
-1. Abrir o artifact ou repo da Saucier
-2. Repassar as 4 perguntas originais (alvo · ponto fraco · referência visual · escopo) — não assumir que as respostas anteriores ainda valem
-3. Confirmar se a direção Rapanui (DNA narrativo) ainda faz sentido pra Saucier — pode ser que a marca já tenha narrativa forte e o gap seja outro
-4. Aplicar a metodologia (capítulos + Brand in Use) usando contexto/paleta/tipografia da Saucier real
+> Hand-off doc. Lê isso na pasta certa e a gente parte com contexto completo.
+> Compilado a partir de busca no Google Drive (Saucier folders + arquivos).
 
 ---
 
-## 1. Decisões já tomadas com o usuário
+## 1. Quem é a Saucier (confirmado via Drive)
 
-| Pergunta | Resposta |
+**Saucier — Molhos Artesanais.** Marca de molhos e temperos artesanais do Rio de Janeiro, fundada por **Chef Mauricio Lacerda** (você). Operação desde ~maio/2020.
+
+- **Tagline em uso:** "Os molhos mais saborosos do Rio"
+- **WhatsApp:** (21) 96730-7290
+- **E-mail:** saucierbrasil@gmail.com
+- **Instagram:** @saucierbrasil
+- **Canais de venda:** WhatsApp direto, feiras de fim de semana, delivery, ifood (planejado), comercial consignado, food service
+- **Spin-off educacional:** **Curso de Molhos Artesanais Saucier** (Hotmart, +50 vídeo-aulas, com turmas e suporte)
+
+## 2. Catálogo (a "família" de produtos)
+
+Cada produto tem **nome com personalidade + referência cultural** — esse é o coração da marca.
+
+| Produto | Posicionamento (do menu) | Preço | Peso |
+|---|---|---|---|
+| **Tempero do Chef** | "Mix de especiarias. Vai bem com tudo!" | R$15 | 90g |
+| **Tempero da Vovó** | "Refogado pronto. Suas mãos não vão ficar cheirando alho" | R$15 | 180g |
+| **Ketchup de Goiabada** | "O caipira mais chique! Ô trem bão sô!" — Goiabada Cascão de Minas | R$20 | 180g |
+| **Ketchup de Abacaxi** | "Ousadamente delicioso." Toque tropical agridoce | R$20 | 180g |
+| **Pesto Tradicional** | "Mamma-mia! Verdinho, verdinho." Manjericão + castanha + parmesão da Serra da Canastra | R$24 | 180g |
+| **Pesto de Azeitona** | "A releitura de um clássico!" Pesto + azeitona preta | R$24 | 180g |
+| **Chimichurri** | "El mejor del estilo portunhol!" Uruguaio-brasileiro, "Una fiesta!" | R$22 | 179g |
+| **Cebola Caramelizada** | "Vive la France! U.lá.lá Ui Ui" Estilo francês lento | R$24 | 180g |
+| **Salt Free Saucier** | Versão sem sódio do Tempero do Chef | — | 90g |
+| **Molho Pesto Saucier** | Versão linha shelf-stable | — | 174g |
+
+**Atributos transversais (badges em todo material):**
+SEM SÓDIO · SEM LACTOSE · VEGANO · SEM ADIÇÃO DE AÇÚCAR · SEM GLÚTEN
+
+---
+
+## 3. DNA da marca (extraído dos materiais)
+
+### 3.1 Voz e tom — **multilíngue brincalhão**
+
+A Saucier fala em **vários sotaques de propósito**. Cada molho ganha um idioma/cultura:
+
+| Produto | Sotaque | Frase âncora |
+|---|---|---|
+| Pesto | Italiano | "Mamma-mia! Verdinho, verdinho." |
+| Chimichurri | Portunhol uruguaio | "El mejor del estilo portunhol! Una fiesta!!!" |
+| Cebola Caramelizada | Francês caricato | "Vive la France! U.lá.lá Ui Ui" |
+| Ketchup de Goiabada | Mineiro | "Ô trem bão sô!" |
+| Ketchup de Abacaxi | Tropical | "Ousadamente delicioso" |
+| Tempero da Vovó | Brasileiro caseiro | "Facilite sua vida, meu bem!" |
+
+**Características transversais:**
+- Primeira pessoa do chef ("Suas mãos não vão...", "Facilite sua vida...")
+- Exclamação como pontuação padrão (alegria virou regra)
+- Mistura português + outros idiomas no mesmo bloco (portunhol, frenglês)
+- Curtinho — cabe num pote
+- **Nunca corporativo, nunca premium-frio** — sempre quente, cozinha de chef, mesa de família
+
+### 3.2 Storytelling por origem
+
+Cada molho tem uma **história de ingrediente** — esse é o ponto-Rapanui que conecta tudo:
+- Goiabada **Cascão de Minas Gerais** (não goiabada genérica)
+- Manjericão e queijo parmesão da **Serra da Canastra**
+- Chimichurri inspirado na **fronteira Uruguai-Brasil**
+- Cebola caramelizada **no estilo francês lento**
+
+Esse vetor de "origem geográfica + técnica artesanal + autoria do chef" é o que diferencia Saucier de Hellmann's/Heinz/Hemmer.
+
+### 3.3 Posicionamento
+
+Do `Plano de Negócio` (Google Doc):
+- **Categoria:** Molhos artesanais premium, segmento em ascensão (+3,9% em 2019, hoje muito maior)
+- **Pilares de valor:** Praticidade · Sabor · Feito por um chef · Presente · Status
+- **Diferenciação:** vs industrializados (sabor e origem) e vs caseiros (escala e consistência)
+- **Concorrentes mapeados:** Le Molho, Rom Sauce, DeCabron, Chef n'Boss, Cook Sauce, Br Spice, Jatobá, Hellmann's, Heinz, Mr. Taste, Hemmer
+
+---
+
+## 4. Por que Rapanui é a direção certa pra Saucier
+
+Quando a gente conversou sobre Rapanui (marca argentina de roupas da Patagônia), achei que ia ser um stretch. **Agora encaixa perfeitamente:**
+
+| Rapanui faz | Saucier precisa fazer |
 |---|---|
-| Qual artefato aprimorar? | `index.html` do design system (Hub principal) |
-| Onde está o "genérico" mais crítico? | **Cor e tipografia sem narrativa** — cards de cor e specimens de tipo parecem template, não mostram aplicação real |
-| Direção de referência | **Rapanui (marca argentina)** — não a paleta nem a estética visual, mas o **DNA narrativo**: cada peça tem origem, história, contexto, hand-feel |
-| Escopo | **Overhaul completo** — reestruturar todas as seções, adicionar capítulos novos, tratar como brand book completo |
-| Onde cor/tipo precisam aparecer aplicadas? | **Brand in Use** — capítulo dedicado com 3 mockups: ingresso/voucher Libertadores, card social, hero de página de produto |
+| Cada peça tem origem (lã da Patagônia, estampa de fauna local) | Cada molho tem origem (Goiabada de Minas, Manjericão da Canastra) |
+| Hand-feel: bordado, etiqueta artesanal, foto do produto na natureza | Hand-feel: rótulo de chef, foto do molho na cozinha real |
+| Voz quente em primeira pessoa do fundador | Voz quente em primeira pessoa do chef |
+| Cultura como produto (identidade patagônica) | Cultura como produto (sotaques regionais por molho) |
+| Premium acessível, nunca cold luxury | Premium acessível, nunca cold luxury |
+
+**Conclusão:** A direção Rapanui não é "estética visual" copiada — é **modo de apresentação**. Cada cor, cada tipografia, cada componente do brand guide precisa contar uma história, mostrar a origem, e mostrar o produto **em uso real** (não em swatches isolados).
 
 ---
 
-## 2. Tradução do "DNA Rapanui" para a ABSOLUT Sport
+## 5. Ativos disponíveis no Drive (file IDs prontos pra usar)
 
-A Rapanui (clothing argentina) NÃO entra como referência estética (paleta terra/Patagônia não combina com o azul institucional ABSOLUT). Entra como **modo de apresentação**:
+### Pastas-mãe
+- **`Saucier` (Mauricio)** — `1l7p0TfygjFCR1sXcK-v3oV-0VnVGJjNj` — logos, carimbos, branding base
+- **`Saucier` (compartilhada @saucierbrasil)** — `1cBcQ0qSd7-l8EhUlEACOu2Xu7zyUrmSZ`
+- **`Curso Saucier`** — `1F4B4mqL_2yb9P9HiXAV-PyYdLhQEKPhB` — materiais da formação
+- **`Gravação Saucier`** — `1oYPkVaz8RaqiGTSoBqpIK8A9DT7JVVbc`
 
-**O que Rapanui faz bem (e que o guide ABSOLUT precisa adotar):**
-- Cada produto tem uma *story* — origem, inspiração, técnica, onde foi feito
-- Mostra o produto **em uso** (vestido, no contexto), nunca isolado num grid
-- Hand-feel: anotações, sketches, "behind the scenes", linguagem em primeira pessoa
-- Cada cor/estampa carrega um significado declarado (fauna, paisagem, momento)
+### Logo (variantes)
+- `saucier_logo.ai` — `1Iz_5g-xuCJgy1vIlGnHGG6-K1AyMi6hm` (master Illustrator)
+- `saucier_logo.pdf` — `1Q2AkmQtAuYDKKYe1HxMobhnHiQK0hocz`
+- `saucier_logo_Prancheta 1.png` — `15-2KVS7vI8cxKzn1ySPFl6ciqD3wK2eF`
+- `saucier_logo_Prancheta 1 cópia.png` — `1dDith59IdVjH38HpiUl3x5tlcdmXNymV`
+- `saucier_logo_Prancheta 1 cópia 2.png` — `1DMSjJ-Ey7YLtOJU077BMcT7kCtRbcx3N`
 
-**Aplicação no brand book ABSOLUT:**
-- Cada cor vem com: nome → emoção → onde aparece → exemplo real (mockup, não swatch)
-- Cada peso tipográfico vem com: função no estádio → exemplo (placar, headline de jornal, manchete de pacote)
-- Sidebar "field notes" estilo caderno do designer ao lado das specs frias
-- Microcopy em primeira pessoa do time ("a gente usa essa em..."), não institucional
+### Carimbos (versões pra rotulagem)
+- `40x40mm_carimbo_saucier.pdf` — `1ISLdDxFcLQFIIzAtnvoEGBsBraa4IC6C`
+- `_100x64mm_carimbo_saucier.pdf` — `15OdPcHznn0smb0UJIXgJpRLqTKSWcrTS`
 
----
+### Conteúdo de produto (fonte da voz/copy)
+- `Painel Frontal - rótulos SAUCIER - 23.07.2020.pdf` — `124gip8iM-2xDv3gkMsnZOY-grz7PbMLI` (rótulos oficiais com tabelas nutricionais)
+- `Molhos Artesanais Saucier.pdf` — `180U-22FNQUO6J9M6vH3u6CYqeXiLq1dV` (menu v1)
+- `Menu Saucier 2021` — `1XAQnewb4mLCh4s_Hpl-pbKC0tATBkvo_` (menu v2 atualizado)
+- `Menu 3.0` — `15xeziYp1DuKeGUL4cF-9BV5gU2e3ToqI`
+- `Pesto.pdf` — `1o1_leMeBhfbUALawk8FGC_0WgitR3H1w` (assinado @saucierbrasil)
+- `promo.jpg` — `1B_d_ZF5OXoxLu78vSa3x-o2PFN5o4-4A` (peça promocional consolidada)
 
-## 3. Estado atual do `index.html` (mapa do que existe)
+### Documentos estratégicos
+- `Plano de Negócio` (Google Doc) — `1dLYx18feb0zbVU0gV5wRDJReNlWpwzu7VqEnebNd_18`
+- `SAUCIER` (planilha fluxo de caixa) — `1vPqNSTN34p7wvSKACO0JowKNqBOjenQUQdTm9NMxpDc`
+- `Concorrentes Saucier` — `1scrUufXJ25PFBMIALhPzKpV0NUdEXVJVmgdoWFQTObg`
+- `Usuários Saucier` (alunos do curso) — `1tmKG80G8jcpvFAG9V9NXJZhKxST6Q33bvf6dkgx-OGU`
 
-**Arquivo:** 2314 linhas, totalmente self-contained (CSS inline + JS inline + i18n em 4 idiomas).
+### Conteúdo do curso (pasta com criativos da campanha)
+- Pasta `12oA-gnQpqOjxMmaXMNK2OtI6lGKFgZCD` — peças "4.png", "5.png", "6.png" com headlines "Chega de perder tempo com receitinha de internet!", "Cansou de comer sempre as mesmas coisas?", "Gastando muito e comendo mal?"
 
-**Seções na ordem atual:**
-1. `splash` — loading 2.5s com logo + linha azul
-2. `nav` — sticky, glassmorphism, lang toggle (PT/EN/ES/DE), credit "MM × RR"
-3. `#top` (hero) — eyebrow + h1 com 3 linhas + sub + cidades
-4. `#toolkit` — CTA gold pra baixar zip do brand kit
-5. `#logos` — 4 cards (Azul+Preto, Azul+Branco, Branco mono, Preto mono)
-6. `#decision` — matriz 2×2 de quando usar cada logo
-7. `#cores` — 3 grids (Brand Core, Neutrais, Status) renderizados via JS, click pra copiar hex
-8. `#tipografia` — type-stack com 5 specimens (Hero/Display/Headline/Title/Body)
-9. `#iconografia` — grid de 12 ícones Lucide inline
-10. `#motion` — 3 cards de transição (fast/default/slow) + lista de princípios
-11. `#tokens` — spacing list (12 valores) + radius cards (5 valores)
-12. `#componentes` — grid de 13 component previews (links pra `preview/*.html`)
-13. `#figma` — 4 cards de templates Figma externos
-14. `#guidelines` — 6 blocos do/don't (Voz, Foto, Tipografia)
-15. `#devs` — 3 snippets de código pra implementação
-16. `#playbooks` — 2 cards ativos + 1 "coming soon" Growth
-17. `ask-rafa-section` — banner gold com pôster do Rafa Rafa
-18. `footer` — 3 colunas + bottom bar
-
-**Sistema técnico:**
-- `colors_and_type.css` — todos os tokens canônicos (cores, type, spacing, radius, shadows, transitions, z-index)
-- `i18n.js` — toggle de idioma, persiste em `localStorage.asb_lang`
-- `zero-to-o.js` — assinatura tipográfica (troca "0" por "O" maiúsculo em SoulCraft)
-- `assets/` — 4 logos SVG + brand kit zip + foto Rafa
-- `fonts/soulcraftgx.ttf` — fonte de display variable
-- `preview/` — 13 component previews
-- `playbooks/` — playbooks aplicados
-
-**Restrições importantes:**
-- Tokens em `colors_and_type.css` são canônicos — **não alterar**, apenas consumir
-- i18n: qualquer key nova precisa de tradução em **PT, EN, ES, DE** dentro do `window.I18N_DICT`
-- Padrão `data-i18n="key"` ou `data-i18n-html="key"` no DOM
-- Caminhos relativos (sem build) — funciona em GitHub Pages / Cloudflare Pages
-- WCAG AA já está validado para os pares de contraste atuais
+> **Não encontrei brand guide / manual de marca existente no Drive.** Estamos partindo do zero (ou de qualquer artifact externo que você tenha gerado e queira que eu use como base).
 
 ---
 
-## 4. Plano de overhaul proposto (chaptered brand book)
+## 6. Plano de overhaul — adaptado pra Saucier
 
-Reestruturar o Hub como **brand book com capítulos numerados**, abandonando a estrutura linear de "Hub-com-grids":
+Estrutura em capítulos, herdada da metodologia da conversa anterior, mas com **contexto e exemplos de molho artesanal** no lugar dos exemplos esportivos:
 
 ```
-INTRO        → Hero novo + manifesto curto + sumário visual
+INTRO        → Hero "Os molhos mais saborosos do Rio" + manifesto do chef
 CAP 01       Identidade
-              ├─ 01.1 Anatomia do logo (NOVO — diagrama anotado)
-              ├─ 01.2 Variantes oficiais (logos atual)
-              └─ 01.3 Decisão (matriz atual, polida)
-CAP 02       Cor — narrativa primeiro
-              ├─ 02.1 A história da paleta (eyebrow narrativo)
-              ├─ 02.2 Brand Core com contexto (cada cor: emoção + uso real)
-              ├─ 02.3 Neutrais (escala fria)
-              └─ 02.4 Status
+              ├─ 01.1 Quem somos (3 parágrafos: chef + origem + filosofia)
+              ├─ 01.2 Anatomia do logo (diagrama anotado)
+              └─ 01.3 Variantes (master + carimbos + monocromático)
+CAP 02       Cor — com origem culinária
+              ├─ 02.1 A paleta veio da despensa (cada cor = ingrediente/momento)
+              ├─ 02.2 Brand Core com contexto real
+              ├─ 02.3 Neutrais (mesa de cozinha, papel kraft, vidro)
+              └─ 02.4 Status (apenas onde precisa)
 CAP 03       Tipografia — em ação
-              ├─ 03.1 As 3 vozes (SoulCraft, Barlow, JetBrains Mono — por que cada uma)
-              ├─ 03.2 Especímenes em contexto (placar, manchete, ingresso)
-              └─ 03.3 Hierarquia (waterfall atual, polido)
-CAP 04       Brand in Use ★ (NOVO — entrega central do overhaul)
-              ├─ 04.1 Mockup: Voucher / Ingresso Libertadores
-              ├─ 04.2 Mockup: Card social (Instagram post)
-              └─ 04.3 Mockup: Hero de página de produto
-CAP 05       Voice & Tone aplicado (NOVO — substitui guideline genérico)
-              ├─ 05.1 Os 3 sotaques (alemão · brasileiro · californiano)
-              ├─ 05.2 Exemplos PT/EN/ES lado a lado
-              └─ 05.3 Microcopy em situações reais (CTA, erro, vazio, sucesso)
-CAP 06       Sistema (specs frias)
-              ├─ 06.1 Iconografia
-              ├─ 06.2 Motion
-              ├─ 06.3 Tokens (spacing + radius)
-              └─ 06.4 Componentes (preview grid)
-CAP 07       Implementação
-              ├─ 07.1 Para devs (snippets atuais)
-              ├─ 07.2 Para designers (Figma templates)
-              └─ 07.3 Brand kit download
-APÊNDICE     Playbooks + Ask Rafa + Footer
+              ├─ 03.1 Display (display de rótulo, manchete de cardápio)
+              ├─ 03.2 Body (descrição de molho, tabela nutricional)
+              └─ 03.3 Mono / dados (preços, peso, % VD)
+CAP 04       Brand in Use ★ (entrega central)
+              ├─ 04.1 Rótulo de pote (frente + verso, com tabela nutricional)
+              ├─ 04.2 Card Instagram (post de lançamento de molho)
+              └─ 04.3 Página de produto / e-commerce (hero, preço, CTA WhatsApp)
+CAP 05       Voice & Tone — os sotaques da Saucier
+              ├─ 05.1 O sistema: cada molho fala uma "língua"
+              ├─ 05.2 Tabela de exemplos (Italiano/Francês/Portunhol/Mineiro/Tropical)
+              ├─ 05.3 Microcopy em situações reais (WhatsApp, e-mail, checkout, agradecimento pós-compra)
+              └─ 05.4 Curso Saucier: como o tom muda quando vira professor
+CAP 06       Sistema (specs)
+              ├─ 06.1 Iconografia (atributos: vegano, sem glúten, etc.)
+              ├─ 06.2 Tokens (spacing, radius, shadows)
+              └─ 06.3 Componentes (badge atributo, card de molho, CTA WhatsApp)
+CAP 07       Aplicação prática
+              ├─ 07.1 Rótulos (especificação de impressão)
+              ├─ 07.2 Social media (templates Instagram + Stories)
+              └─ 07.3 Curso (capa de aula, e-book, certificado)
+APÊNDICE     Brand kit download + contato
 ```
 
-**Mudanças visuais transversais:**
-- Capítulo abre com **número grande** (ex: "01 — IDENTIDADE") em SoulCraft Black gigante
-- Cada capítulo tem cor de borda/eyebrow distinta (mas dentro da paleta) pra criar ritmo
-- Layout deixa de ser sempre "eyebrow → title → grid" — varia entre full-bleed, asymmetric, split
-- "Field notes" sidebar (estilo caderno, monospace, em algumas seções)
-- Microcopy em primeira pessoa do time, não institucional
+### 6.1 Mockups "Brand in Use" — os 3 entregáveis-âncora
+
+#### A. Rótulo de pote — Pesto Tradicional
+- Frente: logo + nome do molho + sotaque ("MAMMA-MIA!") + atributos badges + peso
+- Verso: ingredientes + tabela nutricional + validade + WhatsApp + Instagram
+- **Mostra:** display type + Mono pra dados + paleta + iconografia de atributos, tudo num só artefato real
+
+#### B. Post Instagram — lançamento Chimichurri
+- Imagem do pote + headline "EL MEJOR DEL ESTILO PORTUNHOL!"
+- Sub em portunhol + preço grande
+- CTA "PEÇA PELO WHATSAPP" + ícone WhatsApp + telefone
+- **Mostra:** hierarquia tipográfica + voz multilíngue + paleta em peça social real
+
+#### C. Hero de página de produto / e-com
+- Foto do molho num contexto (carne na grelha, prato montado)
+- Headline + bullets de origem ("Manjericão da Canastra · Castanha de caju · Parmesão Canastra")
+- Preço + CTA + atributos badges
+- **Mostra:** layout web, hierarquia, paleta aplicada, voz de chef
+
+### 6.2 Capítulos novos que faltam no padrão "brand guide genérico"
+
+- **Os Sotaques** (Cap 05.1-05.2) — sistematizar a regra "cada molho fala uma língua" como **arquitetura de voz**, não decoração
+- **Anatomia do Rótulo** — porque pote artesanal tem espaço apertado e regras específicas (Anvisa, ingredientes, tabela)
+- **Curso Saucier: o tom de chef-professor** — porque agora a marca tem dois braços (produto físico + educacional) e o tom muda entre eles
 
 ---
 
-## 5. Mockups "Brand in Use" — especificação dos 3 entregáveis
+## 7. Decisões que ainda preciso de você
 
-Tudo em SVG inline ou CSS puro (sem dependência de imagem real, já que não temos foto de stadium licenciada).
-
-### 5.1 Voucher / Ingresso Libertadores
-- Estádio noturno (ilustração CSS gradient, não foto)
-- Logo Azul+Branco no topo
-- Headline: "FINAL CONMEBOL LIBERTADORES™ 2026"
-- Sub: "Estadio Maracanã · 30.NOV.2026"
-- Stat strip: assento, setor, portão (Barlow + JetBrains Mono)
-- Badge VIP gold no canto
-- QR placeholder
-- **Mostra:** Azul Dark de fundo, Gold pra VIP, Branco pra texto, JetBrains Mono pra dados
-
-### 5.2 Card social (Instagram post 4:5)
-- Foto de fundo (placeholder gradient + grain)
-- Headline SoulCraft "DOS ESTÁDIOS PARA A HISTÓRIA"
-- Sub Barlow "Pacotes Libertadores 2026 · A partir de"
-- Preço em JetBrains Mono enorme
-- CTA red "COMPRAR PACOTE"
-- Logo branco no topo
-- **Mostra:** hierarquia tipográfica completa em peça real, vermelho como CTA único
-
-### 5.3 Hero de página de produto
-- Layout split 60/40
-- Esquerda: foto full-bleed (gradient placeholder)
-- Direita: card flutuante com pacote (cidade, datas, hotel, preço, CTA)
-- Eyebrow azul "OFICIAL · CONMEBOL™"
-- **Mostra:** off-white card sobre dark, blue-mid pra eyebrow, gold pra "Oficial", red pra CTA
+1. **Qual artifact original você queria aprimorar?** Tinha um Claude artifact (`cf69da67-...`) que não consegui ler. Se você abrir e me passar o conteúdo, eu uso ele como base em vez de partir do zero.
+2. **Direção visual da paleta:** vou propor algo derivado dos próprios ingredientes (terracota tomate, verde manjericão, dourado goiabada, preto pimenta, cru/kraft de embalagem)? Ou você já tem uma paleta definida que devo respeitar?
+3. **Logo atual:** o `saucier_logo.ai` é a master. Quer que eu trate como inviolável, ou está aberto a refinamentos do logo no overhaul?
+4. **Escopo do brand guide:** só digital (web/social) ou inclui specs de impressão (rótulo, embalagem, carimbo)?
+5. **Co-autoria/crédito:** quem assina? Você sozinho como Chef Mauricio Lacerda, ou tem mais alguém envolvido (designer, sócio)?
+6. **Tagline oficial:** "Os molhos mais saborosos do Rio" vai continuar? Ou quer testar variantes na revisão?
 
 ---
 
-## 6. Anatomia do Logo (capítulo novo)
+## 8. Próximos passos sugeridos
 
-Diagrama anotado em SVG do logo Azul+Preto, com legendas:
-- **Mark "A"** — monolítica, sem travessão (modernidade, autoridade)
-- **Acento oval superior direito** — bola/troféu (emoção esportiva)
-- **Wordmark** — sempre "ABSOLUT Sport" completo (nunca só "Absolut")
-- **Espaço de respiro** — 1× a altura do mark em todos os lados
-- **Tamanhos mínimos** — digital 24px alt, impresso 12mm alt
-- **Don'ts visuais** — esticar, mudar cor da bola, separar mark do wordmark, aplicar sombra
-
----
-
-## 7. Próximos passos recomendados (na pasta certa)
-
-1. Confirmar caminho/repositório correto e branch de trabalho
-2. Validar este plano (especialmente a estrutura de capítulos) antes de codar
-3. Começar por **um único capítulo de prova** (sugiro Cap 02 Cor com narrativa + Cap 04.1 Voucher) pra validar a direção visual antes de aplicar nas 17 seções
-4. Só depois de o usuário aprovar o "vibe check", reescrever o resto
-5. Manter `colors_and_type.css` intocado, manter compatibilidade com `i18n.js`, atualizar i18n dict pra todas keys novas em PT/EN/ES/DE
-6. Commit em `claude/improve-brand-guide-design-XXX` (ou branch designada na pasta correta)
+1. **Levar este brief pra pasta certa** (`G:\Meu Drive\Saucier` ou repo dedicado se for criar)
+2. **Responder as 6 perguntas acima** — sem isso, qualquer overhaul é chute
+3. **Decidir o stack** — se vai ser:
+   - HTML estático (estilo o que estava no ABSOLUT — auto-contido, deploy em Pages)
+   - Site Notion / Pitch / Canva (mais leve, edição contínua)
+   - PDF brand book (mais formal, distribuição offline)
+4. **Começar por UM capítulo de prova** — sugiro **Cap 02 Cor (com narrativa de ingrediente)** + **Cap 04.1 Rótulo de pote** — pra validar a direção visual antes de aplicar nas 7 seções
+5. **Só depois de aprovado o "vibe check"**, expandir pro brand guide completo
 
 ---
 
-## 8. Avisos de sanidade
+## 9. Avisos de sanidade
 
-- O Hub atual já é sofisticado (splash, glassmorphism, motion, i18n 4 idiomas, WCAG validado). Não tratar como blank slate. Reestruturar narrativa, mas preservar engenharia.
-- Tokens em `colors_and_type.css` foram cuidadosamente validados (contrastes WCAG AA). Não mexer.
-- `zero-to-o.js` é assinatura de marca — manter ativo em qualquer headline SoulCraft que tenha "0".
-- Co-autoria Mauricio × Rafa Rafa precisa continuar visível (nav credit + footer + Ask Rafa banner).
-- O tom do Ask Rafa banner ("Tudo o que é bom vem em dobro") é um padrão de microcopy que define a voz — não cortar.
+- **Não mexer no logo `saucier_logo.ai`** sem confirmação explícita — é o master e tem versões impressas em circulação
+- **Os rótulos atuais têm valor legal** (tabela nutricional Anvisa, ingredientes oficiais) — qualquer mudança visual precisa preservar essas zonas funcionais
+- **WhatsApp (21) 96730-7290** é o canal de venda real — qualquer redesign que mover esse CTA pra longe da conversão tá errado
+- **A voz brincalhão multilíngue é o ativo de marca mais singular da Saucier** — qualquer "premiumzação" que mate o "Ô trem bão sô!" mata o que diferencia da Hemmer
+- **O curso (Hotmart) já existe e tem alunos pagantes** — guidelines pro braço educacional não podem entrar em conflito com o que já tá no ar

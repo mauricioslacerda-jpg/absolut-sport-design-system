@@ -5,6 +5,30 @@
 
 ---
 
+## ⚠ AVISO — ALVO ERRADO
+
+A sessão original aconteceu no repo `absolut-sport-design-system`, mas o usuário identificou depois que **a marca de fato é provavelmente Saucier** (ou marca relacionada), não ABSOLUT Sport. O artifact original (`https://claude.ai/public/artifacts/cf69da67-4c83-43fe-8a52-c501f805ca76`) não pôde ser lido por bloqueio do Claude.ai a fetchers externos.
+
+**O que continua válido (metodologia reusável em qualquer marca):**
+- Seção **2** (Tradução do DNA Rapanui — narrativa em vez de estética)
+- Seção **4** (Plano de estrutura chaptered — 7 capítulos + apêndice)
+- Seção **5** (Conceito de "Brand in Use" com 3 mockups aplicados — adaptar contexto)
+- Seção **7** (Próximos passos: começar por um capítulo de prova antes de aplicar no todo)
+
+**O que descartar (ABSOLUT-específico):**
+- Seção **3** (Estado atual do index.html — refere ao Hub ABSOLUT)
+- Seção **6** (Anatomia do Logo — específico do "A" monolítico da ABSOLUT)
+- Toda menção a CONMEBOL, Libertadores, Sudamericana, SoulCraft GX, Rafa Rafa, Mauricio×Rafa, escritórios Rio/Frankfurt/LA/BA
+- Mockups específicos: voucher Libertadores, foto de estádio, paleta azul institucional
+
+**Ação ao abrir a pasta correta:**
+1. Abrir o artifact ou repo da Saucier
+2. Repassar as 4 perguntas originais (alvo · ponto fraco · referência visual · escopo) — não assumir que as respostas anteriores ainda valem
+3. Confirmar se a direção Rapanui (DNA narrativo) ainda faz sentido pra Saucier — pode ser que a marca já tenha narrativa forte e o gap seja outro
+4. Aplicar a metodologia (capítulos + Brand in Use) usando contexto/paleta/tipografia da Saucier real
+
+---
+
 ## 1. Decisões já tomadas com o usuário
 
 | Pergunta | Resposta |

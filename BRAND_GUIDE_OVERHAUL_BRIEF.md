@@ -202,27 +202,74 @@ APÊNDICE     Brand kit download + contato
 
 ---
 
-## 7. Decisões que ainda preciso de você
+## 7. Contexto do projeto Saucier-site (revelado pelo usuário)
 
-1. **Qual artifact original você queria aprimorar?** Tinha um Claude artifact (`cf69da67-...`) que não consegui ler. Se você abrir e me passar o conteúdo, eu uso ele como base em vez de partir do zero.
-2. **Direção visual da paleta:** vou propor algo derivado dos próprios ingredientes (terracota tomate, verde manjericão, dourado goiabada, preto pimenta, cru/kraft de embalagem)? Ou você já tem uma paleta definida que devo respeitar?
-3. **Logo atual:** o `saucier_logo.ai` é a master. Quer que eu trate como inviolável, ou está aberto a refinamentos do logo no overhaul?
-4. **Escopo do brand guide:** só digital (web/social) ou inclui specs de impressão (rótulo, embalagem, carimbo)?
-5. **Co-autoria/crédito:** quem assina? Você sozinho como Chef Mauricio Lacerda, ou tem mais alguém envolvido (designer, sócio)?
-6. **Tagline oficial:** "Os molhos mais saborosos do Rio" vai continuar? Ou quer testar variantes na revisão?
+A Saucier hoje tem um **site em desenvolvimento** vivendo dentro do segundo cérebro Kabbalístico do usuário (sistema "Keter / Claud_Brain" — vault de agentes IA mapeados nas Sephirot).
+
+### 7.1 Estrutura de pastas (fonte da verdade)
+
+```
+G:\Meu Drive\Claud_Brain\Claud_Brain\keter\malkuth\saucier\site\
+├─ saucier-homepage-v2.html      ← HOME (arquivo base — sempre editar este)
+├─ AGENTS.md                      ← contexto + backlog do projeto
+├─ saucier-ativacao-playbook.md   ← playbook de ativação/lançamento
+├─ llms.txt                       ← contexto pra LLMs (padrão llms.txt)
+└─ design-system\
+   ├─ tokens.css                  ← cores, fontes, espaçamento
+   └─ assets\ (video, fotos, produtos, logos)
+└─ assets-enviados\               ← drop de fotos pra processar
+```
+
+Mapeamento Sephirot: `keter` (Coroa, raiz do vault) → `malkuth` (Reino, manifestação material) → `saucier` (a marca como manifestação concreta). Faz sentido conceitual — o brand guide é Malkuth puro.
+
+### 7.2 Workflow dual-copy (importante)
+
+Existem **duas cópias do site**:
+| Pasta | Função |
+|---|---|
+| `keter\malkuth\saucier\site\` | **Fonte da verdade.** Sempre editar aqui. Privado, no vault Keter. |
+| `C:\Users\mauri\saucier-site\` (= `index.html`) | **Cópia de publicação.** Vira o link público em GitHub Pages. |
+
+Pra atualizar o site público: copiar mudanças pra `C:\Users\mauri\saucier-site\` → `git push` → GitHub Pages atualiza.
+
+Tem proposta de criar `publicar.ps1` (script PowerShell: 1-click copia + commit + push) — boa pra independizar o publish.
+
+### 7.3 Stack/IDE
+
+- **IDE:** Google Antigravity (VS Code-based, agent-first, com extensão Claude Code)
+- **Publish:** GitHub Pages em `https://mauricioslacerda-jpg.github.io/saucier/`
+- **Repo:** `mauricioslacerda-jpg/saucier` (GitHub)
+
+### 7.4 Decisões implícitas pelo stack
+
+- ✅ **HTML estático auto-contido** — já é o stack (não precisa decidir mais)
+- ✅ **Tokens em CSS** — `design-system/tokens.css` já existe
+- ✅ **Assets organizados** — `design-system/assets/{video,fotos,produtos,logos}/`
+- ✅ **Deploy em GitHub Pages** — já configurado
+- ⏳ **Falta:** brand guide propriamente dito (estrutura de capítulos do plano)
 
 ---
 
-## 8. Próximos passos sugeridos
+## 8. Decisões que ainda preciso de você
 
-1. **Levar este brief pra pasta certa** (`G:\Meu Drive\Saucier` ou repo dedicado se for criar)
-2. **Responder as 6 perguntas acima** — sem isso, qualquer overhaul é chute
-3. **Decidir o stack** — se vai ser:
-   - HTML estático (estilo o que estava no ABSOLUT — auto-contido, deploy em Pages)
-   - Site Notion / Pitch / Canva (mais leve, edição contínua)
-   - PDF brand book (mais formal, distribuição offline)
-4. **Começar por UM capítulo de prova** — sugiro **Cap 02 Cor (com narrativa de ingrediente)** + **Cap 04.1 Rótulo de pote** — pra validar a direção visual antes de aplicar nas 7 seções
-5. **Só depois de aprovado o "vibe check"**, expandir pro brand guide completo
+1. **Estado atual do `saucier-homepage-v2.html`:** Não consegui acessar nem por (a) Drive MCP — arquivo não está indexado/sincronizado, (b) GitHub MCP — sessão restrita ao repo `absolut-sport-design-system`, (c) WebFetch da GitHub Pages — retornou 403. **Preciso que você cole o conteúdo de `saucier-homepage-v2.html` + `tokens.css` + `AGENTS.md`** pra eu trabalhar em cima do que existe.
+2. **Qual artifact original?** O Claude artifact (`cf69da67-...`) que não consegui ler — era o `saucier-homepage-v2.html` mesmo? Ou outra coisa?
+3. **Paleta:** está definida em `tokens.css` ou ainda em aberto? Se em aberto, posso propor derivada dos ingredientes (terracota tomate, verde manjericão, dourado goiabada, preto pimenta, kraft de embalagem).
+4. **Escopo:** o overhaul é só da homepage? Ou criar páginas adicionais do brand guide (`/brand`, `/sotaques`, `/rotulo`, `/curso`)?
+5. **Logo:** trato `saucier_logo.ai` como inviolável ou está aberto a refinamentos?
+6. **Tagline:** "Os molhos mais saborosos do Rio" segue ou quer testar variantes?
+
+---
+
+## 9. Próximos passos sugeridos
+
+1. **Abrir a pasta certa** no Antigravity: `G:\Meu Drive\Claud_Brain\Claud_Brain\keter\malkuth\saucier\site\`
+2. **Levar este brief pra junto** (cópia ou cole o conteúdo no contexto do agente)
+3. **Compartilhar comigo** (ou com o próximo agente): `saucier-homepage-v2.html`, `tokens.css`, `AGENTS.md`, `llms.txt`
+4. **Responder as 6 perguntas da seção 8**
+5. **Capítulo de prova:** sugiro **Cap 02 Cor (com narrativa de ingrediente)** + **Cap 04.1 Rótulo de pote** — valida direção visual antes de aplicar nos 7 capítulos
+6. **Criar `publicar.ps1`** (script de 1-click) — independente do overhaul, melhora o workflow
+7. **Só depois de aprovado o "vibe check"**, expandir pro brand guide completo
 
 ---
 

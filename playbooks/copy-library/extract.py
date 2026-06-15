@@ -45,7 +45,7 @@ from pathlib import Path
 PLACEHOLDER_TRANSLATIONS = {
     # As 13 variáveis do dicionário canônico
     "nome":              {"pt": "nome",              "en": "name",            "es": "nombre",            "de": "name"},
-    "atendente":         {"pt": "atendente",         "en": "attendant",       "es": "atendente",         "de": "berater"},
+    "atendente":         {"pt": "atendente",         "en": "attendant",       "es": "asesor",            "de": "berater"},
     "parceiro":          {"pt": "parceiro",          "en": "partner",         "es": "socio",             "de": "partner"},
     "evento":            {"pt": "evento",            "en": "event",           "es": "evento",            "de": "event"},
     "cidade":            {"pt": "cidade",            "en": "city",            "es": "ciudad",            "de": "stadt"},

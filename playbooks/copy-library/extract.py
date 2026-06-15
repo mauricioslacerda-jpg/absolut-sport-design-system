@@ -36,6 +36,59 @@ from datetime import datetime
 from pathlib import Path
 
 
+# Mapa canônico de tradução dos NOMES dos placeholders (legibilidade humana).
+# IMPORTANTE: o ManyChat/Aby em produção espera os nomes em PT.
+# Placeholders localizados são para leitura/aprendizado por operadores
+# não-lusófonos; quando o operador copia a versão localizada, deve
+# substituir os {placeholders} pelos valores reais antes de enviar
+# (ou usar a versão PT se for alimentar diretamente o bot).
+PLACEHOLDER_TRANSLATIONS = {
+    # As 13 variáveis do dicionário canônico
+    "nome":              {"pt": "nome",              "en": "name",            "es": "nombre",            "de": "name"},
+    "atendente":         {"pt": "atendente",         "en": "attendant",       "es": "atendente",         "de": "berater"},
+    "parceiro":          {"pt": "parceiro",          "en": "partner",         "es": "socio",             "de": "partner"},
+    "evento":            {"pt": "evento",            "en": "event",           "es": "evento",            "de": "event"},
+    "cidade":            {"pt": "cidade",            "en": "city",            "es": "ciudad",            "de": "stadt"},
+    "data":              {"pt": "data",              "en": "date",            "es": "fecha",             "de": "datum"},
+    "url":               {"pt": "url",               "en": "url",             "es": "url",               "de": "url"},
+    "origem_aereo":      {"pt": "origem_aereo",      "en": "flight_origin",   "es": "origen_aereo",      "de": "flug_abflug"},
+    "pais_prep":         {"pt": "pais_prep",         "en": "country_prep",    "es": "pais_prep",         "de": "land_prep"},
+    "doc":               {"pt": "doc",               "en": "doc",             "es": "doc",               "de": "dok"},
+    "app_transporte":    {"pt": "app_transporte",    "en": "transport_app",   "es": "app_transporte",    "de": "transport_app"},
+    "torcida_alvo":      {"pt": "torcida_alvo",      "en": "target_fanbase",  "es": "hinchada_objetivo", "de": "ziel_fans"},
+    "torcida_real":      {"pt": "torcida_real",      "en": "actual_fanbase",  "es": "hinchada_real",     "de": "tatsaechliche_fans"},
+    # Variáveis específicas que aparecem em algumas mensagens (Flamengo/Maracanã)
+    "estadio":           {"pt": "estadio",           "en": "stadium",         "es": "estadio",           "de": "stadion"},
+    "torcida":           {"pt": "torcida",           "en": "fanbase",         "es": "hinchada",          "de": "fangruppe"},
+    "clube":             {"pt": "clube",             "en": "club",            "es": "club",              "de": "verein"},
+    "url_biometria":     {"pt": "url_biometria",     "en": "biometrics_url",  "es": "url_biometria",     "de": "biometrie_url"},
+    "time_casa":         {"pt": "time_casa",         "en": "home_team",       "es": "equipo_local",      "de": "heim_team"},
+    "time_visitante":    {"pt": "time_visitante",    "en": "away_team",       "es": "equipo_visitante",  "de": "gast_team"},
+    "ponto_desembarque": {"pt": "ponto_desembarque", "en": "drop_off_point",  "es": "punto_desembarque", "de": "ausstieg_punkt"},
+    "antecedencia_aviso":{"pt": "antecedencia_aviso","en": "advance_notice",  "es": "antelacion_aviso",  "de": "vorlaufzeit"},
+    "valor":             {"pt": "valor",             "en": "price",           "es": "valor",             "de": "preis"},
+    "cores_emojis_clube":{"pt": "cores_emojis_clube","en": "club_color_emojis","es": "colores_emojis_club","de": "verein_farben_emojis"},
+    "clube_credenciado": {"pt": "clube_credenciado", "en": "accredited_club", "es": "club_acreditado",   "de": "akkreditierter_verein"},
+}
+
+_PLACEHOLDER_RE = re.compile(r"\{([\w_]+)\}")
+
+
+def localize_placeholders(text: str, lang: str) -> str:
+    """Substitui {nome} → {name} (etc) conforme o idioma alvo.
+
+    Se uma variável não estiver mapeada, mantém o nome original
+    (evita quebra silenciosa). PT é no-op.
+    """
+    if lang == "pt":
+        return text
+    def repl(m):
+        var = m.group(1)
+        tr = PLACEHOLDER_TRANSLATIONS.get(var, {}).get(lang)
+        return "{" + (tr if tr else var) + "}"
+    return _PLACEHOLDER_RE.sub(repl, text)
+
+
 def slugify_cat(name: str) -> str:
     """Slug ASCII-only, determinístico, idêntico em Python e JS.
 
@@ -194,6 +247,16 @@ def build_i18n_keys(messages: list[dict], variables: list[dict]) -> dict:
             "var.name": "Variável",
             "var.meaning": "Significado",
             "var.example": "Exemplo (Libertadores 2026)",
+            "gov.contract.title":     "Texto contratual",
+            "gov.contract.body":      "A mensagem A20 (Política de cancelamento) é texto contratual. Não alterar sem revisão jurídica.",
+            "gov.inventory.title":    "Inventário",
+            "gov.inventory.body":     "As mensagens de inventário (voos, hotel, camarote) assumem \"esgotado\". Revisar a cada evento conforme estoque real.",
+            "gov.aby.title":          "Ligação com a Aby",
+            "gov.aby.body":           "A24, A25, A26 e A28 correspondem aos itens 01/03, 31, 04 e 32 da auditoria do bot. Esta copy é a fonte canônica.",
+            "gov.reuse.title":        "Reuso por evento",
+            "gov.reuse.body":         "Para um novo evento, basta reescrever o dicionário de variáveis. A copy serve a qualquer evento.",
+            "gov.placeholders.title": "⚠️ Placeholders localizados",
+            "gov.placeholders.body":  "Os placeholders ({name}, {nombre}, {berater}) são localizados para leitura humana. O ManyChat/Aby em produção só entende a versão PT ({nome}, {atendente}). Se for alimentar o bot, copie a versão PT. Se for usar manualmente, substitua os placeholders pelos valores reais antes de enviar.",
         },
     }
     for m in messages:
@@ -705,6 +768,16 @@ def build_i18n_stub(pt: dict, lang: str) -> dict:
             "var.name": "Variable",
             "var.meaning": "Meaning",
             "var.example": "Example (Libertadores 2026)",
+            "gov.contract.title":     "Contractual text",
+            "gov.contract.body":      "Message A20 (Cancellation policy) is contractual text. Do not alter without legal review.",
+            "gov.inventory.title":    "Inventory",
+            "gov.inventory.body":     "Inventory messages (flights, hotel, private boxes) assume \"sold out\". Review at each event according to actual stock.",
+            "gov.aby.title":          "Link with Aby",
+            "gov.aby.body":           "A24, A25, A26 and A28 correspond to items 01/03, 31, 04 and 32 of the bot audit. This copy is the canonical source.",
+            "gov.reuse.title":        "Reuse per event",
+            "gov.reuse.body":         "For a new event, just rewrite the variable dictionary. The copy serves any event.",
+            "gov.placeholders.title": "⚠️ Localized placeholders",
+            "gov.placeholders.body":  "Placeholders ({name}, {nombre}, {berater}) are localized for human readability. The ManyChat/Aby in production only understands the PT version ({nome}, {atendente}). If feeding the bot, copy the PT version. If using manually, replace placeholders with real values before sending.",
         },
         "es": {
             "hero.title": "Biblioteca de Respuestas — Aby",
@@ -722,6 +795,16 @@ def build_i18n_stub(pt: dict, lang: str) -> dict:
             "var.name": "Variable",
             "var.meaning": "Significado",
             "var.example": "Ejemplo (Libertadores 2026)",
+            "gov.contract.title":     "Texto contractual",
+            "gov.contract.body":      "El mensaje A20 (Política de cancelación) es texto contractual. No alterar sin revisión jurídica.",
+            "gov.inventory.title":    "Inventario",
+            "gov.inventory.body":     "Los mensajes de inventario (vuelos, hotel, palco) asumen \"agotado\". Revisar en cada evento según stock real.",
+            "gov.aby.title":          "Vínculo con Aby",
+            "gov.aby.body":           "A24, A25, A26 y A28 corresponden a los ítems 01/03, 31, 04 y 32 de la auditoría del bot. Esta copy es la fuente canónica.",
+            "gov.reuse.title":        "Reuso por evento",
+            "gov.reuse.body":         "Para un nuevo evento, basta con reescribir el diccionario de variables. La copy sirve para cualquier evento.",
+            "gov.placeholders.title": "⚠️ Placeholders localizados",
+            "gov.placeholders.body":  "Los placeholders ({name}, {nombre}, {berater}) están localizados para lectura humana. El ManyChat/Aby en producción sólo entiende la versión PT ({nome}, {atendente}). Si vas a alimentar el bot, copiá la versión PT. Si vas a usar manualmente, sustituí los placeholders por los valores reales antes de enviar.",
         },
         "de": {
             "hero.title": "Antwort-Bibliothek — Aby",
@@ -739,6 +822,16 @@ def build_i18n_stub(pt: dict, lang: str) -> dict:
             "var.name": "Variable",
             "var.meaning": "Bedeutung",
             "var.example": "Beispiel (Libertadores 2026)",
+            "gov.contract.title":     "Vertragstext",
+            "gov.contract.body":      "Nachricht A20 (Stornierungsrichtlinie) ist Vertragstext. Nicht ohne juristische Prüfung ändern.",
+            "gov.inventory.title":    "Bestand",
+            "gov.inventory.body":     "Bestands-Nachrichten (Flüge, Hotel, Logen) gehen von „ausverkauft“ aus. Bei jedem Event nach tatsächlichem Bestand prüfen.",
+            "gov.aby.title":          "Verbindung mit Aby",
+            "gov.aby.body":           "A24, A25, A26 und A28 entsprechen den Punkten 01/03, 31, 04 und 32 des Bot-Audits. Diese Copy ist die kanonische Quelle.",
+            "gov.reuse.title":        "Wiederverwendung pro Event",
+            "gov.reuse.body":         "Für ein neues Event reicht es, das Variablen-Wörterbuch neu zu schreiben. Die Copy dient für jedes Event.",
+            "gov.placeholders.title": "⚠️ Lokalisierte Platzhalter",
+            "gov.placeholders.body":  "Die Platzhalter ({name}, {nombre}, {berater}) sind für menschliche Lesbarkeit lokalisiert. Das ManyChat/Aby in Produktion versteht nur die PT-Version ({nome}, {atendente}). Wenn der Bot gefüttert wird, kopiere die PT-Version. Bei manueller Verwendung ersetze die Platzhalter vor dem Senden durch die echten Werte.",
         },
     }
     out = dict(base_ui[lang])
@@ -767,9 +860,12 @@ def build_i18n_stub(pt: dict, lang: str) -> dict:
             if len(parts) >= 4:
                 msg_id, field = parts[2], parts[3]
                 tr = MSG_TRANSLATIONS.get(msg_id, {}).get(field, {}).get(lang)
-                # Se não está no mapa OU é string vazia mas o PT também é vazio,
-                # mantém vazio. Se string vazia e PT tem conteúdo, isso é bug.
                 if tr is not None:
+                    # Localiza placeholders {nome}→{name} (etc.) só em campos
+                    # que podem conter variáveis (text + observation).
+                    # trigger não tem placeholders.
+                    if field in ("text", "observation"):
+                        tr = localize_placeholders(tr, lang)
                     out[key] = tr
                 else:
                     out[key] = f"[TODO {lang.upper()}] {pt[key]}"
@@ -877,6 +973,11 @@ def main() -> int:
         "total_messages": len(messages),
         "total_variables": len(variables),
         "categories_order": CATEGORIES_ORDER,
+        # Mapa de placeholders localizados: o front usa para renderizar
+        # chips de variáveis e a tabela do dicionário no idioma ativo.
+        # Aviso: ManyChat/Aby em produção espera nomes PT — versões
+        # localizadas servem para leitura humana.
+        "placeholders": PLACEHOLDER_TRANSLATIONS,
     }
 
     write_json(MESSAGES_JSON, {"meta": meta, "messages": messages_clean})

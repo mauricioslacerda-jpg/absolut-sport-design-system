@@ -445,6 +445,10 @@
       <h3 data-i18n="gov.reuse.title">Reuso por evento</h3>
       <p data-i18n="gov.reuse.body">Para um novo evento, basta reescrever o dicionário de variáveis. A copy serve a qualquer evento.</p>
     </div>
+    <div class="gov-card" style="border-color: rgba(201,168,76,0.4)">
+      <h3 data-i18n="gov.placeholders.title">⚠️ Placeholders localizados</h3>
+      <p data-i18n="gov.placeholders.body">Os placeholders ({name}, {nombre}, {berater}) são <strong>localizados para leitura humana</strong>. O ManyChat/Aby em produção só entende a versão PT ({nome}, {atendente}). Se for alimentar o bot, copie a versão PT. Se for usar manualmente (atendimento direto), substitua os {placeholders} pelos valores reais antes de enviar.</p>
+    </div>
   </div>
 </section>
 
@@ -567,6 +571,14 @@ function highlightVars(text) {
   return escapeHtml(text).replace(/\{([\w_]+)\}/g, '<span class="var">{$1}</span>');
 }
 
+// Devolve o nome do placeholder no idioma ativo. Ex: 'nome' em DE → 'name'.
+// Cai pro PT se não houver mapeamento.
+function localPlaceholder(varName) {
+  const map = (STATE.meta.placeholders || {})[varName];
+  if (!map) return varName;
+  return map[STATE.lang] || map.pt || varName;
+}
+
 function matches(m, query) {
   if (!query) return true;
   const q = query.toLowerCase();
@@ -589,7 +601,7 @@ function render() {
     const text = t(`lib.msg.${m.id}.text`);
     const trigger = t(`lib.msg.${m.id}.trigger`);
     const obs = t(`lib.msg.${m.id}.observation`);
-    const varTags = (m.variables || []).map(v => `<span class="card-var">{${v}}</span>`).join('');
+    const varTags = (m.variables || []).map(v => `<span class="card-var">{${localPlaceholder(v)}}</span>`).join('');
     return `
       <article class="card" data-id="${m.id}">
         <div class="card-head">
@@ -612,15 +624,24 @@ function render() {
     `;
   }).join('');
 
-  // Render variables table
+  // Render variables table — coluna 1 mostra placeholder localizado;
+  // o nome técnico PT aparece em fonte menor quando o idioma ≠ PT,
+  // para o operador saber qual placeholder usar no ManyChat.
   const tbody = document.getElementById('var-table-body');
-  tbody.innerHTML = STATE.variables.map(v => `
-    <tr>
-      <td class="var-name">{${v.name}}</td>
-      <td>${escapeHtml(t(`lib.var.${v.name}.meaning`))}</td>
-      <td class="var-ex">${escapeHtml(t(`lib.var.${v.name}.example`))}</td>
-    </tr>
-  `).join('');
+  tbody.innerHTML = STATE.variables.map(v => {
+    const localized = localPlaceholder(v.name);
+    const showTechHint = STATE.lang !== 'pt' && localized !== v.name;
+    const techHint = showTechHint
+      ? `<div style="font-size:10px;color:var(--color-neutral-500);margin-top:2px">PT: {${v.name}}</div>`
+      : '';
+    return `
+      <tr>
+        <td class="var-name">{${localized}}${techHint}</td>
+        <td>${escapeHtml(t(`lib.var.${v.name}.meaning`))}</td>
+        <td class="var-ex">${escapeHtml(t(`lib.var.${v.name}.example`))}</td>
+      </tr>
+    `;
+  }).join('');
 
   // Wire copy buttons
   grid.querySelectorAll('.btn-copy').forEach(btn => {

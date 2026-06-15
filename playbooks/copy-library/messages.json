@@ -2,7 +2,7 @@
   "meta": {
     "version": "v2-2026-06-02",
     "source": "https://docs.google.com/spreadsheets/d/1UAjsxfeR_23Cl-wNtztzw4QkP1RxoBkk4rrDFFojiyc/edit#gid=1469143387",
-    "generated_at": "2026-06-10T17:26:53",
+    "generated_at": "2026-06-15T10:02:46",
     "total_messages": 35,
     "total_variables": 13,
     "categories_order": [
@@ -22,7 +22,153 @@
       "Compliance Flamengo/Maracanã",
       "Descritivo de pacote",
       "Checkout"
-    ]
+    ],
+    "placeholders": {
+      "nome": {
+        "pt": "nome",
+        "en": "name",
+        "es": "nombre",
+        "de": "name"
+      },
+      "atendente": {
+        "pt": "atendente",
+        "en": "attendant",
+        "es": "atendente",
+        "de": "berater"
+      },
+      "parceiro": {
+        "pt": "parceiro",
+        "en": "partner",
+        "es": "socio",
+        "de": "partner"
+      },
+      "evento": {
+        "pt": "evento",
+        "en": "event",
+        "es": "evento",
+        "de": "event"
+      },
+      "cidade": {
+        "pt": "cidade",
+        "en": "city",
+        "es": "ciudad",
+        "de": "stadt"
+      },
+      "data": {
+        "pt": "data",
+        "en": "date",
+        "es": "fecha",
+        "de": "datum"
+      },
+      "url": {
+        "pt": "url",
+        "en": "url",
+        "es": "url",
+        "de": "url"
+      },
+      "origem_aereo": {
+        "pt": "origem_aereo",
+        "en": "flight_origin",
+        "es": "origen_aereo",
+        "de": "flug_abflug"
+      },
+      "pais_prep": {
+        "pt": "pais_prep",
+        "en": "country_prep",
+        "es": "pais_prep",
+        "de": "land_prep"
+      },
+      "doc": {
+        "pt": "doc",
+        "en": "doc",
+        "es": "doc",
+        "de": "dok"
+      },
+      "app_transporte": {
+        "pt": "app_transporte",
+        "en": "transport_app",
+        "es": "app_transporte",
+        "de": "transport_app"
+      },
+      "torcida_alvo": {
+        "pt": "torcida_alvo",
+        "en": "target_fanbase",
+        "es": "hinchada_objetivo",
+        "de": "ziel_fans"
+      },
+      "torcida_real": {
+        "pt": "torcida_real",
+        "en": "actual_fanbase",
+        "es": "hinchada_real",
+        "de": "tatsaechliche_fans"
+      },
+      "estadio": {
+        "pt": "estadio",
+        "en": "stadium",
+        "es": "estadio",
+        "de": "stadion"
+      },
+      "torcida": {
+        "pt": "torcida",
+        "en": "fanbase",
+        "es": "hinchada",
+        "de": "fangruppe"
+      },
+      "clube": {
+        "pt": "clube",
+        "en": "club",
+        "es": "club",
+        "de": "verein"
+      },
+      "url_biometria": {
+        "pt": "url_biometria",
+        "en": "biometrics_url",
+        "es": "url_biometria",
+        "de": "biometrie_url"
+      },
+      "time_casa": {
+        "pt": "time_casa",
+        "en": "home_team",
+        "es": "equipo_local",
+        "de": "heim_team"
+      },
+      "time_visitante": {
+        "pt": "time_visitante",
+        "en": "away_team",
+        "es": "equipo_visitante",
+        "de": "gast_team"
+      },
+      "ponto_desembarque": {
+        "pt": "ponto_desembarque",
+        "en": "drop_off_point",
+        "es": "punto_desembarque",
+        "de": "ausstieg_punkt"
+      },
+      "antecedencia_aviso": {
+        "pt": "antecedencia_aviso",
+        "en": "advance_notice",
+        "es": "antelacion_aviso",
+        "de": "vorlaufzeit"
+      },
+      "valor": {
+        "pt": "valor",
+        "en": "price",
+        "es": "valor",
+        "de": "preis"
+      },
+      "cores_emojis_clube": {
+        "pt": "cores_emojis_clube",
+        "en": "club_color_emojis",
+        "es": "colores_emojis_club",
+        "de": "verein_farben_emojis"
+      },
+      "clube_credenciado": {
+        "pt": "clube_credenciado",
+        "en": "accredited_club",
+        "es": "club_acreditado",
+        "de": "akkreditierter_verein"
+      }
+    }
   },
   "messages": [
     {

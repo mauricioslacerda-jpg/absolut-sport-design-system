@@ -263,6 +263,16 @@
     "section.governance": "Governança",
     "var.name": "Variável",
     "var.meaning": "Significado",
-    "var.example": "Exemplo (Libertadores 2026)"
+    "var.example": "Exemplo (Libertadores 2026)",
+    "gov.contract.title": "Texto contratual",
+    "gov.contract.body": "A mensagem A20 (Política de cancelamento) é texto contratual. Não alterar sem revisão jurídica.",
+    "gov.inventory.title": "Inventário",
+    "gov.inventory.body": "As mensagens de inventário (voos, hotel, camarote) assumem \"esgotado\". Revisar a cada evento conforme estoque real.",
+    "gov.aby.title": "Ligação com a Aby",
+    "gov.aby.body": "A24, A25, A26 e A28 correspondem aos itens 01/03, 31, 04 e 32 da auditoria do bot. Esta copy é a fonte canônica.",
+    "gov.reuse.title": "Reuso por evento",
+    "gov.reuse.body": "Para um novo evento, basta reescrever o dicionário de variáveis. A copy serve a qualquer evento.",
+    "gov.placeholders.title": "⚠️ Placeholders localizados",
+    "gov.placeholders.body": "Os placeholders ({name}, {nombre}, {berater}) são localizados para leitura humana. O ManyChat/Aby em produção só entende a versão PT ({nome}, {atendente}). Se for alimentar o bot, copie a versão PT. Se for usar manualmente, substitua os placeholders pelos valores reais antes de enviar."
   }
 }

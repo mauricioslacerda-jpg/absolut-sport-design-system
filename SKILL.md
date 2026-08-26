@@ -159,11 +159,12 @@ Método replicável documentado em `I18N_METHOD.md`. Padrões de marcação:
 
 ## Playbooks aplicados (live)
 
-3 playbooks ativos no Hub:
+4 playbooks ativos no Hub:
 
 1. **AI Marketing** (`playbooks/ai-marketing.html`) — Como o time de marketing global usa AI no dia a dia. Use cases, regras, workflow e ferramentas.
 2. **Enterprise AI Guide** (`playbooks/enterprise-ai.html`) — Contas, segurança, boas práticas e arsenal de IA para times.
 3. **Growth** (`playbooks/growth.html`) — Pilares (AAARRR), métricas, plataformas, metodologia, workflow, do/don't, glossário. Filosofia: "Alavancagem iterativa".
+4. **Content Growth** (`playbooks/content-growth.html`) — O blog owned: arquitetura Shopify, anatomia AEO, motor de produção, auditoria de pautas da assessoria e economia do canal (Hormozi). Deep-dive atrás do card "SEO / Conteúdo" do Growth. Doc canônico: `playbooks/content-growth.md`.
 
 Cada playbook herda nav + footer + CSS do design system. Não criar playbook do zero — espelhar a estrutura desses 3.
 

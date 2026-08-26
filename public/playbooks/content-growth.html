@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Growth — ABSOLUT Sport · Blog / SEO / AEO</title>
+<meta name="description" content="Playbook do blog ABSOLUT Sport: o braço owned do que a assessoria faz earned. Arquitetura Shopify, anatomia AEO, motor de produção e economia do canal.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Content Growth Playbook — ABSOLUT Sport">
+<meta property="og:description" content="Blog owned: ranquear no Google, ser citado por LLM, converter no produto. Arquitetura, AEO, produção e economia.">
+<meta property="og:image" content="https://mauricioslacerda-jpg.github.io/absolut-sport-design-system/assets/rafa-rafa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+  @font-face{
+    font-family:'SoulCraft';
+    src:url('../fonts/soulcraftgx.ttf') format('truetype');
+    font-weight:100 900; font-style:normal; font-display:swap;
+  }
+</style>
+
+<link rel="stylesheet" href="../colors_and_type.css">
+
+<style>
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--color-black); color:var(--fg-on-dark-secondary);
+    font-family:var(--font-body); font-size:var(--text-body);
+    line-height:var(--leading-relaxed); -webkit-font-smoothing:antialiased; margin:0;
+  }
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 var(--space-6)}
+  strong{color:var(--fg-on-dark-primary); font-weight:var(--weight-semibold)}
+  .ico svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;
+    stroke-linecap:round;stroke-linejoin:round;display:block}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:var(--z-sticky);height:64px;padding:0 var(--space-6);
+    background:rgba(13,13,13,.55);border-bottom:1px solid var(--border-subtle);
+    display:flex;align-items:center;justify-content:space-between;
+    backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%)}
+  .nav-logo img{height:30px;display:block}
+  .nav-bc{display:flex;align-items:center;gap:var(--space-3);font-size:var(--text-caption);
+    letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--fg-on-dark-muted);
+    font-weight:var(--weight-medium)}
+  .nav-bc .sep{color:var(--color-neutral-600)}
+  .nav-bc .current{color:var(--fg-on-dark-primary)}
+  .nav-bc a:hover{color:var(--color-blue-mid)}
+  .nav-actions{display:flex;align-items:center;gap:var(--space-4)}
+  .nav-back{font-size:var(--text-caption);color:var(--fg-on-dark-muted);text-transform:uppercase;
+    letter-spacing:var(--tracking-wide)}
+  .nav-back:hover{color:var(--color-blue-mid)}
+  .nav-credit{display:inline-flex;align-items:center;padding:5px 10px;border:1px solid var(--border-gold);
+    border-radius:var(--radius-pill);background:rgba(201,168,76,.08);transition:all var(--transition-fast)}
+  .nav-credit:hover{background:rgba(201,168,76,.18);border-color:var(--color-gold)}
+  .nav-credit span{font-family:var(--font-mono);font-size:11px;font-weight:600;
+    letter-spacing:var(--tracking-wide);color:var(--color-gold);white-space:nowrap}
+  @media(max-width:720px){.nav-bc{display:none}}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;padding:var(--space-24) 0 var(--space-16);
+    border-bottom:1px solid var(--border-subtle)}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(115deg, rgba(21,95,151,.20), transparent 55%);pointer-events:none}
+  .hero::after{content:"";position:absolute;left:0;top:22%;bottom:22%;width:5px;
+    background:var(--color-blue);box-shadow:var(--shadow-blue)}
+  .hero-inner{position:relative}
+  .eyebrow{font-family:var(--font-mono);font-size:var(--text-caption);letter-spacing:var(--tracking-wider);
+    text-transform:uppercase;color:var(--color-blue-mid);display:flex;align-items:center;gap:10px;margin-bottom:var(--space-6)}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--color-blue-mid)}
+  h1.hero-h1{font-family:var(--font-display);font-weight:var(--weight-black);
+    font-size:var(--text-display);line-height:var(--leading-none);letter-spacing:var(--tracking-tight);
+    text-transform:uppercase;color:var(--fg-on-dark-primary);margin:0 0 var(--space-6);max-width:16ch}
+  h1.hero-h1 .accent{color:var(--color-blue-mid)}
+  .hero-sub{font-size:var(--text-body-lg);color:var(--fg-on-dark-secondary);max-width:60ch;margin:0}
+
+  /* STATSTRIP */
+  .statstrip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border-subtle)}
+  .statstrip .cell{padding:var(--space-8) var(--space-6);border-right:1px solid var(--border-subtle)}
+  .statstrip .cell:last-child{border-right:none}
+  .statstrip .num{font-family:var(--font-display);font-weight:var(--weight-extrabold);
+    font-size:var(--text-headline);color:var(--color-blue-mid);line-height:1}
+  .statstrip .lbl{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wide);
+    color:var(--fg-on-dark-muted);margin-top:var(--space-2)}
+  @media(max-width:720px){.statstrip{grid-template-columns:1fr 1fr}
+    .statstrip .cell:nth-child(2){border-right:none}}
+
+  /* SECTIONS */
+  section.blk{padding:var(--space-16) 0;border-bottom:1px solid var(--border-subtle)}
+  .sec-eyebrow{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:var(--tracking-wider);
+    text-transform:uppercase;color:var(--color-blue-mid);display:flex;align-items:center;gap:10px;margin-bottom:var(--space-4)}
+  .sec-eyebrow .idx{color:var(--fg-on-dark-subtle)}
+  h2.sec-title{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-headline);
+    line-height:var(--leading-snug);text-transform:uppercase;color:var(--fg-on-dark-primary);margin:0 0 var(--space-4);text-wrap:balance}
+  .sec-intro{font-size:var(--text-body-lg);color:var(--fg-on-dark-secondary);max-width:64ch;margin:0 0 var(--space-8)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+  @media(max-width:820px){.grid4,.grid3{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.grid2,.grid4,.grid3{grid-template-columns:1fr}}
+
+  .card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-md);
+    padding:var(--space-6);transition:transform var(--transition-default),border-color var(--transition-default)}
+  .card:hover{transform:translateY(-3px);border-color:var(--border-default)}
+  .card .ch{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3)}
+  .card .ch .ico{color:var(--color-blue-mid)}
+  .card h3{font-family:var(--font-body);font-size:var(--text-title);font-weight:var(--weight-semibold);
+    color:var(--fg-on-dark-primary);margin:0}
+  .card p{margin:0;color:var(--fg-on-dark-muted);font-size:var(--text-body-sm)}
+  .card.hot{border-color:var(--color-blue);box-shadow:inset 0 0 0 1px rgba(21,95,151,.3)}
+  .card .lbl{font-family:var(--font-mono);font-size:var(--text-label);text-transform:uppercase;
+    letter-spacing:var(--tracking-wide);color:var(--fg-on-dark-subtle);margin-bottom:6px}
+  .card ul{margin:var(--space-2) 0 0;padding-left:18px}
+  .card li{margin:6px 0;color:var(--fg-on-dark-muted);font-size:var(--text-body-sm)}
+  .card li::marker{color:var(--color-blue-mid)}
+  .card li strong{color:var(--fg-on-dark-secondary)}
+
+  /* TABLE */
+  .tblwrap{overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--radius-md)}
+  table{width:100%;border-collapse:collapse;font-size:var(--text-body-sm)}
+  th,td{text-align:left;padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--border-subtle);vertical-align:top}
+  th{font-family:var(--font-mono);font-size:var(--text-label);text-transform:uppercase;letter-spacing:var(--tracking-wide);
+    color:var(--fg-on-dark-muted);font-weight:var(--weight-medium);white-space:nowrap;background:var(--bg-surface)}
+  td{color:var(--fg-on-dark-muted)} td strong{color:var(--fg-on-dark-primary)} tr:last-child td{border-bottom:none}
+
+  /* CHIPS */
+  .chip{display:inline-flex;gap:7px;align-items:baseline;font-size:var(--text-body-sm);
+    padding:6px 11px;border-radius:var(--radius-sm);background:var(--bg-surface);
+    border:1px solid var(--border-subtle);color:var(--fg-on-dark-secondary)}
+  .chip .id{font-family:var(--font-mono);font-size:var(--text-label);color:var(--fg-on-dark-subtle)}
+  .chips{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+
+  /* PIPELINE */
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:var(--space-2)}
+  .step{flex:1 1 130px;min-width:130px;background:var(--bg-card);border:1px solid var(--border-subtle);
+    border-radius:var(--radius-sm);padding:var(--space-3) var(--space-4)}
+  .step .k{font-family:var(--font-mono);font-size:var(--text-label);color:var(--color-blue-mid);letter-spacing:.05em}
+  .step .t{font-size:var(--text-body-sm);color:var(--fg-on-dark-secondary);margin-top:4px}
+  .step.gate{border-color:var(--color-blue);background:linear-gradient(180deg,var(--accent-blue-soft),var(--bg-card))}
+  .arrow{align-self:center;color:var(--fg-on-dark-subtle);font-weight:700}
+
+  .callout{border-left:3px solid var(--color-blue);background:var(--bg-card);border-radius:0 var(--radius-md) var(--radius-md) 0;
+    padding:var(--space-4) var(--space-5);margin-top:var(--space-4)}
+  .callout.warn{border-left-color:var(--color-warning)}
+  .callout .h{color:var(--fg-on-dark-primary);font-weight:var(--weight-semibold);margin-bottom:4px}
+  .callout p{margin:0;font-size:var(--text-body-sm);color:var(--fg-on-dark-muted)}
+  .mono{font-family:var(--font-mono);font-size:.82em;color:var(--fg-on-dark-secondary)}
+
+  /* STATS */
+  .stat{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-6)}
+  .stat .v{font-family:var(--font-display);font-weight:var(--weight-extrabold);font-size:var(--text-display);
+    color:var(--color-blue-mid);line-height:1}
+  .stat .l{font-weight:var(--weight-semibold);color:var(--fg-on-dark-primary);margin:var(--space-3) 0 4px}
+  .stat .d{font-size:var(--text-body-sm);color:var(--fg-on-dark-muted)}
+
+  /* DO / DON'T */
+  .dd{border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-6);background:var(--bg-card)}
+  .dd.yes{border-left:3px solid var(--color-success)}
+  .dd.no{border-left:3px solid var(--color-gray-asb)}
+  .dd .hh{font-weight:var(--weight-bold);margin-bottom:var(--space-3);display:flex;gap:8px;align-items:center}
+  .dd.yes .hh{color:var(--color-success)} .dd.no .hh{color:var(--color-gray-asb)}
+  .dd ul{margin:0;padding-left:18px} .dd li{font-size:var(--text-body-sm);color:var(--fg-on-dark-muted);margin:6px 0}
+
+  /* ROADMAP */
+  ol.road{counter-reset:r;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--space-3)}
+  ol.road li{counter-increment:r;background:var(--bg-card);border:1px solid var(--border-subtle);
+    border-radius:var(--radius-md);padding:var(--space-4) var(--space-5) var(--space-4) 58px;position:relative;
+    font-size:var(--text-body-sm);color:var(--fg-on-dark-muted)}
+  ol.road li::before{content:counter(r);position:absolute;left:16px;top:14px;font-family:var(--font-mono);
+    font-weight:700;color:var(--color-blue-mid);border:1px solid var(--color-blue);border-radius:var(--radius-sm);
+    width:26px;height:26px;display:grid;place-items:center;font-size:var(--text-body-sm)}
+  ol.road li strong{color:var(--fg-on-dark-primary)}
+
+  /* FOOTER */
+  footer{padding:var(--space-16) 0 var(--space-20)}
+  .foot-top{display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:space-between;align-items:baseline;
+    margin-bottom:var(--space-6)}
+  .foot-links{display:flex;flex-wrap:wrap;gap:var(--space-5);font-size:var(--text-body-sm)}
+  .foot-links a{color:var(--fg-on-dark-muted)} .foot-links a:hover{color:var(--color-blue-mid)}
+  .sig{font-family:var(--font-mono);font-size:var(--text-caption);color:var(--color-gold);letter-spacing:var(--tracking-wide)}
+  .src{font-size:var(--text-caption);color:var(--fg-on-dark-subtle);line-height:1.7;max-width:80ch}
+  .src b{color:var(--fg-on-dark-muted)}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="../index.html"><img src="../assets/logo-azul-branco.svg" alt="ABSOLUT Sport"></a>
+  <div class="nav-bc">
+    <a href="../index.html">Design System</a><span class="sep">/</span>
+    <a href="../index.html#playbooks">Playbooks</a><span class="sep">/</span>
+    <span class="current">Content Growth</span>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-back" href="../index.html">← Voltar ao Hub</a>
+    <a class="nav-credit" href="mailto:design@absolut-sport.com.br?subject=Content%20Growth%20%C2%B7%20Sugest%C3%A3o" title="Mauricio × Rafa · sugestões pra design@"><span>MM × RR</span></a>
+  </div>
+</nav>
+
+<header class="hero"><div class="wrap hero-inner">
+  <div class="eyebrow">Content Growth · Time interno · v1.0</div>
+  <h1 class="hero-h1">O BLOG É<br><span class="accent">MÍDIA QUE SE POSSUI.</span></h1>
+  <p class="hero-sub">O braço <em>owned</em> do que a assessoria faz <em>earned</em>. Pega a pauta que hoje ranqueia na Exame e transforma em ativo próprio que ranqueia no Google, é citado por LLM e converte no produto. Nos dois motores: Flamengo (recorrência) e Libertadores (volume).</p>
+</div></header>
+
+<div class="statstrip">
+  <div class="cell"><div class="num">4º</div><div class="lbl">Canal de descoberta</div></div>
+  <div class="cell"><div class="num">CAC≈0</div><div class="lbl">Menor custo, retorno composto</div></div>
+  <div class="cell"><div class="num">13</div><div class="lbl">Veículos já alcançados</div></div>
+  <div class="cell"><div class="num">5</div><div class="lbl">Clusters no roadmap</div></div>
+</div>
+
+<div class="wrap">
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">01</span> O quarto canal</div>
+  <h2 class="sec-title">Três canais em silo.<br>Falta o de maior alavancagem.</h2>
+  <p class="sec-intro">A descoberta roda em três frentes desconectadas. O blog é o único ativo de menor CAC que ranqueia para quem ainda <em>pergunta</em>, é citado por IA e captura o SEO que hoje evapora na URL do veículo.</p>
+  <div class="grid4">
+    <div class="card"><div class="lbl">Canal 1</div><h3>Produto Shopify</h3><p>Captura quem já busca. Fundo de funil.</p></div>
+    <div class="card"><div class="lbl">Canal 2</div><h3>Assessoria · earned</h3><p>Menção premium (Exame, CNN, O Globo). Autoridade.</p></div>
+    <div class="card"><div class="lbl">Canal 3</div><h3>Ads · alugado</h3><p>Tráfego que para quando o orçamento para.</p></div>
+    <div class="card hot"><div class="lbl">Canal 4 — falta</div><h3>Blog · owned</h3><p>Topo de funil + camada AEO. CAC ≈ 0.</p></div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">02</span> Owned × Earned</div>
+  <h2 class="sec-title">Um alimenta o outro</h2>
+  <p class="sec-intro">Cada pauta que a assessoria prova (vira matéria) é demanda comprovada. Mas a URL que ranqueia é do veículo, não da ABSOLUT. O blog fecha esse vazamento — e a citação na Exame vira backlink que turbina o AEO do blog.</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th></th><th>Earned — assessoria</th><th>Owned — blog</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Formato</strong></td><td>Aspas do porta-voz em matéria de terceiro</td><td>Artigo próprio no domínio ABSOLUT</td></tr>
+      <tr><td><strong>Ganho</strong></td><td>Autoridade de marca + backlink</td><td>Ranking Google + citação LLM + CTA pro produto</td></tr>
+      <tr><td><strong>Vida útil</strong></td><td>Ciclo de notícia (dias)</td><td>Evergreen / renovável por temporada</td></tr>
+      <tr><td><strong>Métrica</strong></td><td>Alcance / veículo</td><td>Tráfego orgânico, citação AEO, conversão</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">03</span> Arquitetura Shopify</div>
+  <h2 class="sec-title">Um blog, tags por silo, hub-and-spoke</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="ch"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span><h3>Estrutura</h3></div>
+      <ul>
+        <li>Objeto <strong>Blog</strong> nativo · handle <span class="mono">/blogs/revista</span></li>
+        <li>Blog único concentra autoridade de domínio</li>
+        <li>Tags = taxonomia comercial — ver <a href="cross-sell-taxonomy.md" style="color:var(--color-blue-mid)">cross-sell-taxonomy</a>, não recriar silos</li>
+        <li>Zero Liquid customizado — ADMIN baixo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="ch"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><path d="M12 8v4"/><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/></svg></span><h3>Cluster (hub-and-spoke)</h3></div>
+      <ul>
+        <li><strong>Pillar</strong> = Page rica por evento (<span class="mono">/pages/libertadores</span>)</li>
+        <li><strong>Spokes</strong> = artigos linkando ↑ pillar e ↓ produto</li>
+        <li>URL: <span class="mono">/blogs/revista/{slug}</span> — sem <span class="mono">#</span>, sem ID</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn"><div class="h">Verificar antes de criar</div><p>Confirmar no Shopify Admin se a loja BR já tem um blog legado (<span class="mono">news</span>) — se sim, consolidar em vez de criar do zero.</p></div>
+</section>
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">04</span> Anatomia AEO do artigo</div>
+  <h2 class="sec-title">Onde o LLM decide quem citar</h2>
+  <p class="sec-intro">Cada post nasce com esta estrutura — camadas Harahel (casa) + Edward Sturm (guia externo) se reforçando.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="ch"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><h3>Descoberta &amp; on-page</h3></div>
+      <ul>
+        <li><strong>Query fan-out:</strong> GSC regex 7+ palavras · queries do Perplexity · GA4 referral de IA</li>
+        <li>Prompt-alvo em Title, Meta, slug, H1 e <strong>início da 1ª frase</strong></li>
+        <li>Título longo (~250 char) — Sturm: +20–30% ranking</li>
+        <li><strong>Answer-first</strong>: resposta no 1º bloco</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="ch"><span class="ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><h3>Citabilidade &amp; schema</h3></div>
+      <ul>
+        <li>Abertura ~150 palavras densa em entidades (o trecho que o AI Overview copia)</li>
+        <li>Blocos de <strong>134–167 palavras</strong> auto-suficientes</li>
+        <li>FAQ embutida · schema Article + FAQPage + BreadcrumbList + SportsEvent</li>
+        <li>Crawl budget: frescor <em>real</em> &gt; mudar data · timing via Google Trends</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><div class="h">Artifact como arma de AEO</div><p>Claude Artifacts publicados ranqueiam no Google em horas e são citados por Perplexity/AI Overviews (Sturm). Um Artifact-satélite por evento âncora.</p></div>
+</section>
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">05</span> Motor de produção</div>
+  <h2 class="sec-title">Pauta → publicação, com humano no meio</h2>
+  <div class="flow">
+    <div class="step"><div class="k">01</div><div class="t">Pauta (assessoria / query fan-out / evento)</div></div>
+    <span class="arrow">→</span>
+    <div class="step"><div class="k">02</div><div class="t">Rascunho Claude (voz Mauricio + copy + oferta)</div></div>
+    <span class="arrow">→</span>
+    <div class="step gate"><div class="k">03 · GATE</div><div class="t">Revisão humana + evidência real</div></div>
+    <span class="arrow">→</span>
+    <div class="step"><div class="k">04</div><div class="t">Publish Shopify + schema</div></div>
+    <span class="arrow">→</span>
+    <div class="step"><div class="k">05</div><div class="t">RSS → social → medir → loop A/B</div></div>
+  </div>
+  <div class="callout"><div class="h">Regra inviolável — SpamBrain</div><p>IA rascunha; <strong>humano assina e adiciona evidência real</strong> (foto própria, dado, autoria) antes de publicar. É o que separa do grey-hat e do risco de desindexação.</p></div>
+  <div class="callout"><div class="h">Escala programmatic — estratégia "Zíper" (Catliff)</div><p>Cruzar dimensões de baixa concorrência: <span class="mono">hospitalidade {evento} {cidade}</span> · <span class="mono">pacote {timeA} x {timeB}</span>. Só publica célula com valor real — nunca thin content.</p></div>
+</section>
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">06</span> Auditoria de temas · assessoria</div>
+  <h2 class="sec-title">O banco de pautas já validado</h2>
+  <p class="sec-intro">Temas que já viraram matéria entre jun–jul 2026. Demanda comprovada nos dois canais.</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Silo</th><th>Pautas trabalhadas</th><th>Saiu em</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Copa 2026</strong><br><span class="mono" style="color:var(--color-blue-mid)">dominante</span></td><td>ocupação/6M · maior premiação · receita FIFA +42% (US$13bi) · turismo global · camarote Atlanta R$2M · cerveja zero · uniforme R$382M · árbitros</td><td>Exame, CNN, Quem, Diario AS</td></tr>
+      <tr><td><strong>Celebridades</strong></td><td>Messi nos EUA · Endrick Top-20 · Beckham · Ronaldinho/Bebeto/Zé Roberto</td><td>Diario AS, Leo Dias</td></tr>
+      <tr><td><strong>Negócio</strong></td><td>Modelo do futebol europeu · seleção vs craque</td><td>Exame</td></tr>
+      <tr><td><strong>Libertadores</strong></td><td>"La Final de Todos" · ação Conmebol</td><td>em construção</td></tr>
+      <tr><td><strong>Tênis</strong></td><td>Operação Wimbledon</td><td>em checagem</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout warn"><div class="h">Gap estratégico a corrigir</div><p>~80% das pautas são Copa (marca/autoridade — topo/AEO). Mas os motores de receita são <strong>Flamengo + Libertadores</strong> (conversão). Cada pauta de marca deve carregar link interno pro cluster comercial: a autoridade da Copa irriga a venda.</p></div>
+</section>
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">07</span> Economia do canal · Hormozi</div>
+  <h2 class="sec-title">Por que é o canal de maior alavancagem</h2>
+  <div class="grid3">
+    <div class="stat"><div class="v">≈0</div><div class="l">CAC</div><div class="d">Orgânico + citação LLM não se paga por clique. Audiência que se possui, não se aluga.</div></div>
+    <div class="stat"><div class="v">↑↑</div><div class="l">LTGP : CAC</div><div class="d">Com CAC → 0, cada real de lucro bruto vitalício é quase puro. A métrica-mãe da escala.</div></div>
+    <div class="stat"><div class="v">2ª</div><div class="l">A venda que importa</div><div class="d">$100M Offer no CTA (Value Ladder). A recompra por temporada = motor Flamengo.</div></div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">08</span> Linha ética</div>
+  <h2 class="sec-title">O white-hat do Sturm. Nada do grey-hat.</h2>
+  <div class="grid2">
+    <div class="dd yes"><div class="hh"><span class="ico"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span> Adotar</div><ul>
+      <li>Query fan-out, título longo, answer-first, passage citability</li>
+      <li>Artifacts publicados como ativo de AEO</li>
+      <li>Assessoria = a versão premium e real do "press release hack"</li>
+    </ul></div>
+    <div class="dd no"><div class="hh"><span class="ico"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span> Descartar</div><ul>
+      <li>PR anônimo via Fiverr · reviews falsos</li>
+      <li>Manipulação de Grok · compra de backlinks</li>
+      <li>Thin content em massa (alvo do SpamBrain)</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">09</span> Stack de conhecimento</div>
+  <h2 class="sec-title">Nada de metodologia ad-hoc</h2>
+  <p class="sec-intro">Toda peça puxa de fonte canônica — biblioteca NotebookLM + skill Harahel + guia externo absorvido.</p>
+  <div class="chips">
+    <span class="chip">Harahel — SEO/AEO/Shopify</span>
+    <span class="chip">Edward Sturm — GEO/LLM <span class="id">a canonizar</span></span>
+    <span class="chip">Claude Code SEO / Catliff <span class="id">ab87a1ad</span></span>
+    <span class="chip">Google Trends <span class="id">05a466eb</span></span>
+    <span class="chip">SEO E-commerce / Alan Kent <span class="id">0176690f</span></span>
+    <span class="chip">Googlebot Webcrawl <span class="id">e64387d0</span></span>
+    <span class="chip">Tráfego Orgânico <span class="id">b297c1fa</span></span>
+    <span class="chip">Halbert — copy</span>
+    <span class="chip">Brunson — funil / oferta</span>
+    <span class="chip">Hormozi <span class="id">92dfa1b4 · cccc0bbb</span></span>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="sec-eyebrow"><span class="idx">10</span> Roadmap</div>
+  <h2 class="sec-title">Sequência de descida</h2>
+  <ol class="road">
+    <li><strong>Cluster #1 — Libertadores 2026.</strong> Motor de volume + janela quente. Pillar + 3–5 spokes AEO + Artifact-satélite. <em>Piloto proposto.</em></li>
+    <li><strong>Cluster #2 — Flamengo evergreen.</strong> Motor de recorrência: guias de torcedor, "como funciona o pacote", pós-compra.</li>
+    <li><strong>Cluster #3 — Copa / celebridades.</strong> Autoridade/AEO reaproveitando o banco de pautas, sempre com link pro comercial.</li>
+    <li><strong>Camada programmatic "Zíper".</strong> Depois do piloto validado, com valor real por célula.</li>
+    <li><strong>Cadência.</strong> N spokes/semana + 1 pillar por evento âncora — ritual semanal.</li>
+  </ol>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-links">
+      <a href="../index.html">Hub</a>
+      <a href="growth.html">Growth</a>
+      <a href="growth-email.html">Growth · Email</a>
+      <a href="cross-sell-taxonomy.md">Taxonomia</a>
+      <a href="content-growth.md">Estratégia (md)</a>
+    </div>
+    <div class="sig">Mauricio Lacerda × Rafa Rafa · design@absolut-sport.com.br</div>
+  </div>
+  <p class="src">
+    <b>Fontes:</b> diligência e-commerce v5.0 · skill Harahel · dossiês SEO Google Search Central (NotebookLM) · Catliff/Claude Code SEO · Halbert · Brunson · Hormozi · Edward Sturm (edwardsturm.com) · banco de pautas da assessoria. &nbsp; Estratégia completa em <span class="mono">blog-br/plano-blog-absolut-sport-br.md</span> (vault). Taxonomia de silos: <span class="mono">cross-sell-taxonomy.md</span>.
+  </p>
+</div></footer>
+
+<script src="../zero-to-o.js"></script>
+</body>
+</html>

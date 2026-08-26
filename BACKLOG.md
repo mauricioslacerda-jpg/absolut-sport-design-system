@@ -164,3 +164,24 @@ O `email-command-center.html` foi construído sob a taxonomia legada de **6 silo
 3. Reescrever as 9 seções (7 silos + 2 programas) seguindo o template novo
 4. Atualizar tabs + i18n + analytics events
 5. Manter redirecionamento dos anchors antigos por 1 ciclo (até 2026-12)
+
+---
+
+## i18n EN/ES/DE para o Content Growth Playbook
+
+- **ID:** BL-006
+- **Autor:** Mauricio Lacerda
+- **Registrado em:** 2026-07-23
+- **Status:** Pendente — página entregue em PT canônico
+
+### Resumo
+O `playbooks/content-growth.html` foi entregue em **PT canônico**, sem o toggle PT/EN/ES/DE nem o dicionário `i18n.js` que as páginas irmãs (`growth.html`, `ai-marketing.html`) têm. Decisão consciente na v1: PT correto e funcional em vez de toggle quebrado.
+
+### Escopo
+1. Adicionar `data-i18n` keys nos elementos de texto (padrão `I18N_METHOD.md`).
+2. Construir dicionário `DICT` nas 4 línguas (PT/EN/ES/DE) preservando termos de marca e jargão (AEO, SEO, LLM, schema, Value Ladder).
+3. Reintroduzir o lang-toggle no nav (paridade com os playbooks irmãos) + incluir `../i18n.js`.
+4. Traduzir preservando a voz Mauricio (adaptar aforismos, não traduzir literal).
+
+### Por que não foi feito ainda
+Traduzir os ~50 blocos nas 4 línguas é trabalho denso; fazia mais sentido cravar o PT (língua canônica) e o conteúdo estratégico primeiro, e tratar i18n como incremento.

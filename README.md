@@ -163,6 +163,8 @@ See `assets/` folder:
 |------|-------------|
 | `index.html` | **Design System Hub** — página pública para a empresa toda. Logos, cores, tipografia, tokens, componentes, guidelines e devs. Publicar em subdomínio (ex: `design.absolut-sport.com.br`). |
 | `playbooks/ai-marketing.html` | **AI Marketing Playbook** — página filha do Hub, voltada ao time de marketing global. |
+| `playbooks/content-growth.html` | **Content Growth Playbook** — página filha do Hub. O blog owned: arquitetura Shopify, anatomia AEO, motor de produção, auditoria de pautas da assessoria e economia do canal (Hormozi). Deep-dive atrás do card "SEO / Conteúdo" do Growth. PT canônico (i18n EN/ES/DE = BL-006). |
+| `playbooks/content-growth.md` | **Content Growth · CANÔNICO (playbook doc)** — versão texto do playbook do blog. Referencia `cross-sell-taxonomy.md` (silos) e a estratégia deep no vault. Padrão da suíte de taxonomia. |
 | `playbooks/` | Pasta para playbooks aplicados (cada um é uma página filha do Hub). |
 | `email-command-center.html` | **Email Marketing · Command Center** — dashboard interno do projeto de email marketing. 10 abas (Visão Geral · Master Strategy · 6 silos legados · Tracking · Templates). ⚠ Em migração para nova taxonomia (7 silos + 2 programas, 3 níveis silo/sub-silo/evento) — ver `playbooks/cross-sell-taxonomy.md` e `playbooks/growth-email.html`. Brandbook ABSOLUT aplicado: tokens, SoulCraft, Lucide. Ferramenta operacional do time de Growth. |
 | `playbooks/cross-sell-taxonomy.md` | **Cross-Sell Taxonomy · CANÔNICO** — modelo canônico de taxonomia em 3 níveis (silo → sub-silo → evento), matriz de afinidade entre sub-silos, regras de gatilho para automação RD Station. Versão 1.0 · maio/2026. |

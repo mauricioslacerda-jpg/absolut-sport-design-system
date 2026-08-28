@@ -161,29 +161,30 @@ See `assets/` folder:
 
 | File | Description |
 |------|-------------|
-| `index.html` | **Design System Hub** — public page for the whole company. Logos, colors, typography, tokens, components, guidelines, and dev resources. Publish on a subdomain (e.g. `design.absolut-sport.com.br`). |
-| `playbooks/ai-marketing.html` | **AI Marketing Playbook** — child page of the Hub, aimed at the global marketing team. |
-| `playbooks/content-growth.html` | **Content Growth Playbook** — child page of the Hub. The owned blog: Shopify architecture, AEO anatomy, the production engine, PR pitch audit, and channel economics (Hormozi). Deep-dive behind the "SEO / Content" card in Growth. Canonical in PT (i18n EN/ES/DE = BL-006). |
-| `playbooks/content-growth.md` | **Content Growth · CANONICAL (playbook doc)** — text version of the blog playbook. References `cross-sell-taxonomy.md` (silos) and the deep strategy in the vault. Standard for the taxonomy suite. |
-| `playbooks/` | Folder for applied playbooks (each one is a child page of the Hub). |
-| `email-command-center.html` | **Email Marketing · Command Center** — internal dashboard for the email marketing project. 10 tabs (Overview · Master Strategy · 6 legacy silos · Tracking · Templates). ⚠ Migrating to the new taxonomy (7 silos + 2 programs, 3 levels: silo/sub-silo/event) — see `playbooks/cross-sell-taxonomy.md` and `playbooks/growth-email.html`. ABSOLUT brandbook applied: tokens, SoulCraft, Lucide. Operational tool for the Growth team. |
-| `playbooks/cross-sell-taxonomy.md` | **Cross-Sell Taxonomy · CANONICAL** — canonical 3-level taxonomy model (silo → sub-silo → event), affinity matrix between sub-silos, trigger rules for RD Station automation. Version 1.0 · May 2026. |
-| `playbooks/cross-sell-matrix.csv` | **Affinity matrix · 169 pairs** — origin/destination/score in long format. Ready for Victor to import into RD Station. Accompanies the canonical doc. |
-| `playbooks/taxonomy-takeaway.md` | **1-page takeaway · For Daniel + stakeholders** — jargon-free explanation of the new taxonomy: what changed, why it changed, what didn't change. 3-minute read. |
-| `playbooks/taxonomy-quick-reference.md` | **Quick Reference · For Jack, Rachella, Victor, Wictor** — pocket card: the 3 levels, the 7 silos, the 8 questions to ask before writing an email, condensed cross-sell matrix, standard frontmatter. Print it and tape it to your desk. |
-| `playbooks/taxonomy-folder-template.md` | **Folder template · For Wictor + Drive** — complete physical Drive structure following the taxonomy. Includes checklists for creating a new event, sub-silo, or silo. Non-negotiable principles. |
-| `playbooks/copy-library.html` | **Copy Library · Aby — Quick-Reply Library** — 35 messages across 13 categories with a variable system for reuse per event. Category filter, search, copy-to-clipboard, i18n PT/EN/ES/DE. Living page fed by JSONs generated via `playbooks/copy-library/extract.py`. Source: canonical spreadsheet (gid 1469143387). |
-| `playbooks/copy-library/` | Structured data and generator script: `extract.py` (spreadsheet parser), `input.tsv` (source), `messages.json` + `variables.json` (data), `i18n-{pt,en,es,de}.json` (dictionaries). See `playbooks/copy-library/README.md`. |
+| `docs/` | **Published Hub root** — everything GitHub Pages serves lives here (source path `/docs` on `main`). All entries below are relative to this folder. |
+| `docs/index.html` | **Design System Hub** — public page for the whole company. Logos, colors, typography, tokens, components, guidelines, and dev resources. Live at the GitHub Pages URL below; a dedicated subdomain (e.g. `design.absolut-sport.com.br`) is a possible future upgrade. |
+| `docs/playbooks/ai-marketing.html` | **AI Marketing Playbook** — child page of the Hub, aimed at the global marketing team. |
+| `docs/playbooks/content-growth.html` | **Content Growth Playbook** — child page of the Hub. The owned blog: Shopify architecture, AEO anatomy, the production engine, PR pitch audit, and channel economics (Hormozi). Deep-dive behind the "SEO / Content" card in Growth. Canonical in PT (i18n EN/ES/DE = BL-006). |
+| `docs/playbooks/content-growth.md` | **Content Growth · CANONICAL (playbook doc)** — text version of the blog playbook. References `cross-sell-taxonomy.md` (silos) and the deep strategy in the vault. Standard for the taxonomy suite. |
+| `docs/playbooks/` | Folder for applied playbooks (each one is a child page of the Hub). |
+| `docs/email-command-center.html` | **Email Marketing · Command Center** — internal dashboard for the email marketing project. 10 tabs (Overview · Master Strategy · 6 legacy silos · Tracking · Templates). ⚠ Migrating to the new taxonomy (7 silos + 2 programs, 3 levels: silo/sub-silo/event) — see `docs/playbooks/cross-sell-taxonomy.md` and `docs/playbooks/growth-email.html`. ABSOLUT brandbook applied: tokens, SoulCraft, Lucide. Operational tool for the Growth team. |
+| `docs/playbooks/cross-sell-taxonomy.md` | **Cross-Sell Taxonomy · CANONICAL** — canonical 3-level taxonomy model (silo → sub-silo → event), affinity matrix between sub-silos, trigger rules for RD Station automation. Version 1.0 · May 2026. |
+| `docs/playbooks/cross-sell-matrix.csv` | **Affinity matrix · 169 pairs** — origin/destination/score in long format. Ready for Victor to import into RD Station. Accompanies the canonical doc. |
+| `docs/playbooks/taxonomy-takeaway.md` | **1-page takeaway · For Daniel + stakeholders** — jargon-free explanation of the new taxonomy: what changed, why it changed, what didn't change. 3-minute read. |
+| `docs/playbooks/taxonomy-quick-reference.md` | **Quick Reference · For Jack, Rachella, Victor, Wictor** — pocket card: the 3 levels, the 7 silos, the 8 questions to ask before writing an email, condensed cross-sell matrix, standard frontmatter. Print it and tape it to your desk. |
+| `docs/playbooks/taxonomy-folder-template.md` | **Folder template · For Wictor + Drive** — complete physical Drive structure following the taxonomy. Includes checklists for creating a new event, sub-silo, or silo. Non-negotiable principles. |
+| `docs/playbooks/copy-library.html` | **Copy Library · Aby — Quick-Reply Library** — 35 messages across 13 categories with a variable system for reuse per event. Category filter, search, copy-to-clipboard, i18n PT/EN/ES/DE. Living page fed by JSONs generated via `docs/playbooks/copy-library/extract.py`. Source: canonical spreadsheet (gid 1469143387). |
+| `docs/playbooks/copy-library/` | Structured data and generator script: `extract.py` (spreadsheet parser), `input.tsv` (source), `messages.json` + `variables.json` (data), `i18n-{pt,en,es,de}.json` (dictionaries). See `docs/playbooks/copy-library/README.md`. |
 | `README.md` | This file — brand overview, fundamentals, index. |
-| `colors_and_type.css` | CSS custom properties for all design tokens. **Import into pages via `<link>`.** |
-| `zero-to-o.js` | Script that swaps "0" for uppercase "O" in SoulCraft text (the brand's signature). Include on any page using SoulCraft. |
-| `fonts/soulcraftgx.ttf` | SoulCraft GX display font. |
-| `preview/` | Preview cards for each component (linked from the Hub). |
-| `assets/` | Logos and brand assets (.svg). |
-| `assets/absolut-brand-kit.zip` | **Complete Brand Kit** — 4 logos + SoulCraft GX + colors_and_type.css + zero-to-o.js + README. Linked from the Hub via the "Brand Kit" CTA. Regenerate via PowerShell `Compress-Archive` whenever tokens/logos/font are updated. |
-| `assets/rafa-rafa.png` | Poster art for the "Ask Rafa" banner in the Hub footer. Also used as `og:image` on every page. |
-| `assets/mauricio.jpg` | _TODO_: photo of Mauricio Lacerda. Reserved for planned use (co-authorship banner, coordination profile, or expanding the Rafa Rafa banner into a duo). Kept in the repo pending a decision on use. |
-| `ui_kits/website/` | React UI kit for absolut-sport.com.br. |
+| `docs/colors_and_type.css` | CSS custom properties for all design tokens. **Import into pages via `<link>`.** |
+| `docs/zero-to-o.js` | Script that swaps "0" for uppercase "O" in SoulCraft text (the brand's signature). Include on any page using SoulCraft. |
+| `docs/fonts/soulcraftgx.ttf` | SoulCraft GX display font. |
+| `docs/preview/` | Preview cards for each component (linked from the Hub). |
+| `docs/assets/` | Logos and brand assets (.svg). |
+| `docs/assets/absolut-brand-kit.zip` | **Complete Brand Kit** — 4 logos + SoulCraft GX + colors_and_type.css + zero-to-o.js + README. Linked from the Hub via the "Brand Kit" CTA. Regenerate via PowerShell `Compress-Archive` whenever tokens/logos/font are updated. |
+| `docs/assets/rafa-rafa.png` | Poster art for the "Ask Rafa" banner in the Hub footer. Also used as `og:image` on every page. |
+| `docs/assets/mauricio.jpg` | _TODO_: photo of Mauricio Lacerda. Reserved for planned use (co-authorship banner, coordination profile, or expanding the Rafa Rafa banner into a duo). Kept in the repo pending a decision on use. |
+| `docs/ui_kits/website/` | React UI kit for absolut-sport.com.br. |
 | `SKILL.md` | **Brandbook Skill (Claude)** — full brandbook spec in Claude skill format. Loads color rules, typography, icons (Lucide), motion, Mauricio's voice, i18n, applied playbooks, anti-patterns, and contact info. See the "Claude Skill" section below to activate it locally. |
 | `I18N_METHOD.md` | Replicable translation method (i18n.js + inline dictionary). Use the same pattern on other projects. |
 
@@ -219,7 +220,7 @@ The skill is auto-discovered via `SKILL.md`. Activate it via `/skills` in Claude
 
 Did something change in the design system (a new token, a new aphorism, an anti-pattern to document)? Edit `SKILL.md` at the project root. Re-run the `Copy-Item` command above to propagate it.
 
-Once the `design.absolut-sport.com.br` subdomain is live, the skill will be installable via direct download of `SKILL.md` + its referenced files.
+The skill can also be installed via direct download of `SKILL.md` + its referenced files from the live Hub at `https://mauricioslacerda-jpg.github.io/absolut-sport-design-system/`.
 
 ### Usage triggers (when the skill activates)
 
@@ -233,20 +234,22 @@ The `description` in the frontmatter includes keywords that trigger the skill wh
 
 ## DEPLOY — How to publish
 
-The Hub is a static page — no build step, no application server.
+The Hub is a static page — no build step, no application server. It is published via **GitHub Pages**, serving the `docs/` folder on the `main` branch.
 
 ### Where things live
 
-- **Canonical URL:** `https://design.absolut-sport.com.br` (dedicated subdomain)
-- **Embed:** `https://absolut-sport.com.br/pages/design-system` (Shopify, iframe of the subdomain)
+- **Live URL (canonical today):** `https://mauricioslacerda-jpg.github.io/absolut-sport-design-system/`
+- **Repo:** `github.com/mauricioslacerda-jpg/absolut-sport-design-system` — Pages source: branch `main`, path `/docs`
+- **Future upgrade (not yet implemented):** a dedicated subdomain (e.g. `design.absolut-sport.com.br`) via CNAME pointed at the GitHub Pages URL, or a Shopify embed at `https://absolut-sport.com.br/pages/design-system`
 - **Contact email:** `design@absolut-sport.com.br` (suggestions, changes, questions)
 
 ### Publishing steps
 
-1. **Static host** — **Cloudflare Pages** recommended (free, drop-and-deploy, automatic HTTPS). Alternative: Netlify (`https://app.netlify.com/drop`).
-2. **Upload the entire folder** — `index.html` is the entry point. All paths are relative (`./assets/...`, `./fonts/...`, `./preview/...`).
-3. **DNS** — create a `design` CNAME pointing to the `pages.dev` subdomain (or equivalent).
-4. **SSL** provisions in ~5–15 min. Test in an incognito tab.
+Publishing is just pushing to `main` — GitHub rebuilds Pages automatically from `docs/`.
+
+1. **Edit files under `docs/`** — `docs/index.html` is the entry point. All paths are relative (`./assets/...`, `./fonts/...`, `./preview/...`), so the site works both locally (open the file) and under the repo's Pages subpath.
+2. **Commit and push to `main`.** GitHub Pages rebuilds within ~1 minute; check status via `gh api repos/mauricioslacerda-jpg/absolut-sport-design-system/pages`.
+3. **Custom domain (optional, later):** add a `CNAME` file to `docs/` with the desired hostname, then create a DNS CNAME record pointing that hostname at `mauricioslacerda-jpg.github.io`. Requires access to the domain's DNS panel.
 
 ### Embedding in Shopify
 
@@ -254,7 +257,7 @@ In the Shopify admin → Pages → create a new page with the handle `design-sys
 
 ```html
 <iframe
-  src="https://design.absolut-sport.com.br"
+  src="https://mauricioslacerda-jpg.github.io/absolut-sport-design-system/"
   title="ABSOLUT Sport Design System"
   loading="lazy"
   style="display:block;width:100%;height:calc(100vh - 120px);border:none;"
@@ -262,10 +265,7 @@ In the Shopify admin → Pages → create a new page with the handle `design-sys
 ></iframe>
 ```
 
-If the iframe doesn't load, adjust Cloudflare Pages → Settings → Headers:
-```
-Content-Security-Policy: frame-ancestors 'self' https://absolut-sport.com.br https://*.absolut-sport.com.br;
-```
+GitHub Pages does not send restrictive `X-Frame-Options`/CSP headers by default, so the iframe should load as-is.
 
 ### Co-authorship and contact
 
@@ -292,14 +292,20 @@ Toggle in the top-right corner of every page. The preference persists in `localS
 
 ```
 ABSOLUT Sport Design System/
-├── index.html                       ← Main Hub (public)
-├── colors_and_type.css              ← Canonical tokens (import)
-├── zero-to-o.js                     ← Typographic signature
 ├── README.md                        ← This file
-├── playbooks/
-│   └── ai-marketing.html            ← AI Playbook (Global Marketing)
-├── preview/                         ← 13 component preview cards
-├── ui_kits/website/                 ← React UI kit for the public site
-├── assets/                          ← 4 logo variants (.svg)
-└── fonts/                           ← SoulCraft GX
+├── BACKLOG.md                       ← Pending ideas (BL-001…)
+├── SKILL.md                         ← Claude brandbook skill
+├── ASB_Design_Token_Taxonomy_v1.md
+├── I18N_METHOD.md
+└── docs/                            ← Published root (GitHub Pages: main, /docs)
+    ├── index.html                   ← Main Hub (public)
+    ├── colors_and_type.css          ← Canonical tokens (import)
+    ├── zero-to-o.js                 ← Typographic signature
+    ├── playbooks/
+    │   ├── ai-marketing.html        ← AI Playbook (Global Marketing)
+    │   └── ...                      ← other applied playbooks
+    ├── preview/                     ← component preview cards
+    ├── ui_kits/website/             ← React UI kit for the public site
+    ├── assets/                      ← logo variants (.svg) + brand kit
+    └── fonts/                       ← SoulCraft GX
 ```

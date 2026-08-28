@@ -1,7 +1,0 @@
-services:
-  absolut-design:
-    build: .
-    container_name: absolut-design
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8081:80"

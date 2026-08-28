@@ -33,8 +33,8 @@
 - **Secondary:** English and Spanish (multinational agency)
 
 ### Tone & Voice
-- **Bold and aspirational** — copy is written with emotional charge ("experiências lendárias", "momentos inesquecíveis")
-- **Authoritative** — references to official status and credentials ("Única Agência Oficial")
+- **Bold and aspirational** — copy is written with emotional charge ("experiências lendárias" / *legendary experiences*, "momentos inesquecíveis" / *unforgettable moments*)
+- **Authoritative** — references to official status and credentials ("Única Agência Oficial" / *Only Official Agency*)
 - **Warm but premium** — not cold luxury; passionate Brazilian energy with German precision
 - **Second person (você)** — brand speaks directly to the customer
 - **Exclamation heavy** — enthusiasm is part of the brand voice
@@ -44,15 +44,15 @@
 - Brand name: **ABSOLUT Sport** (ABSOLUT in caps, Sport in title case)
 - Headlines: ALL CAPS or Title Case for major calls to action
 - Body: Sentence case
-- Taglines: ALL CAPS ("DOS ESTÁDIOS PARA A HISTÓRIA", "ISSO É VIVER")
+- Taglines: ALL CAPS ("DOS ESTÁDIOS PARA A HISTÓRIA" / *FROM THE STADIUMS TO HISTORY*, "ISSO É VIVER" / *THIS IS LIVING*)
 
 ### Copy Examples
-- "Somos a única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™"
-- "Experiências esportivas lendárias"
-- "Vivências imersivas e emocionantes que transcendem o jogo"
-- "Excelência, conforto e segurança"
-- "O céu é o limite para que você viva experiências lendárias!"
-- "Eficiência alemã, entusiasmo brasileiro e estilo de vida californiano"
+- "Somos a única agência oficial de pacotes para as Finais da CONMEBOL Libertadores™" *(We are the only official package agency for the CONMEBOL Libertadores™ Finals)*
+- "Experiências esportivas lendárias" *(Legendary sporting experiences)*
+- "Vivências imersivas e emocionantes que transcendem o jogo" *(Immersive, exciting experiences that transcend the game)*
+- "Excelência, conforto e segurança" *(Excellence, comfort, and safety)*
+- "O céu é o limite para que você viva experiências lendárias!" *(The sky's the limit for you to live legendary experiences!)*
+- "Eficiência alemã, entusiasmo brasileiro e estilo de vida californiano" *(German efficiency, Brazilian enthusiasm, and California lifestyle)*
 
 ### Emoji Usage
 - Used sparingly in social media contexts (🤝 for partnerships)
@@ -63,16 +63,16 @@
 ## VISUAL FOUNDATIONS
 
 ### Color System
-- **Primary Blue:** `#155F97` — Azul ASB, cor institucional primária, CTAs e destaques
-- **Blue Dark:** `#0F4A75` — hover states, profundidade
-- **Blue Mid:** `#1E7ABE` — versão dark mode do azul primário
-- **Blue Highlight:** `#2857F7` — acento de destaque, hover emphasis
-- **Black:** `#0D0D0D` — background escuro, autoridade, premium
-- **White:** `#FFFFFF` — texto em fundos escuros, superfícies limpas
-- **Off-White:** `#FAFAFA` — background padrão light mode (modo primário)
-- **Gray ASB:** `#C0C0C0` — cinza institucional, elementos secundários
-- **Gold/Amber:** `#C9A84C` — tier premium, badges VIP, "oficial"
-- **Error/Alert:** `#E3001B` — somente estados de erro e alertas críticos
+- **Primary Blue:** `#155F97` — ASB Blue, primary institutional color, CTAs and highlights
+- **Blue Dark:** `#0F4A75` — hover states, depth
+- **Blue Mid:** `#1E7ABE` — dark-mode version of the primary blue
+- **Blue Highlight:** `#2857F7` — accent highlight, hover emphasis
+- **Black:** `#0D0D0D` — dark background, authority, premium
+- **White:** `#FFFFFF` — text on dark backgrounds, clean surfaces
+- **Off-White:** `#FAFAFA` — default light-mode background (primary mode)
+- **Gray ASB:** `#C0C0C0` — institutional gray, secondary elements
+- **Gold/Amber:** `#C9A84C` — premium tier, VIP badges, "official"
+- **Error/Alert:** `#E3001B` — error states and critical alerts only
 
 ### Logo
 - Mark: A stylized bold capital **"A"** (no crossbar) — monolithic, modern
@@ -82,18 +82,18 @@
 - Usage: "ABSOLUT Sport" — never just "Absolut"
 
 ### Typography
-- **Display / Headlines:** SoulCraft GX (variable, weight 900 para impacto máximo) — tipografia primária da marca, alta voltagem
-  - Fonte local: `fonts/soulcraftgx.ttf` (incluída no `absolut-brand-kit.zip`)
+- **Display / Headlines:** SoulCraft GX (variable, weight 900 for maximum impact) — the brand's primary typeface, high-voltage
+  - Local font: `fonts/soulcraftgx.ttf` (included in `absolut-brand-kit.zip`)
   - Fallback: Barlow Condensed, sans-serif
-  - Assinatura: incluir `zero-to-o.js` em qualquer página com SoulCraft (troca "0" por "O" maiúsculo — `+5oo`, `1oK`, `12o×`)
+  - Signature: include `zero-to-o.js` on any page using SoulCraft (swaps "0" for uppercase "O" — `+5oo`, `1oK`, `12o×`)
 - **Body / UI:** Barlow (Regular/Medium/SemiBold) — clean, readable, modern
   - Fallback: DM Sans, Inter
-  - Google Fonts (gratuito, livre): https://fonts.google.com/specimen/Barlow
-  - Display fallback (gratuito): https://fonts.google.com/specimen/Barlow+Condensed
+  - Google Fonts (free, open): https://fonts.google.com/specimen/Barlow
+  - Display fallback (free): https://fonts.google.com/specimen/Barlow+Condensed
 - **Mono / Data:** JetBrains Mono — for prices, codes, stats
-  - Google Fonts (gratuito): https://fonts.google.com/specimen/JetBrains+Mono
+  - Google Fonts (free): https://fonts.google.com/specimen/JetBrains+Mono
 
-> **Acesso às fontes:** SoulCraft GX está empacotada no `assets/absolut-brand-kit.zip` (download via Hub). Barlow e JetBrains Mono são gratuitas no Google Fonts — qualquer pessoa com acesso ao Hub pode baixá-las nos links acima.
+> **Font access:** SoulCraft GX is bundled in `assets/absolut-brand-kit.zip` (download via the Hub). Barlow and JetBrains Mono are free on Google Fonts — anyone with access to the Hub can download them from the links above.
 
 ### Backgrounds & Imagery
 - **Full-bleed photography** is a core visual tool — stadium crowds, aerial shots, dramatic night games
@@ -150,10 +150,10 @@
 
 ### Asset Inventory
 See `assets/` folder:
-- `assets/logo-azul-preto.svg` — **Primária** · Logo Azul + Preto · fundos claros (light mode)
-- `assets/logo-azul-branco.svg` — Logo Azul + Branco · fundos escuros (dark mode)
-- `assets/logo-branco.svg` — Logo Branco monocromático · fundos azuis ou escuros
-- `assets/logo-preto.svg` — Logo Preto monocromático · impressão P&B · fundos claros
+- `assets/logo-azul-preto.svg` — **Primary** · Blue + Black logo · light backgrounds (light mode)
+- `assets/logo-azul-branco.svg` — Blue + White logo · dark backgrounds (dark mode)
+- `assets/logo-branco.svg` — Monochrome white logo · blue or dark backgrounds
+- `assets/logo-preto.svg` — Monochrome black logo · B&W print · light backgrounds
 
 ---
 
@@ -161,50 +161,50 @@ See `assets/` folder:
 
 | File | Description |
 |------|-------------|
-| `index.html` | **Design System Hub** — página pública para a empresa toda. Logos, cores, tipografia, tokens, componentes, guidelines e devs. Publicar em subdomínio (ex: `design.absolut-sport.com.br`). |
-| `playbooks/ai-marketing.html` | **AI Marketing Playbook** — página filha do Hub, voltada ao time de marketing global. |
-| `playbooks/content-growth.html` | **Content Growth Playbook** — página filha do Hub. O blog owned: arquitetura Shopify, anatomia AEO, motor de produção, auditoria de pautas da assessoria e economia do canal (Hormozi). Deep-dive atrás do card "SEO / Conteúdo" do Growth. PT canônico (i18n EN/ES/DE = BL-006). |
-| `playbooks/content-growth.md` | **Content Growth · CANÔNICO (playbook doc)** — versão texto do playbook do blog. Referencia `cross-sell-taxonomy.md` (silos) e a estratégia deep no vault. Padrão da suíte de taxonomia. |
-| `playbooks/` | Pasta para playbooks aplicados (cada um é uma página filha do Hub). |
-| `email-command-center.html` | **Email Marketing · Command Center** — dashboard interno do projeto de email marketing. 10 abas (Visão Geral · Master Strategy · 6 silos legados · Tracking · Templates). ⚠ Em migração para nova taxonomia (7 silos + 2 programas, 3 níveis silo/sub-silo/evento) — ver `playbooks/cross-sell-taxonomy.md` e `playbooks/growth-email.html`. Brandbook ABSOLUT aplicado: tokens, SoulCraft, Lucide. Ferramenta operacional do time de Growth. |
-| `playbooks/cross-sell-taxonomy.md` | **Cross-Sell Taxonomy · CANÔNICO** — modelo canônico de taxonomia em 3 níveis (silo → sub-silo → evento), matriz de afinidade entre sub-silos, regras de gatilho para automação RD Station. Versão 1.0 · maio/2026. |
-| `playbooks/cross-sell-matrix.csv` | **Matriz de afinidade · 169 pares** — origem/destino/score em formato long. Pronto pra Victor importar no RD Station. Acompanha o canônico. |
-| `playbooks/taxonomy-takeaway.md` | **Takeaway 1 página · Para Daniel + stakeholders** — explicação sem jargão da nova taxonomia: o que mudou, por que mudou, o que não mudou. Leitura de 3 minutos. |
-| `playbooks/taxonomy-quick-reference.md` | **Quick Reference · Para Jack, Rachella, Victor, Wictor** — cartão de bolso: os 3 níveis, os 7 silos, as 8 perguntas antes de escrever email, matriz cross-sell condensada, frontmatter padrão. Imprime e cola na mesa. |
-| `playbooks/taxonomy-folder-template.md` | **Template de pastas · Para Wictor + Drive** — estrutura física completa do Drive seguindo a taxonomia. Inclui checklists para criar novo evento, sub-silo ou silo. Princípios não-negociáveis. |
-| `playbooks/copy-library.html` | **Copy Library · Aby — Biblioteca de Respostas Rápidas** — 35 mensagens em 13 categorias com sistema de variáveis para reuso por evento. Filtro por categoria, busca, copy-to-clipboard, i18n PT/EN/ES/DE. Página viva alimentada por JSONs gerados via `playbooks/copy-library/extract.py`. Fonte: planilha canônica (gid 1469143387). |
-| `playbooks/copy-library/` | Dados estruturados e script gerador: `extract.py` (interpretador da planilha), `input.tsv` (fonte), `messages.json` + `variables.json` (dados), `i18n-{pt,en,es,de}.json` (dicionários). Ver `playbooks/copy-library/README.md`. |
-| `README.md` | Este arquivo — visão da marca, fundamentos, índice. |
-| `colors_and_type.css` | CSS custom properties para todos os design tokens. **Importar nas páginas via `<link>`.** |
-| `zero-to-o.js` | Script que troca "0" por "O" maiúsculo em texto SoulCraft (assinatura da marca). Incluir em qualquer página com SoulCraft. |
-| `fonts/soulcraftgx.ttf` | Fonte de display SoulCraft GX. |
-| `preview/` | Preview cards de cada componente (linkados do Hub). |
-| `assets/` | Logos e brand assets (.svg). |
-| `assets/absolut-brand-kit.zip` | **Brand Kit completo** — 4 logos + SoulCraft GX + colors_and_type.css + zero-to-o.js + README. Linkado no Hub via CTA "Brand Kit". Regenerar via PowerShell `Compress-Archive` quando atualizar tokens/logos/fonte. |
-| `assets/rafa-rafa.png` | Cartaz do banner "Pergunte pro Rafa" no rodapé do Hub. Também usado como `og:image` em todas as páginas. |
-| `assets/mauricio.jpg` | _TODO_: foto do Mauricio Lacerda. Reservada para uso planejado (banner de coautoria, perfil de coordenação, ou expansão do banner Rafa Rafa pra dupla). Mantida no repo até a decisão de uso. |
-| `ui_kits/website/` | UI kit React para absolut-sport.com.br. |
-| `SKILL.md` | **Brandbook Skill (Claude)** — spec completa do brandbook em formato Claude skill. Carrega regras de cor, tipografia, ícones (Lucide), motion, voz Mauricio, i18n, playbooks aplicados, anti-padrões e contato. Veja seção "Skill Claude" abaixo pra ativar localmente. |
-| `I18N_METHOD.md` | Método replicável de tradução (i18n.js + dicionário inline). Pra usar o mesmo padrão em outros projetos. |
+| `index.html` | **Design System Hub** — public page for the whole company. Logos, colors, typography, tokens, components, guidelines, and dev resources. Publish on a subdomain (e.g. `design.absolut-sport.com.br`). |
+| `playbooks/ai-marketing.html` | **AI Marketing Playbook** — child page of the Hub, aimed at the global marketing team. |
+| `playbooks/content-growth.html` | **Content Growth Playbook** — child page of the Hub. The owned blog: Shopify architecture, AEO anatomy, the production engine, PR pitch audit, and channel economics (Hormozi). Deep-dive behind the "SEO / Content" card in Growth. Canonical in PT (i18n EN/ES/DE = BL-006). |
+| `playbooks/content-growth.md` | **Content Growth · CANONICAL (playbook doc)** — text version of the blog playbook. References `cross-sell-taxonomy.md` (silos) and the deep strategy in the vault. Standard for the taxonomy suite. |
+| `playbooks/` | Folder for applied playbooks (each one is a child page of the Hub). |
+| `email-command-center.html` | **Email Marketing · Command Center** — internal dashboard for the email marketing project. 10 tabs (Overview · Master Strategy · 6 legacy silos · Tracking · Templates). ⚠ Migrating to the new taxonomy (7 silos + 2 programs, 3 levels: silo/sub-silo/event) — see `playbooks/cross-sell-taxonomy.md` and `playbooks/growth-email.html`. ABSOLUT brandbook applied: tokens, SoulCraft, Lucide. Operational tool for the Growth team. |
+| `playbooks/cross-sell-taxonomy.md` | **Cross-Sell Taxonomy · CANONICAL** — canonical 3-level taxonomy model (silo → sub-silo → event), affinity matrix between sub-silos, trigger rules for RD Station automation. Version 1.0 · May 2026. |
+| `playbooks/cross-sell-matrix.csv` | **Affinity matrix · 169 pairs** — origin/destination/score in long format. Ready for Victor to import into RD Station. Accompanies the canonical doc. |
+| `playbooks/taxonomy-takeaway.md` | **1-page takeaway · For Daniel + stakeholders** — jargon-free explanation of the new taxonomy: what changed, why it changed, what didn't change. 3-minute read. |
+| `playbooks/taxonomy-quick-reference.md` | **Quick Reference · For Jack, Rachella, Victor, Wictor** — pocket card: the 3 levels, the 7 silos, the 8 questions to ask before writing an email, condensed cross-sell matrix, standard frontmatter. Print it and tape it to your desk. |
+| `playbooks/taxonomy-folder-template.md` | **Folder template · For Wictor + Drive** — complete physical Drive structure following the taxonomy. Includes checklists for creating a new event, sub-silo, or silo. Non-negotiable principles. |
+| `playbooks/copy-library.html` | **Copy Library · Aby — Quick-Reply Library** — 35 messages across 13 categories with a variable system for reuse per event. Category filter, search, copy-to-clipboard, i18n PT/EN/ES/DE. Living page fed by JSONs generated via `playbooks/copy-library/extract.py`. Source: canonical spreadsheet (gid 1469143387). |
+| `playbooks/copy-library/` | Structured data and generator script: `extract.py` (spreadsheet parser), `input.tsv` (source), `messages.json` + `variables.json` (data), `i18n-{pt,en,es,de}.json` (dictionaries). See `playbooks/copy-library/README.md`. |
+| `README.md` | This file — brand overview, fundamentals, index. |
+| `colors_and_type.css` | CSS custom properties for all design tokens. **Import into pages via `<link>`.** |
+| `zero-to-o.js` | Script that swaps "0" for uppercase "O" in SoulCraft text (the brand's signature). Include on any page using SoulCraft. |
+| `fonts/soulcraftgx.ttf` | SoulCraft GX display font. |
+| `preview/` | Preview cards for each component (linked from the Hub). |
+| `assets/` | Logos and brand assets (.svg). |
+| `assets/absolut-brand-kit.zip` | **Complete Brand Kit** — 4 logos + SoulCraft GX + colors_and_type.css + zero-to-o.js + README. Linked from the Hub via the "Brand Kit" CTA. Regenerate via PowerShell `Compress-Archive` whenever tokens/logos/font are updated. |
+| `assets/rafa-rafa.png` | Poster art for the "Ask Rafa" banner in the Hub footer. Also used as `og:image` on every page. |
+| `assets/mauricio.jpg` | _TODO_: photo of Mauricio Lacerda. Reserved for planned use (co-authorship banner, coordination profile, or expanding the Rafa Rafa banner into a duo). Kept in the repo pending a decision on use. |
+| `ui_kits/website/` | React UI kit for absolut-sport.com.br. |
+| `SKILL.md` | **Brandbook Skill (Claude)** — full brandbook spec in Claude skill format. Loads color rules, typography, icons (Lucide), motion, Mauricio's voice, i18n, applied playbooks, anti-patterns, and contact info. See the "Claude Skill" section below to activate it locally. |
+| `I18N_METHOD.md` | Replicable translation method (i18n.js + inline dictionary). Use the same pattern on other projects. |
 
 ---
 
 ## SKILL CLAUDE · BRANDBOOK
 
-`SKILL.md` é o canon do brandbook em formato Claude skill. Quando ativada, carrega contexto completo: cores, tipografia, logos, regras de iconografia (Lucide), motion, voz Mauricio, i18n nos 4 idiomas, playbooks aplicados e anti-padrões.
+`SKILL.md` is the canonical brandbook in Claude skill format. When activated, it loads the full context: colors, typography, logos, iconography rules (Lucide), motion, Mauricio's voice, i18n across the 4 languages, applied playbooks, and anti-patterns.
 
-### Pra que serve
+### What it's for
 
-Qualquer Claude (Code, Desktop, API) com a skill ativada vai gerar artefatos visuais e textuais já alinhados ao brandbook ABSOLUT Sport — sem precisar repetir as regras a cada conversa. Cobre:
+Any Claude (Code, Desktop, API) with the skill activated will generate visual and text artifacts already aligned with the ABSOLUT Sport brandbook — no need to repeat the rules in every conversation. It covers:
 
-- Landing pages, e-mails, decks, social media
-- Copy em PT/EN/ES/DE com voz Mauricio
-- HTML production-ready com tokens e componentes do design system
-- Prompts pra ferramentas AI (Midjourney, ChatGPT, etc.) já formatados com contexto da marca
+- Landing pages, emails, decks, social media
+- Copy in PT/EN/ES/DE with Mauricio's voice
+- Production-ready HTML with design system tokens and components
+- Prompts for AI tools (Midjourney, ChatGPT, etc.) already formatted with brand context
 
-### Ativar localmente (Claude Code)
+### Activate locally (Claude Code)
 
-Copiar a pasta inteira pro diretório de skills do Claude Code:
+Copy the entire folder into the Claude Code skills directory:
 
 ```powershell
 $src = "G:\Meu Drive\ABSOLUT Sport Design System"
@@ -213,17 +213,17 @@ if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }
 Copy-Item -Path $src -Destination $dest -Recurse
 ```
 
-A skill é descoberta automaticamente via `SKILL.md`. Ativar via `/skills` no Claude Code, ou invocar diretamente em conversa quando precisar.
+The skill is auto-discovered via `SKILL.md`. Activate it via `/skills` in Claude Code, or invoke it directly in conversation when needed.
 
-### Atualizar a skill
+### Updating the skill
 
-Mudou alguma coisa no design system (token novo, aforismo novo, anti-padrão a documentar)? Edite o `SKILL.md` na raiz do projeto. Re-rode o `Copy-Item` acima pra propagar.
+Did something change in the design system (a new token, a new aphorism, an anti-pattern to document)? Edit `SKILL.md` at the project root. Re-run the `Copy-Item` command above to propagate it.
 
-Quando o subdomínio `design.absolut-sport.com.br` estiver no ar, a skill vai poder ser instalada via download direto do `SKILL.md` + arquivos referenciados.
+Once the `design.absolut-sport.com.br` subdomain is live, the skill will be installable via direct download of `SKILL.md` + its referenced files.
 
-### Triggers de uso (quando a skill se ativa)
+### Usage triggers (when the skill activates)
 
-A `description` no frontmatter inclui keywords que disparam a skill quando relevante:
+The `description` in the frontmatter includes keywords that trigger the skill when relevant:
 - "ABSOLUT Sport", "CONMEBOL Libertadores", "Sudamericana"
 - "landing page", "email template", "deck", "social media", "voucher"
 - "marketing copy", "brand colors", "logo"
@@ -231,26 +231,26 @@ A `description` no frontmatter inclui keywords que disparam a skill quando relev
 
 ---
 
-## DEPLOY — Como publicar
+## DEPLOY — How to publish
 
-O Hub é uma página estática, sem build, sem servidor de aplicação.
+The Hub is a static page — no build step, no application server.
 
-### Onde fica o quê
+### Where things live
 
-- **URL canônica:** `https://design.absolut-sport.com.br` (subdomínio próprio)
-- **Embed:** `https://absolut-sport.com.br/pages/design-system` (Shopify, iframe do subdomínio)
-- **Email de contato:** `design@absolut-sport.com.br` (sugestões, alterações, dúvidas)
+- **Canonical URL:** `https://design.absolut-sport.com.br` (dedicated subdomain)
+- **Embed:** `https://absolut-sport.com.br/pages/design-system` (Shopify, iframe of the subdomain)
+- **Contact email:** `design@absolut-sport.com.br` (suggestions, changes, questions)
 
-### Passos de publicação
+### Publishing steps
 
-1. **Host estático** — recomendado **Cloudflare Pages** (grátis, drop-and-deploy, HTTPS automático). Alternativa: Netlify (`https://app.netlify.com/drop`).
-2. **Subir a pasta inteira** — `index.html` é o ponto de entrada. Caminhos são todos relativos (`./assets/...`, `./fonts/...`, `./preview/...`).
-3. **DNS** — criar CNAME `design` apontando para o subdomínio `pages.dev` (ou equivalente).
-4. **SSL** provisiona em ~5–15 min. Testar em aba anônima.
+1. **Static host** — **Cloudflare Pages** recommended (free, drop-and-deploy, automatic HTTPS). Alternative: Netlify (`https://app.netlify.com/drop`).
+2. **Upload the entire folder** — `index.html` is the entry point. All paths are relative (`./assets/...`, `./fonts/...`, `./preview/...`).
+3. **DNS** — create a `design` CNAME pointing to the `pages.dev` subdomain (or equivalent).
+4. **SSL** provisions in ~5–15 min. Test in an incognito tab.
 
-### Embed no Shopify
+### Embedding in Shopify
 
-No Shopify admin → Pages → criar nova página com handle `design-system`. Conteúdo (HTML view):
+In the Shopify admin → Pages → create a new page with the handle `design-system`. Content (HTML view):
 
 ```html
 <iframe
@@ -262,24 +262,24 @@ No Shopify admin → Pages → criar nova página com handle `design-system`. Co
 ></iframe>
 ```
 
-Se o iframe não carregar, ajustar Cloudflare Pages → Settings → Headers:
+If the iframe doesn't load, adjust Cloudflare Pages → Settings → Headers:
 ```
 Content-Security-Policy: frame-ancestors 'self' https://absolut-sport.com.br https://*.absolut-sport.com.br;
 ```
 
-### Coautoria e contato
+### Co-authorship and contact
 
-O design system é **co-autoria de Mauricio Lacerda × Raphael Ferreira (Rafa Rafa)**. Crédito visível no header (badge gold "MM × RR") e no rodapé de toda página. Qualquer alteração, sugestão ou solicitação: `design@absolut-sport.com.br`.
+The design system is **co-authored by Mauricio Lacerda × Raphael Ferreira (Rafa Rafa)**. Credit is visible in the header (gold "MM × RR" badge) and in the footer of every page. For any change, suggestion, or request: `design@absolut-sport.com.br`.
 
-### Acesso
+### Access
 
-Link público — qualquer pessoa com a URL acessa. Brand guidelines são distribuídas livremente entre os 4 escritórios (Rio, Frankfurt, LA, Buenos Aires).
+Public link — anyone with the URL can access it. Brand guidelines are freely distributed across the 4 offices (Rio, Frankfurt, LA, Buenos Aires).
 
-### Idiomas suportados
+### Supported languages
 
-Toggle no canto superior direito de toda página. Preferência persiste em `localStorage` (`asb_lang`).
+Toggle in the top-right corner of every page. The preference persists in `localStorage` (`asb_lang`).
 
-| Código | Idioma | Mercado primário |
+| Code | Language | Primary market |
 |---|---|---|
 | `pt` | Português (BR) | Rio de Janeiro · default |
 | `en` | English | Los Angeles · global |
@@ -288,18 +288,18 @@ Toggle no canto superior direito de toda página. Preferência persiste em `loca
 
 ---
 
-## ESTRUTURA HIERÁRQUICA
+## HIERARCHICAL STRUCTURE
 
 ```
 ABSOLUT Sport Design System/
-├── index.html                       ← Hub principal (público)
-├── colors_and_type.css              ← Tokens canônicos (importar)
-├── zero-to-o.js                     ← Assinatura tipográfica
-├── README.md                        ← Este arquivo
+├── index.html                       ← Main Hub (public)
+├── colors_and_type.css              ← Canonical tokens (import)
+├── zero-to-o.js                     ← Typographic signature
+├── README.md                        ← This file
 ├── playbooks/
-│   └── ai-marketing.html            ← AI Playbook (Marketing Global)
-├── preview/                         ← 13 preview cards de componentes
-├── ui_kits/website/                 ← UI kit React do site público
-├── assets/                          ← 4 variantes de logo (.svg)
+│   └── ai-marketing.html            ← AI Playbook (Global Marketing)
+├── preview/                         ← 13 component preview cards
+├── ui_kits/website/                 ← React UI kit for the public site
+├── assets/                          ← 4 logo variants (.svg)
 └── fonts/                           ← SoulCraft GX
 ```
